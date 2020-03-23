@@ -1,0 +1,13 @@
+<ns-icon-default-add *ngIf="model.isAddVisible"
+                     (click)="handleAddRequested()">
+</ns-icon-default-add>
+
+<ns-icon-default-edit *ngIf="model.isEditVisible"
+                      [disabled]="model.isEditDisabled"
+                      (click)="handleEditRequested()">
+</ns-icon-default-edit>
+
+<ns-icon-default-delete *ngIf="model.isEditVisible"
+                        [disabled]="model.isDeleteDisabled"
+                        (click)="handleDeleteRequested()">
+</ns-icon-default-delete>

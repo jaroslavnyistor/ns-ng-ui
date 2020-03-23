@@ -1,0 +1,35 @@
+<div fxLayout="row"
+     fxLayout.lt-sm="row wrap"
+     class="buttons">
+   <div class="buttons-navigation">
+      <button *ngIf="model.isPreviousButtonVisible"
+              mat-raised-button
+              matStepperPrevious
+              color="primary">
+         <ns-icon-small [icon]="NsIcon.ArrowBackCalendar"></ns-icon-small>
+         {{ 'Previous' | translate }}
+      </button>
+
+      <button *ngIf="model.isNextButtonVisible"
+              mat-raised-button
+              matStepperNext
+              color="primary">
+         {{ 'Next' | translate }}
+         <ns-icon-small [icon]="NsIcon.ArrowForwardCalendar"></ns-icon-small>
+      </button>
+   </div>
+
+   <div fxFlexAlign="end"
+        class="buttons-command">
+      <button mat-stroked-button
+              (click)="service.handleCancelClicked()">
+         {{ 'Cancel' | translate }}
+      </button>
+
+      <button mat-raised-button
+              color="primary"
+              (click)="service.handleSaveClicked()">
+         {{ 'Save' | translate }}
+      </button>
+   </div>
+</div>

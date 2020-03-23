@@ -1,0 +1,45 @@
+<mat-form-field [formGroup]="model.formGroup">
+   <input [placeholder]="model.label"
+          [tabIndex]="model.tabIndex"
+          [formControl]="model.dateTimeSelectionFormControl"
+          readonly
+          matInput>
+
+   <ns-icon-small [disabled]="!model.canClearValue()"
+                  matSuffix
+                  [icon]="NsIcon.Close"
+                  [isClickable]="true"
+                  (click)="model.canClearValue() && model.clearValue()">
+   </ns-icon-small>
+
+   <ns-icon-small *ngIf="model.canChooseDate"
+                  matSuffix
+                  [icon]="NsIcon.Calendar"
+                  [isClickable]="true"
+                  (click)="datePicker.open()">
+   </ns-icon-small>
+
+   <ns-icon-small *ngIf="model.canChooseTime"
+                  matSuffix
+                  [icon]="NsIcon.Time"
+                  [isClickable]="true"
+                  (click)="timePicker.open()">
+   </ns-icon-small>
+
+   <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
+
+   <mat-error>{{model.errorMessage}}</mat-error>
+</mat-form-field>
+
+<input type="hidden"
+       [matDatepicker]="datePicker">
+<mat-datepicker #dp
+                [touchUi]="true">
+</mat-datepicker>
+
+<ngx-material-timepicker #timePicker
+                         [defaultTime]="model.currentTime$ | async"
+                         [format]="24"
+                         [theme]="theme"
+                         (timeSet)="model.handleTimeChanged($event)">
+</ngx-material-timepicker>

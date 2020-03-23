@@ -1,0 +1,28 @@
+<div [ngClass]="scrollPageCss">
+   <ns-loading *ngIf="model.isLoading"></ns-loading>
+
+   <mat-card [fxFlex.xl]="xl"
+             [fxFlex.lg]="lg"
+             [fxFlex.md]="md"
+             [fxFlex.sm]="sm"
+             [fxFlex.xs]="xs">
+      <mat-card-header>
+         <div mat-card-avatar
+              *ngIf="model.isBackVisible">
+            <ns-icon-default [icon]="arrowBackIcon"
+                             [isClickable]="true"
+                             (click)="service.handleBackClick()">
+            </ns-icon-default>
+         </div>
+         <mat-card-title>{{pageTitle}}</mat-card-title>
+         <mat-card-subtitle *ngIf="model.hasSubtitle">{{model.subtitle}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content [ngClass]="scrollContentCss">
+         <ng-content>
+         </ng-content>
+      </mat-card-content>
+   </mat-card>
+</div>

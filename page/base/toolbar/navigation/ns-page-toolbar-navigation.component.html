@@ -1,0 +1,24 @@
+<mat-sidenav-container class="ns-toolbar-nav-container">
+   <mat-sidenav position="start"
+                mode="over"
+                [autoFocus]="true"
+                [opened]="isMenuOpened"
+                (opened)="handleMenuOpened()"
+                (closed)="handleMenuClosed()">
+
+      <ng-container *ngIf="logo">
+         <img [src]="logo"
+              class="sidenav-logo">
+
+         <mat-divider></mat-divider>
+      </ng-container>
+
+      <ns-page-toolbar-navigation-items [items$]="navigationItems$"
+                                        (itemClick)="handleItemClicked($event)">
+      </ns-page-toolbar-navigation-items>
+   </mat-sidenav>
+
+   <mat-sidenav-content class="ns-toolbar-nav-container">
+      <ng-content></ng-content>
+   </mat-sidenav-content>
+</mat-sidenav-container>

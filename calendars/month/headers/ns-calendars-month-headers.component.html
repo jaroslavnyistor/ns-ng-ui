@@ -1,0 +1,9 @@
+<div fxLayout="row nowrap"
+     fxLayoutAlign="start center">
+
+   <div *ngFor="let day of model.weekDayNames$ | async"
+        fxFlex="1 0 0"
+        class="day-name ns-primary-background">
+      {{ day }}
+   </div>
+</div>

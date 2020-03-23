@@ -1,0 +1,47 @@
+<mat-toolbar *ngIf="model.hasTitle$ | async"
+             color="primary">
+   {{model.title$ | async}}
+</mat-toolbar>
+
+<table mat-table
+       [dataSource]="model.dataSource$"
+       class="mat-card"
+       [ngClass]="(model.hasTitle$ | async) ? 'table-with-header': ''">
+
+   <ng-container *ngFor="let column of model.columns$ | async">
+      <ng-container [matColumnDef]="column.name">
+         <th mat-header-cell
+             *matHeaderCellDef
+             [ngStyle]="{width: column.width}">
+            {{ column.text }}
+         </th>
+
+         <td mat-cell
+             [ngStyle]="{width: column.width}"
+             *matCellDef="let element">
+            {{element[column.name]}}
+         </td>
+
+         <ng-container *ngIf="model.useFooter$ | async">
+            <td mat-footer-cell
+                [ngStyle]="{width: column.width}"
+                *matFooterCellDef>
+               {{column.footerValue$ | async}}
+            </td>
+         </ng-container>
+      </ng-container>
+   </ng-container>
+
+   <tr mat-header-row
+       *matHeaderRowDef="model.displayedColumns$ | async">
+   </tr>
+   <tr mat-row
+       *matRowDef="let row; columns: model.displayedColumns$ | async">
+   </tr>
+
+   <ng-container *ngIf="model.useFooter$ | async">
+      <tr mat-footer-row
+          *matFooterRowDef="model.displayedColumns$ | async">
+      </tr>
+   </ng-container>
+</table>

@@ -1,0 +1,36 @@
+$day-padding-x: 5px
+$day-padding-y: 5px
+$day-padding: $day-padding-y $day-padding-x
+$week-day-border: rgba(0, 0, 0, 0.12) 1px solid
+
+\:host
+  > *
+    height: 100%
+
+  .week-row-day
+    border-right: $week-day-border
+    border-bottom: $week-day-border
+    padding: $day-padding
+    position: relative
+    cursor: pointer
+    min-width: 130px !important
+    min-height: 75px !important
+
+    &.is-different-month
+      color: #aaa
+      cursor: default
+
+    &:first-child
+      border-left: $week-day-border
+
+    .week-row-day-number
+      position: absolute
+      top: 0
+      left: 0
+      padding: $day-padding-y
+
+      &.today
+        font-weight: 700
+
+      &.today-diff-month
+        opacity: 0.5

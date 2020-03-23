@@ -1,0 +1,31 @@
+<mat-form-field>
+   <input [placeholder]="model.label"
+          [formControl]="model.dateFormControl"
+          [tabIndex]="model.tabIndex"
+          readonly
+          matInput
+          [matDatepicker]="datePicker"
+          (click)="model.open(datePicker)">
+
+   <ns-icon-small [disabled]="!model.canClearValue()"
+                  matSuffix
+                  [icon]="NsIcon.Close"
+                  [isClickable]="true"
+                  (click)="model.canClearValue() && model.clearValue()">
+   </ns-icon-small>
+
+   <ns-icon-small [disabled]="!model.canChooseDate"
+                  matSuffix
+                  [icon]="NsIcon.Calendar"
+                  [isClickable]="true"
+                  (click)="model.canChooseDate && datePicker.open()">
+   </ns-icon-small>
+
+   <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
+
+   <mat-error>{{model.errorMessage}}</mat-error>
+</mat-form-field>
+
+<mat-datepicker #dp
+                [touchUi]="true">
+</mat-datepicker>

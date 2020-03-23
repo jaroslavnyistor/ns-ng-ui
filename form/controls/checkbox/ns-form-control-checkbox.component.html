@@ -1,0 +1,8 @@
+<div [formGroup]="model.formGroup">
+   <mat-checkbox [formControl]="model.formControl"
+                 [tabIndex]="model.tabIndex">
+      {{ model.label }}
+   </mat-checkbox>
+
+   <mat-error>{{model.errorMessage}}</mat-error>
+</div>

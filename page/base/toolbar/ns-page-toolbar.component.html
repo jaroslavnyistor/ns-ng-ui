@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+   <mat-toolbar-row>
+      <ns-icon-default *ngIf="isNavigationVisible"
+                       [icon]="menuIcon"
+                       class="menu-icon"
+                       (click)="handleMenuOpened()">
+      </ns-icon-default>
+
+      <span>{{toolbarTitle}}</span>
+
+      <div class="header-items">
+         <ng-template ngFor
+                      [ngForOf]="headerItems"
+                      let-headerItem>
+            <ng-container [ngTemplateOutlet]="headerItem.template"></ng-container>
+         </ng-template>
+      </div>
+   </mat-toolbar-row>
+</mat-toolbar>

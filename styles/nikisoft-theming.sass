@@ -1,0 +1,39 @@
+@import '../../../../../node_modules/@angular/material/theming'
+@include mat-core()
+
+@mixin ns-theme($primary, $accent, $red: $mat-red)
+  $my-app-primary: mat-palette($primary)
+  $my-app-accent: mat-palette($accent, 500, 900, A100)
+  $my-app-warn: mat-palette($red)
+
+  $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn)
+
+  @include angular-material-theme($my-app-theme)
+
+  .ns-loader-color
+    color: map-get($primary, 700) !important
+
+  .ns-page-list-item
+    background-color: #d7d7d7
+
+  .ns-list-item
+    cursor: pointer
+
+    &:hover
+      background-color: map-get($primary, 300)
+
+  .ns-list-item-selected
+    background-color: map-get($primary, 500)
+    color: white
+    cursor: pointer
+
+    &:hover
+      background-color: map-get($primary, 300)
+
+  .ns-primary-background
+    background-color: map-get($primary, 500)
+    color: white
+
+@mixin ns-page-background-color($color)
+  html, body, .ns-page-background
+    background-color: $color

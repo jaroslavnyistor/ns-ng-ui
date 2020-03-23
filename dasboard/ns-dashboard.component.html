@@ -1,0 +1,38 @@
+<div fxLayout="row nowrap"
+     fxLayoutAlign="center start"
+     class="ns-full-size ns-overflow-y-auto">
+   <div [fxFlex.xl]="xl"
+        [fxFlex.lg]="lg"
+        [fxFlex.md]="md"
+        [fxFlex.sm]="sm"
+        [fxFlex.xs]="xs"
+        fxLayout="row wrap"
+        fxLayoutAlign="start stretch"
+        fxLayoutGap="16px grid">
+
+      <div *ngIf="hasHeader"
+           fxFlex="1 1 100%">
+         <mat-card>
+            <mat-card-header>{{header}}</mat-card-header>
+         </mat-card>
+      </div>
+
+      <ns-card *ngFor="let item of service.model.items$ | async"
+               [isInAnotherCard]="false"
+               [isClickable]="true"
+               [fxFlex.xl]="xlItem"
+               [fxFlex.lg]="lgItem"
+               [fxFlex.md]="mdItem"
+               [fxFlex.sm]="smItem"
+               [fxFlex.xs]="xsItem"
+               (click)="service.handleItemClicked(item)">
+         <div fxLayout="row nowrap"
+              fxLayoutAlign="center center"
+              class="item-container">
+            <div class="item-name">
+               {{item.name}}
+            </div>
+         </div>
+      </ns-card>
+   </div>
+</div>

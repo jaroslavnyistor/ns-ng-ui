@@ -1,0 +1,33 @@
+<mat-form-field [formGroup]="model.formGroup">
+   <input [placeholder]="model.label"
+          [formControl]="model.formControl"
+          [tabIndex]="model.tabIndex"
+          readonly
+          matInput
+          [ngxTimepicker]="timePicker"
+          [disableClick]="model.isReadonly"
+          [format]="24">
+
+   <ns-icon-small [disabled]="!model.canClearValue()"
+                  matSuffix
+                  [icon]="NsIcon.Close"
+                  [isClickable]="true"
+                  (click)="model.canClearValue() && model.clearValue()">
+   </ns-icon-small>
+
+   <ns-icon-small [disabled]="!model.canChooseTime"
+                  matSuffix
+                  [icon]="NsIcon.Time"
+                  [isClickable]="true"
+                  (click)="model.canChooseTime && timePicker.open()">
+   </ns-icon-small>
+
+   <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
+
+   <mat-error>{{model.errorMessage}}</mat-error>
+</mat-form-field>
+
+<ngx-material-timepicker #timePicker
+                         [format]="24"
+                         [theme]="theme">
+</ngx-material-timepicker>

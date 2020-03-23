@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>{{model.title}}</h3>
+
+<div mat-dialog-content
+     *ngIf="hasMessage">
+   <p class="mat-body">{{model.message}}</p>
+</div>
+
+<div mat-dialog-actions>
+   <button mat-button
+           (click)="dialogRef.close(false)">
+      {{ 'Cancel' | translate}}
+   </button>
+   <button mat-raised-button
+           color="primary"
+           cdkFocusInitial
+           (click)="dialogRef.close(true)">
+      {{ 'Delete' | translate}}
+   </button>
+</div>

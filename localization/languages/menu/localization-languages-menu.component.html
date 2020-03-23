@@ -1,0 +1,20 @@
+<button mat-menu-item
+        [disableRipple]="true"
+        [matMenuTriggerFor]="languages"
+        #trigger="matMenuTrigger"
+        (mouseenter)="openMenu()">
+   {{ 'Languages' | translate }}
+</button>
+
+<mat-menu #languages="matMenu">
+   <button *ngFor="let language of service.languageItems"
+           mat-menu-item
+           [disabled]="service.isSelected(language)"
+           (click)="service.selectLanguage(language)">
+      <mat-icon [ngStyle]="service.getLanguageCheckIconStyle(language)">
+         check
+      </mat-icon>
+
+      {{ language.text }}
+   </button>
+</mat-menu>

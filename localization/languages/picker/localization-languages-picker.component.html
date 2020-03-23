@@ -1,0 +1,7 @@
+<mat-select [(value)]="service.selectedLanguageItem">
+   <mat-option *ngFor="let item of service.languageItems"
+               [value]="item"
+               [id]="item.language">
+      {{ useLongNames ? item.text : item.textShortcut }}
+   </mat-option>
+</mat-select>

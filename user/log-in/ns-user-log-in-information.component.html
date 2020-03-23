@@ -1,0 +1,45 @@
+<ng-container *ngIf="model.isLoggedIn">
+   <ns-icon-normal [icon]="defaultIcon"
+                   [matMenuTriggerFor]="menu"
+                   [isClickable]="true"
+                   [inverse]="true">
+   </ns-icon-normal>
+
+   <mat-menu #menu="matMenu">
+      <div class="user-information">
+         <ns-icon-large class="user-icon-menu"
+                        [icon]="defaultIcon">
+         </ns-icon-large>
+
+         <div class="user-information-section">
+            <span class="mat-title">{{model.name}}</span>
+
+            <ng-container *ngIf="model.additionalLines">
+               <span *ngFor="let additionalLine of model.additionalLines"
+                     class="mat-subheading-1">
+                  {{additionalLine}}
+               </span>
+            </ng-container>
+         </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <localization-languages-menu *ngIf="displayLanguagesPicker">
+      </localization-languages-menu>
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item
+              (click)="service.handleLogOutClick()">
+         {{'LogOutButton' | translate }}
+      </button>
+   </mat-menu>
+
+</ng-container>
+
+<ng-container *ngIf="!model.isLoggedIn">
+   <ns-button-raised [model]="model.loginButton"
+                     (click)="service.handleLoginClick()">
+   </ns-button-raised>
+</ng-container>

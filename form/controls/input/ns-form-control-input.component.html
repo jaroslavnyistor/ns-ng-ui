@@ -1,0 +1,27 @@
+<mat-form-field [formGroup]="model.formGroup">
+   <input [type]="model.type"
+          [placeholder]="model.label"
+          [formControl]="model.formControl"
+          [tabIndex]="model.tabIndex"
+          [readonly]="model.isReadonly"
+          [attr.maxlength]="model.maxLength"
+          [min]="model.minValue"
+          [max]="model.maxValue"
+          matInput>
+
+   <ns-icon-small [disabled]="!model.canClearValue()"
+                  matSuffix
+                  [icon]="NsIcon.Close"
+                  isClickable="true"
+                  (click)="model.canClearValue() && model.clearValue()">
+   </ns-icon-small>
+
+   <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
+
+   <mat-hint *ngIf="model.hasMaxLengthSet"
+             align="end">
+      {{model.remainingCharactersFormatted}}
+   </mat-hint>
+
+   <mat-error>{{model.errorMessage}}</mat-error>
+</mat-form-field>
