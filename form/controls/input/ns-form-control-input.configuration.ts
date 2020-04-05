@@ -1,7 +1,6 @@
 import { NsFormControlConfiguration } from '../ns-form-control.configuration';
 
 export interface NsFormControlInputConfiguration extends NsFormControlConfiguration {
-   isReadonly?: boolean;
    minLength?: number;
    maxLength?: number;
    minValue?: number;

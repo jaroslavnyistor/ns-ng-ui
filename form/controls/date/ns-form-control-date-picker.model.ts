@@ -10,26 +10,29 @@ import { NsFormControlDatePickerConfiguration } from './ns-form-control-date-pic
 export class NsFormControlDatePickerModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControlDatePickerModel<TEntity>, NsFormControl> {
    private readonly _dateFormControl: NsFormControl;
-   private readonly _isReadonly: boolean;
+   private _minDate: Date;
+   private _maxDate: Date;
 
    get dateFormControl(): NsFormControl {
       return this._dateFormControl;
    }
 
-   get isReadonly(): boolean {
-      return this._isReadonly;
+   get canChooseDate(): boolean {
+      return !this.isDisabled;
    }
 
-   get canChooseDate(): boolean {
-      return !this.isDisabled && !this.isReadonly;
+   get minDate(): Date {
+      return this._minDate;
+   }
+
+   get maxDate(): Date {
+      return this._maxDate;
    }
 
    constructor(parent: NsFormModel<TEntity, any>,
                config: NsFormControlDatePickerConfiguration
    ) {
       super(parent, config);
-
-      this._isReadonly = config.isReadonly || false;
 
       this._dateFormControl = new NsFormControl(this.formControl.value);
 
@@ -88,15 +91,19 @@ export class NsFormControlDatePickerModel<TEntity>
       this._dateFormControl.setValue(newValue);
    }
 
-   canClearValue(): boolean {
-      return super.canClearValue() && !this._isReadonly;
-   }
-
    open(datePicker: MatDatepicker<any>) {
-      if (this.isReadonly) {
+      if (this.isDisabled) {
          return;
       }
 
       datePicker.open();
+   }
+
+   setMinDate(date: NsDate) {
+      this._minDate = NsDate.toJsDate(date);
+   }
+
+   setMaxDate(date: NsDate) {
+      this._maxDate = NsDate.toJsDate(date);
    }
 }

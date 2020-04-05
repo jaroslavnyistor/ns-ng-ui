@@ -31,18 +31,13 @@ export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControl
    }
 
    constructor(parent: NsFormModel<TEntity, any>,
-               config: NsFormControlSelectConfiguration
+               config: NsFormControlSelectConfiguration<TSelectItem>
    ) {
       super(parent, config);
 
       this._data$ = new BehaviorSubject([]);
-
       this._textProperty = config.textProperty;
-   }
-
-   withService(service: NsFormControlSelectService<TSelectItem>): this {
-      this._service = service;
-      return this;
+      this._service = config.service;
    }
 
    clearValue() {

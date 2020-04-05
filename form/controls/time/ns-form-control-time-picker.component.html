@@ -5,7 +5,7 @@
           readonly
           matInput
           [ngxTimepicker]="timePicker"
-          [disableClick]="model.isReadonly"
+          [disableClick]="model.isDisabled"
           [format]="24">
 
    <ns-icon-small [disabled]="!model.canClearValue()"

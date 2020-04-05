@@ -211,7 +211,7 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
    }
 
    protected addSelect<TSelectItem extends NsFormControlSelectItemEntity>(
-      config: NsFormControlSelectConfiguration
+      config: NsFormControlSelectConfiguration<TSelectItem>
    ): NsFormControlSelectModel<TEntity, TSelectItem> {
       const model = new NsFormControlSelectModel<TEntity, TSelectItem>(this, config);
       this.register(config, model);

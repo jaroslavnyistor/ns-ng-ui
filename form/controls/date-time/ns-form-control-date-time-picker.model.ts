@@ -17,7 +17,6 @@ export class NsFormControlDateTimePickerModel<TEntity>
 
    private readonly _currentTime$ = new BehaviorSubject<string>(null);
    private readonly _dateTimeSelectionFormControl: NsFormControl;
-   private _isReadonly = false;
    private _currentDateTime: moment.Moment;
    private readonly _canChooseDate = true;
    private readonly _canChooseTime = true;
@@ -31,20 +30,12 @@ export class NsFormControlDateTimePickerModel<TEntity>
       return this._currentTime$;
    }
 
-   get isReadonly(): boolean {
-      return this._isReadonly;
-   }
-
-   set isReadonly(value: boolean) {
-      this._isReadonly = value;
-   }
-
    get canChooseDate(): boolean {
-      return !this.isDisabled && !this.isReadonly && this._canChooseDate;
+      return !this.isDisabled && this._canChooseDate;
    }
 
    get canChooseTime(): boolean {
-      return !this.isDisabled && !this.isReadonly && this._canChooseTime;
+      return !this.isDisabled && this._canChooseTime;
    }
 
    constructor(parent: NsFormModel<TEntity, any>,
@@ -63,7 +54,6 @@ export class NsFormControlDateTimePickerModel<TEntity>
          })
       );
 
-      this._isReadonly = config.isReadonly || false;
       this._canChooseDate = config.canChooseDate || true;
       this._canChooseTime = config.canChooseTime || true;
 
@@ -94,10 +84,6 @@ export class NsFormControlDateTimePickerModel<TEntity>
       this._currentDateTime = nsIsNullOrEmpty(value) ? null : moment(value);
 
       this.notifyTextChanged();
-   }
-
-   canClearValue(): boolean {
-      return super.canClearValue() && !this._isReadonly;
    }
 
    handleDateChanged(newDate: moment.Moment) {

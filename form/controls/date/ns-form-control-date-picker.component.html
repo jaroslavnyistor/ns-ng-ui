@@ -5,7 +5,9 @@
           readonly
           matInput
           [matDatepicker]="datePicker"
-          (click)="model.open(datePicker)">
+          (click)="model.open(datePicker)"
+          [min]="model.minDate"
+   [max]="model.maxDate">
 
    <ns-icon-small [disabled]="!model.canClearValue()"
                   matSuffix

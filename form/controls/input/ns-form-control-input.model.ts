@@ -13,7 +13,6 @@ import { NsFormControlInputConfiguration } from './ns-form-control-input.configu
 export class NsFormControlInputModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControlInputModel<TEntity>, NsFormControl> {
    private readonly _type: NsFormControlInputType;
-   private _isReadonly: boolean;
    private readonly _maxLength: number;
    private readonly _minValue: number;
    private readonly _maxValue: number;
@@ -35,14 +34,6 @@ export class NsFormControlInputModel<TEntity>
       return this._remainingCharactersFormatted;
    }
 
-   get isReadonly(): boolean {
-      return this._isReadonly;
-   }
-
-   set isReadonly(value: boolean) {
-      this._isReadonly = value;
-   }
-
    get minValue(): number {
       return this._minValue;
    }
@@ -58,8 +49,6 @@ export class NsFormControlInputModel<TEntity>
       super(parent, config);
 
       this._type = type;
-
-      this._isReadonly = config.isReadonly || false;
 
       if (config.minLength != null) {
          this.addValidator(new NsFormControlLengthMinValidator(config.minLength));
@@ -98,9 +87,5 @@ export class NsFormControlInputModel<TEntity>
 
       const valueLength = nsStringLength(newValue);
       this._remainingCharactersFormatted = `${valueLength}/${this._maxLength}`;
-   }
-
-   canClearValue(): boolean {
-      return super.canClearValue() && !this._isReadonly;
    }
 }

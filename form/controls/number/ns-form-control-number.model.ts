@@ -15,21 +15,12 @@ export class NsFormControlNumberModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControlNumberModel<TEntity>, NsFormControl> {
 
    private readonly _numberTextFormControl: NsFormControl;
-   private _isReadonly: boolean;
    private readonly _minValue: number;
    private readonly _maxValue: number;
    private readonly _step: number;
 
    get numberTextFormControl(): FormControl {
       return this._numberTextFormControl;
-   }
-
-   get isReadonly(): boolean {
-      return this._isReadonly;
-   }
-
-   set isReadonly(value: boolean) {
-      this._isReadonly = value;
    }
 
    get minValue(): number {
@@ -47,9 +38,8 @@ export class NsFormControlNumberModel<TEntity>
    constructor(parent: NsFormModel<TEntity, any>, config: NsFormControlNumberConfiguration) {
       super(parent, config);
 
-      this._isReadonly = config.isReadonly || false;
-
       this._minValue = config.minValue;
+
       if (this._minValue != null) {
          this.addValidator(new NsFormControlValueMinValidator(this._minValue));
       }
@@ -115,9 +105,4 @@ export class NsFormControlNumberModel<TEntity>
          this.formControl.errors
       );
    }
-
-   canClearValue(): boolean {
-      return super.canClearValue() && !this._isReadonly;
-   }
-
 }
