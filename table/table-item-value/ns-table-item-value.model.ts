@@ -20,13 +20,18 @@ export class NsTableItemValueModel {
          .applyWidth('35%')
       ];
 
-      this._tableModel = new NsTableModel<NsTableItemValueRowEntity>(columns)
-         .useFooter();
+      this._tableModel = new NsTableModel<NsTableItemValueRowEntity>(columns);
    }
 
    setResult(result: NsTableItemValueEntity) {
       this._tableModel.title = result.title;
       this._tableModel.dataSource = result.rows;
       this._tableModel.footerValue = result.footer;
+   }
+
+   useFooter(): this {
+      this._tableModel.useFooter();
+
+      return this;
    }
 }
