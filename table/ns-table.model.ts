@@ -48,7 +48,9 @@ export class NsTableModel<TEntity> {
    }
 
    set footerValue(value: any) {
-      this.columns.forEach(column => column.footerValue = value[column.name]);
+      if (value != null) {
+         this.columns.forEach(column => column.footerValue = value[column.name]);
+      }
    }
 
    constructor(columns: NsTableColumnModel[]) {
