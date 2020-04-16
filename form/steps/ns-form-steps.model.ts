@@ -1,4 +1,4 @@
-import { MatHorizontalStepper } from '@angular/material';
+import { MatHorizontalStepper } from '@angular/material/stepper';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsFormModel } from '../ns-form.model';
 

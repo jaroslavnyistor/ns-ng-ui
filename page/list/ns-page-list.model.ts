@@ -1,4 +1,4 @@
-import { PageEvent } from '@angular/material';
+import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
 import { NsModuleArgumentsModel } from '../../../graphql/modules/ns-module-arguments.model';
 import { NsGraphQlArgumentsBuilder } from '../../../graphql/ns-graph-ql-arguments.builder';

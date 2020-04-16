@@ -1,5 +1,5 @@
 import { FormControl, ValidationErrors } from '@angular/forms';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { NsFormModel } from '../../ns-form.model';

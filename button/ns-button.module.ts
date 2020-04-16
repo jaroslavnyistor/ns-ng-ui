@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 import { NsButtonDefaultComponent } from './default/ns-button-default.component';
 import { NsButtonRaisedComponent } from './raised/ns-button-raised.component';
 

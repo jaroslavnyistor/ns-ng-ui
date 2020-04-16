@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatProgressSpinnerModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NsLoadingInlineNormalComponent } from './inline/normal/ns-loading-inline-normal.component';
 import { NsLoadingInlineComponent } from './inline/ns-loading-inline.component';
 import { NsLoadingInlineSmallComponent } from './inline/small/ns-loading-inline-small.component';

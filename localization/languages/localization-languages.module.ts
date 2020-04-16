@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { MatIconModule, MatMenuModule, MatSelectModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { LocalizationLanguagesMenuComponent } from './menu/localization-languages-menu.component';
 import { LocalizationLanguagesPickerComponent } from './picker/localization-languages-picker.component';
 import { TranslatePipe } from './translation/translate.pipe';

@@ -1,5 +1,5 @@
 import { Component, ContentChildren, OnInit, QueryList, ViewChild } from '@angular/core';
-import { MatHorizontalStepper } from '@angular/material';
+import { MatHorizontalStepper } from '@angular/material/stepper';
 import { NsComponentBase } from '../../component/ns-component.base';
 import { NsFormStepDirective } from './ns-form-step.directive';
 import { NsFormStepsModel } from './ns-form-steps.model';

@@ -2,17 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-   MatAutocompleteModule,
-   MatButtonModule,
-   MatCheckboxModule,
-   MatDatepickerModule,
-   MatDividerModule,
-   MatFormFieldModule,
-   MatInputModule,
-   MatSelectModule,
-   MatStepperModule
-} from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { NsButtonModule } from '../button/ns-button.module';
 import { NsIconModule } from '../icon/ns-icon.module';

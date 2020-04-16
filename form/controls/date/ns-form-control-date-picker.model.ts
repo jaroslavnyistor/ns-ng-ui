@@ -1,4 +1,4 @@
-import { MatDatepicker } from '@angular/material';
+import { MatDatepicker } from '@angular/material/datepicker';
 import * as moment from 'moment';
 import { NsDate } from '../../../../utils/dates/ns-date';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';

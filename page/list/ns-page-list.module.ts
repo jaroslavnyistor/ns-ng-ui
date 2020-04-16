@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import {
-   MatCardModule,
-   MatDividerModule,
-   MatMenuModule,
-   MatPaginatorModule,
-   MatTooltipModule
-} from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NsIconModule } from '../../icon/ns-icon.module';
 import { NsLoadingModule } from '../../loading/ns-loading.module';
 import { LocalizationLanguagesModule } from '../../localization/languages/localization-languages.module';

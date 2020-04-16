@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDatepicker } from '@angular/material';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { NsIcon } from '../../../icon/ns-icon.enum';
 import { NsFormControlDatePickerModel } from './ns-form-control-date-picker.model';
 

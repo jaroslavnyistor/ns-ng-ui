@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { LocalizationLanguagesModule } from '../localization/languages/localization-languages.module';
 import { NsIconDefaultAddComponent } from './default/ns-icon-default-add.component';
 import { NsIconDefaultDeleteComponent } from './default/ns-icon-default-delete.component';

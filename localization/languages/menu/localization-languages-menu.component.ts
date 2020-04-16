@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { LocalizationLanguagesService } from '../../../../utils/localization/localization-languages.service';
 
 @Component({
