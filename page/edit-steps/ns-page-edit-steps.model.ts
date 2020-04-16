@@ -1,9 +1,9 @@
-import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
+import { NsModuleMutationModel } from '../../../graphql/modules/ns-module-mutation.model';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsServerApiErrorResolver } from '../../../utils/api/validation/server/ns-server-api-error-resolver.service';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { NsModuleMutationModel } from '../../../graphql/modules/ns-module-mutation.model';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
+import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
 import { NsServiceProvider } from '../../ns-service-provider';
 
 const keyStateEntity = 'entity';

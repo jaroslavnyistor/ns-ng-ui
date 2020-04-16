@@ -1,7 +1,7 @@
 import { nsArrayItemAt } from '../../../../../utils/helpers/arrays/ns-helpers-arrays';
+import { LocalizationLanguagesService } from '../../../../../utils/localization/localization-languages.service';
 import { OrderDirection } from '../../../../../utils/order/order-direction';
 import { NsIcon } from '../../../../icon/ns-icon.enum';
-import { LocalizationLanguagesService } from '../../../../../utils/localization/localization-languages.service';
 import {
    NsPageListToolbarOrderItem,
    NsPageListToolbarOrderItemDirection,

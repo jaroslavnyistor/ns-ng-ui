@@ -2,12 +2,12 @@ import { Provider, Type } from '@angular/core';
 import { Params } from '@angular/router';
 import { EMPTY, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
+import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
+import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsFormService, registerFormServiceService } from '../../form/ns-form.service';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditModel } from './ns-page-edit.model';
 

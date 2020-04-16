@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { NsAuthenticateResponseModel } from '../../../utils/authentication/ns-authenticate-response.model';
+import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonType } from '../../button/ns-button-type';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
-import { NsAuthenticateResponseModel } from '../../../utils/authentication/ns-authenticate-response.model';
 import { NsComponentModel } from '../../component/ns-component.model';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsServiceProvider } from '../../ns-service-provider';
 
 @Injectable()

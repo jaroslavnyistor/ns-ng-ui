@@ -2,11 +2,11 @@ import { Provider, Type } from '@angular/core';
 import { Params } from '@angular/router';
 import { EMPTY, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { NsFormStepsService, registerPageFormStepsService } from '../../form/steps/ns-form-steps.service';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
+import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
+import { NsFormStepsService, registerPageFormStepsService } from '../../form/steps/ns-form-steps.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditStepsModel } from './ns-page-edit-steps.model';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlInputModel } from '../../form/controls/input/ns-form-control-input.model';
 import { nsAuthenticateResponseErrorResolver } from '../../../utils/authentication/ns-authenticate-response.error';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
+import { NsFormControlInputModel } from '../../form/controls/input/ns-form-control-input.model';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditModel } from '../edit/ns-page-edit.model';
 import { LoginEntity, newLoginEntity } from './login.entity';

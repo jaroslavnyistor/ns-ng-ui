@@ -1,7 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import { cloneDeep } from 'lodash';
-import { NsComponentModel } from '../component/ns-component.model';
 import { LocalizationLanguagesService } from '../../utils/localization/localization-languages.service';
+import { NsComponentModel } from '../component/ns-component.model';
 import { NsServiceProvider } from '../ns-service-provider';
 import { NsFormControlArrayItemEntity } from './controls/array/ns-form-control-array-item.entity';
 import { NsFormControlArrayItemModel } from './controls/array/ns-form-control-array-item.model';

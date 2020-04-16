@@ -1,6 +1,6 @@
 import { Provider, Type } from '@angular/core';
-import { NsComponentService } from '../../component/ns-component.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
+import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageDefaultModel } from './ns-page-default.model';
 

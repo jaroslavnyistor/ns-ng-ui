@@ -1,6 +1,6 @@
 import { Component, ContentChild, ContentChildren, Input, QueryList } from '@angular/core';
-import { NsComponentBase } from '../../component/ns-component.base';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
+import { NsComponentBase } from '../../component/ns-component.base';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsPageListLayoutCustomDirective } from './layout/custom/ns-page-list-layout-custom.directive';
 import { NsPageListModel } from './ns-page-list.model';

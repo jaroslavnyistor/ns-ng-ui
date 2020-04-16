@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { NsDialogService } from './dialog/ns-dialog.service';
 import { NsServerApiErrorResolver } from '../utils/api/validation/server/ns-server-api-error-resolver.service';
 import { NsAuthenticateService } from '../utils/authentication/ns-authenticate.service';
+import { LocalizationLanguagesService } from '../utils/localization/localization-languages.service';
 import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
 import { NsStorageService } from '../utils/storage/ns-storage.service';
-import { LocalizationLanguagesService } from '../utils/localization/localization-languages.service';
+import { NsDialogService } from './dialog/ns-dialog.service';
 import { NsPageNoPermissionService } from './page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.service';
 

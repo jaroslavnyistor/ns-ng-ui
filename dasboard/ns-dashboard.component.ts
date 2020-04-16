@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { NsComponentBase } from '../component/ns-component.base';
 import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
+import { NsComponentBase } from '../component/ns-component.base';
 import { NsDashboardModel } from './ns-dashboard.model';
 import { NsDashboardService } from './ns-dashboard.service';
 

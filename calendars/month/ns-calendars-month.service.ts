@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
-import { NsComponentService } from '../../component/ns-component.service';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
+import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthModel } from './ns-calendars-month.model';

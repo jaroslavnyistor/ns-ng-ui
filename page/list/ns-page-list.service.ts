@@ -1,10 +1,10 @@
 import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsComponentService } from '../../component/ns-component.service';
 import { NsGraphQlPagingQueryResponse } from '../../../graphql/query/paging/ns-graph-ql-paging-query.response';
+import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
+import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsToolbarEditService } from '../toolbar/edit/ns-toolbar-edit.service';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';

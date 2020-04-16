@@ -1,6 +1,6 @@
-import { NsComponentModel } from '../../component/ns-component.model';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
+import { NsComponentModel } from '../../component/ns-component.model';
 import { NsServiceProvider } from '../../ns-service-provider';
 
 export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvider>
