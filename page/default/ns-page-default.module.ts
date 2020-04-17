@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { MatCardModule, MatListModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { NsButtonModule } from '../../button/ns-button.module';
 import { NsFormModule } from '../../form/ns-form.module';
 import { NsIconModule } from '../../icon/ns-icon.module';

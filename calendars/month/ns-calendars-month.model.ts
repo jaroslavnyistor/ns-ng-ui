@@ -1,9 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { NsModuleArgumentsModel } from '../../../graphql/modules/ns-module-arguments.model';
-import { NsGraphQlArgumentsBuilder } from '../../../graphql/ns-graph-ql-arguments.builder';
-import { nsGraphQlQueryErrorMapper } from '../../../graphql/ns-graph-ql-query-error.mapper';
+import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsServerApiErrorResolver } from '../../../utils/api/validation/server/ns-server-api-error-resolver.service';
+import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
 import { NsDateTime } from '../../../utils/dates/ns-date-time';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
@@ -13,10 +11,10 @@ import { NsCalendarsMonthDayCollection } from './days/ns-calendars-month-day.col
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthDayModel } from './days/ns-calendars-month-day.model';
 import { NsCalendarsMonthWeekModel } from './days/ns-calendars-month-week.model';
+import { NsCalendarsMonthLoadRequestBuilder } from './ns-calendars-month-load-request.builder';
 
 export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServiceProvider>
-   extends NsComponentModel
-   implements NsModuleArgumentsModel {
+   extends NsComponentModel {
 
    private readonly _serviceProvider: TServiceProvider;
    private readonly _weekDayNames$: BehaviorSubject<string[]>;
@@ -28,7 +26,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       return this._serviceProvider.langService;
    }
 
-   protected get serverApiErrorResolver(): NsServerApiErrorResolver {
+   protected get serverApiErrorResolver(): NsApiErrorResolverService {
       return this._serviceProvider.serverApiErrorResolver;
    }
 
@@ -106,7 +104,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       this._days = new NsCalendarsMonthDayCollection();
 
       if (_serverApiErrorMapper == null) {
-         this._serverApiErrorMapper = nsGraphQlQueryErrorMapper;
+         this._serverApiErrorMapper = nsApiErrorMapper;
       }
    }
 
@@ -118,7 +116,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       );
    }
 
-   getGraphQlArguments(builder: NsGraphQlArgumentsBuilder) {
+   getGraphQlArguments(builder: NsCalendarsMonthLoadRequestBuilder) {
       builder.value({
          fromDate: this._days.fromDate,
          tillDate: this._days.tillDate,

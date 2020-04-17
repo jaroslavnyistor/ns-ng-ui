@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { nsGraphQlQueryErrorMapper } from '../../../../graphql/ns-graph-ql-query-error.mapper';
+import { nsApiErrorMapper } from '../../../../utils/api/error/ns-api-error.mapper';
 import { nsArrayItemAt } from '../../../../utils/helpers/arrays/ns-helpers-arrays';
 import { NsSubscriptionService } from '../../../../utils/subscription/ns-subscription.service';
 import { NsServiceProvider } from '../../../ns-service-provider';
@@ -19,7 +19,7 @@ export abstract class NsFormControlSelectService<TSelectItem extends NsFormContr
 
    parseError(error: any): string {
       const errorMessages = this._serviceProvider.serverApiErrorResolver.resolve(
-         nsGraphQlQueryErrorMapper,
+         nsApiErrorMapper,
          this._serviceProvider.langService,
          error
       );

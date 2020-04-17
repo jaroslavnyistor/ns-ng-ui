@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsServerApiErrorResolver } from '../utils/api/validation/server/ns-server-api-error-resolver.service';
+import { NsApiErrorResolverService } from '../utils/api/error/ns-api-error-resolver.service';
 import { NsAuthenticateService } from '../utils/authentication/ns-authenticate.service';
 import { LocalizationLanguagesService } from '../utils/localization/localization-languages.service';
 import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
@@ -14,7 +14,7 @@ import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.servic
 export class NsServiceProvider {
    private readonly _langService: LocalizationLanguagesService;
    private readonly _navService: NsNavigationService;
-   private readonly _serverApiErrorResolver: NsServerApiErrorResolver;
+   private readonly _serverApiErrorResolver: NsApiErrorResolverService;
    private readonly _authService: NsAuthenticateService;
    private readonly _dialogService: NsDialogService;
    private readonly _storageService: NsStorageService;
@@ -29,7 +29,7 @@ export class NsServiceProvider {
       return this._navService;
    }
 
-   get serverApiErrorResolver(): NsServerApiErrorResolver {
+   get serverApiErrorResolver(): NsApiErrorResolverService {
       return this._serverApiErrorResolver;
    }
 
@@ -56,7 +56,7 @@ export class NsServiceProvider {
    constructor(
       langService: LocalizationLanguagesService,
       navService: NsNavigationService,
-      serverApiErrorResolver: NsServerApiErrorResolver,
+      serverApiErrorResolver: NsApiErrorResolverService,
       authService: NsAuthenticateService,
       dialogService: NsDialogService,
       storageService: NsStorageService,

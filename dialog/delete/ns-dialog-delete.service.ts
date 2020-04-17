@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { NsSubscriptionService } from '../../../utils/subscription/ns-subscription.service';
 import { NsDialogDeleteComponent } from './ns-dialog-delete.component';
 import { NsDialogDeleteModel } from './ns-dialog-delete.model';

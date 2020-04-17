@@ -1,11 +1,8 @@
 import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
-import { NsModuleArgumentsModel } from '../../../graphql/modules/ns-module-arguments.model';
-import { NsGraphQlArgumentsBuilder } from '../../../graphql/ns-graph-ql-arguments.builder';
-import { nsGraphQlQueryErrorMapper } from '../../../graphql/ns-graph-ql-query-error.mapper';
-import { NsGraphQlPagingQueryResponse } from '../../../graphql/query/paging/ns-graph-ql-paging-query.response';
+import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
+import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsServerApiErrorResolver } from '../../../utils/api/validation/server/ns-server-api-error-resolver.service';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
 import { OrderDirection } from '../../../utils/order/order-direction';
@@ -14,6 +11,8 @@ import { NsComponentModel } from '../../component/ns-component.model';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsToolbarEditModel } from '../toolbar/edit/ns-toolbar-edit.model';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';
+import { NsPageListLoadRequestBuilder } from './ns-page-list-load-request.builder';
+import { NsPageListLoadResponse } from './ns-page-list-load.response';
 import { NsPageListState } from './ns-page-list.state';
 import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-list-toolbar-order-model.collection';
 
@@ -21,7 +20,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
    TListItemEntity,
    TServiceProvider extends NsServiceProvider>
    extends NsComponentModel
-   implements NsStoragePageModel, NsModuleArgumentsModel, NsToolbarEditModel {
+   implements NsStoragePageModel, NsToolbarEditModel {
 
    private readonly _serviceProvider: TServiceProvider;
    private readonly _pageState$: BehaviorSubject<NsPageListState>;
@@ -48,7 +47,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       return this._serviceProvider.langService;
    }
 
-   protected get serverApiErrorResolver(): NsServerApiErrorResolver {
+   protected get serverApiErrorResolver(): NsApiErrorResolverService {
       return this._serviceProvider.serverApiErrorResolver;
    }
 
@@ -235,7 +234,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       this._items$ = new BehaviorSubject<TListItemModel[]>([]);
 
       if (_apiErrorMapper == null) {
-         this._apiErrorMapper = nsGraphQlQueryErrorMapper;
+         this._apiErrorMapper = nsApiErrorMapper;
       }
    }
 
@@ -291,7 +290,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       }
    }
 
-   getGraphQlArguments(builder: NsGraphQlArgumentsBuilder) {
+   getArguments(builder: NsPageListLoadRequestBuilder) {
       builder.paging(this.pageIndex, this.pageSize)
       .order(this.order.activeItemField, this.order.activeItemDirection)
       .search(this.searchValue);
@@ -301,7 +300,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       this.pageErrorMessages = [];
    }
 
-   onListLoaded(response: NsGraphQlPagingQueryResponse<TListItemEntity>) {
+   onListLoaded(response: NsPageListLoadResponse<TListItemEntity>) {
       const items = response.list.map(item => this.mapToModel(item));
       this._totalCount = response.totalCount;
 

@@ -1,13 +1,13 @@
 import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { NsGraphQlPagingQueryResponse } from '../../../graphql/query/paging/ns-graph-ql-paging-query.response';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsToolbarEditService } from '../toolbar/edit/ns-toolbar-edit.service';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';
+import { NsPageListLoadResponse } from './ns-page-list-load.response';
 import { NsPageListModel } from './ns-page-list.model';
 import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-list-toolbar-order-model.collection';
 import { NsPageListToolbarOrderOption } from './toolbar/order/ns-page-list-toolbar-order.model';
@@ -77,7 +77,7 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
             tap(() => this.model.onListLoading()),
             switchMap(() => this.getLoadListObservable()),
          ).subscribe({
-            next: result => this.model.onListLoaded(result),
+            next: (result: NsPageListLoadResponse<TListItemEntity>) => this.model.onListLoaded(result),
             error: (error: NsApiResponseError) => this.model.resolveServerApiError(error)
          })
       );
@@ -85,7 +85,7 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
 
    protected abstract setupOrderOptions(): NsPageListToolbarOrderOption[];
 
-   abstract getLoadListObservable(): Observable<NsGraphQlPagingQueryResponse<TListItemEntity>>;
+   abstract getLoadListObservable(): Observable<NsPageListLoadResponse<TListItemEntity>>;
 
    abstract handleAddRequested();
 

@@ -1,4 +1,3 @@
-import { A11yModule } from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +12,6 @@ import { NsDialogDeleteComponent } from './delete/ns-dialog-delete.component';
       MatDialogModule,
       MatButtonModule,
       LocalizationLanguagesModule,
-      A11yModule
    ],
    exports: [
       MatDialogModule
