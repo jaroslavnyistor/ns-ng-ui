@@ -65,8 +65,10 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
    }
 
    private setupPermission() {
-      this.model.isAddVisible =
-         this.model.isEditVisible = this._serviceProvider.authService.hasPermission(this.model.editPermissionId);
+      const hasEditPermission = this._serviceProvider.authService.hasPermission(this.model.editPermissionId);
+      this.model.isAddVisible = hasEditPermission;
+      this.model.isEditVisible = hasEditPermission;
+
       this.model.isDeleteVisible = this._serviceProvider.authService.hasPermission(this.model.deletePermissionId);
    }
 

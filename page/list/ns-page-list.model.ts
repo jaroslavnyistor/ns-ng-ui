@@ -12,6 +12,7 @@ import { NsServiceProvider } from '../../ns-service-provider';
 import { NsToolbarEditModel } from '../toolbar/edit/ns-toolbar-edit.model';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';
 import { NsPageListLoadRequestBuilder } from './ns-page-list-load-request.builder';
+import { NsPageListLoadRequest } from './ns-page-list-load.request';
 import { NsPageListLoadResponse } from './ns-page-list-load.response';
 import { NsPageListState } from './ns-page-list.state';
 import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-list-toolbar-order-model.collection';
@@ -20,7 +21,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
    TListItemEntity,
    TServiceProvider extends NsServiceProvider>
    extends NsComponentModel
-   implements NsStoragePageModel, NsToolbarEditModel {
+   implements NsStoragePageModel, NsToolbarEditModel, NsPageListLoadRequest {
 
    private readonly _serviceProvider: TServiceProvider;
    private readonly _pageState$: BehaviorSubject<NsPageListState>;
@@ -290,7 +291,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       }
    }
 
-   getArguments(builder: NsPageListLoadRequestBuilder) {
+   getRequestArguments(builder: NsPageListLoadRequestBuilder) {
       builder.paging(this.pageIndex, this.pageSize)
       .order(this.order.activeItemField, this.order.activeItemDirection)
       .search(this.searchValue);
