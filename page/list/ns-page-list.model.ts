@@ -291,7 +291,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       }
    }
 
-   getRequestArguments(builder: NsPageListLoadRequestBuilder) {
+   fillRequestArguments(builder: NsPageListLoadRequestBuilder) {
       builder.paging(this.pageIndex, this.pageSize)
       .order(this.order.activeItemField, this.order.activeItemDirection)
       .search(this.searchValue);

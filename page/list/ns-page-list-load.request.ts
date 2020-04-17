@@ -1,5 +1,5 @@
 import { NsPageListLoadRequestBuilder } from './ns-page-list-load-request.builder';
 
 export interface NsPageListLoadRequest {
-   getRequestArguments(builder: NsPageListLoadRequestBuilder);
+   fillRequestArguments(builder: NsPageListLoadRequestBuilder);
 }
