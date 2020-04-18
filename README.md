@@ -12,10 +12,11 @@ Folder structure should be as follows:
 ```text
 src
     app
-        modules         - All modules in application - split by business logic
-        navigation      - Navigation inside application
-        nikisoft        - The library
-
+        localized-text-ids  - ids of localized texts
+        modules             - all modules in application - split by business logic
+        navigation          - navigation inside application
+        nikisoft            - libraries
+        permissions         - contains enum ApplicationPermission with IDs for access to permission
 ```
 
 ### Requires following libraries
@@ -133,7 +134,7 @@ src
 
 - Copy **favicon.ico** to src folder
 
-- Update **index.html** with following
+- Copy after _<meta name="viewport"_ into **index.html**
     ```html  
       <link rel="icon"
             type="image/x-icon"
@@ -182,7 +183,7 @@ src
             sizes="16x16"
             href="assets/favicon/favicon-16x16.png">
       <link rel="manifest"
-            href="manifest.json">
+            href="assets/favicon/manifest.json">
       <meta name="msapplication-TileColor"
             content="#ffffff">
       <meta name="msapplication-TileImage"
@@ -215,22 +216,18 @@ src
 
     ```typescript
     import { Injectable } from '@angular/core';
-    import { Router } from '@angular/router';
-    import { NsPageNoPermissionNavigationService } from './ns-page-no-permission.service';
-    import { NsNavigationService } from './ns-navigation.service';
-    import { NsStorageService } from './ns-storage.service';
+    import { NsNavigationService } from '../nikisoft/utils/navigation/ns-navigation.service';
+    import { NsRouterService } from '../nikisoft/utils/navigation/ns-router.service';
+    import { NsStorageService } from '../nikisoft/utils/storage/ns-storage.service';
     
     @Injectable({
-      providedIn: 'root'
+       providedIn: 'root'
     })
     export class AppNavigationService extends NsNavigationService {
-      constructor(router: Router,
-                  storageService: NsStorageService,
-                  noPermissionNavService: NsPageNoPermissionNavigationService) {
-        super(router, storageService, noPermissionNavService);
-      }
-    }
-    
+       constructor(routerService: NsRouterService, storageService: NsStorageService) {
+          super(routerService, storageService);
+       }
+    }    
     ```
 
     For each module you can add methods to navigate inside module, e.g.
@@ -250,70 +247,67 @@ src
       }
     ```
 
-- Create **app-service-provider.ts** and paste following code
+- Create **app-service-provider.ts** in **app** folder and paste following code
 
     ```typescript
     import { Injectable } from '@angular/core';
     import { AppNavigationService } from './navigation/app-navigation.service';
-    import { NsDialogService } from './nikisoft/dialog/ns-dialog.service';
-    import { NsServerApiErrorResolver } from './nikisoft/global/api/validation/server/ns-server-api-error-resolver.service';
-    import { NsAuthenticateService } from './nikisoft/global/authentication/ns-authenticate.service';
-    import { NsStorageService } from './nikisoft/global/storage/ns-storage.service';
-    import { LocalizationLanguagesService } from './nikisoft/localization/languages/localization-languages.service';
-    import { NsServiceProvider } from './nikisoft/ns-service-provider';
+    import { NsDialogService } from './nikisoft/ui/dialog/ns-dialog.service';
+    import { NsServiceProvider } from './nikisoft/ui/ns-service-provider';
+    import { NsPageNoPermissionService } from './nikisoft/ui/page/no-permission/ns-page-no-permission.service';
+    import { NsPageNotFoundService } from './nikisoft/ui/page/not-found/ns-page-not-found.service';
+    import { NsApiErrorResolverService } from './nikisoft/utils/api/error/ns-api-error-resolver.service';
+    import { NsAuthenticateService } from './nikisoft/utils/authentication/ns-authenticate.service';
+    import { LocalizationLanguagesService } from './nikisoft/utils/localization/localization-languages.service';
+    import { NsStorageService } from './nikisoft/utils/storage/ns-storage.service';
     
     @Injectable({
-      providedIn: 'root'
+       providedIn: 'root'
     })
     export class AppServiceProvider extends NsServiceProvider {
-      private readonly _appNavigationService: AppNavigationService;
+       private readonly _appNavigationService: AppNavigationService;
     
-      get appNavigationService(): AppNavigationService {
-        return this._appNavigationService;
-      }
+       get appNavigationService(): AppNavigationService {
+          return this._appNavigationService;
+       }
     
-      constructor(langService: LocalizationLanguagesService,
-                  navService: AppNavigationService,
-                  serverApiErrorResolver: NsServerApiErrorResolver,
-                  authService: NsAuthenticateService,
-                  dialogService: NsDialogService,
-                  storageService: NsStorageService) {
-        super(
-          langService,
-          navService,
-          serverApiErrorResolver,
-          authService,
-          dialogService,
-          storageService
-        );
+       constructor(
+          langService: LocalizationLanguagesService,
+          navService: AppNavigationService,
+          serverApiErrorResolver: NsApiErrorResolverService,
+          authService: NsAuthenticateService,
+          dialogService: NsDialogService,
+          storageService: NsStorageService,
+          noPermissionService: NsPageNoPermissionService,
+          notFoundService: NsPageNotFoundService
+       ) {
+          super(
+             langService,
+             navService,
+             serverApiErrorResolver,
+             authService,
+             dialogService,
+             storageService,
+             noPermissionService,
+             notFoundService
+          );
     
-        this._appNavigationService = navService;
-      }
+          this._appNavigationService = navService;
+       }
     }
     ```
 
-- Open app.module.ts file and paste following code into **providers** array
-
+- Open app.module.ts file and setup global DI providers
     ```typescript
+    NsStorageService.setStorageKeyPrefix(''),
+    NsStorageService.setStorageKeyPrefix('ns-calculator'),
+    LocalizationLanguagesService.setAppInitializer(),
+    LocalizationLanguagesService.setDefaultLanguage(LocalizationLanguage.SK),
+    NsPageNotFoundAuthService.disablePageNotFoundRequiresAuth(),
     {
-      provide: APP_INITIALIZER,
-      useFactory: (service: LocalizationLanguagesService) => () => service.load(),
-      deps: [LocalizationLanguagesService],
-      multi: true
+       provide: DI_NS_APP_LOGO, useValue: 'assets/app_logo.png'
     },
-    {
-      provide: DI_NS_STORAGE_SERVICE,
-      useValue: '{prefix used for keys in local storage}'
-    },
-    {
-      provide: DI_NS_SERVICE_PROVIDER,
-      useClass: AppServiceProvider
-    },
-    {
-      provide: DI_NS_DEFAULT_LANGUAGE,
-      useValue: LocalizationLanguage.SK
-    }
-    ```
+    ```  
 
 ### Localization of text
 Currently supported languages are English and Slovak. To have localized text in application follow instructions below:
@@ -336,7 +330,7 @@ Currently supported languages are English and Slovak. To have localized text in 
     }
     ```
 
-- Create **localized-text-id.app.ts** in folder src\app and put the following code:
+- Create **localized-text-id.app.ts** in folder src\app\localized-text-ids and put the following code:
 
     ```typescript
     export enum LocalizedTextIdApp {
@@ -358,9 +352,9 @@ Currently supported languages are English and Slovak. To have localized text in 
 - Past the below content into file **styles.sass**
 
     ```sass
-    @import "app/nikisoft/styles/nikisoft"
+    @import "app/nikisoft/ui/styles/nikisoft"
     
-    @include ns-theme($pallet-primary, $pallet-accent)
+    @include ns-theme($mat-blue-grey, $mat-amber)
     
     $page-background-color: #e5e5e5
     @include ns-page-background-color($page-background-color)
@@ -371,20 +365,33 @@ Currently supported languages are English and Slovak. To have localized text in 
 
     ```typescript
     import { Injectable } from '@angular/core';
-    import { NsComponentModel } from './nikisoft/global/component/ns-component.model';
-    import { NsToolbarNavigationItemGroupModel } from './nikisoft/page/custom/toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
+    import { Observable, of } from 'rxjs';
+    import { flatMap } from 'rxjs/operators';
+    import { AppServiceProvider } from './app-service-provider';
+    import { NsComponentModel } from './nikisoft/ui/component/ns-component.model';
+    import { NsToolbarNavigationItemGroupModel } from './nikisoft/ui/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
     
     @Injectable()
     export class AppModel extends NsComponentModel {
-      private _navigationItems: NsToolbarNavigationItemGroupModel[] = [];
+       private readonly _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
     
-      get navigationItems(): NsToolbarNavigationItemGroupModel[] {
-        return this._navigationItems;
-      }
+       get navigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
+          return this._navigationItems$;
+       }
     
-      constructor() {
-        super();
-      }
+       constructor(private _serviceProvider: AppServiceProvider) {
+          super();
+    
+          this._navigationItems$ = this._serviceProvider.authService.authenticationEvent$
+          .pipe(
+             flatMap(credentials => of(this.createNavigationItems()))
+          );
+       }
+    
+       private createNavigationItems(): NsToolbarNavigationItemGroupModel[] {
+          return [
+          ];
+       }
     }
     ```
 
@@ -393,13 +400,13 @@ Currently supported languages are English and Slovak. To have localized text in 
     ```typescript
     import { Injectable } from '@angular/core';
     import { AppModel } from './app.model';
-    import { NsComponentService } from './nikisoft/global/component/ns-component.service';
+    import { NsComponentService } from './nikisoft/ui/component/ns-component.service';
     
     @Injectable()
     export class AppService extends NsComponentService<AppModel> {
-      constructor(model: AppModel) {
-        super(model);
-      }
+       constructor(model: AppModel) {
+          super(model);
+       }
     }
     ```
    
@@ -410,29 +417,31 @@ Currently supported languages are English and Slovak. To have localized text in 
     import { Title } from '@angular/platform-browser';
     import { AppModel } from './app.model';
     import { AppService } from './app.service';
-    import { LocalizedTextIdApp } from './localized-text-id.app';
-    import { NsComponentBase } from './nikisoft/global/component/ns-component.custom';
-    import { LocalizationLanguagesService } from './nikisoft/localization/languages/localization-languages.service';
+    import { LocalizedTextIdApp } from './localized-text-ids/localized-text-id.app';
+    import { NsComponentBase } from './nikisoft/ui/component/ns-component.base';
+    import { LocalizationLanguagesService } from './nikisoft/utils/localization/localization-languages.service';
     
     @Component({
-      selector: 'app-root',
-      templateUrl: './app.component.html',
-      styleUrls: [],
-      providers: [
-        AppService,
-        AppModel
-      ]
+       selector: 'app-root',
+       templateUrl: './app.component.html',
+       styleUrls: [],
+       providers: [
+          AppService,
+          AppModel
+       ]
     })
     export class AppComponent extends NsComponentBase<AppService, AppModel> {
-      constructor(service: AppService,
-                  titleService: Title,
-                  langService: LocalizationLanguagesService) {
-        super(service);
+       constructor(
+          service: AppService,
+          titleService: Title,
+          langService: LocalizationLanguagesService
+       ) {
+          super(service);
     
-        titleService.setTitle(
-          langService.text(LocalizedTextIdApp.Title)
-        );
-      }
+          titleService.setTitle(
+             langService.text(LocalizedTextIdApp.Title)
+          );
+       }
     }
     ```
 
@@ -441,31 +450,33 @@ Currently supported languages are English and Slovak. To have localized text in 
     ```html
     <ns-page [pageTitle]="'Title' | translate"
              [isNavigationVisible]="true"
-             [navigationItems]="model.navigationItems">
-    
-      <localization-languages-picker *nsPageToolbarHeaderItem>
-      </localization-languages-picker>
+             [navigationItems$]="model.navigationItems$">
     
       <ns-clock *nsPageToolbarHeaderItem>
       </ns-clock>
     
+      <ns-user-log-in-information *nsPageToolbarHeaderItem>
+      </ns-user-log-in-information>
+    
       <router-outlet></router-outlet>
-    </ns-page>       
+    </ns-page>
     ```
   
-  - **localization-languages-picker** - Display picker for available languages
   - **ns-clock** - Display clock - _optional_
+  - **ns-user-log-in-informationr** - Display user information after he/she has logged in
    
 - Routing - Paste below content into **app-routing.module.ts**
 
     ```typescript
     import { NgModule } from '@angular/core';
-    import { RouterModule, Routes } from '@angular/router';
-    import { routeNoPermissionRoutes } from './nikisoft/authentication/no-permission/ns-page-no-permission.routes';
-    import { notFoundRoutes } from './nikisoft/authentication/not-found/ns-page-not-found.routes';
+    import { Routes, RouterModule } from '@angular/router';
+    import { loginRoutes } from './nikisoft/ui/page/login/login.routes';
+    import { routeNoPermissionRoutes } from './nikisoft/ui/page/no-permission/ns-page-no-permission.routes';
+    import { notFoundRoutes } from './nikisoft/ui/page/not-found/ns-page-not-found.routes';
     
     
     const routes: Routes = [
+      ...loginRoutes,
       ...routeNoPermissionRoutes,
       ...notFoundRoutes
     ];
@@ -474,8 +485,7 @@ Currently supported languages are English and Slovak. To have localized text in 
       imports: [RouterModule.forRoot(routes)],
       exports: [RouterModule]
     })
-    export class AppRoutingModule {
-    }
+    export class AppRoutingModule { }
     ```
 
 ## tslint.json
