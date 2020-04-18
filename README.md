@@ -128,8 +128,10 @@ src
 - Add these lines to **assets** in angular.json
 
     ```json
-    "src/assets/favicon",
-    "src/manifest.json"
+      "src/favicon.ico",
+      "src/assets",
+      "src/assets/favicon",
+      "src/manifest.json"
     ```
 
 - Copy **favicon.ico** to src folder
