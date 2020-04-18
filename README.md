@@ -1,4 +1,4 @@
-# NikiSoft-Web-Angular
+# NikiSoft-Web-UI
 Library consisting of useful modules, components and services for easy development of Angular application
 
 ## 1. npm
