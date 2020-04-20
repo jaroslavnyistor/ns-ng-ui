@@ -23,3 +23,16 @@ export interface NsPageListToolbarOrderItemDirection {
    icon: NsIcon;
    isActive: boolean;
 }
+
+export function buildPageListOrderOption(
+   title: string,
+   field: string,
+   isActive = false)
+   : NsPageListToolbarOrderOption {
+   return {
+      title,
+      field,
+      directions: [ OrderDirection.Asc, OrderDirection.Desc],
+      isActive
+   }
+}
