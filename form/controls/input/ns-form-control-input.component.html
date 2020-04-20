@@ -7,7 +7,12 @@
           [attr.maxlength]="model.maxLength"
           [min]="model.minValue"
           [max]="model.maxValue"
-          matInput>
+          matInput
+          (click)="handleMenuOpened()">
+
+   <button class="suggestion-menu-trigger"
+           [matMenuTriggerFor]="suggestionsMenu"
+           #trigger="matMenuTrigger"></button>
 
    <ns-icon-small [disabled]="!model.canClearValue()"
                   matSuffix
@@ -25,3 +30,12 @@
 
    <mat-error>{{model.errorMessage}}</mat-error>
 </mat-form-field>
+
+<mat-menu #suggestionsMenu="matMenu">
+   <ng-container *ngFor="let suggestion of model.suggestions?.list">
+      <button mat-menu-item
+              (click)="model.suggestions.click(suggestion)">
+         {{suggestion[model.suggestions.key]}}
+      </button>
+   </ng-container>
+</mat-menu>

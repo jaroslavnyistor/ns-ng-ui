@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -67,6 +68,7 @@ import { NsFormStepsComponent } from './steps/ns-form-steps.component';
       MatSelectModule,
       MatDividerModule,
       NsLoadingModule,
+      MatMenuModule,
    ],
    exports: [
       NsFormComponent,

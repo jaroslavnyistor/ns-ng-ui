@@ -8,7 +8,10 @@ import { NsFormControlValueMinValidator } from '../../validators/provided/ns-for
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlInputType } from './ns-form-control-input-type.enum';
-import { NsFormControlInputConfiguration } from './ns-form-control-input.configuration';
+import {
+   NsFormControlInputConfiguration,
+   NsFormControlInputSuggestionConfiguration
+} from './ns-form-control-input.configuration';
 
 export class NsFormControlInputModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControlInputModel<TEntity>, NsFormControl> {
@@ -16,6 +19,7 @@ export class NsFormControlInputModel<TEntity>
    private readonly _maxLength: number;
    private readonly _minValue: number;
    private readonly _maxValue: number;
+   private _suggestions: NsFormControlInputSuggestionConfiguration;
    private _remainingCharactersFormatted: string;
 
    get type(): NsFormControlInputType {
@@ -40,6 +44,14 @@ export class NsFormControlInputModel<TEntity>
 
    get maxValue(): number {
       return this._maxValue;
+   }
+
+   get suggestions(): NsFormControlInputSuggestionConfiguration {
+      return this._suggestions;
+   }
+
+   set suggestions(value: NsFormControlInputSuggestionConfiguration) {
+      this._suggestions = value;
    }
 
    constructor(parent: NsFormModel<TEntity, any>,
@@ -72,6 +84,8 @@ export class NsFormControlInputModel<TEntity>
       this.defaultValue = nsNull(config.defaultValue, null);
 
       this.calculateRemainingCharactersCount(this.value);
+
+      this._suggestions = config.suggestions;
    }
 
    protected handleValueChanged(newValue: any) {
