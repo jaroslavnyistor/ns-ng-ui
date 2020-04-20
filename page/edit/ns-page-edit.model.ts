@@ -1,5 +1,5 @@
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
+import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
@@ -21,8 +21,8 @@ export abstract class NsPageEditModel<TEntity, TServiceProvider extends NsServic
    private _savedEntity: TEntity;
    private _entityToSave: TEntity;
 
-   private get serverApiErrorResolver(): NsApiErrorResolverService {
-      return this.configuration.serverApiErrorResolver;
+   private get apiErrorResolverService(): NsApiErrorResolverService {
+      return this.configuration.apiErrorResolverService;
    }
 
    get hasSubtitle(): boolean {
@@ -86,7 +86,7 @@ export abstract class NsPageEditModel<TEntity, TServiceProvider extends NsServic
    }
 
    resolveEntityLoadingError(error: NsApiResponseError) {
-      this.pageErrorMessages = this.serverApiErrorResolver.resolve(
+      this.pageErrorMessages = this.apiErrorResolverService.resolve(
          this._serverApiErrorMapper,
          this.langService,
          error

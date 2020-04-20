@@ -209,8 +209,8 @@ export abstract class NsFormControlModel<TEntity,
       }
 
       this._hint = this._hintId == null
-                   ? null
-                   : this.langService.text(this._hintId);
+         ? null
+         : this.langService.text(this._hintId);
    }
 
    private subscribeInternallyToStatusChanges() {
@@ -240,8 +240,8 @@ export abstract class NsFormControlModel<TEntity,
       const errors = this.getFormControlErrors();
 
       this._errorMessage = errors != null && nsIsNotNullOrEmpty(errors.error)
-                           ? errors.error
-                           : '';
+         ? errors.error
+         : '';
    }
 
    protected getFormControlErrors(): ValidationErrors {

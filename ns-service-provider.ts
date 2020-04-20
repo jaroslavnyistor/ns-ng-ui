@@ -14,7 +14,7 @@ import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.servic
 export class NsServiceProvider {
    private readonly _langService: LocalizationLanguagesService;
    private readonly _navService: NsNavigationService;
-   private readonly _serverApiErrorResolver: NsApiErrorResolverService;
+   private readonly _apiErrorResolverService: NsApiErrorResolverService;
    private readonly _authService: NsAuthenticateService;
    private readonly _dialogService: NsDialogService;
    private readonly _storageService: NsStorageService;
@@ -29,8 +29,8 @@ export class NsServiceProvider {
       return this._navService;
    }
 
-   get serverApiErrorResolver(): NsApiErrorResolverService {
-      return this._serverApiErrorResolver;
+   get apiErrorResolverService(): NsApiErrorResolverService {
+      return this._apiErrorResolverService;
    }
 
    get authService(): NsAuthenticateService {
@@ -56,7 +56,7 @@ export class NsServiceProvider {
    constructor(
       langService: LocalizationLanguagesService,
       navService: NsNavigationService,
-      serverApiErrorResolver: NsApiErrorResolverService,
+      apiErrorResolverService: NsApiErrorResolverService,
       authService: NsAuthenticateService,
       dialogService: NsDialogService,
       storageService: NsStorageService,
@@ -65,7 +65,7 @@ export class NsServiceProvider {
    ) {
       this._langService = langService;
       this._navService = navService;
-      this._serverApiErrorResolver = serverApiErrorResolver;
+      this._apiErrorResolverService = apiErrorResolverService;
       this._authService = authService;
       this._dialogService = dialogService;
       this._storageService = storageService;

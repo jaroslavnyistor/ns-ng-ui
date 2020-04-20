@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
+import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
 import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
 import { NsDateTime } from '../../../utils/dates/ns-date-time';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
@@ -26,8 +26,8 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       return this._serviceProvider.langService;
    }
 
-   protected get serverApiErrorResolver(): NsApiErrorResolverService {
-      return this._serviceProvider.serverApiErrorResolver;
+   protected get apiErrorResolverService(): NsApiErrorResolverService {
+      return this._serviceProvider.apiErrorResolverService;
    }
 
    get weekDayNames$(): Observable<string[]> {
@@ -113,7 +113,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    }
 
    resolveApiError(error: NsApiResponseError) {
-      this.errorMessages = this.serverApiErrorResolver.resolve(
+      this.errorMessages = this.apiErrorResolverService.resolve(
          this._serverApiErrorMapper,
          this.langService,
          error

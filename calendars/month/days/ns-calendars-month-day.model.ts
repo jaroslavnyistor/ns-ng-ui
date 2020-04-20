@@ -81,14 +81,14 @@ export class NsCalendarsMonthDayModel {
 
    private updateWeekDayCssClass() {
       const itemCss = this.isSameMonthYear
-                      ? 'ns-list-item'
-                      : '';
+         ? 'ns-list-item'
+         : '';
       this._weekDayCssClass = [
          'week-row-day',
          this.isSameMonthYear ? '' : 'is-different-month',
          this.isSelected
-         ? 'ns-list-item-selected'
-         : itemCss
+            ? 'ns-list-item-selected'
+            : itemCss
       ];
    }
 
@@ -115,7 +115,7 @@ export class NsCalendarsMonthDayModel {
 
    isSameDate(date: NsDateTime): NsCalendarsMonthDayModel {
       return this._date.isSame(date)
-             ? this
-             : null;
+         ? this
+         : null;
    }
 }

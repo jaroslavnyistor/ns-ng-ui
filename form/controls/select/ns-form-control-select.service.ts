@@ -18,7 +18,7 @@ export abstract class NsFormControlSelectService<TSelectItem extends NsFormContr
    abstract getLoadListObservable(): Observable<TSelectItem[]>;
 
    parseError(error: any): string {
-      const errorMessages = this._serviceProvider.serverApiErrorResolver.resolve(
+      const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
          nsApiErrorMapper,
          this._serviceProvider.langService,
          error

@@ -32,7 +32,7 @@ export function buildPageListOrderOption(
    return {
       title,
       field,
-      directions: [ OrderDirection.Asc, OrderDirection.Desc],
+      directions: [OrderDirection.Asc, OrderDirection.Desc],
       isActive
    }
 }

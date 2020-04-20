@@ -48,8 +48,8 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       return this._serviceProvider.langService;
    }
 
-   protected get serverApiErrorResolver(): NsApiErrorResolverService {
-      return this._serviceProvider.serverApiErrorResolver;
+   protected get apiErrorResolverService(): NsApiErrorResolverService {
+      return this._serviceProvider.apiErrorResolverService;
    }
 
    get pageState$(): BehaviorSubject<NsPageListState> {
@@ -171,8 +171,8 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
 
    get selectedItemId(): number {
       return this._selectedItem == null
-             ? undefined
-             : this._selectedItem.id;
+         ? undefined
+         : this._selectedItem.id;
    }
 
    get selectedItem(): TListItemModel {
@@ -240,7 +240,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
    }
 
    resolveServerApiError(error: NsApiResponseError) {
-      this._pageErrorMessages = this.serverApiErrorResolver.resolve(
+      this._pageErrorMessages = this.apiErrorResolverService.resolve(
          this._apiErrorMapper,
          this.langService,
          error

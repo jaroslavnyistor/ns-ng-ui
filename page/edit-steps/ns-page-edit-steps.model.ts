@@ -16,8 +16,8 @@ export abstract class NsPageEditStepsModel<TEntity, TServiceProvider extends NsS
    private _savedEntity: TEntity;
    private _entityToSave: TEntity;
 
-   private get serverApiErrorResolver(): NsApiErrorResolverService {
-      return this.configuration.serverApiErrorResolver;
+   private get apiErrorResolverService(): NsApiErrorResolverService {
+      return this.configuration.apiErrorResolverService;
    }
 
    get hasSubtitle(): boolean {
@@ -62,7 +62,7 @@ export abstract class NsPageEditStepsModel<TEntity, TServiceProvider extends NsS
    }
 
    resolveEntityLoadingError(error: NsApiResponseError) {
-      this._pageErrorMessages = this.serverApiErrorResolver.resolve(
+      this._pageErrorMessages = this.apiErrorResolverService.resolve(
          this._apiErrorMapper,
          this.langService,
          error

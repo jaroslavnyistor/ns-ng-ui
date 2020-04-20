@@ -91,8 +91,8 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
 
    private get disabledStyle(): object {
       return this.disabled && !this.isClickable
-             ? { opacity: '0.55' }
-             : {};
+         ? { opacity: '0.55' }
+         : {};
    }
 
    get css(): string[] {

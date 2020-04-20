@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { Component, ContentChild, TemplateRef } from '@angular/core';
 import { NsComponentBase } from '../../component/ns-component.base';
 import { NsCalendarsMonthDayDirective } from './days/ns-calendars-month-day.directive';
 import { NsCalendarsMonthRightPanelDirective } from './ns-calendars-month-right-panel.directive';

@@ -17,7 +17,7 @@ export abstract class NsFormControlAutocompleteService<TAutocompleteItem extends
    abstract getLoadListObservable(search: string): Observable<TAutocompleteItem[]>;
 
    parseError(error: any): string {
-      const errorMessages = this._serviceProvider.serverApiErrorResolver.resolve(
+      const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
          nsApiErrorMapper,
          this._serviceProvider.langService,
          error
