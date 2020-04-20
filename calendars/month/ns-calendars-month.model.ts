@@ -54,6 +54,10 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       return this._days.isDateSelected;
    }
 
+   get currentDate(): string {
+      return this._days.currentDate;
+   }
+
    set currentDate(value: string) {
       this._days.setDateFromString(value);
    }

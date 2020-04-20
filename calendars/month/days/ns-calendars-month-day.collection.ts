@@ -23,6 +23,10 @@ export class NsCalendarsMonthDayCollection {
       return this._weeks$;
    }
 
+   get currentDate(): string {
+      return this._currentDate$.value;
+   }
+
    get currentDate$(): Observable<string> {
       return this._currentDate$;
    }
