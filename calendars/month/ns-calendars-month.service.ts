@@ -1,3 +1,4 @@
+import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
@@ -7,6 +8,17 @@ import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthModel } from './ns-calendars-month.model';
+
+export function registerCalendarsMonthService<TService extends NsCalendarsMonthService<any, any>>(
+   service: Type<TService>): Provider[] {
+   return [
+      service,
+      {
+         useExisting: service,
+         provide: NsCalendarsMonthService
+      }
+   ];
+}
 
 export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthModel<TServiceProvider>,
    TServiceProvider extends NsServiceProvider>

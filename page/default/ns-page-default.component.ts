@@ -50,10 +50,14 @@ export class NsPageDefaultComponent
 
    constructor(service: NsPageDefaultService<any, any>) {
       super(service);
+
+      this.resolveScrollPageCss();
+      this.resolveScrollContentCss();
    }
 
    private resolveScrollPageCss() {
       this._scrollPageCss = ['container'];
+
       if (this._scrollPage) {
          this._scrollPageCss.push('scroll-page');
       }

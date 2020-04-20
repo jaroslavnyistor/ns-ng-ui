@@ -116,7 +116,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       );
    }
 
-   getGraphQlArguments(builder: NsCalendarsMonthLoadRequestBuilder) {
+   fillRequestArguments(builder: NsCalendarsMonthLoadRequestBuilder) {
       builder.value({
          fromDate: this._days.fromDate,
          tillDate: this._days.tillDate,
