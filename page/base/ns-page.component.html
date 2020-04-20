@@ -8,7 +8,7 @@
       <ns-page-toolbar [toolbarTitle]="pageTitle"
                        [(isMenuOpened)]="isMenuOpened"
                        [headerItems]="headerItems"
-                       [isNavigationVisible]="isNavigationVisible">
+                       [isNavigationVisible]="isNavigationVisible && ((navigationItems$ | async).length > 0)">
       </ns-page-toolbar>
 
       <div class="ns-page-content ns-page-background">
