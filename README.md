@@ -129,9 +129,7 @@ src
 
     ```json
       "src/favicon.ico",
-      "src/assets",
-      "src/assets/favicon",
-      "src/manifest.json"
+      "src/assets/favicon"
     ```
 
 - Copy **favicon.ico** to src folder
