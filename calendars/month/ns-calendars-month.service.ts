@@ -79,12 +79,12 @@ export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthMod
    }
 
    private loadData() {
-      this.addSubscription(
-         this.withLoading(this.getLoadDataObservable())
-         .subscribe({
+      this.subscribeTo(
+         this.withLoading(this.getLoadDataObservable()),
+         {
             next: data => this.handleDataLoaded(data),
             error: error => this.handleDataLoadFailed(error)
-         })
+         }
       );
    }
 

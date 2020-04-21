@@ -214,11 +214,11 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    private subscribeInternallyToStatusChanges() {
-      this.addSubscription(
-         this._formControl.statusChanges
-         .subscribe({
+      this.subscribeTo(
+         this._formControl.statusChanges,
+         {
             next: newStatus => this.handleStatusChanged(newStatus)
-         })
+         }
       );
    }
 
@@ -229,9 +229,7 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    subscribeToStatusChanges(observer: PartialObserver<any>): this {
-      this.addSubscription(
-         this._statusChanges$.subscribe(observer)
-      );
+      this.subscribeTo(this._statusChanges$, observer);
 
       return this;
    }
@@ -249,16 +247,20 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    private subscribeInternallyToValueChanges() {
-      this.addSubscription(
-         this.formControl.valueChanges
-         .pipe(
-            filter(value => {
-               const prevValue = this.formGroup.value[this.key];
-               return value !== prevValue;
-            })
-         )
-         .subscribe({
+      this.subscribeTo(
+         this.processFormControlValueChanges(),
+         {
             next: newValue => this.handleValueChanged(newValue)
+         }
+      );
+   }
+
+   private processFormControlValueChanges() {
+      return this.formControl.valueChanges
+      .pipe(
+         filter(value => {
+            const prevValue = this.formGroup.value[this.key];
+            return value !== prevValue;
          })
       );
    }
@@ -268,9 +270,7 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    subscribeToValueChanges(observer: PartialObserver<any>): this {
-      this.addSubscription(
-         this._valueChanges$.subscribe(observer)
-      );
+      this.subscribeTo(this._valueChanges$, observer);
 
       return this;
    }
@@ -293,9 +293,9 @@ export abstract class NsFormControlModel<TEntity,
       const dependingOn$ = this._dependingOn.map(each => each.getValueChanges$());
 
       if (dependingOn$.length > 0) {
-         this.addSubscription(
-            combineLatest(dependingOn$)
-            .subscribe({
+         this.subscribeTo(
+            combineLatest(dependingOn$),
+            {
                next: results => {
                   this.isDisabled = this.isOneOfDependingOnMissingValue();
                   this.handleDependingOnValuesChanged(results);
@@ -304,7 +304,7 @@ export abstract class NsFormControlModel<TEntity,
                      this.clearValue();
                   }
                }
-            })
+            }
          );
       }
    }

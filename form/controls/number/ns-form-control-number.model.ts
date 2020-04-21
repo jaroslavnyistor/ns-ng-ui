@@ -55,18 +55,26 @@ export class NsFormControlNumberModel<TEntity>
 
       this._numberTextFormControl = new NsFormControl(this.formControl.value);
 
-      this.addSubscription(
-         this._numberTextFormControl.valueChanges
-         .subscribe({
-            next: newValue => this.handleNumberTextFormControlValueChanged(newValue)
-         })
-      );
+      this.processNumberTextFormControlValueChanges();
 
-      this.addSubscription(
-         this.formControl.touchedChanges
-         .subscribe({
+      this.processFormControlTouchedChanges();
+   }
+
+   private processNumberTextFormControlValueChanges() {
+      this.subscribeTo(
+         this._numberTextFormControl.valueChanges,
+         {
+            next: newValue => this.handleNumberTextFormControlValueChanged(newValue)
+         }
+      );
+   }
+
+   private processFormControlTouchedChanges() {
+      this.subscribeTo(
+         this.formControl.touchedChanges,
+         {
             next: () => this._numberTextFormControl.markAsTouched()
-         })
+         }
       );
    }
 

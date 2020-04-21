@@ -47,12 +47,7 @@ export class NsFormControlDateTimePickerModel<TEntity>
 
       this.defaultValue = nsNull(config.defaultValue, null);
 
-      this.addSubscription(
-         this.formControl.touchedChanges
-         .subscribe({
-            next: () => this._dateTimeSelectionFormControl.markAsTouched()
-         })
-      );
+      this.processFormControlTouchedChanges();
 
       this._canChooseDate = config.canChooseDate || true;
       this._canChooseTime = config.canChooseTime || true;
@@ -66,6 +61,15 @@ export class NsFormControlDateTimePickerModel<TEntity>
       }
 
       this.setCurrentDateTime(this.value);
+   }
+
+   private processFormControlTouchedChanges() {
+      this.subscribeTo(
+         this.formControl.touchedChanges,
+         {
+            next: () => this._dateTimeSelectionFormControl.markAsTouched()
+         }
+      );
    }
 
    onInit() {

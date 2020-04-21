@@ -73,15 +73,16 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
    }
 
    private subscribePageStateChanges() {
-      this.addSubscription(
+      this.subscribeTo(
          this.pipeLoading(
             this.model.pageState$,
             tap(() => this.model.onListLoading()),
             switchMap(() => this.getLoadListObservable()),
-         ).subscribe({
+         ),
+         {
             next: (result: NsPageListLoadResponse<TListItemEntity>) => this.model.onListLoaded(result),
             error: (error: NsApiResponseError) => this.model.resolveServerApiError(error)
-         })
+         }
       );
    }
 

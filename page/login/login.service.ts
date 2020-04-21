@@ -29,10 +29,7 @@ export class LoginService extends NsPageEditService<LoginModel, LoginEntity, NsS
 
       this.setupButtons();
 
-      this.addSubscription(
-         this._activatedRoute.queryParams
-         .subscribe(this.getQueryParamsObserver())
-      );
+      this.subscribeTo(this._activatedRoute.queryParams, this.getQueryParamsObserver());
    }
 
    private getQueryParamsObserver() {

@@ -26,16 +26,15 @@ export class NsDialogDeleteService extends NsSubscriptionService {
          data
       };
 
-      const subscription = this._dialog.open(NsDialogDeleteComponent, config)
-      .afterClosed()
-      .subscribe({
-         next: confirmed => {
-            if (confirmed) {
-               confirmCallback();
+      this.subscribeTo(
+         this._dialog.open(NsDialogDeleteComponent, config).afterClosed(),
+         {
+            next: confirmed => {
+               if (confirmed) {
+                  confirmCallback();
+               }
             }
          }
-      });
-
-      this.addSubscription(subscription);
+      );
    }
 }

@@ -20,11 +20,11 @@ export class NsUserLogInInformationService
    }
 
    private loadUserInformation() {
-      this.addSubscription(
-         this._serviceProvider.authService.authenticationEvent$
-         .subscribe({
+      this.subscribeTo(
+         this._serviceProvider.authService.authenticationEvent$,
+         {
             next: value => this.model.credentials = value.credentials
-         })
+         }
       );
    }
 

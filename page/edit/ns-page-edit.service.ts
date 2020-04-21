@@ -146,12 +146,12 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
    private save() {
       this.model.startSave();
 
-      this.addSubscription(
-         this.withLoading(this.performSave(this.model))
-         .subscribe({
+      this.subscribeTo(
+         this.withLoading(this.performSave(this.model)),
+         {
             next: result => this.onSaveSuccess(result),
             error: (error: NsApiResponseError) => this.model.resolveEntityLoadingError(error)
-         })
+         }
       );
    }
 

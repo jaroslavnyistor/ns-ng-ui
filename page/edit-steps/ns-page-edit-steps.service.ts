@@ -140,12 +140,12 @@ export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel
    private save() {
       this.model.startSave();
 
-      this.addSubscription(
-         this.withLoading(this.performSave(this.model))
-         .subscribe({
+      this.subscribeTo(
+         this.withLoading(this.performSave(this.model)),
+         {
             next: result => this.onSaveSuccess(result),
             error: (error: NsApiResponseError) => this.model.resolveEntityLoadingError(error)
-         })
+         }
       );
    }
 

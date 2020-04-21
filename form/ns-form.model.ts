@@ -134,11 +134,11 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
    }
 
    private subscribeToFormValueChanges() {
-      this.addSubscription(
-         this._formGroup.valueChanges
-         .subscribe({
+      this.subscribeTo(
+         this._formGroup.valueChanges,
+         {
             next: () => this.handleValueChanged(this.formGroup.getRawValue())
-         })
+         }
       );
    }
 
@@ -147,11 +147,11 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
    }
 
    private subscribeToFormStatusChanges() {
-      this.addSubscription(
-         this._formGroup.statusChanges
-         .subscribe({
+      this.subscribeTo(
+         this._formGroup.statusChanges,
+         {
             next: () => this.handleStatusChanged()
-         })
+         }
       );
    }
 

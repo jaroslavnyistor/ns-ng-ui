@@ -38,18 +38,26 @@ export class NsFormControlDatePickerModel<TEntity>
 
       this.defaultValue = nsNull(config.defaultValue, null);
 
-      this.addSubscription(
-         this._dateFormControl.valueChanges
-         .subscribe({
-            next: newValue => this.handleDateFormControlValueChanged(newValue)
-         })
-      );
+      this.processDateFormControlValueChanges();
 
-      this.addSubscription(
-         this.formControl.touchedChanges
-         .subscribe({
+      this.processFormControlTouchedChanges();
+   }
+
+   private processDateFormControlValueChanges() {
+      this.subscribeTo(
+         this._dateFormControl.valueChanges,
+         {
+            next: newValue => this.handleDateFormControlValueChanged(newValue)
+         }
+      );
+   }
+
+   private processFormControlTouchedChanges() {
+      this.subscribeTo(
+         this.formControl.touchedChanges,
+         {
             next: () => this._dateFormControl.markAsTouched()
-         })
+         }
       );
    }
 

@@ -35,10 +35,11 @@ export class NsFormControlDateTimePickerComponent extends NsSubscriptionBase {
    set datePicker(value: MatDatepicker<any>) {
       this._datePicker = value;
 
-      this.addSubscription(
-         this._datePicker._selectedChanged.subscribe({
+      this.subscribeTo(
+         this._datePicker._selectedChanged,
+         {
             next: newDate => this.model.handleDateChanged(newDate)
-         })
+         }
       );
    }
 }

@@ -152,20 +152,20 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    }
 
    subscribeToCurrentDateChanges(callback: (date: string) => void) {
-      this.addSubscription(
-         this._days.currentDate$
-         .subscribe({
+      this.subscribeTo(
+         this._days.currentDate$,
+         {
             next: date => callback(date)
-         })
+         }
       );
    }
 
    subscribeToSelectedDateChanges(callback: (selectedDate: string) => void) {
-      this.addSubscription(
-         this._days.selectedDate$
-         .subscribe({
+      this.subscribeTo(
+         this._days.selectedDate$,
+         {
             next: date => callback(date)
-         })
+         }
       );
    }
 }
