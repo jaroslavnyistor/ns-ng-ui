@@ -16,14 +16,12 @@ import { NsFormControlDateTimePickerConfiguration } from './controls/date-time/n
 import { NsFormControlDateTimePickerModel } from './controls/date-time/ns-form-control-date-time-picker.model';
 import { NsFormControlDatePickerConfiguration } from './controls/date/ns-form-control-date-picker.configuration';
 import { NsFormControlDatePickerModel } from './controls/date/ns-form-control-date-picker.model';
-import { NsFormGroupConfiguration } from './controls/group/ns-form-group.configuration';
 import { NsFormGroupModel } from './controls/group/ns-form-group.model';
 import { NsFormControlInputType } from './controls/input/ns-form-control-input-type.enum';
 import { NsFormControlInputConfiguration } from './controls/input/ns-form-control-input.configuration';
 import { NsFormControlInputModel } from './controls/input/ns-form-control-input.model';
 import { NsFormControlConfiguration } from './controls/ns-form-control.configuration';
 import { NsFormControlDefinition } from './controls/ns-form-control.definition';
-import { NsFormGroup } from './controls/ns-form-group';
 import { NsFormControlNumberConfiguration } from './controls/number/ns-form-control-number.configuration';
 import { NsFormControlNumberModel } from './controls/number/ns-form-control-number.model';
 import { NsFormControlSelectItemEntity } from './controls/select/ns-form-control-select-item.entity';
@@ -48,6 +46,10 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
    }
 
    protected get configuration(): TServiceProvider {
+      return this._serviceProvider;
+   }
+
+   get serviceProvider(): TServiceProvider {
       return this._serviceProvider;
    }
 
@@ -238,17 +240,11 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
       return model;
    }
 
-   protected addGroup<TGroupEntity, TGroupModel extends NsFormGroupModel<TGroupEntity, TServiceProvider>>(
-      config: NsFormGroupConfiguration<TGroupEntity, TGroupModel>
+   protected addGroup<TGroupEntity, TGroupModel extends NsFormGroupModel<TEntity, TGroupEntity, TServiceProvider>>(
+      groupModel: TGroupModel,
    ): TGroupModel {
-      config.formGroup = this.formGroup.controls[config.key] as NsFormGroup;
-      config.entity = this.formGroup.value[config.key];
-
-      const model = config.factory(config);
-
-      this._formModels.push(model);
-
-      return model;
+      this._formModels.push(groupModel);
+      return groupModel;
    }
 
    private register(config: NsFormControlConfiguration, model: NsFormControlDefinition) {

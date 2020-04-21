@@ -3,12 +3,18 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
 
-const DI_NS_NOT_FOUND_AUTH_REQUIRED = new InjectionToken<boolean>(
+export const DI_NS_NOT_FOUND_AUTH_REQUIRED = new InjectionToken<boolean>(
    'DI_NS_NOT_FOUND_AUTH_REQUIRED',
    {
       factory: () => true
    }
 );
+
+export function disablePageNotFoundRequiresAuth() {
+   return {
+      provide: DI_NS_NOT_FOUND_AUTH_REQUIRED, useValue: false
+   };
+}
 
 @Injectable({
    providedIn: 'root'
@@ -24,11 +30,5 @@ export class NsPageNotFoundAuthService implements CanActivate {
       return this._isAuthRequired
          ? this._authService.canActivate(route, state)
          : true;
-   }
-
-   static disablePageNotFoundRequiresAuth() {
-      return {
-         provide: DI_NS_NOT_FOUND_AUTH_REQUIRED, useValue: false
-      };
    }
 }

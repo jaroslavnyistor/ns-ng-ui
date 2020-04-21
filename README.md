@@ -299,14 +299,16 @@ src
 
 - Open app.module.ts file and setup global DI providers
     ```typescript
-    NsStorageService.setStorageKeyPrefix(''),
-    NsStorageService.setStorageKeyPrefix('ns-calculator'),
-    LocalizationLanguagesService.setAppInitializer(),
-    LocalizationLanguagesService.setDefaultLanguage(LocalizationLanguage.SK),
-    NsPageNotFoundAuthService.disablePageNotFoundRequiresAuth(),
+    setStorageKeyPrefix(''),
+    setLocalizationLanguagesAppInitializer(),
+    setDefaultLanguage(),
+    disablePageNotFoundRequiresAuth()
+    disablePageNotFoundRequiresAuth(),
     {
        provide: DI_NS_APP_LOGO, useValue: 'assets/app_logo.png'
-    },
+    },    
+    setAuthService(),
+    setFirebaseAppInitializer(),
     ```  
 
 ### Localization of text
