@@ -25,6 +25,10 @@ export class NsCalendarsMonthComponent
       static: true
    }) rightPanelTemplate: TemplateRef<any>;
 
+   get hasRightPanelTemplate(): boolean {
+      return this.rightPanelTemplate != null;
+   }
+
    constructor(service: NsCalendarsMonthService<any, any>) {
       super(service);
    }

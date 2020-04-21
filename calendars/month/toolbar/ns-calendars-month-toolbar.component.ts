@@ -12,7 +12,7 @@ export class NsCalendarsMonthToolbarComponent {
    NsIcon = NsIcon;
 
    @Input() toolbarTemplate: TemplateRef<any>;
-
+   @Input() hasRightPanelTemplate: boolean;
    @Input() service: NsCalendarsMonthService<any, any>;
 
    get model(): NsCalendarsMonthModel<any> {

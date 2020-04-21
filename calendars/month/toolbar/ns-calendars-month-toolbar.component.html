@@ -31,6 +31,15 @@
                     [tooltip]="'CalendarMonth_Refresh' | translate">
    </ns-icon-default>
 
+   <ns-icon-default *ngIf="hasRightPanelTemplate"
+                    fxFlex="0 0 auto"
+                    [icon]="NsIcon.Details"
+                    [isClickable]="true"
+                    [disabled]="!model.hasSelectedDayData"
+                    (click)="model.isRightPanelOpened = true"
+                    [tooltip]="'Details' | translate">
+   </ns-icon-default>
+
    <div *ngIf="toolbarTemplate"
         fxFlex="0 0 auto">
       <ng-container *ngTemplateOutlet="toolbarTemplate">
