@@ -17,7 +17,7 @@ export class NsClockComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit() {
-      this._timeoutId = setInterval(
+      this._timeoutId = window.setInterval(
          () => this.refreshTime(),
          1000
       );

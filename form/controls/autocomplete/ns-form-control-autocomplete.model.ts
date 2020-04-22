@@ -75,7 +75,7 @@ export class NsFormControlAutocompleteModel<TEntity>
          return;
       }
 
-      this._searchTimeoutId = setTimeout(
+      this._searchTimeoutId = window.setTimeout(
          () => this.loadData(search),
          400
       );
@@ -120,7 +120,7 @@ export class NsFormControlAutocompleteModel<TEntity>
    clearSelection(autocomplete: MatAutocompleteTrigger) {
       if (this.canClearValue()) {
          this.clearValue();
-         setTimeout(() => autocomplete.openPanel(), 0);
+         window.setTimeout(() => autocomplete.openPanel(), 0);
       }
    }
 

@@ -35,7 +35,7 @@ export class NsSearchInputComponent implements AfterViewInit, OnDestroy {
 
    ngAfterViewInit(): void {
       if (nsIsNotNullOrEmpty(this.searchValue)) {
-         setTimeout(
+         window.setTimeout(
             () => this.input.nativeElement.click(),
             0
          );
@@ -55,7 +55,7 @@ export class NsSearchInputComponent implements AfterViewInit, OnDestroy {
       if ($event.key === 'Enter') {
          this.notify(value);
       } else {
-         this._timerId = setTimeout(
+         this._timerId = window.setTimeout(
             () => this.notify(value),
             400
          );
