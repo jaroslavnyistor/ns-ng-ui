@@ -47,16 +47,24 @@ export class NsFormControlArrayModel<TEntity,
       this._canDeleteItems = nsNull(config.canDeleteItems, true);
 
       this.defaultValue = nsNull(config.defaultValue, []);
+
+      this.withService(config.service);
    }
 
    clearValue() {
       this.mapEntitiesToFormModels(this.defaultValue);
    }
 
-   withService(value: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider>) {
+   withService(value: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider>): this {
+      if (value == null) {
+         return this;
+      }
+
       this._service = value;
 
       this.mapEntitiesToFormModels(this._initialValue);
+
+      return this;
    }
 
    onInitialEntitySet(value: any): void {
