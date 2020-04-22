@@ -24,6 +24,7 @@ import { NsFormControlCheckboxComponent } from './controls/checkbox/ns-form-cont
 import { NsFormControlDateTimePickerComponent } from './controls/date-time/ns-form-control-date-time-picker.component';
 import { NsFormControlDatePickerComponent } from './controls/date/ns-form-control-date-picker.component';
 import { NsFormControlInputComponent } from './controls/input/ns-form-control-input.component';
+import { NsFormControlMultiSelectComponent } from './controls/multi-select/ns-form-control-multi-select.component';
 import { NsFormControlNumberComponent } from './controls/number/ns-form-control-number.component';
 import { NsFormControlSelectComponent } from './controls/select/ns-form-control-select.component';
 import { NsFormControlTimePickerComponent } from './controls/time/ns-form-control-time-picker.component';
@@ -48,6 +49,7 @@ import { NsFormStepsComponent } from './steps/ns-form-steps.component';
       NsFormControlSelectComponent,
       NsFormControlArrayComponent,
       NsFormControlArrayItemTemplateDirective,
+      NsFormControlMultiSelectComponent,
    ],
    imports: [
       CommonModule,
@@ -84,6 +86,7 @@ import { NsFormStepsComponent } from './steps/ns-form-steps.component';
       NsFormControlArrayComponent,
       NsFormControlArrayItemTemplateDirective,
       NsFormControlNumberComponent,
+
    ]
 })
 export class NsFormModule {

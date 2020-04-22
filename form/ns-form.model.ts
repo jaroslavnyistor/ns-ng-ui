@@ -19,6 +19,9 @@ import { NsFormGroupModel } from './controls/group/ns-form-group.model';
 import { NsFormControlInputType } from './controls/input/ns-form-control-input-type.enum';
 import { NsFormControlInputConfiguration } from './controls/input/ns-form-control-input.configuration';
 import { NsFormControlInputModel } from './controls/input/ns-form-control-input.model';
+import { NsFormControlMultiSelectItemEntity } from './controls/multi-select/ns-form-control-multi-select-item.entity';
+import { NsFormControlMultiSelectConfiguration } from './controls/multi-select/ns-form-control-multi-select.configuration';
+import { NsFormControlMultiSelectModel } from './controls/multi-select/ns-form-control-multi-select.model';
 import { NsFormControlConfiguration } from './controls/ns-form-control.configuration';
 import { NsFormControlDefinition } from './controls/ns-form-control.definition';
 import { NsFormControlNumberConfiguration } from './controls/number/ns-form-control-number.configuration';
@@ -221,6 +224,14 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
 
    addAutoComplete(config: NsFormControlAutocompleteConfiguration): NsFormControlAutocompleteModel<TEntity> {
       const model = new NsFormControlAutocompleteModel<TEntity>(this, config);
+      this.register(config, model);
+      return model;
+   }
+
+   addMultiSelect<TMultiSelectItem extends NsFormControlMultiSelectItemEntity>(
+      config: NsFormControlMultiSelectConfiguration<TMultiSelectItem>
+   ): NsFormControlMultiSelectModel<TEntity, TMultiSelectItem> {
+      const model = new NsFormControlMultiSelectModel<TEntity, TMultiSelectItem>(this, config);
       this.register(config, model);
       return model;
    }
