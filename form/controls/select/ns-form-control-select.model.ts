@@ -37,7 +37,14 @@ export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControl
 
       this._data$ = new BehaviorSubject([]);
       this._textProperty = config.textProperty;
-      this._service = config.service;
+
+      this.withService(config.service);
+   }
+
+   withService(service: NsFormControlSelectService<TSelectItem>): this {
+      this._service = service;
+
+      return this;
    }
 
    clearValue() {
