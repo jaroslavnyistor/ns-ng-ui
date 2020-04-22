@@ -1,5 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { Component, Input } from '@angular/core';
 import { NsIcon } from '../../../icon/ns-icon.enum';
 import { NsFormControlInputModel } from './ns-form-control-input.model';
 
@@ -12,12 +11,4 @@ export class NsFormControlInputComponent {
    NsIcon = NsIcon;
 
    @Input() model: NsFormControlInputModel<any>;
-
-   @ViewChild('trigger', { static: false }) menu: MatMenuTrigger;
-
-   handleMenuOpened() {
-      if (this.model.suggestions != null && this.model.suggestions.list.length > 0) {
-         this.menu.openMenu();
-      }
-   }
 }
