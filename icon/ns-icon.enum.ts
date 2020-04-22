@@ -23,4 +23,5 @@ export enum NsIcon {
    List = 'list',
    Details = 'details',
    Refresh = 'refresh',
+   Link = 'link',
 }
