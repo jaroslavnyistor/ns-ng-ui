@@ -1,6 +1,5 @@
 import { Provider, Type } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
