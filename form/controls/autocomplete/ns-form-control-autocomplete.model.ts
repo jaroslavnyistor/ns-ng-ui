@@ -1,53 +1,27 @@
-import { FormControl, ValidationErrors } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { NsFormModel } from '../../ns-form.model';
-import { NsFormControlValidators } from '../../validators/ns-form-control.validators';
-import { NsFormControlRequiredValidator } from '../../validators/provided/ns-form-control-required.validator';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
-import { NsFormGroup } from '../ns-form-group';
-import { NsFormControlAutocompleteItemEntity } from './ns-form-control-autocomplete-item.entity';
 import { NsFormControlAutocompleteConfiguration } from './ns-form-control-autocomplete.configuration';
-import { noSelectionId } from './ns-form-control-autocomplete.constants';
 import { NsFormControlAutocompleteService } from './ns-form-control-autocomplete.service';
-import { NsFormControlAutocompleteRequiredValidator } from './validators/ns-form-control-autocomplete-required.validator';
 
-export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends NsFormControlAutocompleteItemEntity>
-   extends NsFormControlModel<TEntity, NsFormControlAutocompleteModel<TEntity, TAutocompleteItem>, NsFormGroup> {
+export class NsFormControlAutocompleteModel<TEntity>
+   extends NsFormControlModel<TEntity, NsFormControlAutocompleteModel<TEntity>, NsFormControl> {
 
-   private readonly _data$: BehaviorSubject<TAutocompleteItem[]>;
-   private readonly _textValidators: NsFormControlValidators;
-   private readonly _textProperty: string;
-   private readonly _textFormControl: NsFormControl;
-   private _service: NsFormControlAutocompleteService<TAutocompleteItem>;
+   private readonly _data$: BehaviorSubject<string[]>;
+   private _service: NsFormControlAutocompleteService;
    private _isLoading = false;
    private _searchTimeoutId = null;
    private _lastSearchValue = '';
-
-   get id(): number {
-      return this.value.id;
-   }
-
-   get textProperty(): string {
-      return this._textProperty;
-   }
-
-   get textFormControl(): FormControl {
-      return this._textFormControl;
-   }
 
    get hasNoItems(): boolean {
       return this._data$.value.length === 0;
    }
 
-   get data$(): Observable<TAutocompleteItem[]> {
+   get data$(): Observable<string[]> {
       return this._data$;
-   }
-
-   get isLoadingInPanelVisible(): boolean {
-      return this.isLoading || this.hasValue;
    }
 
    get isLoading(): boolean {
@@ -63,32 +37,18 @@ export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends N
    ) {
       super(parent, config);
 
-      this._data$ = new BehaviorSubject<TAutocompleteItem[]>([]);
-      this._textValidators = new NsFormControlValidators(this.langService);
-
-      this._textProperty = config.textProperty;
-
-      this._textFormControl = this.formControl.controls[this._textProperty] as NsFormControl;
+      this._data$ = new BehaviorSubject<string[]>([]);
 
       this.defaultValue = nsNull(config.defaultValue, []);
 
-      this.setupValidators();
+      this.withService(config.service);
    }
 
-   protected resolveHasValue(newValue: any) {
-      return newValue.id !== noSelectionId;
-   }
-
-   private setupValidators() {
-      if (this.isRequired) {
-         this.addValidator(new NsFormControlAutocompleteRequiredValidator(this._textFormControl));
-         this._textValidators.add(new NsFormControlRequiredValidator());
+   withService(service: NsFormControlAutocompleteService): this {
+      if (service == null) {
+         return this;
       }
 
-      this._textFormControl.setValidators(this._textValidators.build());
-   }
-
-   withService(service: NsFormControlAutocompleteService<TAutocompleteItem>): this {
       this._service = service;
 
       if (this.hasDependingValues) {
@@ -100,7 +60,7 @@ export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends N
 
    handleInputIsFocused() {
       if (this.hasNoItems && !this.isLoading) {
-         this.loadData('');
+         this.loadData(this.value);
       }
    }
 
@@ -109,10 +69,9 @@ export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends N
       $event.preventDefault();
 
       const search = ($event.target as HTMLInputElement).value;
-
       this.clearTypingTimer();
 
-      if (this._lastSearchValue === search || this.hasValue) {
+      if (this._lastSearchValue === search) {
          return;
       }
 
@@ -142,7 +101,8 @@ export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends N
       });
    }
 
-   private handleDataLoaded(data: TAutocompleteItem[]) {
+   private handleDataLoaded(data: string[]) {
+      console.log("Loaded")
       this._isLoading = false;
       this._data$.next(data);
    }
@@ -179,15 +139,10 @@ export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends N
          return;
       }
 
-      const emptyValue = {
-         id: noSelectionId,
-         [this._textProperty]: ''
-      };
-
-      this.patchValue(emptyValue);
+      this.patchValue(null);
    }
 
-   handleOptionSelected(value: TAutocompleteItem) {
+   handleOptionSelected(value: string) {
       this.patchValue(value);
    }
 
@@ -195,10 +150,6 @@ export class NsFormControlAutocompleteModel<TEntity, TAutocompleteItem extends N
       super.onDestroy();
 
       this._service.onDestroy();
-   }
-
-   protected getFormControlErrors(): ValidationErrors {
-      return super.getFormControlErrors() || this.textFormControl.errors;
    }
 
    protected handleDependingOnValuesChanged(results: any[]) {

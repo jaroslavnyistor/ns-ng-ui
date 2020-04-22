@@ -3,9 +3,8 @@ import { nsApiErrorMapper } from '../../../../utils/api/error/ns-api-error.mappe
 import { nsArrayItemAt } from '../../../../utils/helpers/arrays/ns-helpers-arrays';
 import { NsSubscriptionService } from '../../../../utils/subscription/ns-subscription.service';
 import { NsServiceProvider } from '../../../ns-service-provider';
-import { NsFormControlAutocompleteItemEntity } from './ns-form-control-autocomplete-item.entity';
 
-export abstract class NsFormControlAutocompleteService<TAutocompleteItem extends NsFormControlAutocompleteItemEntity>
+export abstract class NsFormControlAutocompleteService
    extends NsSubscriptionService {
    private readonly _serviceProvider: NsServiceProvider;
 
@@ -14,7 +13,7 @@ export abstract class NsFormControlAutocompleteService<TAutocompleteItem extends
       this._serviceProvider = serviceProvider;
    }
 
-   abstract getLoadListObservable(search: string): Observable<TAutocompleteItem[]>;
+   abstract getLoadListObservable(search: string): Observable<string[]>;
 
    parseError(error: any): string {
       const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(

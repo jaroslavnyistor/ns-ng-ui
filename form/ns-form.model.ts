@@ -7,7 +7,6 @@ import { NsFormControlArrayItemEntity } from './controls/array/ns-form-control-a
 import { NsFormControlArrayItemModel } from './controls/array/ns-form-control-array-item.model';
 import { NsFormControlArrayConfiguration } from './controls/array/ns-form-control-array.configuration';
 import { NsFormControlArrayModel } from './controls/array/ns-form-control-array.model';
-import { NsFormControlAutocompleteItemEntity } from './controls/autocomplete/ns-form-control-autocomplete-item.entity';
 import { NsFormControlAutocompleteConfiguration } from './controls/autocomplete/ns-form-control-autocomplete.configuration';
 import { NsFormControlAutocompleteModel } from './controls/autocomplete/ns-form-control-autocomplete.model';
 import { NsFormControlCheckboxConfiguration } from './controls/checkbox/ns-form-control-checkbox.configuration';
@@ -220,10 +219,8 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
       return model;
    }
 
-   addAutoComplete<TAutocompleteItem extends NsFormControlAutocompleteItemEntity>(
-      config: NsFormControlAutocompleteConfiguration
-   ): NsFormControlAutocompleteModel<TEntity, TAutocompleteItem> {
-      const model = new NsFormControlAutocompleteModel<TEntity, TAutocompleteItem>(this, config);
+   addAutoComplete(config: NsFormControlAutocompleteConfiguration): NsFormControlAutocompleteModel<TEntity> {
+      const model = new NsFormControlAutocompleteModel<TEntity>(this, config);
       this.register(config, model);
       return model;
    }

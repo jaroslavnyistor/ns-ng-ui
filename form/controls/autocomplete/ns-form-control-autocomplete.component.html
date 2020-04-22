@@ -1,9 +1,8 @@
-<mat-form-field [formGroup]="model.formControl">
+<mat-form-field [formGroup]="model.formGroup">
    <input type="text"
           [placeholder]="model.label"
           [tabIndex]="model.tabIndex"
-          [readonly]="model.hasValue"
-          [formControl]="model.textFormControl"
+          [formControl]="model.formControl"
           matInput
           [matAutocomplete]="autocomplete"
           #autocompleteTrigger="matAutocompleteTrigger"
@@ -27,18 +26,18 @@
 </mat-form-field>
 
 <mat-autocomplete #autocomplete="matAutocomplete">
-   <ng-container *ngIf="model.isLoadingInPanelVisible">
+   <ng-container *ngIf="model.isLoading">
       <mat-option [disabled]="true">
          <ns-loading-inline-normal [text]="'Loading' | translate">
          </ns-loading-inline-normal>
       </mat-option>
    </ng-container>
 
-   <ng-container *ngIf="!model.isLoadingInPanelVisible">
+   <ng-container *ngIf="model.isLoaded">
       <mat-option *ngFor="let item of model.data$ | async"
-                  [value]="item[model.textProperty]"
+                  [value]="item"
                   (onSelectionChange)="model.handleOptionSelected(item)">
-         {{ item[model.textProperty] }}
+         {{ item }}
       </mat-option>
    </ng-container>
 </mat-autocomplete>
