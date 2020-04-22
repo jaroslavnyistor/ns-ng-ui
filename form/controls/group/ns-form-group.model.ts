@@ -34,7 +34,8 @@ export abstract class NsFormGroupModel<TParentEntity, TEntity, TServiceProvider 
    }
 
    subscribeToValueChanges(observer: PartialObserver<any>): this {
-      this.formGroup.valueChanges.subscribe(observer);
+      this.subscribeTo(this.formGroup.valueChanges, observer);
+
       return this;
    }
 }

@@ -54,14 +54,14 @@ export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControl
    loadData() {
       this._isLoading = true;
 
-      this.service.getLoadListObservable()
-      .pipe(
-         delay(0)
-      )
-      .subscribe({
-         next: data => this.handleDataLoaded(data),
-         error: error => this.handleError(error)
-      });
+      this.subscribeTo(
+         this.service.getLoadListObservable()
+         .pipe(delay(0)),
+         {
+            next: data => this.handleDataLoaded(data),
+            error: error => this.handleError(error)
+         }
+      );
    }
 
    private handleDataLoaded(data: TSelectItem[]) {

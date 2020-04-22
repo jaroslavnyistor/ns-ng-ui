@@ -141,11 +141,13 @@ export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsF
       this._lastSearchValue = search;
       this._isLoading = true;
 
-      this._service.getLoadListObservable(search)
-      .subscribe({
-         next: data => this.handleDataLoaded(data),
-         error: error => this.handleError(error)
-      });
+      this.subscribeTo(
+         this._service.getLoadListObservable(search),
+         {
+            next: data => this.handleDataLoaded(data),
+            error: error => this.handleError(error)
+         }
+      );
    }
 
    private handleDataLoaded(data: TMultiSelectItem[]) {

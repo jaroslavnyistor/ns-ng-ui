@@ -51,13 +51,13 @@ export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel
    }
 
    private prepareLoading() {
-      this.pipeLoading(
-         this.getEntityIdObservable()
-      )
-      .pipe(
-         switchMap(id => this.handleEntityIdLoaded(id))
-      )
-      .subscribe(this.subscribeToEntityLoaded());
+      this.subscribeTo(
+         this.pipeLoading(
+            this.getEntityIdObservable(),
+            switchMap((id: number) => this.handleEntityIdLoaded(id))
+         ),
+         this.subscribeToEntityLoaded()
+      );
    }
 
    private getEntityIdObservable(): Observable<number> {

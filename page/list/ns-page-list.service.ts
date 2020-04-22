@@ -103,11 +103,13 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
    }
 
    private performDeleteRequest() {
-      this.withLoading(this.getDeleteObservable())
-      .subscribe({
-         next: () => this.model.handleDeleteReloadRequest(),
-         error: (error: NsApiResponseError) => this.model.resolveServerApiError(error)
-      });
+      this.subscribeTo(
+         this.withLoading(this.getDeleteObservable()),
+         {
+            next: () => this.model.handleDeleteReloadRequest(),
+            error: (error: NsApiResponseError) => this.model.resolveServerApiError(error)
+         }
+      );
    }
 
    protected abstract getDeleteObservable(): Observable<any>;

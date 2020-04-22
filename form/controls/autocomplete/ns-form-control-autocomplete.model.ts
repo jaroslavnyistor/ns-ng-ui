@@ -94,15 +94,16 @@ export class NsFormControlAutocompleteModel<TEntity>
       this._lastSearchValue = search;
       this._isLoading = true;
 
-      this._service.getLoadListObservable(search)
-      .subscribe({
-         next: data => this.handleDataLoaded(data),
-         error: error => this.handleError(error)
-      });
+      this.subscribeTo(
+         this._service.getLoadListObservable(search),
+         {
+            next: data => this.handleDataLoaded(data),
+            error: error => this.handleError(error)
+         }
+      );
    }
 
    private handleDataLoaded(data: string[]) {
-      console.log("Loaded")
       this._isLoading = false;
       this._data$.next(data);
    }
