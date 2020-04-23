@@ -348,16 +348,15 @@ src
     }
     ```
 
-- Open app.module.ts file and setup global DI providers
+- Open **app.module.ts** file and setup global DI providers
     ```typescript
     setStorageKeyPrefix(''),
     setLocalizationLanguagesAppInitializer(),
     setDefaultLanguage(),
     disablePageNotFoundRequiresAuth()
     disablePageNotFoundRequiresAuth(),
-    {
-       provide: DI_NS_APP_LOGO, useValue: 'assets/app_logo.png'
-    },    
+    setApplicationLogo('assets/app_logo.png'),
+    setApplicationVersion('1.0.0.0'),
     setAuthService(),
     setFirebaseAppInitializer(),
     ```  

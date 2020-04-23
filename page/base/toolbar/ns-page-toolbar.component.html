@@ -6,7 +6,10 @@
                        (click)="handleMenuOpened()">
       </ns-icon-default>
 
-      <span>{{toolbarTitle}}</span>
+      <span class="title-block">
+         <span>{{toolbarTitle}}</span>
+         <span class="sub-title">{{version}}</span>
+      </span>
 
       <div class="header-items">
          <ng-template ngFor
