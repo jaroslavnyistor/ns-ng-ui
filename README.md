@@ -42,8 +42,7 @@ src
 ### Setup npm scripts:
 - **Default build scripts**
 
-    `"start": "ng serve --port={custom_port}",`    
-    `"build-local-iis": "ng build --prod --baseHref=/{relative_url}/",`
+    `"start": "ng serve --port={custom_port}",`        
     
 - **Webpack bundle analyzer**
 
@@ -51,6 +50,58 @@ src
     `"analyze-es2015": "webpack-bundle-analyzer dist/stats-es2015.json",`    
     `"analyze-es5": "webpack-bundle-analyzer dist/stats-es5.json"`
     
+### Local IIS
+#### Angular.json
+- Create copy of section project->name-of-project->architect->build and name it **build-deploy-local-iis**
+```json
+{
+    "projects": {
+      "name-of-project": {
+        "architect": {
+          "build": { }
+        }
+      }
+    }
+}
+```
+#### NPM script
+- Added the following line to the package.json file
+    ```json
+    "build-deploy-local-iis": "ng run {name-of-project}:build-deploy-local-iis:production --baseHref=/{name-of-site}/ --outputPath={full-path-to-site}"
+    ```
+  and replace
+   - {name-of-project} -> the actual name of the project
+   - {name-of-site} -> name of site under root in IIS
+   - {full-path-to-site} -> full path to site
+   
+#### web.config
+- Create **web.config** file under src folder with the content
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+<system.webServer>
+  <rewrite>
+    <rules>
+      <rule name="Angular Routes" stopProcessing="true">
+        <match url=".*" />
+        <conditions logicalGrouping="MatchAll">
+          <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+          <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+        </conditions>
+        <action type="Rewrite" url="/{name-of-site}/" />
+      </rule>
+    </rules>
+  </rewrite>
+</system.webServer>
+
+</configuration>
+```
+ and replace {name-of-site} -> the value from above
+ 
+- Add *"src/web.config"* to assets property under build-deploy-local-iis property in angular.json
+
+
 ### Proxy configuration
 - Create proxy.config.json file in same directory as package.json and put the below content:
 
