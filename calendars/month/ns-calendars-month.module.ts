@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { ExtendedModule, FlexModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NsIconModule } from '../../icon/ns-icon.module';
@@ -41,6 +41,7 @@ import { NsCalendarsMonthToolbarDirective } from './toolbar/ns-calendars-month-t
       MatSidenavModule,
       LocalizationLanguagesModule,
       MatTooltipModule,
+      ExtendedModule,
    ]
 })
 export class NsCalendarsMonthModule {

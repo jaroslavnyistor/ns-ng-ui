@@ -7,6 +7,9 @@
 <mat-sidenav-container *ngIf="model.isDone">
    <mat-sidenav *ngIf="rightPanelTemplate"
                 position="end"
+                ngClass.lt-sm="lt-sm"
+                ngClass.lt-md="lt-md"
+                ngClass.lt-xl="lt-xl"
                 [(opened)]="model.isRightPanelOpened">
       <ng-container *ngTemplateOutlet="rightPanelTemplate">
       </ng-container>
