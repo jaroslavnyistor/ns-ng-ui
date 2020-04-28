@@ -259,6 +259,24 @@ src
             rel="stylesheet">
     ```
 
+### Styles
+
+- Remove from styles section under **build** in angular.json the custom theme and leave only src\styles.sass
+
+- Past the below content into file **styles.sass**
+
+    ```sass
+    @import "app/nikisoft/ui/styles/nikisoft"
+    
+    @include ns-theme($mat-blue-grey, $mat-amber)
+    
+    $page-background-color: #e5e5e5
+    @include ns-page-background-color($page-background-color)
+    ```
+- Custom theme colors
+    - Custom colors can be created here http://mcg.mbitson.com
+    - Color tool https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=546E7A&secondary.color=4E342E&secondary.text.color=ffffff
+
 ## 3. Application
 
 ### Setup dependency injection and services
@@ -395,21 +413,6 @@ Currently supported languages are English and Slovak. To have localized text in 
 - A pipe **translate** is provided to translate the value of enum to localized text.
     ```html
     'Title' | translate
-    ```
-
-### Styles
-
-- Remove from styles section under **build** in angular.json the custom theme and leave only src\styles.sass
-
-- Past the below content into file **styles.sass**
-
-    ```sass
-    @import "app/nikisoft/ui/styles/nikisoft"
-    
-    @include ns-theme($mat-blue-grey, $mat-amber)
-    
-    $page-background-color: #e5e5e5
-    @include ns-page-background-color($page-background-color)
     ```
 
 ### app.component
