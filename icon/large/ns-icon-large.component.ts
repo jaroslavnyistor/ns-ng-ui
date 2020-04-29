@@ -10,7 +10,8 @@ import { NsIcon } from '../ns-icon.enum';
                [disabled]="disabled"
                [isClickable]="isClickable"
                [inverse]="inverse"
-               [tooltip]="tooltip">
+               [tooltip]="tooltip"
+               [isFocusable]="isFocusable">
          <ng-content></ng-content>
       </ns-icon>
    `,
@@ -25,4 +26,5 @@ export class NsIconLargeComponent {
    @Input() isClickable: boolean;
    @Input() inverse = false;
    @Input() tooltip: string;
+   @Input() isFocusable = true;
 }

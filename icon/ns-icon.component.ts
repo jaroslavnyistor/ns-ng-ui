@@ -33,6 +33,11 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
    @Input() isClickable: boolean;
    @Input() inverse = false;
    @Input() tooltip: string;
+   @Input() isFocusable = true;
+
+   get tabIndex(): number {
+      return this.isFocusable ? 0 : -1;
+   }
 
    get disabledTooltip(): boolean {
       return nsIsNullOrEmpty(this.tooltip) || this.disabled;

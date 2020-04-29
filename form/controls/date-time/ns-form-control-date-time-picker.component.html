@@ -9,6 +9,7 @@
                   matSuffix
                   [icon]="NsIcon.Close"
                   [isClickable]="true"
+                  [isFocusable]="false"
                   (click)="model.canClearValue() && model.clearValue()">
    </ns-icon-small>
 
@@ -22,7 +23,7 @@
    <ns-icon-small *ngIf="model.canChooseTime"
                   matSuffix
                   [icon]="NsIcon.Time"
-                  [isClickable]="true"
+                  isClickable="true"
                   (click)="timePicker.open()">
    </ns-icon-small>
 

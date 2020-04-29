@@ -12,7 +12,8 @@
    <ns-icon-small [disabled]="!model.canClearValue()"
                   matSuffix
                   [icon]="NsIcon.Close"
-                  isClickable="true"
+                  [isClickable]="true"
+                  [isFocusable]="false"
                   (click)="model.canClearValue() && model.clearValue()">
    </ns-icon-small>
 

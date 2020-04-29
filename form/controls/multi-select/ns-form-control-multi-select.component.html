@@ -17,6 +17,7 @@
    <ns-icon-small [disabled]="!model.canClearValue()"
                   [icon]="NsIcon.Close"
                   [isClickable]="true"
+                  [isFocusable]="false"
                   matSuffix
                   (click)="model.clearSelection(autocompleteTrigger)">
    </ns-icon-small>
