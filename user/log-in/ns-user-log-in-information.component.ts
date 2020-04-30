@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { NsComponentBase } from '../../component/ns-component.base';
 import { NsIcon } from '../../icon/ns-icon.enum';
+import { DI_NS_VERSION } from '../../ns-tokens.di';
 import { NsUserLogInInformationModel } from './ns-user-log-in-information.model';
 import { NsUserLogInInformationService } from './ns-user-log-in-information.service';
 
@@ -22,7 +23,8 @@ export class NsUserLogInInformationComponent
 
    @Input() displayLanguagesPicker = true;
 
-   constructor(service: NsUserLogInInformationService) {
+   constructor(service: NsUserLogInInformationService,
+               @Inject(DI_NS_VERSION) public version: string) {
       super(service);
    }
 }

@@ -34,11 +34,15 @@
               (click)="service.handleLogOutClick()">
          {{'LogOutButton' | translate }}
       </button>
+
+      <mat-divider></mat-divider>
+
+      <small class="version">{{ 'Version' | translate }}&nbsp;{{version}}</small>
    </mat-menu>
 
 </ng-container>
 
-<ng-container *ngIf="!model.isLoggedIn">
+<ng-container *ngIf="model.showLoginButton">
    <ns-button-raised [model]="model.loginButton"
                      (click)="service.handleLoginClick()">
    </ns-button-raised>

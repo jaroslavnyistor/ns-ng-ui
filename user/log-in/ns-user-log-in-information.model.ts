@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { NsAuthenticateResponseModel } from '../../../utils/authentication/ns-authenticate-response.model';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
@@ -6,15 +8,21 @@ import { NsButtonType } from '../../button/ns-button-type';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsComponentModel } from '../../component/ns-component.model';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { loginRoute } from '../../page/login/login.routes';
 
 @Injectable()
 export class NsUserLogInInformationModel extends NsComponentModel {
    private readonly _loginButton: NsButtonRaisedModel;
    private _credentials: NsAuthenticateResponseModel;
    private _additionalLines = [];
+   private _isInLoginScreen = true;
 
    get isLoggedIn(): boolean {
       return this._credentials.isLoggedIn;
+   }
+
+   get showLoginButton(): boolean {
+      return !this.isLoggedIn && !this._isInLoginScreen;
    }
 
    get name(): string {
@@ -38,12 +46,31 @@ export class NsUserLogInInformationModel extends NsComponentModel {
       return this._loginButton;
    }
 
-   constructor(serviceProvider: NsServiceProvider) {
+   constructor(serviceProvider: NsServiceProvider,
+               private _router: Router) {
       super();
 
       this._loginButton = new NsButtonRaisedModel(
          serviceProvider.langService.text(LocalizedTextIdNikisoft.LoginButton)
       );
+
       this._loginButton.type = NsButtonType.Accent;
+   }
+
+   onInit() {
+      super.onInit();
+
+      this.subscribeTo(
+         this._router.events
+            .pipe(
+               filter(routerEvent => routerEvent instanceof NavigationEnd)
+            ),
+         {
+            next: (routerEvent: NavigationEnd) => {
+               const foundLoginSegment = routerEvent.url.indexOf(loginRoute);
+               this._isInLoginScreen = foundLoginSegment > -1;
+            }
+         }
+      )
    }
 }
