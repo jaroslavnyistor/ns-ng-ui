@@ -14,14 +14,14 @@
                              mat-list-icon>
             </ns-icon-default>
 
-            <p mat-line>
-               {{item.title}}
-            </p>
+            <div mat-line>
+               <div>{{item.title}}</div>
 
-            <p *ngIf="item.subtitle"
-               mat-line>
-               {{item.subtitle}}
-            </p>
+               <small *ngIf="item.subtitle"
+                      style="display: block">
+                  {{item.subtitle}}
+               </small>
+            </div>
 
             <mat-divider *ngIf="item === lastItem"
                          [inset]="true">
