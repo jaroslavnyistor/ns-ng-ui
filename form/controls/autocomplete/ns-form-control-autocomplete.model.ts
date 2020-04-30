@@ -65,6 +65,10 @@ export class NsFormControlAutocompleteModel<TEntity>
    }
 
    performFullTextSearch($event: KeyboardEvent) {
+      if ($event.code === 'Tab') {
+         return;
+      }
+
       $event.stopPropagation();
       $event.preventDefault();
 
