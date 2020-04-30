@@ -202,7 +202,7 @@ export abstract class NsFormControlModel<TEntity,
          return;
       }
 
-      this._label = this.langService.text(this._labelId);
+      this._label = this.langService.translate(this._labelId);
 
       if (this.isRequired) {
          this._label = `${this._label}*`;
@@ -210,7 +210,7 @@ export abstract class NsFormControlModel<TEntity,
 
       this._hint = this._hintId == null
          ? null
-         : this.langService.text(this._hintId);
+         : this.langService.translate(this._hintId);
    }
 
    private subscribeInternallyToStatusChanges() {

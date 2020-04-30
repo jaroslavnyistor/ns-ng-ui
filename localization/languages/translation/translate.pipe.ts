@@ -9,6 +9,6 @@ export class TranslatePipe implements PipeTransform {
    }
 
    transform(value: any, ...args: any[]): string {
-      return this._langService.text(value);
+      return this._langService.translate(value);
    }
 }

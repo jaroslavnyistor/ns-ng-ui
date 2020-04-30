@@ -113,7 +113,7 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
    private setEntity(entity: TEntity) {
       if (entity == null) {
          this.model.pageErrorMessages = [
-            this._serviceProvider.langService.text(
+            this._serviceProvider.langService.translate(
                LocalizedTextIdNikisoft.EditEntityNotFound)
          ];
       } else {

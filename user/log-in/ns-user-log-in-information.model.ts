@@ -51,7 +51,7 @@ export class NsUserLogInInformationModel extends NsComponentModel {
       super();
 
       this._loginButton = new NsButtonRaisedModel(
-         serviceProvider.langService.text(LocalizedTextIdNikisoft.LoginButton)
+         serviceProvider.langService.translate(LocalizedTextIdNikisoft.LoginButton)
       );
 
       this._loginButton.type = NsButtonType.Accent;

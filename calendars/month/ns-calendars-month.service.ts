@@ -64,13 +64,13 @@ export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthMod
 
    private buildDaysHeader() {
       this.model.weekDayNames = [
-         this.langService.text(LocalizedTextIdNikisoft.Monday),
-         this.langService.text(LocalizedTextIdNikisoft.Tuesday),
-         this.langService.text(LocalizedTextIdNikisoft.Wednesday),
-         this.langService.text(LocalizedTextIdNikisoft.Thursday),
-         this.langService.text(LocalizedTextIdNikisoft.Friday),
-         this.langService.text(LocalizedTextIdNikisoft.Saturday),
-         this.langService.text(LocalizedTextIdNikisoft.Sunday),
+         this.langService.translate(LocalizedTextIdNikisoft.Monday),
+         this.langService.translate(LocalizedTextIdNikisoft.Tuesday),
+         this.langService.translate(LocalizedTextIdNikisoft.Wednesday),
+         this.langService.translate(LocalizedTextIdNikisoft.Thursday),
+         this.langService.translate(LocalizedTextIdNikisoft.Friday),
+         this.langService.translate(LocalizedTextIdNikisoft.Saturday),
+         this.langService.translate(LocalizedTextIdNikisoft.Sunday),
       ];
    }
 

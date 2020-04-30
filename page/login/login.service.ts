@@ -46,7 +46,7 @@ export class LoginService extends NsPageEditService<LoginModel, LoginEntity, NsS
 
    private setupButtons() {
       this.model.negativeButton.isVisible = false;
-      this.model.positiveButton.text = this._serviceProvider.langService.text(LocalizedTextIdNikisoft.LoginButton);
+      this.model.positiveButton.text = this._serviceProvider.langService.translate(LocalizedTextIdNikisoft.LoginButton);
    }
 
    protected performSave(model: LoginModel): Observable<any> {

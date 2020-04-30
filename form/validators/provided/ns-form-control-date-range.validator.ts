@@ -47,11 +47,11 @@ export class NsFormControlDateRangeValidator
 
    getErrorMessage(): string {
       if (!this._isStartBeforeFinish) {
-         return this.langService.text(LocalizedTextIdNikisoft.Validation_StartBeforeFinish);
+         return this.langService.translate(LocalizedTextIdNikisoft.Validation_StartBeforeFinish);
       }
 
       if (!this._isSameDate) {
-         return this.langService.text(LocalizedTextIdNikisoft.Validation_StartFinishSameDate);
+         return this.langService.translate(LocalizedTextIdNikisoft.Validation_StartFinishSameDate);
       }
 
       return null;
