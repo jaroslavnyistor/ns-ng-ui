@@ -121,20 +121,6 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
       }
    }
 
-   checkKeyPress($event: KeyboardEvent) {
-      if ($event.key === 'Enter') {
-         $event.preventDefault();
-         $event.stopPropagation();
-
-         this.handleSaveClicked();
-      } else if ($event.key === 'Escape') {
-         $event.preventDefault();
-         $event.stopPropagation();
-
-         this.handleCancelClicked();
-      }
-   }
-
    handleSaveClicked(): void {
       const isValid = this.model.validate();
 
