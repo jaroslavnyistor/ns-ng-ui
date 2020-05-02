@@ -6,6 +6,7 @@ import { NsDateTime } from '../../../utils/dates/ns-date-time';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
 import { NsComponentModel } from '../../component/ns-component.model';
+import { NsMediaQueryBreakpoint, NsMediaQueryBreakpointChange } from '../../ns-media-query-observer';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsCalendarsMonthDayCollection } from './days/ns-calendars-month-day.collection';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
@@ -17,6 +18,10 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    extends NsComponentModel {
 
    private readonly _serviceProvider: TServiceProvider;
+   private _weekDayNamesLong: string[] = [];
+   private _weekDayNamesMedium: string[] = [];
+   private _weekDayNamesShort: string[] = [];
+   private _weekDayNamesMediaQueryBreakpoints: NsMediaQueryBreakpointChange[];
    private readonly _weekDayNames$: BehaviorSubject<string[]>;
    private readonly _days: NsCalendarsMonthDayCollection;
    private _errorMessages = [];
@@ -35,6 +40,14 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    }
 
    set weekDayNames(value: string[]) {
+      this._weekDayNamesLong = value;
+      this._weekDayNamesMedium = [];
+
+      value.forEach(weekDayName => {
+         this._weekDayNamesMedium.push(weekDayName.substr(0, 3));
+         this._weekDayNamesShort.push(weekDayName.substr(0, 1));
+      });
+
       this._weekDayNames$.next(value);
    }
 
@@ -98,7 +111,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
 
    protected constructor(
       serviceProvider: TServiceProvider,
-      private readonly _serverApiErrorMapper?: any
+      private readonly _serverApiErrorMapper?: any,
    ) {
       super();
 
@@ -110,6 +123,38 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       if (_serverApiErrorMapper == null) {
          this._serverApiErrorMapper = nsApiErrorMapper;
       }
+
+      this.configureWeekDayNamesMediaQueryBreakpoints();
+   }
+
+   private configureWeekDayNamesMediaQueryBreakpoints() {
+      this._weekDayNamesMediaQueryBreakpoints = [
+         {
+            breakpoint: NsMediaQueryBreakpoint.LessThanMedium,
+            action: () => this._weekDayNames$.next(this._weekDayNamesShort)
+         },
+         {
+            breakpoint: NsMediaQueryBreakpoint.LessThanLarge,
+            action: () => this._weekDayNames$.next(this._weekDayNamesMedium)
+         },
+         {
+            breakpoint: NsMediaQueryBreakpoint.Default,
+            action: () => this._weekDayNames$.next(this._weekDayNamesLong)
+         }
+      ];
+   }
+
+   onInit() {
+      super.onInit();
+
+      const mediaQueryObserver = this._serviceProvider.mediaQueryObserver;
+
+      this.subscribeTo(
+         mediaQueryObserver.mediaChanges,
+         {
+            next: mediaChanges => mediaQueryObserver.resolve(this._weekDayNamesMediaQueryBreakpoints, mediaChanges)
+         }
+      );
    }
 
    resolveApiError(error: NsApiResponseError) {
