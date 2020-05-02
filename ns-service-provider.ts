@@ -5,6 +5,7 @@ import { LocalizationLanguagesService } from '../utils/localization/localization
 import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
 import { NsStorageService } from '../utils/storage/ns-storage.service';
 import { NsDialogService } from './dialog/ns-dialog.service';
+import { NsMediaQueryObserver } from './ns-media-query-observer';
 import { NsPageNoPermissionService } from './page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.service';
 
@@ -20,6 +21,7 @@ export class NsServiceProvider {
    private readonly _storageService: NsStorageService;
    private readonly _noPermissionService: NsPageNoPermissionService;
    private readonly _notFoundService: NsPageNotFoundService;
+   private readonly _mediaQueryObserver: NsMediaQueryObserver;
 
    get langService(): LocalizationLanguagesService {
       return this._langService;
@@ -53,6 +55,10 @@ export class NsServiceProvider {
       return this._notFoundService;
    }
 
+   get mediaQueryObserver(): NsMediaQueryObserver {
+      return this._mediaQueryObserver;
+   }
+
    constructor(
       langService: LocalizationLanguagesService,
       navService: NsNavigationService,
@@ -62,6 +68,7 @@ export class NsServiceProvider {
       storageService: NsStorageService,
       noPermissionService: NsPageNoPermissionService,
       notFoundService: NsPageNotFoundService,
+      mediaQueryObserver: NsMediaQueryObserver,
    ) {
       this._langService = langService;
       this._navService = navService;
@@ -71,5 +78,6 @@ export class NsServiceProvider {
       this._storageService = storageService;
       this._noPermissionService = noPermissionService;
       this._notFoundService = notFoundService;
+      this._mediaQueryObserver = mediaQueryObserver;
    }
 }
