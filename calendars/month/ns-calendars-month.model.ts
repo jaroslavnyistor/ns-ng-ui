@@ -6,7 +6,7 @@ import { NsDateTime } from '../../../utils/dates/ns-date-time';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
 import { NsComponentModel } from '../../component/ns-component.model';
-import { NsMediaQueryBreakpoint, NsMediaQueryBreakpointChange } from '../../ns-media-query-observer';
+import { NsMediaQueryBreakpoint, NsMediaQueryBreakpointChanges } from '../../ns-media-query-observer';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsCalendarsMonthDayCollection } from './days/ns-calendars-month-day.collection';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
@@ -21,7 +21,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    private _weekDayNamesLong: string[] = [];
    private _weekDayNamesMedium: string[] = [];
    private _weekDayNamesShort: string[] = [];
-   private _weekDayNamesMediaQueryBreakpoints: NsMediaQueryBreakpointChange[];
+   private _weekDayNamesMediaQueryBreakpoints: NsMediaQueryBreakpointChanges;
    private readonly _weekDayNames$: BehaviorSubject<string[]>;
    private readonly _days: NsCalendarsMonthDayCollection;
    private _errorMessages = [];
@@ -128,20 +128,11 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    }
 
    private configureWeekDayNamesMediaQueryBreakpoints() {
-      this._weekDayNamesMediaQueryBreakpoints = [
-         {
-            breakpoint: NsMediaQueryBreakpoint.LessThanMedium,
-            action: () => this._weekDayNames$.next(this._weekDayNamesShort)
-         },
-         {
-            breakpoint: NsMediaQueryBreakpoint.LessThanLarge,
-            action: () => this._weekDayNames$.next(this._weekDayNamesMedium)
-         },
-         {
-            breakpoint: NsMediaQueryBreakpoint.Default,
-            action: () => this._weekDayNames$.next(this._weekDayNamesLong)
-         }
-      ];
+      this._weekDayNamesMediaQueryBreakpoints = {
+         [NsMediaQueryBreakpoint.LessThanMedium]: () => this._weekDayNames$.next(this._weekDayNamesShort),
+         [NsMediaQueryBreakpoint.LessThanLarge]: () => this._weekDayNames$.next(this._weekDayNamesMedium),
+         [NsMediaQueryBreakpoint.Default]: () => this._weekDayNames$.next(this._weekDayNamesLong)
+      };
    }
 
    onInit() {

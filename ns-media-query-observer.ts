@@ -26,32 +26,44 @@ export class NsMediaQueryObserver {
       );
    }
 
-   resolve(breakPoints: NsMediaQueryBreakpointChange[], mediaChanges: string[]) {
-      for (let idx = 0; idx < breakPoints.length; idx++) {
-         const breakPoint = breakPoints[idx];
+   resolve(breakPoints: NsMediaQueryBreakpointChanges, mediaChanges: string[]) {
+      for (const breakPoint in breakPoints) {
+         if (breakPoints.hasOwnProperty(breakPoint)) {
+            const found = mediaChanges.find(mediaChange => mediaChange === breakPoint);
 
-         const found = mediaChanges.find(mediaChange => mediaChange === breakPoint.breakpoint);
-
-         if (found) {
-            breakPoint.action();
-            return;
+            if (found) {
+               const action = breakPoints[breakPoint];
+               action();
+               return;
+            }
          }
       }
 
-      const last = breakPoints[breakPoints.length - 1];
-      last.action();
+      const defaultAction = breakPoints[NsMediaQueryBreakpoint.Default];
+
+      if (defaultAction != null) {
+         defaultAction();
+      }
    }
 }
 
 export enum NsMediaQueryBreakpoint {
-   Default = '',
+   Default = 'default',
    LessThanSmall = 'lt-sm',
    LessThanMedium = 'lt-md',
    LessThanLarge = 'lt-lg',
    LessThanXLarge = 'lt-xl',
+   GreaterThanSmall = 'gt-sm',
+   GreaterThanMedium = 'gt-md',
+   GreaterThanLarge = 'gt-lg',
+   GreaterThanXLarge = 'gt-xl',
+   XSmall = 'xs',
+   Small = 'sm',
+   Medium = 'md',
+   Large = 'lg',
+   XLarge = 'xl',
 }
 
-export interface NsMediaQueryBreakpointChange {
-   breakpoint: NsMediaQueryBreakpoint;
-   action: () => void;
-}
+export type NsMediaQueryBreakpointChanges = {
+   [key: string]: () => void;
+};
