@@ -1,10 +1,12 @@
 import { MatHorizontalStepper } from '@angular/material/stepper';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsFormModel } from '../ns-form.model';
 
 export abstract class NsFormStepsModel<TEntity,
-   TServiceProvider extends NsServiceProvider>
-   extends NsFormModel<TEntity, TServiceProvider> {
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsFormModel<TEntity, TServiceProvider, TAppNavService> {
 
    private _stepper: MatHorizontalStepper;
    private _stepsCount: number;

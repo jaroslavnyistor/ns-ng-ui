@@ -30,7 +30,7 @@ export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControl
       return this._isLoading;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlSelectConfiguration<TSelectItem>
    ) {
       super(parent, config);

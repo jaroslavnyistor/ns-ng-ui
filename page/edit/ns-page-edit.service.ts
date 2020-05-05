@@ -4,6 +4,7 @@ import { EMPTY, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
@@ -11,7 +12,7 @@ import { NsFormService, registerFormServiceService } from '../../form/ns-form.se
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditModel } from './ns-page-edit.model';
 
-export function registerPageEditService<TService extends NsPageEditService<any, any, any>>(service: Type<TService>):
+export function registerPageEditService<TService extends NsPageEditService<any, any, any, any>>(service: Type<TService>):
    Provider[] {
    return [
       service,
@@ -23,10 +24,11 @@ export function registerPageEditService<TService extends NsPageEditService<any, 
    ];
 }
 
-export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, TServiceProvider>,
+export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,
-   TServiceProvider extends NsServiceProvider>
-   extends NsFormService<TModel, TEntity, TServiceProvider> {
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsFormService<TModel, TEntity, TServiceProvider, TAppNavService> {
    private readonly _storagePageService: NsStoragePageService;
 
    protected constructor(
@@ -39,11 +41,11 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
       this._storagePageService = new NsStoragePageService(model, serviceProvider.storageService);
 
       this.model.negativeButton = new NsButtonDefaultModel(
-         this._serviceProvider.langService.getCancelText()
+         this.langService.getCancelText()
       );
 
       this.model.positiveButton = new NsButtonRaisedModel(
-         this._serviceProvider.langService.getSaveText()
+         this.langService.getSaveText()
       );
    }
 
@@ -113,7 +115,7 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
    private setEntity(entity: TEntity) {
       if (entity == null) {
          this.model.pageErrorMessages = [
-            this._serviceProvider.langService.translate(
+            this.langService.translate(
                LocalizedTextIdNikisoft.EditEntityNotFound)
          ];
       } else {

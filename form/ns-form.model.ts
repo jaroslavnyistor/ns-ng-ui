@@ -1,8 +1,8 @@
 import { FormGroup } from '@angular/forms';
 import { cloneDeep } from 'lodash';
-import { LocalizationLanguagesService } from '../../utils/localization/localization-languages.service';
-import { NsComponentModel } from '../component/ns-component.model';
+import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../ns-service-provider';
+import { NsServiceProviderComponentModel } from '../ns-service-provider-component.model';
 import { NsFormControlArrayItemEntity } from './controls/array/ns-form-control-array-item.entity';
 import { NsFormControlArrayItemModel } from './controls/array/ns-form-control-array-item.model';
 import { NsFormControlArrayConfiguration } from './controls/array/ns-form-control-array.configuration';
@@ -35,28 +35,19 @@ import { NsFormBuilder } from './ns-form-builder';
 import { NsFormControlValidator } from './validators/ns-form-control.validator';
 import { NsFormControlValidators } from './validators/ns-form-control.validators';
 
-export abstract class NsFormModel<TEntity, TServiceProvider extends NsServiceProvider> extends NsComponentModel {
+export abstract class NsFormModel<TEntity,
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
+
    private readonly _formGroup: FormGroup;
    private readonly _formModels: NsFormControlDefinition[];
-   private readonly _serviceProvider: TServiceProvider;
    private readonly _validators: NsFormControlValidators;
    private _initialEntity: TEntity;
    private _currentEntity: TEntity;
 
    private get nextTabIndex(): number {
       return this._formModels.length + 1;
-   }
-
-   protected get configuration(): TServiceProvider {
-      return this._serviceProvider;
-   }
-
-   get serviceProvider(): TServiceProvider {
-      return this._serviceProvider;
-   }
-
-   get langService(): LocalizationLanguagesService {
-      return this._serviceProvider.langService;
    }
 
    get formGroup(): FormGroup {
@@ -84,8 +75,7 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
       serviceProvider: TServiceProvider,
       formGroup: FormGroup = null
    ) {
-      super();
-      this._serviceProvider = serviceProvider;
+      super(serviceProvider);
 
       this._initialEntity = entity;
       this._currentEntity = entity;
@@ -236,11 +226,11 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
       return model;
    }
 
-   protected addArray<TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider>,
+   protected addArray<TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
       TArrayItemEntity extends NsFormControlArrayItemEntity>(
       config: NsFormControlArrayConfiguration
-   ): NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider> {
-      const model = new NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider>(
+   ): NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService> {
+      const model = new NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>(
          this,
          config
       );
@@ -248,7 +238,7 @@ export abstract class NsFormModel<TEntity, TServiceProvider extends NsServicePro
       return model;
    }
 
-   protected addGroup<TGroupEntity, TGroupModel extends NsFormGroupModel<TEntity, TGroupEntity, TServiceProvider>>(
+   protected addGroup<TGroupEntity, TGroupModel extends NsFormGroupModel<TEntity, TGroupEntity, TServiceProvider, TAppNavService>>(
       groupModel: TGroupModel,
    ): TGroupModel {
       this._formModels.push(groupModel);

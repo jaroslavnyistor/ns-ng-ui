@@ -10,9 +10,9 @@ import { NsCalendarsMonthService } from '../ns-calendars-month.service';
 export class NsCalendarsMonthDaysComponent {
    @Input() dataItemTemplate: TemplateRef<any>;
 
-   @Input() service: NsCalendarsMonthService<any, any>;
+   @Input() service: NsCalendarsMonthService<any, any, any>;
 
-   get model(): NsCalendarsMonthModel<any> {
+   get model(): NsCalendarsMonthModel<any, any> {
       return this.service.model;
    }
 }

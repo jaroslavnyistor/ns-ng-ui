@@ -12,7 +12,7 @@ import { NsCalendarsMonthToolbarDirective } from './toolbar/ns-calendars-month-t
    styleUrls: ['./ns-calendars-month.component.sass'],
 })
 export class NsCalendarsMonthComponent
-   extends NsComponentBase<NsCalendarsMonthService<any, any>, NsCalendarsMonthModel<any>> {
+   extends NsComponentBase<NsCalendarsMonthService<any, any, any>, NsCalendarsMonthModel<any, any>> {
    @ContentChild(NsCalendarsMonthDayDirective, { read: TemplateRef, static: true }) dataItemTemplate: TemplateRef<any>;
 
    @ContentChild(NsCalendarsMonthToolbarDirective, {
@@ -29,7 +29,7 @@ export class NsCalendarsMonthComponent
       return this.rightPanelTemplate != null;
    }
 
-   constructor(service: NsCalendarsMonthService<any, any>) {
+   constructor(service: NsCalendarsMonthService<any, any, any>) {
       super(service);
    }
 }

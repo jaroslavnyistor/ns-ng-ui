@@ -1,14 +1,13 @@
 import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
-import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
 import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { OrderDirection } from '../../../utils/order/order-direction';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
-import { NsComponentModel } from '../../component/ns-component.model';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
 import { NsToolbarEditModel } from '../toolbar/edit/ns-toolbar-edit.model';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';
 import { NsPageListLoadRequestBuilder } from './ns-page-list-load-request.builder';
@@ -19,11 +18,11 @@ import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-l
 
 export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutItemEntity,
    TListItemEntity,
-   TServiceProvider extends NsServiceProvider>
-   extends NsComponentModel
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>
    implements NsStoragePageModel, NsToolbarEditModel, NsPageListLoadRequest {
 
-   private readonly _serviceProvider: TServiceProvider;
    private readonly _pageState$: BehaviorSubject<NsPageListState>;
    private readonly _items$: BehaviorSubject<TListItemModel[]>;
 
@@ -43,14 +42,6 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
    private _isToolbarVisible = true;
    private _isPagingEnabled = true;
    private _isSearchVisible = true;
-
-   protected get langService(): LocalizationLanguagesService {
-      return this._serviceProvider.langService;
-   }
-
-   protected get apiErrorResolverService(): NsApiErrorResolverService {
-      return this._serviceProvider.apiErrorResolverService;
-   }
 
    get pageState$(): BehaviorSubject<NsPageListState> {
       return this._pageState$;
@@ -221,9 +212,8 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       serviceProvider: TServiceProvider,
       private readonly _apiErrorMapper: any = null
    ) {
-      super();
+      super(serviceProvider);
 
-      this._serviceProvider = serviceProvider;
       this._pageState$ = new BehaviorSubject<NsPageListState>({
          pageIndex: 0,
          pageSize: 25,

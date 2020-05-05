@@ -1,23 +1,22 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
 import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsDateTime } from '../../../utils/dates/ns-date-time';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
-import { NsComponentModel } from '../../component/ns-component.model';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsMediaQueryBreakpoint, NsMediaQueryBreakpointChanges } from '../../ns-media-query-observer';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
 import { NsCalendarsMonthDayCollection } from './days/ns-calendars-month-day.collection';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthDayModel } from './days/ns-calendars-month-day.model';
 import { NsCalendarsMonthWeekModel } from './days/ns-calendars-month-week.model';
 import { NsCalendarsMonthLoadRequestBuilder } from './ns-calendars-month-load-request.builder';
 
-export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServiceProvider>
-   extends NsComponentModel {
+export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 
-   private readonly _serviceProvider: TServiceProvider;
    private _weekDayNamesLong: string[] = [];
    private _weekDayNamesMedium: string[] = [];
    private _weekDayNamesShort: string[] = [];
@@ -26,14 +25,6 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    private readonly _days: NsCalendarsMonthDayCollection;
    private _errorMessages = [];
    private _isRightPanelOpened = false;
-
-   protected get langService(): LocalizationLanguagesService {
-      return this._serviceProvider.langService;
-   }
-
-   protected get apiErrorResolverService(): NsApiErrorResolverService {
-      return this._serviceProvider.apiErrorResolverService;
-   }
 
    get weekDayNames$(): Observable<string[]> {
       return this._weekDayNames$;
@@ -113,9 +104,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
       serviceProvider: TServiceProvider,
       private readonly _serverApiErrorMapper?: any,
    ) {
-      super();
-
-      this._serviceProvider = serviceProvider;
+      super(serviceProvider);
 
       this._weekDayNames$ = new BehaviorSubject<string[]>([]);
       this._days = new NsCalendarsMonthDayCollection();
@@ -138,7 +127,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    onInit() {
       super.onInit();
 
-      const mediaQueryObserver = this._serviceProvider.mediaQueryObserver;
+      const mediaQueryObserver = this.mediaQueryObserver;
 
       this.subscribeTo(
          mediaQueryObserver.mediaChanges,

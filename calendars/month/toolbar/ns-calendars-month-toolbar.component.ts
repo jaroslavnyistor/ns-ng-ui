@@ -13,9 +13,9 @@ export class NsCalendarsMonthToolbarComponent {
 
    @Input() toolbarTemplate: TemplateRef<any>;
    @Input() hasRightPanelTemplate: boolean;
-   @Input() service: NsCalendarsMonthService<any, any>;
+   @Input() service: NsCalendarsMonthService<any, any, any>;
 
-   get model(): NsCalendarsMonthModel<any> {
+   get model(): NsCalendarsMonthModel<any, any> {
       return this.service.model;
    }
 }

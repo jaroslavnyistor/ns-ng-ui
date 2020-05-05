@@ -42,7 +42,7 @@ export class NsFormControlInputModel<TEntity>
       return this._maxValue;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                type: NsFormControlInputType,
                config: NsFormControlInputConfiguration
    ) {

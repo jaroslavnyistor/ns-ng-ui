@@ -1,15 +1,14 @@
 import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
-import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
-import { NsComponentService } from '../../component/ns-component.service';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthModel } from './ns-calendars-month.model';
 
-export function registerCalendarsMonthService<TService extends NsCalendarsMonthService<any, any>>(
+export function registerCalendarsMonthService<TService extends NsCalendarsMonthService<any, any, any>>(
    service: Type<TService>): Provider[] {
    return [
       service,
@@ -20,18 +19,10 @@ export function registerCalendarsMonthService<TService extends NsCalendarsMonthS
    ];
 }
 
-export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthModel<TServiceProvider>,
-   TServiceProvider extends NsServiceProvider>
-   extends NsComponentService<TModel> {
-   protected readonly _serviceProvider: TServiceProvider;
-
-   protected get langService(): LocalizationLanguagesService {
-      return this._serviceProvider.langService;
-   }
-
-   protected get authService(): NsAuthenticateService {
-      return this._serviceProvider.authService;
-   }
+export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthModel<TServiceProvider, TAppNavService>,
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
 
    get selectedDayData(): NsCalendarsMonthDayEntity {
       return this.model.selectedDayData;
@@ -45,13 +36,8 @@ export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthMod
       this.model.selectedDate = value;
    }
 
-   protected constructor(
-      model: TModel,
-      serviceProvider: TServiceProvider
-   ) {
-      super(model);
-
-      this._serviceProvider = serviceProvider;
+   protected constructor(model: TModel, serviceProvider: TServiceProvider) {
+      super(model, serviceProvider);
    }
 
    onInit(): void {

@@ -29,7 +29,7 @@ export class NsFormControlDatePickerModel<TEntity>
       return this._maxDate;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlDatePickerConfiguration
    ) {
       super(parent, config);

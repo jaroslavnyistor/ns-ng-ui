@@ -1,9 +1,10 @@
 import { Provider, Type } from '@angular/core';
-import { NsComponentService } from '../component/ns-component.service';
+import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../ns-service-provider';
+import { NsServiceProviderComponentService } from '../ns-service-provider-component.service';
 import { NsFormModel } from './ns-form.model';
 
-export function registerFormServiceService<TService extends NsFormService<any, any, any>>(service: Type<TService>):
+export function registerFormServiceService<TService extends NsFormService<any, any, any, any>>(service: Type<TService>):
    Provider[] {
    return [
       service,
@@ -14,19 +15,13 @@ export function registerFormServiceService<TService extends NsFormService<any, a
    ];
 }
 
-export abstract class NsFormService<TModel extends NsFormModel<TEntity, TServiceProvider>,
+export abstract class NsFormService<TModel extends NsFormModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,
-   TServiceProvider extends NsServiceProvider>
-   extends NsComponentService<TModel> {
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
 
-   protected readonly _serviceProvider: TServiceProvider;
-
-   protected constructor(
-      model: TModel,
-      serviceProvider: TServiceProvider
-   ) {
-      super(model);
-
-      this._serviceProvider = serviceProvider;
+   protected constructor(model: TModel, serviceProvider: TServiceProvider) {
+      super(model, serviceProvider);
    }
 }

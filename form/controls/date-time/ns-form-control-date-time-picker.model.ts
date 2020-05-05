@@ -38,7 +38,7 @@ export class NsFormControlDateTimePickerModel<TEntity>
       return !this.isDisabled && this._canChooseTime;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlDateTimePickerConfiguration
    ) {
       super(parent, config);

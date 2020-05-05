@@ -1,12 +1,14 @@
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
-import { NsComponentModel } from '../../component/ns-component.model';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
 
-export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvider>
-   extends NsComponentModel
+export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>
    implements NsStoragePageModel {
-   private readonly _serviceProvider: TServiceProvider;
+
    private _hasSubtitle = false;
    private _subtitle: string;
    private _isBackVisible = false;
@@ -33,8 +35,7 @@ export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvi
    }
 
    protected constructor(serviceProvider: TServiceProvider) {
-      super();
-      this._serviceProvider = serviceProvider;
+      super(serviceProvider);
    }
 
    abstract getStateKey(): string;

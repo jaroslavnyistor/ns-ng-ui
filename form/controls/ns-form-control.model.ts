@@ -19,7 +19,7 @@ export abstract class NsFormControlModel<TEntity,
    implements NsFormControlDefinition {
    private readonly _statusChanges$: Subject<any>;
    private readonly _valueChanges$: Subject<any>;
-   private readonly _parent: NsFormModel<TEntity, any>;
+   private readonly _parent: NsFormModel<TEntity, any, any>;
    private readonly _validators: NsFormControlValidators;
    private _validatorsFn: ValidatorFn[];
    private readonly _key: string;
@@ -118,7 +118,7 @@ export abstract class NsFormControlModel<TEntity,
       this._defaultValue = value;
    }
 
-   protected constructor(parent: NsFormModel<TEntity, any>,
+   protected constructor(parent: NsFormModel<TEntity, any, any>,
                          config: NsFormControlConfiguration
    ) {
       super();

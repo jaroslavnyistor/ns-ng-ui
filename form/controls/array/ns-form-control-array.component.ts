@@ -9,7 +9,7 @@ import { NsFormControlArrayModel } from './ns-form-control-array.model';
    styleUrls: ['./ns-form-control-array.component.sass']
 })
 export class NsFormControlArrayComponent {
-   @Input() model: NsFormControlArrayModel<any, any, any, any>;
+   @Input() model: NsFormControlArrayModel<any, any, any, any, any>;
    @Input() noItemsMessage: string;
 
    get hasNoItemsMessage(): boolean {

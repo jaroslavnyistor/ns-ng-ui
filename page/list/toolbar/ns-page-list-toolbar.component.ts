@@ -9,7 +9,7 @@ import { NsPageListToolbarItemDirective } from './ns-page-list-toolbar-item.dire
    styleUrls: ['./ns-page-list-toolbar.component.sass']
 })
 export class NsPageListToolbarComponent {
-   @Input() model: NsPageListModel<any, any, any>;
-   @Input() service: NsPageListService<any, any, any, any>;
+   @Input() model: NsPageListModel<any, any, any, any>;
+   @Input() service: NsPageListService<any, any, any, any, any>;
    @Input() toolBarItems = new QueryList<NsPageListToolbarItemDirective>();
 }

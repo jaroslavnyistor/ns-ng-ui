@@ -1,24 +1,22 @@
-import { NsApiErrorResolverService } from '../../../utils/api/error/ns-api-error-resolver.service';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
 import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
 import { NsServiceProvider } from '../../ns-service-provider';
 
 const keyStateEntity = 'entity';
 
-export abstract class NsPageEditStepsModel<TEntity, TServiceProvider extends NsServiceProvider>
-   extends NsFormStepsModel<TEntity, TServiceProvider>
+export abstract class NsPageEditStepsModel<TEntity,
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsFormStepsModel<TEntity, TServiceProvider, TAppNavService>
    implements NsStoragePageModel {
    private _hasSubtitle = false;
    private _subtitle: string;
    private _pageErrorMessages = [];
    private _savedEntity: TEntity;
    private _entityToSave: TEntity;
-
-   private get apiErrorResolverService(): NsApiErrorResolverService {
-      return this.configuration.apiErrorResolverService;
-   }
 
    get hasSubtitle(): boolean {
       return this._hasSubtitle;

@@ -14,7 +14,7 @@ export class NsPageListLayoutCustomComponent {
    @Input() sm = 50;
    @Input() xs = 100;
 
-   @Input() model: NsPageListModel<any, any, any>;
+   @Input() model: NsPageListModel<any, any, any, any>;
 
    @ContentChild(
       NsPageListLayoutCustomItemDirective, { static: true }) itemTemplate: NsPageListLayoutCustomItemDirective;

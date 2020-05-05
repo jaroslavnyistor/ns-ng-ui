@@ -1,10 +1,11 @@
 import { Provider, Type } from '@angular/core';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
 import { NsPageDefaultModel } from './ns-page-default.model';
 
-export function registerPageDefaultService<TService extends NsPageDefaultService<any, any>>(service: Type<TService>):
+export function registerPageDefaultService<TService extends NsPageDefaultService<any, any, any>>(service: Type<TService>):
    Provider[] {
    return [
       service,
@@ -15,15 +16,14 @@ export function registerPageDefaultService<TService extends NsPageDefaultService
    ];
 }
 
-export abstract class NsPageDefaultService<TModel extends NsPageDefaultModel<TServiceProvider>,
-   TServiceProvider extends NsServiceProvider>
-   extends NsComponentService<TModel> {
-   protected readonly _serviceProvider: TServiceProvider;
+export abstract class NsPageDefaultService<TModel extends NsPageDefaultModel<TServiceProvider, TAppNavService>,
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
    private readonly _storagePageService: NsStoragePageService;
 
    protected constructor(model: TModel, serviceProvider: TServiceProvider) {
-      super(model);
-      this._serviceProvider = serviceProvider;
+      super(model, serviceProvider);
 
       this._storagePageService = new NsStoragePageService(model, serviceProvider.storageService);
    }

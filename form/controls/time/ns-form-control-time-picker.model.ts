@@ -11,7 +11,7 @@ export class NsFormControlTimePickerModel<TEntity>
       return !this.isDisabled;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlTimePickerConfiguration
    ) {
       super(parent, config);

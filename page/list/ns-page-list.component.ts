@@ -13,7 +13,7 @@ import { NsPageListToolbarItemDirective } from './toolbar/ns-page-list-toolbar-i
    styleUrls: ['./ns-page-list.component.sass']
 })
 export class NsPageListComponent
-   extends NsComponentBase<NsPageListService<any, any, any, any>, NsPageListModel<any, any, any>> {
+   extends NsComponentBase<NsPageListService<any, any, any, any, any>, NsPageListModel<any, any, any, any>> {
    @Input() pageTitle: string;
 
    @Input() xl = 50;
@@ -36,7 +36,7 @@ export class NsPageListComponent
       return this.listLayoutItemTemplate != null;
    }
 
-   get model(): NsPageListModel<any, any, any> {
+   get model(): NsPageListModel<any, any, any, any> {
       return this.service.model;
    }
 
@@ -44,7 +44,7 @@ export class NsPageListComponent
       return NsIcon.ArrowBack;
    }
 
-   constructor(service: NsPageListService<any, any, any, any>) {
+   constructor(service: NsPageListService<any, any, any, any, any>) {
       super(service);
    }
 }

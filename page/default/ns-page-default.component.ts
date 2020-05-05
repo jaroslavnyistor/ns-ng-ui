@@ -10,7 +10,7 @@ import { NsPageDefaultService } from './ns-page-default.service';
    styleUrls: ['./ns-page-default.component.sass']
 })
 export class NsPageDefaultComponent
-   extends NsComponentBase<NsPageDefaultService<any, any>, NsPageDefaultModel<any>> {
+   extends NsComponentBase<NsPageDefaultService<any, any, any>, NsPageDefaultModel<any, any>> {
    private _scrollPage = false;
    private _scrollPageCss = [];
    private _scrollContent = false;
@@ -48,7 +48,7 @@ export class NsPageDefaultComponent
       return this._scrollContentCss;
    }
 
-   constructor(service: NsPageDefaultService<any, any>) {
+   constructor(service: NsPageDefaultService<any, any, any>) {
       super(service);
 
       this.resolveScrollPageCss();

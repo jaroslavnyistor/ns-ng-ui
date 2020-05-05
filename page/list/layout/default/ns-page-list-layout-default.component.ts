@@ -17,8 +17,8 @@ export class NsPageListLayoutDefaultComponent {
    @Input() sm = 50;
    @Input() xs = 100;
 
-   @Input() model: NsPageListModel<NsPageListLayoutDefaultItemModel, any, any>;
-   @Input() service: NsPageListService<any, any, any, any>;
+   @Input() model: NsPageListModel<NsPageListLayoutDefaultItemModel, any, any, any>;
+   @Input() service: NsPageListService<any, any, any, any, any>;
    @Input() noItemsMessage: string;
 
    NsIcon = NsIcon;

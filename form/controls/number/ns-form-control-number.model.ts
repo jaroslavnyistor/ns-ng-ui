@@ -1,6 +1,5 @@
 import { FormControl } from '@angular/forms';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { nsFormatFloatNumber } from '../../../../utils/helpers/numbers/ns-helpers-numbers';
 import { nsStringToNumber } from '../../../../utils/helpers/strings/ns-helpers-strings';
 import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
@@ -35,7 +34,7 @@ export class NsFormControlNumberModel<TEntity>
       return this._step;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>, config: NsFormControlNumberConfiguration) {
+   constructor(parent: NsFormModel<TEntity, any, any>, config: NsFormControlNumberConfiguration) {
       super(parent, config);
 
       this._minValue = config.minValue;
@@ -102,8 +101,7 @@ export class NsFormControlNumberModel<TEntity>
          return;
       }
 
-      const newValueString = nsFormatFloatNumber(newValue);
-      this._numberTextFormControl.setValue(newValueString);
+      this._numberTextFormControl.setValue(newValue);
    }
 
    protected handleStatusChanged(newStatus: any) {

@@ -8,7 +8,7 @@ export class NsUserLogInInformationService
    extends NsComponentService<NsUserLogInInformationModel> {
 
    constructor(model: NsUserLogInInformationModel,
-               private _serviceProvider: NsServiceProvider
+               private readonly _serviceProvider: NsServiceProvider
    ) {
       super(model);
    }

@@ -58,7 +58,7 @@ export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsF
       return !this._isLoading;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlMultiSelectConfiguration<TMultiSelectItem>
    ) {
       super(parent, config);

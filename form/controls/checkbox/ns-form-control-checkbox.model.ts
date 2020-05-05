@@ -7,7 +7,7 @@ import { NsFormControlCheckboxConfiguration } from './ns-form-control-checkbox.c
 export class NsFormControlCheckboxModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControlCheckboxModel<TEntity>, NsFormControl> {
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlCheckboxConfiguration
    ) {
       super(parent, config);

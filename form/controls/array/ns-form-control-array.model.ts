@@ -1,5 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
+import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../../ns-service-provider';
 import { NsFormModel } from '../../ns-form.model';
 import { NsFormArray } from '../ns-form-array';
@@ -10,16 +11,17 @@ import { NsFormControlArrayConfiguration } from './ns-form-control-array.configu
 import { NsFormControlArrayService } from './ns-form-control-array.service';
 
 export class NsFormControlArrayModel<TEntity,
-   TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider>,
+   TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItemEntity extends NsFormControlArrayItemEntity,
-   TServiceProvider extends NsServiceProvider>
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
    extends NsFormControlModel<TEntity,
-      NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider>,
+      NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>,
       NsFormArray> {
 
    private readonly _formModels$: BehaviorSubject<TArrayItem[]>;
    private readonly _canDeleteItems = true;
-   private _service: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider>;
+   private _service: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>;
 
    get formModels$(): Observable<TArrayItem[]> {
       return this._formModels$;
@@ -37,7 +39,7 @@ export class NsFormControlArrayModel<TEntity,
       return this._canDeleteItems;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, TServiceProvider, TAppNavService>,
                config: NsFormControlArrayConfiguration
    ) {
       super(parent, config);
@@ -55,7 +57,7 @@ export class NsFormControlArrayModel<TEntity,
       this.mapEntitiesToFormModels(this.defaultValue);
    }
 
-   withService(value: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider>): this {
+   withService(value: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>): this {
       if (value == null) {
          return this;
       }

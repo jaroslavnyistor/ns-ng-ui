@@ -10,11 +10,11 @@ import { NsFormStepsService } from './ns-form-steps.service';
    styleUrls: ['./ns-form-steps-buttons.component.sass']
 })
 export class NsFormStepsButtonsComponent
-   extends NsComponentBase<NsFormStepsService<any, any, any>, NsFormStepsModel<any, any>> {
+   extends NsComponentBase<NsFormStepsService<any, any, any, any>, NsFormStepsModel<any, any, any>> {
 
    NsIcon = NsIcon;
 
-   constructor(service: NsFormStepsService<any, any, any>) {
+   constructor(service: NsFormStepsService<any, any, any, any>) {
       super(service);
    }
 }

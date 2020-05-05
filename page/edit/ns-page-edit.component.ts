@@ -9,7 +9,7 @@ import { NsPageEditService } from './ns-page-edit.service';
    styleUrls: ['./ns-page-edit.component.sass']
 })
 export class NsPageEditComponent
-   extends NsComponentBase<NsPageEditService<any, any, any>, NsPageEditModel<any, any>> {
+   extends NsComponentBase<NsPageEditService<any, any, any, any>, NsPageEditModel<any, any, any>> {
 
    @Input() pageTitle: string;
 
@@ -19,7 +19,7 @@ export class NsPageEditComponent
    @Input() sm = 100;
    @Input() xs = 100;
 
-   constructor(service: NsPageEditService<any, any, any>) {
+   constructor(service: NsPageEditService<any, any, any, any>) {
       super(service);
    }
 }

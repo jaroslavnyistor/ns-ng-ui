@@ -2,9 +2,10 @@ import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
+import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { NsComponentService } from '../../component/ns-component.service';
 import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
 import { NsToolbarEditService } from '../toolbar/edit/ns-toolbar-edit.service';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';
 import { NsPageListLoadResponse } from './ns-page-list-load.response';
@@ -12,7 +13,7 @@ import { NsPageListModel } from './ns-page-list.model';
 import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-list-toolbar-order-model.collection';
 import { NsPageListToolbarOrderOption } from './toolbar/order/ns-page-list-toolbar-order.model';
 
-export function registerPageListService<TService extends NsPageListService<any, any, any, any>>(
+export function registerPageListService<TService extends NsPageListService<any, any, any, any, any>>(
    service: Type<TService>): Provider[] {
    return [
       service,
@@ -23,22 +24,22 @@ export function registerPageListService<TService extends NsPageListService<any, 
    ];
 }
 
-export abstract class NsPageListService<TModel extends NsPageListModel<TListItemModel, TListItemEntity, TServiceProvider>,
+export abstract class NsPageListService<
+   TModel extends NsPageListModel<TListItemModel, TListItemEntity, TServiceProvider, TAppNavService>,
    TListItemModel extends NsPageListLayoutItemEntity,
    TListItemEntity,
-   TServiceProvider extends NsServiceProvider>
-   extends NsComponentService<TModel>
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService>
    implements NsToolbarEditService {
-   protected readonly _serviceProvider: TServiceProvider;
+
    private readonly _storagePageService: NsStoragePageService;
 
    protected constructor(model: TModel, serviceProvider: TServiceProvider) {
-      super(model);
+      super(model, serviceProvider);
 
-      this._serviceProvider = serviceProvider;
-
-      this._storagePageService = new NsStoragePageService(model, serviceProvider.storageService);
-      this.model.order = new NsPageListToolbarOrderModelCollection(this._serviceProvider.langService);
+      this._storagePageService = new NsStoragePageService(model, this.storageService);
+      this.model.order = new NsPageListToolbarOrderModelCollection(this.langService);
    }
 
    protected get selectedItemId(): number {
@@ -65,11 +66,11 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
    }
 
    private setupPermission() {
-      const hasEditPermission = this._serviceProvider.authService.hasPermission(this.model.editPermissionId);
+      const hasEditPermission = this.authService.hasPermission(this.model.editPermissionId);
       this.model.isAddVisible = hasEditPermission;
       this.model.isEditVisible = hasEditPermission;
 
-      this.model.isDeleteVisible = this._serviceProvider.authService.hasPermission(this.model.deletePermissionId);
+      this.model.isDeleteVisible = this.authService.hasPermission(this.model.deletePermissionId);
    }
 
    private subscribePageStateChanges() {
@@ -95,9 +96,9 @@ export abstract class NsPageListService<TModel extends NsPageListModel<TListItem
    abstract handleEditRequested();
 
    handleDeleteRequested() {
-      this._serviceProvider.dialogService.openDeleteDialog(
-         this._serviceProvider.langService.getDeleteTitle(),
-         this._serviceProvider.langService.getDeleteMessage(),
+      this.dialogService.openDeleteDialog(
+         this.langService.getDeleteTitle(),
+         this.langService.getDeleteMessage(),
          () => this.performDeleteRequest()
       );
    }

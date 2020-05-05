@@ -8,9 +8,9 @@ import { NsCalendarsMonthService } from '../ns-calendars-month.service';
    styleUrls: ['./ns-calendars-month-headers.component.sass']
 })
 export class NsCalendarsMonthHeadersComponent {
-   @Input() service: NsCalendarsMonthService<any, any>;
+   @Input() service: NsCalendarsMonthService<any, any, any>;
 
-   get model(): NsCalendarsMonthModel<any> {
+   get model(): NsCalendarsMonthModel<any, any> {
       return this.service.model;
    }
 }

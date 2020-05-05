@@ -10,7 +10,7 @@ import { NsFormStepsService, registerPageFormStepsService } from '../../form/ste
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditStepsModel } from './ns-page-edit-steps.model';
 
-export function registerPageEditStepsService<TService extends NsPageEditStepsService<any, any, any>>(
+export function registerPageEditStepsService<TService extends NsPageEditStepsService<any, any, any, any>>(
    service: Type<TService>): Provider[] {
    return [
       service,
@@ -22,15 +22,12 @@ export function registerPageEditStepsService<TService extends NsPageEditStepsSer
    ];
 }
 
-export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel<TEntity, TServiceProvider>,
+export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,
-   TServiceProvider extends NsServiceProvider>
-   extends NsFormStepsService<TModel, TEntity, TServiceProvider> {
+   TServiceProvider extends NsServiceProvider,
+   TAppNavService extends NsNavigationService>
+   extends NsFormStepsService<TModel, TEntity, TServiceProvider, TAppNavService> {
    private readonly _storagePageService: NsStoragePageService;
-
-   protected get navService(): NsNavigationService {
-      return this._serviceProvider.navService;
-   }
 
    protected constructor(
       model: TModel,
@@ -108,7 +105,7 @@ export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel
    private setEntity(entity: TEntity) {
       if (entity == null) {
          this.model.pageErrorMessages = [
-            this._serviceProvider.langService.translate(LocalizedTextIdNikisoft.EditEntityNotFound)
+            this.langService.translate(LocalizedTextIdNikisoft.EditEntityNotFound)
          ];
       } else {
          this.model.setInitialEntity(entity);

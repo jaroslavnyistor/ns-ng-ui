@@ -11,7 +11,7 @@ import { NsFormStepsService } from './ns-form-steps.service';
    styleUrls: ['./ns-form-steps.component.sass']
 })
 export class NsFormStepsComponent
-   extends NsComponentBase<NsFormStepsService<any, any, any>, NsFormStepsModel<any, any>>
+   extends NsComponentBase<NsFormStepsService<any, any, any, any>, NsFormStepsModel<any, any, any>>
    implements OnInit {
 
    private _steps: QueryList<NsFormStepDirective>;
@@ -36,7 +36,7 @@ export class NsFormStepsComponent
       }
    }
 
-   constructor(service: NsFormStepsService<any, any, any>) {
+   constructor(service: NsFormStepsService<any, any, any, any>) {
       super(service);
    }
 

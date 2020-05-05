@@ -32,7 +32,7 @@ export class NsFormControlAutocompleteModel<TEntity>
       return !this._isLoading;
    }
 
-   constructor(parent: NsFormModel<TEntity, any>,
+   constructor(parent: NsFormModel<TEntity, any, any>,
                config: NsFormControlAutocompleteConfiguration
    ) {
       super(parent, config);

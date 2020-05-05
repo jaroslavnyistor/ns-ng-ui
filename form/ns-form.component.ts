@@ -8,8 +8,8 @@ import { NsFormService } from './ns-form.service';
    templateUrl: './ns-form.component.html',
    styleUrls: ['./ns-form.component.sass']
 })
-export class NsFormComponent extends NsComponentBase<NsFormService<any, any, any>, NsFormModel<any, any>> {
-   constructor(service: NsFormService<any, any, any>) {
+export class NsFormComponent extends NsComponentBase<NsFormService<any, any, any, any>, NsFormModel<any, any, any>> {
+   constructor(service: NsFormService<any, any, any, any>) {
       super(service);
    }
 }
