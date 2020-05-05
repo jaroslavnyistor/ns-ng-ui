@@ -1,7 +1,6 @@
 import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
@@ -43,21 +42,7 @@ export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthMod
    onInit(): void {
       super.onInit();
 
-      this.buildDaysHeader();
-
       this.model.subscribeToCurrentDateChanges(() => this.handleDateChanged());
-   }
-
-   private buildDaysHeader() {
-      this.model.weekDayNames = [
-         this.langService.translate(LocalizedTextIdNikisoft.Monday),
-         this.langService.translate(LocalizedTextIdNikisoft.Tuesday),
-         this.langService.translate(LocalizedTextIdNikisoft.Wednesday),
-         this.langService.translate(LocalizedTextIdNikisoft.Thursday),
-         this.langService.translate(LocalizedTextIdNikisoft.Friday),
-         this.langService.translate(LocalizedTextIdNikisoft.Saturday),
-         this.langService.translate(LocalizedTextIdNikisoft.Sunday),
-      ];
    }
 
    private handleDateChanged() {

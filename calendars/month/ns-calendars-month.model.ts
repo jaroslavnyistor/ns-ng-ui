@@ -1,6 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
+import { NsDate } from '../../../utils/dates/ns-date';
 import { NsDateTime } from '../../../utils/dates/ns-date-time';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
@@ -17,9 +18,6 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 
-   private _weekDayNamesLong: string[] = [];
-   private _weekDayNamesMedium: string[] = [];
-   private _weekDayNamesShort: string[] = [];
    private _weekDayNamesMediaQueryBreakpoints: NsMediaQueryBreakpointChanges;
    private readonly _weekDayNames$: BehaviorSubject<string[]>;
    private readonly _days: NsCalendarsMonthDayCollection;
@@ -28,18 +26,6 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
 
    get weekDayNames$(): Observable<string[]> {
       return this._weekDayNames$;
-   }
-
-   set weekDayNames(value: string[]) {
-      this._weekDayNamesLong = value;
-      this._weekDayNamesMedium = [];
-
-      value.forEach(weekDayName => {
-         this._weekDayNamesMedium.push(weekDayName.substr(0, 3));
-         this._weekDayNamesShort.push(weekDayName.substr(0, 1));
-      });
-
-      this._weekDayNames$.next(value);
    }
 
    get headerDate(): string {
@@ -118,9 +104,9 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
 
    private configureWeekDayNamesMediaQueryBreakpoints() {
       this._weekDayNamesMediaQueryBreakpoints = {
-         [NsMediaQueryBreakpoint.LessThanMedium]: () => this._weekDayNames$.next(this._weekDayNamesShort),
-         [NsMediaQueryBreakpoint.LessThanLarge]: () => this._weekDayNames$.next(this._weekDayNamesMedium),
-         [NsMediaQueryBreakpoint.Default]: () => this._weekDayNames$.next(this._weekDayNamesLong)
+         [NsMediaQueryBreakpoint.LessThanMedium]: () => this._weekDayNames$.next(NsDate.weekdaysMin()),
+         [NsMediaQueryBreakpoint.LessThanLarge]: () => this._weekDayNames$.next(NsDate.weekdaysShort()),
+         [NsMediaQueryBreakpoint.Default]: () => this._weekDayNames$.next(NsDate.weekdays())
       };
    }
 
