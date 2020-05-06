@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Provider, Type } from '@angular/core';
 import { NsApiErrorResolverService } from '../utils/api/error/ns-api-error-resolver.service';
 import { NsAuthenticateService } from '../utils/authentication/ns-authenticate.service';
 import { LocalizationLanguagesService } from '../utils/localization/localization-languages.service';
@@ -9,10 +9,18 @@ import { NsMediaQueryObserver } from './ns-media-query-observer';
 import { NsPageNoPermissionService } from './page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.service';
 
-@Injectable({
-   providedIn: 'root'
-})
-export class NsServiceProvider {
+export function registerServiceProvider<TService extends NsServiceProvider>(
+   service: Type<TService>): Provider[] {
+   return [
+      service,
+      {
+         useExisting: service,
+         provide: NsServiceProvider
+      }
+   ];
+}
+
+export abstract class NsServiceProvider {
    private readonly _langService: LocalizationLanguagesService;
    private readonly _navService: NsNavigationService;
    private readonly _apiErrorResolverService: NsApiErrorResolverService;
@@ -59,7 +67,7 @@ export class NsServiceProvider {
       return this._mediaQueryObserver;
    }
 
-   constructor(
+   protected constructor(
       langService: LocalizationLanguagesService,
       navService: NsNavigationService,
       apiErrorResolverService: NsApiErrorResolverService,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { mergeMap, switchMap } from 'rxjs/operators';
 import { NsAuthenticateResponseEntity } from '../../../utils/authentication/ns-authenticate-response.entity';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
@@ -30,19 +31,33 @@ export class LoginService extends NsPageEditService<LoginModel, LoginEntity, NsS
 
       this.setupButtons();
 
-      this.subscribeTo(this._activatedRoute.queryParams, this.getQueryParamsObserver());
+      this.handleQueryParams();
    }
 
-   private getQueryParamsObserver() {
-      return {
-         next: (result: Params) => {
-            this._returnUrl = result.returnUrl || '';
+   private handleQueryParams() {
+      const obs$ = this._activatedRoute.queryParams
+         .pipe(
+            mergeMap((result: Params) =>
+               this.authService.isLoggedIn$
+                  .pipe(
+                     switchMap((isLoggedIn: boolean) => of({
+                           returnUrl: result.returnUrl || '',
+                           isLoggedIn
+                        })
+                     )
+                  )
+            )
+         )
 
-            if (this.authService.isLoggedIn) {
+      this.subscribeTo(obs$, {
+         next: ({ returnUrl, isLoggedIn }) => {
+            this._returnUrl = returnUrl;
+
+            if (isLoggedIn) {
                this.navService.toReturnUrl(this._returnUrl);
             }
          }
-      };
+      });
    }
 
    private setupButtons() {

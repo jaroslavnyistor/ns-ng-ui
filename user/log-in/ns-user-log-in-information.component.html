@@ -1,4 +1,4 @@
-<ng-container *ngIf="model.isLoggedIn">
+<ng-container *ngIf="model.isLoggedIn$ | async">
    <ns-icon-normal [icon]="defaultIcon"
                    [matMenuTriggerFor]="menu"
                    [isClickable]="true"
@@ -12,14 +12,12 @@
          </ns-icon-large>
 
          <div class="user-information-section">
-            <span class="mat-title">{{model.name}}</span>
+            <span class="mat-title">{{model.fullName$ | async}}</span>
 
-            <ng-container *ngIf="model.additionalLines">
-               <span *ngFor="let additionalLine of model.additionalLines"
-                     class="mat-subheading-1">
-                  {{additionalLine}}
-               </span>
-            </ng-container>
+            <span *ngFor="let additionalLine of model.additionalLines$ | async"
+                  class="mat-subheading-1">
+               {{additionalLine}}
+            </span>
          </div>
       </div>
 
@@ -42,7 +40,7 @@
 
 </ng-container>
 
-<ng-container *ngIf="model.showLoginButton">
+<ng-container *ngIf="model.isLoginButtonVisible$ | async">
    <ns-button-raised [model]="model.loginButton"
                      (click)="service.handleLoginClick()">
    </ns-button-raised>
