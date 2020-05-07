@@ -6,6 +6,6 @@ export const routeNoPermissionRoutes: Route[] = [
    {
       path: routeNoPermission,
       loadChildren: () => import('./ns-page-no-permission.module')
-      .then(m => m.NsPageNoPermissionModule)
+         .then(m => m.NsPageNoPermissionModule)
    }
 ];

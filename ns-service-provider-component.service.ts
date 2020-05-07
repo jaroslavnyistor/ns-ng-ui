@@ -13,11 +13,10 @@ import { NsServiceProviderComponentModel } from './ns-service-provider-component
 import { NsPageNoPermissionService } from './page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.service';
 
-export abstract class NsServiceProviderComponentService<
-   TModel extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>,
+export abstract class NsServiceProviderComponentService<TModel extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>,
    TServiceProvider extends NsServiceProvider,
    TAppNavService extends NsNavigationService>
-   extends NsComponentService<TModel>{
+   extends NsComponentService<TModel> {
 
    protected get langService(): LocalizationLanguagesService {
       return this._serviceProvider.langService;

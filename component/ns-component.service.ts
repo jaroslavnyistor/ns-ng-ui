@@ -46,12 +46,12 @@ export abstract class NsComponentService<TModel extends NsComponentModel> extend
       this.model.startLoading();
 
       return source
-      .pipe(this.loadingFinished());
+         .pipe(this.loadingFinished());
    }
 
    protected pipeLoading(source: Observable<any>, ...operators: OperatorFunction<any, any>[]) {
       let result = source
-      .pipe(this.loadingStarted());
+         .pipe(this.loadingStarted());
 
       operators.forEach(operator => {
          result = result.pipe(operator);
@@ -62,22 +62,22 @@ export abstract class NsComponentService<TModel extends NsComponentModel> extend
 
    protected loadingStarted(): OperatorFunction<any, any> {
       return source => source
-      .pipe(
-         tap(() => this.model.startLoading())
-      );
+         .pipe(
+            tap(() => this.model.startLoading())
+         );
    }
 
    protected loadingFinished(): OperatorFunction<any, any> {
       return source => source
-      .pipe(
-         map(value => {
-            this.model.loadingFinished();
-            return value;
-         }),
-         catchError(error => {
-            this.model.loadingFailed();
-            return throwError(error);
-         })
-      );
+         .pipe(
+            map(value => {
+               this.model.loadingFinished();
+               return value;
+            }),
+            catchError(error => {
+               this.model.loadingFailed();
+               return throwError(error);
+            })
+         );
    }
 }

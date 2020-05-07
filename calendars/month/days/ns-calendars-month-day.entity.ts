@@ -9,6 +9,6 @@ export abstract class NsCalendarsMonthDayEntity {
 
    protected constructor(date: string) {
       this._date = NsDateTime.from(date)
-      .toDateOnlyString();
+         .toDateOnlyString();
    }
 }

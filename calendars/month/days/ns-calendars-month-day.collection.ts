@@ -91,16 +91,16 @@ export class NsCalendarsMonthDayCollection {
       }
 
       this._currentDate = NsDateTime.clone(newDate)
-      .toStartOfMonth();
+         .toStartOfMonth();
 
       this._fromDate = NsDateTime.clone(this._currentDate)
-      .toStartOfMonth()
-      .toString();
+         .toStartOfMonth()
+         .toString();
 
       this._tillDate = NsDateTime.clone(this._currentDate)
-      .toEndOfMonth()
-      .toEndOfDay()
-      .toString();
+         .toEndOfMonth()
+         .toEndOfDay()
+         .toString();
 
       this.buildWeeks();
 
@@ -117,7 +117,7 @@ export class NsCalendarsMonthDayCollection {
 
    private buildWeeks() {
       let date = NsDateTime.clone(this._currentDate)
-      .toStartOfWeek();
+         .toStartOfWeek();
 
       const weeks = [];
       for (let week = 0; week < CALENDAR_ROWS; week++) {
@@ -140,14 +140,14 @@ export class NsCalendarsMonthDayCollection {
 
    moveDateBack() {
       const date = NsDateTime.clone(this._currentDate)
-      .addMonths(-1);
+         .addMonths(-1);
 
       this.setDate(date);
    }
 
    moveToNow() {
       const date = NsDateTime.now()
-      .setBeginOfDay();
+         .setBeginOfDay();
 
       if (date.isSameMonthYear(this._currentDate)) {
          return;
@@ -158,7 +158,7 @@ export class NsCalendarsMonthDayCollection {
 
    moveDateForward() {
       const date = NsDateTime.clone(this._currentDate)
-      .addMonths(1);
+         .addMonths(1);
 
       this.setDate(date);
    }
@@ -195,17 +195,17 @@ export class NsCalendarsMonthDayCollection {
       calendarData.initializeFromArray(data, item => item.date);
 
       this._weeks$.value
-      .forEach(week => week.setData(calendarData));
+         .forEach(week => week.setData(calendarData));
    }
 
    find(date: NsDateTime): NsCalendarsMonthDayModel {
       let found: NsCalendarsMonthDayModel = null;
 
       this._weeks$.value
-      .some(week => {
-         found = week.find(date);
-         return found != null;
-      });
+         .some(week => {
+            found = week.find(date);
+            return found != null;
+         });
 
       return found;
    }

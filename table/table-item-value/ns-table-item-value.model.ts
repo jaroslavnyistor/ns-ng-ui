@@ -15,9 +15,9 @@ export class NsTableItemValueModel {
    constructor(langService: LocalizationLanguagesService) {
       const columns = [
          new NsTableColumnModel('item', langService.translate(LocalizedTextIdNikisoft.Item))
-         .applyWidth('65%'),
+            .applyWidth('65%'),
          new NsTableColumnModel('value', langService.translate(LocalizedTextIdNikisoft.Value))
-         .applyWidth('35%')
+            .applyWidth('35%')
       ];
 
       this._tableModel = new NsTableModel<NsTableItemValueRowEntity>(columns);

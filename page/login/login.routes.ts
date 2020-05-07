@@ -6,6 +6,6 @@ export const loginRoutes: Route[] = [
    {
       path: loginRoute,
       loadChildren: () => import('./login.module')
-      .then(m => m.LoginModule)
+         .then(m => m.LoginModule)
    }
 ];

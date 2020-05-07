@@ -26,10 +26,10 @@ export class NsCalendarsMonthWeekModel {
       let found: NsCalendarsMonthDayModel = null;
 
       this._days$.value
-      .some(day => {
-         found = day.isSameDate(date);
-         return found != null;
-      });
+         .some(day => {
+            found = day.isSameDate(date);
+            return found != null;
+         });
 
       return found;
    }

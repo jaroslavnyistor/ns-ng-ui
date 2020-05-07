@@ -35,7 +35,7 @@ export class NsPageListToolbarOrderModelCollection {
       };
 
       item.directions = option.directions
-      .map((direction, idx) => this.parseOptionDirection(id, option, item, direction, idx));
+         .map((direction, idx) => this.parseOptionDirection(id, option, item, direction, idx));
 
       return item;
    }

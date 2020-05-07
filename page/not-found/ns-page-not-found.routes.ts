@@ -6,7 +6,7 @@ export const notFoundRoutes: Route[] = [
    {
       path: routeNotFound,
       loadChildren: () => import('./ns-page-not-found.module')
-      .then(m => m.NsPageNotFoundModule)
+         .then(m => m.NsPageNotFoundModule)
    },
    {
       path: '**',

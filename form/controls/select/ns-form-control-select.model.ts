@@ -56,7 +56,7 @@ export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControl
 
       this.subscribeTo(
          this.service.getLoadListObservable()
-         .pipe(delay(0)),
+            .pipe(delay(0)),
          {
             next: data => this.handleDataLoaded(data),
             error: error => this.handleError(error)

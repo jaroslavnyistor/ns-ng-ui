@@ -1,7 +1,7 @@
 import { Provider, Type } from '@angular/core';
 import { Params } from '@angular/router';
 import { EMPTY, Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { flatMap, switchMap } from 'rxjs/operators';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
@@ -71,7 +71,7 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
 
       return obs$
          .pipe(
-            switchMap((value: Params) => {
+            flatMap((value: Params) => {
                const id = value.id;
 
                if (id === undefined) {

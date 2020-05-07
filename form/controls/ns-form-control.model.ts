@@ -257,12 +257,12 @@ export abstract class NsFormControlModel<TEntity,
 
    private processFormControlValueChanges() {
       return this.formControl.valueChanges
-      .pipe(
-         filter(value => {
-            const prevValue = this.formGroup.value[this.key];
-            return value !== prevValue;
-         })
-      );
+         .pipe(
+            filter(value => {
+               const prevValue = this.formGroup.value[this.key];
+               return value !== prevValue;
+            })
+         );
    }
 
    getValueChanges$(): Observable<any> {
