@@ -1,7 +1,9 @@
+import { Title } from '@angular/platform-browser';
 import { NsApiErrorResolverService } from '../utils/api/error/ns-api-error-resolver.service';
 import { NsAuthenticateService } from '../utils/authentication/ns-authenticate.service';
 import { LocalizationLanguagesService } from '../utils/localization/localization-languages.service';
 import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
+import { NsRouterService } from '../utils/navigation/ns-router.service';
 import { NsStorageService } from '../utils/storage/ns-storage.service';
 import { NsComponentModel } from './component/ns-component.model';
 import { NsDialogService } from './dialog/ns-dialog.service';
@@ -48,6 +50,14 @@ export abstract class NsServiceProviderComponentModel<TServiceProvider extends N
 
    protected get mediaQueryObserver(): NsMediaQueryObserver {
       return this._serviceProvider.mediaQueryObserver;
+   }
+
+   protected get routerService(): NsRouterService {
+      return this._serviceProvider.routerService;
+   }
+
+   protected get titleService(): Title {
+      return this._serviceProvider.titleService;
    }
 
    protected constructor(private readonly _serviceProvider: TServiceProvider) {
