@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { filter, mergeMap, switchMap } from 'rxjs/operators';
+import { filter, flatMap, map } from 'rxjs/operators';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
@@ -59,35 +59,32 @@ export class NsUserLogInInformationModel extends NsServiceProviderComponentModel
 
    private getIsLoginButtonVisible$(router: Router) {
       return router.events
-      .pipe(
-         filter(routerEvent => routerEvent instanceof NavigationEnd),
-         switchMap((routerEvent: NavigationEnd) => {
-            const foundLoginSegment = routerEvent.url.indexOf(loginRoute);
-            return of(foundLoginSegment > -1);
-         }),
-         mergeMap(isInLoginScreen => this.authService.isLoggedIn$
-            .pipe(
-               switchMap(isLoggedIn => of(!isLoggedIn && !isInLoginScreen))
+         .pipe(
+            filter(routerEvent => routerEvent instanceof NavigationEnd),
+            flatMap((routerEvent: NavigationEnd) => {
+               const foundLoginSegment = routerEvent.url.indexOf(loginRoute);
+               return of(foundLoginSegment > -1);
+            }),
+            flatMap(isInLoginScreen => this.authService.isLoggedIn$
+               .pipe(
+                  map(isLoggedIn => (!isLoggedIn && !isInLoginScreen))
+               )
             )
-         )
-      );
+         );
    }
 
    private getFullName$() {
       return this.authService.changes$
-      .pipe(
-         switchMap(auth => of(auth.fullName))
-      );
+         .pipe(
+            flatMap(auth => of(auth.fullName))
+         );
    }
 
    private getAdditionalLines$() {
       return this.authService.changes$
-      .pipe(
-         switchMap(auth => of([
-               auth.userName,
-               auth.email
-            ])
-         )
-      );
+         .pipe(
+            flatMap(auth => of([auth.userName, auth.email])
+            )
+         );
    }
 }
