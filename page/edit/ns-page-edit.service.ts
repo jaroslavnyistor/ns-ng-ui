@@ -8,19 +8,18 @@ import { NsNavigationService } from '../../../utils/navigation/ns-navigation.ser
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
-import { NsFormService, registerFormServiceService } from '../../form/ns-form.service';
+import { NsFormService, provideFormServiceService } from '../../form/ns-form.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditModel } from './ns-page-edit.model';
 
-export function registerPageEditService<TService extends NsPageEditService<any, any, any, any>>(service: Type<TService>):
-   Provider[] {
+export function providePageEditService<TService extends NsPageEditService<any, any, any, any>,
+   TModel extends NsPageEditModel<any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsPageEditService
-      },
-      registerFormServiceService(service)
+      { useExisting: service, provide: NsPageEditService },
+      model,
+      { useExisting: model, provide: NsPageEditModel },
+      provideFormServiceService(service, model)
    ];
 }
 
@@ -71,22 +70,22 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
       const obs$ = this._entityIdObservable || of({ id: 0 });
 
       return obs$
-      .pipe(
-         switchMap((value: Params) => {
-            const id = value.id;
+         .pipe(
+            switchMap((value: Params) => {
+               const id = value.id;
 
-            if (id === undefined) {
-               this.model.loadingFinished();
-               return EMPTY;
-            }
+               if (id === undefined) {
+                  this.model.loadingFinished();
+                  return EMPTY;
+               }
 
-            if (id === null) {
-               return of(null);
-            }
+               if (id === null) {
+                  return of(null);
+               }
 
-            return of(Number.parseFloat(value.id));
-         })
-      );
+               return of(Number.parseFloat(value.id));
+            })
+         );
    }
 
    private handleEntityIdLoaded(entityId: number) {

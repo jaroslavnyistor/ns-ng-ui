@@ -5,14 +5,13 @@ import { NsServiceProvider } from '../../ns-service-provider';
 import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
 import { NsPageDefaultModel } from './ns-page-default.model';
 
-export function registerPageDefaultService<TService extends NsPageDefaultService<any, any, any>>(service: Type<TService>):
-   Provider[] {
+export function providePageDefaultService<TService extends NsPageDefaultService<any, any, any>,
+   TModel extends NsPageDefaultModel<any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsPageDefaultService
-      }
+      { useExisting: service, provide: NsPageDefaultService },
+      model,
+      { useExisting: model, provide: NsPageDefaultModel },
    ];
 }
 

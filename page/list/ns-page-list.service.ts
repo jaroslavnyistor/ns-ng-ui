@@ -13,19 +13,17 @@ import { NsPageListModel } from './ns-page-list.model';
 import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-list-toolbar-order-model.collection';
 import { NsPageListToolbarOrderOption } from './toolbar/order/ns-page-list-toolbar-order.model';
 
-export function registerPageListService<TService extends NsPageListService<any, any, any, any, any>>(
-   service: Type<TService>): Provider[] {
+export function providePageListService<TService extends NsPageListService<any, any, any, any, any>,
+   TModel extends NsPageListModel<any, any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsPageListService
-      }
+      { useExisting: service, provide: NsPageListService },
+      model,
+      { useExisting: model, provide: NsPageListModel }
    ];
 }
 
-export abstract class NsPageListService<
-   TModel extends NsPageListModel<TListItemModel, TListItemEntity, TServiceProvider, TAppNavService>,
+export abstract class NsPageListService<TModel extends NsPageListModel<TListItemModel, TListItemEntity, TServiceProvider, TAppNavService>,
    TListItemModel extends NsPageListLayoutItemEntity,
    TListItemEntity,
    TServiceProvider extends NsServiceProvider,

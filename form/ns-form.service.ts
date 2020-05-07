@@ -4,14 +4,13 @@ import { NsServiceProvider } from '../ns-service-provider';
 import { NsServiceProviderComponentService } from '../ns-service-provider-component.service';
 import { NsFormModel } from './ns-form.model';
 
-export function registerFormServiceService<TService extends NsFormService<any, any, any, any>>(service: Type<TService>):
-   Provider[] {
+export function provideFormServiceService<TService extends NsFormService<any, any, any, any>,
+   TModel extends NsFormModel<any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsFormService
-      }
+      { useExisting: service, provide: NsFormService },
+      model,
+      { useExisting: model, provide: NsFormModel }
    ];
 }
 

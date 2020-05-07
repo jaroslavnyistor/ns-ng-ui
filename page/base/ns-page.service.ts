@@ -8,11 +8,9 @@ export function providePageService<TService extends NsPageService<any, any, any>
    TModel extends NsPageModel<any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsPageService
-      },
-      model
+      { useExisting: service, provide: NsPageService },
+      model,
+      { useExisting: model, provide: NsPageModel },
    ];
 }
 

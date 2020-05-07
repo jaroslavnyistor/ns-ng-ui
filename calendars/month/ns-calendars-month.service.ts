@@ -7,14 +7,13 @@ import { NsServiceProviderComponentService } from '../../ns-service-provider-com
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthModel } from './ns-calendars-month.model';
 
-export function registerCalendarsMonthService<TService extends NsCalendarsMonthService<any, any, any>>(
-   service: Type<TService>): Provider[] {
+export function provideCalendarsMonthService<TService extends NsCalendarsMonthService<any, any, any>,
+   TModel extends NsCalendarsMonthModel<any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsCalendarsMonthService
-      }
+      { useExisting: service, provide: NsCalendarsMonthService },
+      model,
+      { useExisting: model, provide: NsCalendarsMonthModel }
    ];
 }
 

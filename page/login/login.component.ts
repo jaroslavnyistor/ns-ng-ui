@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NsComponentBase } from '../../component/ns-component.base';
-import { registerPageEditService } from '../edit/ns-page-edit.service';
+import { providePageEditService } from '../edit/ns-page-edit.service';
 import { LoginModel } from './login.model';
 import { LoginService } from './login.service';
 
@@ -9,8 +9,7 @@ import { LoginService } from './login.service';
    templateUrl: './login.component.html',
    styles: [],
    providers: [
-      registerPageEditService(LoginService),
-      LoginModel
+      providePageEditService(LoginService, LoginModel)
    ]
 })
 export class LoginComponent extends NsComponentBase<LoginService, LoginModel> {

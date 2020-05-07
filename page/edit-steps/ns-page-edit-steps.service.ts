@@ -6,19 +6,18 @@ import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { NsFormStepsService, registerPageFormStepsService } from '../../form/steps/ns-form-steps.service';
+import { NsFormStepsService, providePageFormStepsService } from '../../form/steps/ns-form-steps.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditStepsModel } from './ns-page-edit-steps.model';
 
-export function registerPageEditStepsService<TService extends NsPageEditStepsService<any, any, any, any>>(
-   service: Type<TService>): Provider[] {
+export function providePageEditStepsService<TService extends NsPageEditStepsService<any, any, any, any>,
+   TModel extends NsPageEditStepsModel<any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
    return [
       service,
-      {
-         useExisting: service,
-         provide: NsPageEditStepsService
-      },
-      registerPageFormStepsService(service)
+      { useExisting: service, provide: NsPageEditStepsService },
+      model,
+      { useExisting: model, provide: NsPageEditStepsModel },
+      providePageFormStepsService(service, model)
    ];
 }
 
@@ -61,22 +60,22 @@ export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel
       const obs$ = this._entityIdObservable || of({ id: 0 });
 
       return obs$
-      .pipe(
-         switchMap((value: Params) => {
-            const id = value.id;
+         .pipe(
+            switchMap((value: Params) => {
+               const id = value.id;
 
-            if (id === undefined) {
-               this.model.loadingFinished();
-               return EMPTY;
-            }
+               if (id === undefined) {
+                  this.model.loadingFinished();
+                  return EMPTY;
+               }
 
-            if (id === null) {
-               return of(null);
-            }
+               if (id === null) {
+                  return of(null);
+               }
 
-            return of(Number.parseFloat(value.id));
-         })
-      );
+               return of(Number.parseFloat(value.id));
+            })
+         );
    }
 
    private handleEntityIdLoaded(entityId: number) {
