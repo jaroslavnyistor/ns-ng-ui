@@ -15,7 +15,7 @@ export class NsPageToolbarComponent extends NsComponentBase<NsPageService<any, a
    readonly menuIcon = NsIcon.Menu;
    @Input() headerItems!: QueryList<NsPageToolbarHeaderItemDirective>;
 
-   constructor(service: NsPageService<any, any, any>, @Inject(DI_NS_VERSION) public version: string) {
+   constructor(service: NsPageService<any, any, any>, @Inject(DI_NS_VERSION) public readonly version: string) {
       super(service);
    }
 }
