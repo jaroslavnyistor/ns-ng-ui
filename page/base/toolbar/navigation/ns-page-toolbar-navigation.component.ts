@@ -1,45 +1,16 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Inject } from '@angular/core';
+import { NsComponentBase } from '../../../../component/ns-component.base';
 import { DI_NS_APP_LOGO } from '../../../../ns-tokens.di';
-import { NsToolbarNavigationItemGroupModel } from './items/ns-toolbar-navigation-item-group.model';
-import { NsToolbarNavigationItemModel } from './items/ns-toolbar-navigation-item.model';
+import { NsPageModel } from '../../ns-page.model';
+import { NsPageService } from '../../ns-page.service';
 
 @Component({
    selector: 'ns-page-toolbar-navigation',
    templateUrl: './ns-page-toolbar-navigation.component.html',
    styleUrls: ['./ns-page-toolbar-navigation.component.sass']
 })
-export class NsPageToolbarNavigationComponent {
-   @Input() isMenuOpened: boolean;
-   @Input() navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
-   @Output() isMenuOpenedChange: EventEmitter<boolean> = new EventEmitter();
-
-   get logo(): string {
-      return this._logo;
-   }
-
-   constructor(@Inject(DI_NS_APP_LOGO) private _logo: string) {
-   }
-
-   handleMenuOpened() {
-      if (this.isMenuOpened === false) {
-         this.updateAndEmitMenuOpenedState();
-      }
-   }
-
-   handleMenuClosed() {
-      if (this.isMenuOpened === true) {
-         this.updateAndEmitMenuOpenedState();
-      }
-   }
-
-   private updateAndEmitMenuOpenedState() {
-      this.isMenuOpened = !this.isMenuOpened;
-      this.isMenuOpenedChange.emit(this.isMenuOpened);
-   }
-
-   handleItemClicked(item: NsToolbarNavigationItemModel) {
-      this.updateAndEmitMenuOpenedState();
-      item.action();
+export class NsPageToolbarNavigationComponent extends NsComponentBase<NsPageService<any, any, any>, NsPageModel<any, any>> {
+   constructor(service: NsPageService<any, any, any>, @Inject(DI_NS_APP_LOGO) public readonly logo: string) {
+      super(service);
    }
 }

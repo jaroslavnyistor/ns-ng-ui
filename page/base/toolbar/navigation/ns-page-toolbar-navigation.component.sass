@@ -1,6 +1,6 @@
 $width: 350px
-$logo-padding-x: 40px
-$logo-padding-y: 20px
+$logo-padding-x: 20px
+$logo-padding-y: 10px
 $width-logo: $width - ($logo-padding-x * 2)
 
 .ns-toolbar-nav-container
@@ -14,7 +14,12 @@ $width-logo: $width - ($logo-padding-x * 2)
 mat-sidenav
   width: $width
 
-  .sidenav-logo
-    width: $width-logo
-    max-height: 125px
-    margin: $logo-padding-y $logo-padding-x
+  .logo-container
+
+    .sidenav-logo
+      width: $width-logo
+      max-height: 125px
+      margin: $logo-padding-y $logo-padding-x
+
+    h2
+      text-align: center

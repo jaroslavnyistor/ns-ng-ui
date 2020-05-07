@@ -1,14 +1,9 @@
-<ns-loading *ngIf="isNavigating$ | async">
+<ns-loading *ngIf="model.isNavigating$ | async">
 </ns-loading>
 
-<ns-page-toolbar-navigation *ngIf="!(isNavigating$ | async)"
-                            [(isMenuOpened)]="isMenuOpened"
-                            [navigationItems$]="navigationItems$">
+<ns-page-toolbar-navigation *ngIf="!(model.isNavigating$ | async)">
    <div class="ns-page-container">
-      <ns-page-toolbar [toolbarTitle]="pageTitle"
-                       [(isMenuOpened)]="isMenuOpened"
-                       [headerItems]="headerItems"
-                       [isNavigationVisible]="isNavigationVisible">
+      <ns-page-toolbar [headerItems]="headerItems">
       </ns-page-toolbar>
 
       <div class="ns-page-content ns-page-background">

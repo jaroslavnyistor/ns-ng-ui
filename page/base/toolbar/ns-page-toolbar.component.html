@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
    <mat-toolbar-row>
-      <ns-icon-default *ngIf="isNavigationVisible"
+      <ns-icon-default *ngIf="model.isNavigationVisible$ | async"
                        [icon]="menuIcon"
                        class="menu-icon"
-                       (click)="handleMenuOpened()">
+                       (click)="model.toggleMenuOpened()">
       </ns-icon-default>
 
       <div class="title-block">
-         <div class="title-block-item">{{toolbarTitle}}</div>
+         <div class="title-block-item">{{model.pageTitle}}</div>
          <div class="title-block-item sub-title">{{version}}</div>
       </div>
 

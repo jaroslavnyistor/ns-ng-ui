@@ -1,7 +1,7 @@
 import { Component, ContentChildren, Input, QueryList } from '@angular/core';
-import { Observable } from 'rxjs';
-import { NsRouterService } from '../../../utils/navigation/ns-router.service';
-import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
+import { NsComponentBase } from '../../component/ns-component.base';
+import { NsPageModel } from './ns-page.model';
+import { NsPageService } from './ns-page.service';
 import { NsPageToolbarHeaderItemDirective } from './toolbar/ns-page-toolbar-header-item.directive';
 
 @Component({
@@ -9,21 +9,13 @@ import { NsPageToolbarHeaderItemDirective } from './toolbar/ns-page-toolbar-head
    templateUrl: './ns-page.component.html',
    styleUrls: ['./ns-page.component.sass']
 })
-export class NsPageComponent {
-   isMenuOpened = false;
-
+export class NsPageComponent extends NsComponentBase<NsPageService<any, any, any>, NsPageModel<any, any>> {
    @Input() pageTitle: string;
 
    @ContentChildren(NsPageToolbarHeaderItemDirective, { descendants: true })
    headerItems!: QueryList<NsPageToolbarHeaderItemDirective>;
 
-   @Input() isNavigationVisible: boolean;
-   @Input() navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
-
-   get isNavigating$(): Observable<boolean> {
-      return this._routerService.isNavigating$;
-   }
-
-   constructor(private _routerService: NsRouterService) {
+   constructor(service: NsPageService<any, any, any>) {
+      super(service);
    }
 }

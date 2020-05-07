@@ -1,6 +1,9 @@
-import { Component, EventEmitter, Inject, InjectionToken, Input, Output, QueryList } from '@angular/core';
+import { Component, Inject, Input, QueryList } from '@angular/core';
+import { NsComponentBase } from '../../../component/ns-component.base';
 import { NsIcon } from '../../../icon/ns-icon.enum';
 import { DI_NS_VERSION } from '../../../ns-tokens.di';
+import { NsPageModel } from '../ns-page.model';
+import { NsPageService } from '../ns-page.service';
 import { NsPageToolbarHeaderItemDirective } from './ns-page-toolbar-header-item.directive';
 
 @Component({
@@ -8,24 +11,11 @@ import { NsPageToolbarHeaderItemDirective } from './ns-page-toolbar-header-item.
    templateUrl: './ns-page-toolbar.component.html',
    styleUrls: ['./ns-page-toolbar.component.sass']
 })
-export class NsPageToolbarComponent {
-   @Input() isNavigationVisible: boolean;
-
-   get menuIcon(): NsIcon {
-      return NsIcon.Menu;
-   }
-
-   @Input() toolbarTitle: string;
-   @Input() isMenuOpened: boolean;
+export class NsPageToolbarComponent extends NsComponentBase<NsPageService<any, any, any>, NsPageModel<any, any>> {
+   readonly menuIcon = NsIcon.Menu;
    @Input() headerItems!: QueryList<NsPageToolbarHeaderItemDirective>;
 
-   @Output() isMenuOpenedChange: EventEmitter<boolean> = new EventEmitter();
-
-   constructor(@Inject(DI_NS_VERSION) public version: string) {
-   }
-
-   handleMenuOpened() {
-      this.isMenuOpened = !this.isMenuOpened;
-      this.isMenuOpenedChange.emit(this.isMenuOpened);
+   constructor(service: NsPageService<any, any, any>, @Inject(DI_NS_VERSION) public version: string) {
+      super(service);
    }
 }
