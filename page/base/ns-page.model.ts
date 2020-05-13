@@ -13,6 +13,7 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 
    private readonly _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
+   private readonly _pageVisibility$: Observable<object>;
    private _isMenuOpened = false;
 
    abstract get pageTitle(): string;
@@ -27,12 +28,21 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
       return this.routerService.isNavigating$;
    }
 
+   get pageVisibility$(): Observable<object> {
+      return this._pageVisibility$;
+   }
+
    get isMenuOpened(): boolean {
       return this._isMenuOpened;
    }
 
    protected constructor(serviceProvider: TServiceProvider) {
       super(serviceProvider);
+
+      this._pageVisibility$ = this.isNavigating$
+         .pipe(
+            map(isNavigating => isNavigating ? { display: 'none'} : null)
+         );
 
       this._navigationItems$ = this.buildNavigationItems$();
    }
@@ -80,6 +90,17 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
       super.onInit();
 
       this.titleService.setTitle(this.pageTitle);
+
+      this.subscribeTo(
+         this.isNavigating$,
+         {
+            next: isNavigating => {
+               if (this.isMenuOpened && isNavigating) {
+                  this._isMenuOpened = false
+               }
+            }
+         }
+      )
    }
 
    handleMenuOpened() {
