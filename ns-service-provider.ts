@@ -11,22 +11,6 @@ import { NsMediaQueryObserver } from './ns-media-query-observer';
 import { NsPageNoPermissionService } from './page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from './page/not-found/ns-page-not-found.service';
 
-export function provideServiceProvider<TServiceProvider extends NsServiceProvider, TNavService extends NsNavigationService>(
-   serviceProvider: Type<TServiceProvider>, navService: Type<TNavService>): Provider[] {
-   return [
-      serviceProvider,
-      {
-         useExisting: serviceProvider,
-         provide: NsServiceProvider
-      },
-      navService,
-      {
-         useExisting: navService,
-         provide: NsNavigationService
-      }
-   ];
-}
-
 export abstract class NsServiceProvider {
    get langService(): LocalizationLanguagesService {
       return this._langService;

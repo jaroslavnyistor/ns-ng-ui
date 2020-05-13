@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { DI_NS_APP_LOGO } from '../../ns-tokens.di';
+import { DI_NS_APP_LOGO } from '../../ns-di.configuration';
 
 @Component({
    selector: 'ns-page-no-permission',

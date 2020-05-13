@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { NsComponentBase } from '../../../../component/ns-component.base';
-import { DI_NS_APP_LOGO, DI_NS_VERSION } from '../../../../ns-tokens.di';
+import { DI_NS_APP_LOGO, DI_NS_VERSION } from '../../../../ns-di.configuration';
 import { NsPageModel } from '../../ns-page.model';
 import { NsPageService } from '../../ns-page.service';
 
