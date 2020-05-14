@@ -1,4 +1,5 @@
 import { NsDateTime } from '../../../../utils/dates/ns-date-time';
+import { NsNgClassBreakpoints } from '../../../ns-media-query-observer';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 
 export class NsCalendarsMonthDayModel {
@@ -7,17 +8,18 @@ export class NsCalendarsMonthDayModel {
    private readonly _dateOnlyString: string;
    private readonly _day: number;
    private readonly _isSameMonthYear: boolean;
-   private readonly _weekDayNumberCssClass: string[];
-   private _weekDayCssClass: string[];
+   private readonly _isWeekend: boolean;
+   private readonly _weekDayNumberNgClass: NsNgClassBreakpoints;
+   private _weekDayNgClass: NsNgClassBreakpoints;
    private _isSelected = false;
    private _data: NsCalendarsMonthDayEntity;
 
-   get weekDayCssClass(): string[] {
-      return this._weekDayCssClass;
+   get weekDayNumberNgClass(): NsNgClassBreakpoints {
+      return this._weekDayNumberNgClass;
    }
 
-   get weekDayNumberCssClass(): string[] {
-      return this._weekDayNumberCssClass;
+   get weekDayNgClass(): NsNgClassBreakpoints {
+      return this._weekDayNgClass;
    }
 
    get date(): NsDateTime {
@@ -69,27 +71,34 @@ export class NsCalendarsMonthDayModel {
       this._day = this._date.day;
 
       this._isSameMonthYear = isSameMonthYear;
+      this._isWeekend = this._date.isWeekend;
 
       this.updateWeekDayCssClass();
 
-      this._weekDayNumberCssClass = [
-         'week-row-day-number',
-         this.isToday() ? 'today ns-primary-background' : '',
-         this.isSameMonthYear ? '' : 'today-diff-month',
-      ];
+      this._weekDayNumberNgClass = {
+         all: [
+            'week-row-day-number',
+            this.isToday() ? 'today ns-primary-background' : '',
+            this.isSameMonthYear ? '' : 'today-diff-month',
+         ]
+      };
    }
 
    private updateWeekDayCssClass() {
-      const itemCss = this.isSameMonthYear
-         ? 'ns-list-item'
-         : '';
-      this._weekDayCssClass = [
+      const itemCss = this.isSameMonthYear ? 'ns-list-item' : '';
+
+      const weekDayNgClass = [
          'week-row-day',
          this.isSameMonthYear ? '' : 'is-different-month',
-         this.isSelected
-            ? 'ns-list-item-selected'
-            : itemCss
+         this.isSelected ? 'ns-list-item-selected' : itemCss,
+         this._isWeekend ? 'is-weekend' : ''
       ];
+
+      this._weekDayNgClass = {
+         all: weekDayNgClass,
+         xl: ['font-x-large', ...weekDayNgClass],
+         lg: ['font-large', ...weekDayNgClass]
+      };
    }
 
    isToday() {

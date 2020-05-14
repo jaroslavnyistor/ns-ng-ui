@@ -36,7 +36,7 @@
                     [icon]="NsIcon.Details"
                     [isClickable]="true"
                     [disabled]="!model.hasSelectedDayData"
-                    (click)="model.isRightPanelOpened = true"
+                    (click)="model.hasSelectedDayData && model.openRightPanel()"
                     [tooltip]="'Details' | translate">
    </ns-icon-default>
 

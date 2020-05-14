@@ -67,3 +67,12 @@ export enum NsMediaQueryBreakpoint {
 export type NsMediaQueryBreakpointChanges = {
    [key: string]: () => void;
 };
+
+export interface NsNgClassBreakpoints {
+   all: string[];
+   xl?: string[];
+   lg?: string[];
+   md?: string[];
+   sm?: string[];
+   xs?: string[];
+}

@@ -6,9 +6,11 @@
 
       <div *ngFor="let weekDay of week.days$ | async"
            fxFlex="1 1 0"
-           [ngClass]="weekDay.weekDayCssClass"
+           [ngClass]="weekDay.weekDayNgClass.all"
+           [ngClass.xl]="weekDay.weekDayNgClass.xl"
+           [ngClass.lg]="weekDay.weekDayNgClass.lg"
            (click)="model.handleSelected(weekDay)">
-      <span [ngClass]="weekDay.weekDayNumberCssClass">
+      <span [ngClass]="weekDay.weekDayNumberNgClass.all">
         {{ weekDay.day }}
       </span>
 
