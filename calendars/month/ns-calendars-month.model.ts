@@ -174,4 +174,8 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
          }
       );
    }
+
+   openRightPanel() {
+      return this.isRightPanelOpened = true;
+   }
 }
