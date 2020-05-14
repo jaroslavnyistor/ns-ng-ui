@@ -120,7 +120,9 @@ export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel
    }
 
    private save() {
-      this.model.startSave();
+      const currentEntity = this.model.currentEntity;
+
+      this.model.startSave(currentEntity);
 
       this.subscribeTo(
          this.withLoading(this.performSave(this.model)),
