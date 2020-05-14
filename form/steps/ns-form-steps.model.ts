@@ -37,7 +37,7 @@ export abstract class NsFormStepsModel<TEntity,
       return this.stepper != null && this.stepper.selectedIndex < this._lastStepIndex;
    }
 
-   protected constructor(entity: TEntity, serviceProvider: TServiceProvider) {
-      super(entity, serviceProvider);
+   protected constructor(serviceProvider: TServiceProvider) {
+      super(serviceProvider);
    }
 }

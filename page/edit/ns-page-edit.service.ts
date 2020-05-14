@@ -131,10 +131,12 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
    }
 
    private save() {
-      this.model.startSave();
+      const currentEntity = this.model.currentEntity;
+
+      this.model.startSave(currentEntity);
 
       this.subscribeTo(
-         this.withLoading(this.performSave(this.model)),
+         this.withLoading(this.performSave(this.model, currentEntity)),
          {
             next: result => this.onSaveSuccess(result),
             error: (error: NsApiResponseError) => this.model.resolveEntityLoadingError(error)
@@ -142,7 +144,7 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
       );
    }
 
-   protected abstract performSave(model: TModel): Observable<any>;
+   protected abstract performSave(model: TModel, entity: TEntity): Observable<any>;
 
    private onSaveSuccess(result?: any): void {
       this.finishEditing(result);

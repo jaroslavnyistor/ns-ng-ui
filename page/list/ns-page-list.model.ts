@@ -210,7 +210,7 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
 
    protected constructor(
       serviceProvider: TServiceProvider,
-      private readonly _apiErrorMapper: any = null
+      private readonly _apiErrorMapper: any = nsApiErrorMapper,
    ) {
       super(serviceProvider);
 
@@ -232,7 +232,6 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
    resolveServerApiError(error: NsApiResponseError) {
       this._pageErrorMessages = this.apiErrorResolverService.resolve(
          this._apiErrorMapper,
-         this.langService,
          error
       );
    }

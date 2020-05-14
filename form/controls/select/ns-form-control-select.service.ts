@@ -20,7 +20,6 @@ export abstract class NsFormControlSelectService<TSelectItem extends NsFormContr
    parseError(error: any): string {
       const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
          nsApiErrorMapper,
-         this._serviceProvider.langService,
          error
       );
 

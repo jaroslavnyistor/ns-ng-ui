@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { nsAuthenticateResponseErrorResolver } from '../../../utils/authentication/ns-authenticate-response.error';
+import { nsAuthenticateErrorMapper } from '../../../utils/authentication/ns-authenticate-error.mapper';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsFormControlInputModel } from '../../form/controls/input/ns-form-control-input.model';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditModel } from '../edit/ns-page-edit.model';
-import { LoginEntity, newLoginEntity } from './login.entity';
+import { LoginEntity } from './login.entity';
 
 const keyState = 'login';
 
@@ -23,7 +23,7 @@ export class LoginModel extends NsPageEditModel<LoginEntity, NsServiceProvider, 
    }
 
    constructor(serviceProvider: NsServiceProvider) {
-      super(newLoginEntity(), nsAuthenticateResponseErrorResolver, serviceProvider);
+      super(serviceProvider, nsAuthenticateErrorMapper);
 
       this._userName = this.addText({
          key: 'userName',

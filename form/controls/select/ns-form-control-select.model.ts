@@ -1,20 +1,21 @@
+import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { NsFormModel } from '../../ns-form.model';
-import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlSelectItemEntity } from './ns-form-control-select-item.entity';
 import { NsFormControlSelectConfiguration } from './ns-form-control-select.configuration';
 import { NsFormControlSelectService } from './ns-form-control-select.service';
 
-export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControlSelectItemEntity>
-   extends NsFormControlModel<TEntity, NsFormControlSelectModel<TEntity, TSelectItem>, NsFormControl> {
+export abstract class NsFormControlSelectModel<TEntity,
+   TService extends NsFormControlSelectService<TSelectItem>,
+   TSelectItem extends NsFormControlSelectItemEntity>
+   extends NsFormControlModel<TEntity, FormControl, NsFormControlSelectConfiguration<TService, TSelectItem>> {
    private readonly _data$: BehaviorSubject<TSelectItem[]>;
    private readonly _textProperty: string;
-   private _service: NsFormControlSelectService<TSelectItem>;
+   private readonly _service: TService;
    private _isLoading = false;
 
-   get service(): NsFormControlSelectService<TSelectItem> {
+   protected get service(): TService {
       return this._service;
    }
 
@@ -30,21 +31,13 @@ export class NsFormControlSelectModel<TEntity, TSelectItem extends NsFormControl
       return this._isLoading;
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>,
-               config: NsFormControlSelectConfiguration<TSelectItem>
-   ) {
-      super(parent, config);
+   protected constructor(config: NsFormControlSelectConfiguration<TService, TSelectItem>) {
+      super(new FormControl(), config);
 
       this._data$ = new BehaviorSubject([]);
       this._textProperty = config.textProperty;
 
-      this.withService(config.service);
-   }
-
-   withService(service: NsFormControlSelectService<TSelectItem>): this {
-      this._service = service;
-
-      return this;
+      this._service = config.service;
    }
 
    clearValue() {

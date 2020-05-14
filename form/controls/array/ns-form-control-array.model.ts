@@ -1,27 +1,26 @@
+import { FormArray } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../../ns-service-provider';
-import { NsFormModel } from '../../ns-form.model';
-import { NsFormArray } from '../ns-form-array';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlArrayItemEntity } from './ns-form-control-array-item.entity';
 import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model';
 import { NsFormControlArrayConfiguration } from './ns-form-control-array.configuration';
 import { NsFormControlArrayService } from './ns-form-control-array.service';
 
-export class NsFormControlArrayModel<TEntity,
+export abstract class NsFormControlArrayModel<TEntity,
+   TService extends NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItemEntity extends NsFormControlArrayItemEntity,
    TServiceProvider extends NsServiceProvider,
    TAppNavService extends NsNavigationService>
-   extends NsFormControlModel<TEntity,
-      NsFormControlArrayModel<TEntity, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>,
-      NsFormArray> {
+   extends NsFormControlModel<TEntity, FormArray,
+      NsFormControlArrayConfiguration<TService, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>> {
 
    private readonly _formModels$: BehaviorSubject<TArrayItem[]>;
    private readonly _canDeleteItems = true;
-   private _service: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>;
+   private readonly _service: TService;
 
    get formModels$(): Observable<TArrayItem[]> {
       return this._formModels$;
@@ -39,10 +38,14 @@ export class NsFormControlArrayModel<TEntity,
       return this._canDeleteItems;
    }
 
-   constructor(parent: NsFormModel<TEntity, TServiceProvider, TAppNavService>,
-               config: NsFormControlArrayConfiguration
+   protected get service(): TService {
+      return this._service;
+   }
+
+   protected constructor(
+      config: NsFormControlArrayConfiguration<TService, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>
    ) {
-      super(parent, config);
+      super(new FormArray([]), config);
 
       this._formModels$ = new BehaviorSubject<TArrayItem[]>([]);
 
@@ -50,29 +53,19 @@ export class NsFormControlArrayModel<TEntity,
 
       this.defaultValue = nsNull(config.defaultValue, []);
 
-      this.withService(config.service);
+      this._service = config.service;
+
+      this.mapEntitiesToFormModels(this.value);
    }
 
    clearValue() {
       this.mapEntitiesToFormModels(this.defaultValue);
    }
 
-   withService(value: NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>): this {
-      if (value == null) {
-         return this;
-      }
+   protected handleValueChanged(newValue: any) {
+      super.handleValueChanged(newValue);
 
-      this._service = value;
-
-      this.mapEntitiesToFormModels(this._initialValue);
-
-      return this;
-   }
-
-   onInitialEntitySet(value: any): void {
-      super.onInitialEntitySet(value);
-
-      this.mapEntitiesToFormModels(value);
+      this.mapEntitiesToFormModels(newValue);
    }
 
    private mapEntitiesToFormModels(entities: TArrayItemEntity[]): void {
@@ -93,7 +86,7 @@ export class NsFormControlArrayModel<TEntity,
       const formModels = [...this.formModels];
 
       const lastFormModel = formModels.length === 0 ? null : formModels[formModels.length - 1];
-      const entity = lastFormModel == null ? null : lastFormModel.clonedCurrentEntity;
+      const entity = lastFormModel == null ? null : lastFormModel.currentEntity;
       const newEntityItem = this._service.createNewEntity(entity);
 
       const formModel = this.createNewFormModel(newEntityItem);
@@ -107,7 +100,6 @@ export class NsFormControlArrayModel<TEntity,
       this.formControl.push(newFormModel.formGroup);
 
       newFormModel.onInit();
-      newFormModel.onInitialEntitySet();
 
       return newFormModel;
    }

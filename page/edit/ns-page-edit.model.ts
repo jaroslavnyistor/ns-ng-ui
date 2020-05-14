@@ -1,3 +1,4 @@
+import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
@@ -21,7 +22,6 @@ export abstract class NsPageEditModel<TEntity,
    private _positiveButton: NsButtonRaisedModel;
    private _pageErrorMessages = [];
    private _savedEntity: TEntity;
-   private _entityToSave: TEntity;
 
    get hasSubtitle(): boolean {
       return this._hasSubtitle;
@@ -68,16 +68,11 @@ export abstract class NsPageEditModel<TEntity,
       return this._savedEntity;
    }
 
-   get entityToSave(): TEntity {
-      return this._entityToSave;
-   }
-
    protected constructor(
-      entity: TEntity,
-      private _serverApiErrorMapper: any,
-      serviceProvider: TServiceProvider
+      serviceProvider: TServiceProvider,
+      private readonly _apiErrorMapper: any = nsApiErrorMapper,
    ) {
-      super(entity, serviceProvider);
+      super(serviceProvider);
 
       this.negativeButton = new NsButtonDefaultModel('');
       this.positiveButton = new NsButtonRaisedModel('');
@@ -85,8 +80,7 @@ export abstract class NsPageEditModel<TEntity,
 
    resolveEntityLoadingError(error: NsApiResponseError) {
       this.pageErrorMessages = this.apiErrorResolverService.resolve(
-         this._serverApiErrorMapper,
-         this.langService,
+         this._apiErrorMapper,
          error
       );
    }
@@ -97,10 +91,8 @@ export abstract class NsPageEditModel<TEntity,
       return this.isFormValid;
    }
 
-   startSave() {
-      this._entityToSave = this.clonedCurrentEntity;
-
-      this.onBeforeEntitySaved(this.initialEntity, this._entityToSave);
+   startSave(currentEntity: TEntity) {
+      this.onBeforeEntitySaved(this.initialEntity, currentEntity);
    }
 
    protected onBeforeEntitySaved(initialEntity: TEntity, entityToSave: TEntity) {
@@ -110,7 +102,7 @@ export abstract class NsPageEditModel<TEntity,
 
    getState(): any {
       return {
-         [keyStateEntity]: this.clonedCurrentEntity
+         [keyStateEntity]: this.currentEntity
       };
    }
 

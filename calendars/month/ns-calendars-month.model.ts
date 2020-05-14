@@ -88,16 +88,12 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
 
    protected constructor(
       serviceProvider: TServiceProvider,
-      private readonly _serverApiErrorMapper?: any,
+      private readonly _apiErrorMapper: any = nsApiErrorMapper,
    ) {
       super(serviceProvider);
 
       this._weekDayNames$ = new BehaviorSubject<string[]>([]);
       this._days = new NsCalendarsMonthDayCollection();
-
-      if (_serverApiErrorMapper == null) {
-         this._serverApiErrorMapper = nsApiErrorMapper;
-      }
 
       this.configureWeekDayNamesMediaQueryBreakpoints();
    }
@@ -125,8 +121,7 @@ export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServicePr
 
    resolveApiError(error: NsApiResponseError) {
       this.errorMessages = this.apiErrorResolverService.resolve(
-         this._serverApiErrorMapper,
-         this.langService,
+         this._apiErrorMapper,
          error
       );
    }

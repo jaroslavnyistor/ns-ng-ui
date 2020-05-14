@@ -1,52 +1,47 @@
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsStringLength } from '../../../../utils/helpers/strings/ns-helpers-strings';
-import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
 import { NsFormControlLengthMinValidator } from '../../validators/provided/ns-form-control-length-min.validator';
 import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
 import { NsFormControlValueMinValidator } from '../../validators/provided/ns-form-control-value-min.validator';
-import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlInputType } from './ns-form-control-input-type.enum';
 import { NsFormControlInputConfiguration } from './ns-form-control-input.configuration';
 
 export class NsFormControlInputModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControlInputModel<TEntity>, NsFormControl> {
+   extends NsFormControlModel<TEntity, FormControl, NsFormControlInputConfiguration> {
    private readonly _type: NsFormControlInputType;
-   private readonly _maxLength: number;
-   private readonly _minValue: number;
-   private readonly _maxValue: number;
-   private _remainingCharactersFormatted: string;
+   private _remainingCharacters$: Observable<string>;
 
    get type(): NsFormControlInputType {
       return this._type;
    }
 
    get hasMaxLengthSet(): boolean {
-      return this._maxLength != null;
+      return this._config.maxLength != null;
    }
 
    get maxLength(): number {
-      return this._maxLength;
-   }
-
-   get remainingCharactersFormatted(): string {
-      return this._remainingCharactersFormatted;
+      return this._config.maxLength;
    }
 
    get minValue(): number {
-      return this._minValue;
+      return this._config.minValue;
    }
 
    get maxValue(): number {
-      return this._maxValue;
+      return this._config.maxValue;
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>,
-               type: NsFormControlInputType,
-               config: NsFormControlInputConfiguration
-   ) {
-      super(parent, config);
+   get remainingCharacters$(): Observable<string> {
+      return this._remainingCharacters$;
+   }
+
+   constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
+      super(new FormControl(), config);
 
       this._type = type;
 
@@ -54,38 +49,38 @@ export class NsFormControlInputModel<TEntity>
          this.addValidator(new NsFormControlLengthMinValidator(config.minLength));
       }
 
-      this._maxLength = config.maxLength;
-      if (this._maxLength != null) {
-         this.addValidator(new NsFormControlLengthMaxValidator(this._maxLength));
+      if (this.maxLength != null) {
+         this.addValidator(new NsFormControlLengthMaxValidator(this.maxLength));
       }
 
-      this._minValue = config.minValue;
-      if (this._minValue != null) {
-         this.addValidator(new NsFormControlValueMinValidator(this._minValue));
+      if (this.minValue != null) {
+         this.addValidator(new NsFormControlValueMinValidator(this.minValue));
       }
 
-      this._maxValue = config.maxValue;
-      if (this._maxValue != null) {
-         this.addValidator(new NsFormControlValueMaxValidator(this._maxValue));
+      if (this.maxValue != null) {
+         this.addValidator(new NsFormControlValueMaxValidator(this.maxValue));
       }
 
       this.defaultValue = nsNull(config.defaultValue, null);
-
-      this.calculateRemainingCharactersCount(this.value);
    }
 
-   protected handleValueChanged(newValue: any) {
-      super.handleValueChanged(newValue);
+   onInit() {
+      super.onInit();
 
-      this.calculateRemainingCharactersCount(newValue);
+      this.setRemainingCharacters$();
    }
 
-   private calculateRemainingCharactersCount(newValue: any) {
-      if (this._maxLength == null) {
-         return;
-      }
+   private setRemainingCharacters$() {
+      this._remainingCharacters$ = this.valueChanges$
+         .pipe(
+            map(newValue => {
+               if (this.maxLength == null) {
+                  return ''
+               }
 
-      const valueLength = nsStringLength(newValue);
-      this._remainingCharactersFormatted = `${valueLength}/${this._maxLength}`;
+               const valueLength = nsStringLength(newValue);
+               return `${valueLength}/${this.maxLength}`;
+            })
+         );
    }
 }

@@ -1,7 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsStringToNumber } from '../../../../utils/helpers/strings/ns-helpers-strings';
-import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
 import { NsFormControlValueMinValidator } from '../../validators/provided/ns-form-control-value-min.validator';
 import { NsFormControl } from '../ns-form-control';
@@ -11,86 +10,60 @@ import { NsFormControlNumberConfiguration } from './ns-form-control-number.confi
 const defaultStep = 1;
 
 export class NsFormControlNumberModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControlNumberModel<TEntity>, NsFormControl> {
+   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlNumberConfiguration> {
 
    private readonly _numberTextFormControl: NsFormControl;
-   private readonly _minValue: number;
-   private readonly _maxValue: number;
-   private readonly _step: number;
 
    get numberTextFormControl(): FormControl {
       return this._numberTextFormControl;
    }
 
    get minValue(): number {
-      return this._minValue;
+      return this._config.minValue;
    }
 
    get maxValue(): number {
-      return this._maxValue;
+      return this._config.maxValue;
    }
 
    get step(): number {
-      return this._step;
+      return this._config.step || defaultStep;
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>, config: NsFormControlNumberConfiguration) {
-      super(parent, config);
+   constructor(config: NsFormControlNumberConfiguration) {
+      super(new NsFormControl(), config);
 
-      this._minValue = config.minValue;
-
-      if (this._minValue != null) {
-         this.addValidator(new NsFormControlValueMinValidator(this._minValue));
+      if (this.minValue != null) {
+         this.addValidator(new NsFormControlValueMinValidator(this.minValue));
       }
 
-      this._maxValue = config.maxValue;
-      if (this._maxValue != null) {
-         this.addValidator(new NsFormControlValueMaxValidator(this._maxValue));
+      if (this.maxValue != null) {
+         this.addValidator(new NsFormControlValueMaxValidator(this.maxValue));
       }
-
-      this._step = config.step || defaultStep;
 
       this.defaultValue = nsNull(config.defaultValue, null);
 
       this._numberTextFormControl = new NsFormControl(this.formControl.value);
+      this.formControl.addDependsOn(this._numberTextFormControl);
 
       this.processNumberTextFormControlValueChanges();
-
-      this.processFormControlTouchedChanges();
    }
 
    private processNumberTextFormControlValueChanges() {
       this.subscribeTo(
          this._numberTextFormControl.valueChanges,
          {
-            next: newValue => this.handleNumberTextFormControlValueChanged(newValue)
+            next: newValue => {
+               const numberValue = nsStringToNumber(newValue);
+
+               if (this.value === numberValue) {
+                  return;
+               }
+
+               this.setValue(numberValue);
+            }
          }
       );
-   }
-
-   private processFormControlTouchedChanges() {
-      this.subscribeTo(
-         this.formControl.touchedChanges,
-         {
-            next: () => this._numberTextFormControl.markAsTouched()
-         }
-      );
-   }
-
-   onInit() {
-      super.onInit();
-
-      this._numberTextFormControl.setValidators(this.validatorsFn);
-   }
-
-   private handleNumberTextFormControlValueChanged(newValue: string) {
-      const numberValue = nsStringToNumber(newValue);
-
-      if (this.value === numberValue) {
-         return;
-      }
-
-      this.setValue(numberValue);
    }
 
    protected handleValueChanged(newValue: any) {
@@ -102,13 +75,5 @@ export class NsFormControlNumberModel<TEntity>
       }
 
       this._numberTextFormControl.setValue(newValue);
-   }
-
-   protected handleStatusChanged(newStatus: any) {
-      super.handleStatusChanged(newStatus);
-
-      this._numberTextFormControl.setErrors(
-         this.formControl.errors
-      );
    }
 }

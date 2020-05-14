@@ -1,4 +1,4 @@
-<mat-form-field [formGroup]="model.formGroup">
+<mat-form-field>
    <input type="number"
           [placeholder]="model.label"
           [formControl]="model.numberTextFormControl"
@@ -19,5 +19,5 @@
 
    <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
 
-   <mat-error>{{model.errorMessage}}</mat-error>
+   <mat-error>{{model.errorMessage$ | async}}</mat-error>
 </mat-form-field>

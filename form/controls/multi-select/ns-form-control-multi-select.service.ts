@@ -19,7 +19,6 @@ export abstract class NsFormControlMultiSelectService<TMultiSelectItem extends N
    parseError(error: any): string {
       const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
          nsApiErrorMapper,
-         this._serviceProvider.langService,
          error
       );
 

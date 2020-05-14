@@ -1,27 +1,28 @@
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { NsFormModel } from '../../ns-form.model';
+import { LocalizationLanguagesService } from '../../../../utils/localization/localization-languages.service';
 import { NsFormControlValidators } from '../../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../../validators/provided/ns-form-control-required.validator';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
-import { NsFormGroup } from '../ns-form-group';
 import { NsFormControlMultiSelectItemEntity } from './ns-form-control-multi-select-item.entity';
 import { NsFormControlMultiSelectConfiguration } from './ns-form-control-multi-select.configuration';
 import { noSelectionId } from './ns-form-control-multi-select.constants';
 import { NsFormControlMultiSelectService } from './ns-form-control-multi-select.service';
 import { NsFormControlMultiSelectRequiredValidator } from './validators/ns-form-control-multi-select-required.validator';
 
-export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsFormControlMultiSelectItemEntity>
-   extends NsFormControlModel<TEntity, NsFormControlMultiSelectModel<TEntity, TMultiSelectItem>, NsFormGroup> {
+export abstract class NsFormControlMultiSelectModel<TEntity,
+   TService extends NsFormControlMultiSelectService<TMultiSelectItem>,
+   TMultiSelectItem extends NsFormControlMultiSelectItemEntity>
+   extends NsFormControlModel<TEntity, FormGroup, NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>> {
 
    private readonly _data$: BehaviorSubject<TMultiSelectItem[]>;
    private readonly _textValidators: NsFormControlValidators;
    private readonly _textProperty: string;
    private readonly _textFormControl: NsFormControl;
-   private _service: NsFormControlMultiSelectService<TMultiSelectItem>;
+   private readonly _service: TService;
    private _isLoading = false;
    private _searchTimeoutId = null;
    private _lastSearchValue = '';
@@ -58,13 +59,15 @@ export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsF
       return !this._isLoading;
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>,
-               config: NsFormControlMultiSelectConfiguration<TMultiSelectItem>
-   ) {
-      super(parent, config);
+   protected get service(): TService {
+      return this._service;
+   }
+
+   protected constructor(config: NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>) {
+      super(new FormGroup({}), config);
 
       this._data$ = new BehaviorSubject<TMultiSelectItem[]>([]);
-      this._textValidators = new NsFormControlValidators(this.langService);
+      this._textValidators = new NsFormControlValidators();
 
       this._textProperty = config.textProperty;
 
@@ -74,7 +77,16 @@ export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsF
 
       this.setupValidators();
 
-      this.withService(config.service);
+      this._service = config.service;
+
+      if (this.hasDependingValues) {
+         this.handleDependingOnValuesChanged(this.dependingValues);
+      }
+   }
+
+   setLangService(langService: LocalizationLanguagesService) {
+      super.setLangService(langService);
+      this._textValidators.setLangService(langService);
    }
 
    protected resolveHasValue(newValue: any) {
@@ -88,20 +100,6 @@ export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsF
       }
 
       this._textFormControl.setValidators(this._textValidators.build());
-   }
-
-   withService(service: NsFormControlMultiSelectService<TMultiSelectItem>): this {
-      if (service == null) {
-         return this;
-      }
-
-      this._service = service;
-
-      if (this.hasDependingValues) {
-         this.handleDependingOnValuesChanged(this.dependingValues);
-      }
-
-      return this;
    }
 
    handleInputIsFocused() {
@@ -207,10 +205,6 @@ export class NsFormControlMultiSelectModel<TEntity, TMultiSelectItem extends NsF
       super.onDestroy();
 
       this._service.onDestroy();
-   }
-
-   protected getFormControlErrors(): ValidationErrors {
-      return super.getFormControlErrors() || this.textFormControl.errors;
    }
 
    protected handleDependingOnValuesChanged(results: any[]) {

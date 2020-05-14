@@ -1,3 +1,4 @@
+import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
@@ -52,17 +53,15 @@ export abstract class NsPageEditStepsModel<TEntity,
    }
 
    protected constructor(
-      entity: TEntity,
-      private _apiErrorMapper: any,
-      serviceProvider: TServiceProvider
+      serviceProvider: TServiceProvider,
+      private readonly _apiErrorMapper: any = nsApiErrorMapper,
    ) {
-      super(entity, serviceProvider);
+      super(serviceProvider);
    }
 
    resolveEntityLoadingError(error: NsApiResponseError) {
       this._pageErrorMessages = this.apiErrorResolverService.resolve(
          this._apiErrorMapper,
-         this.langService,
          error
       );
    }
@@ -73,20 +72,18 @@ export abstract class NsPageEditStepsModel<TEntity,
       return this.isFormValid;
    }
 
-   startSave() {
-      this._entityToSave = this.clonedCurrentEntity;
-
-      this.onBeforeEntitySaved(this.initialEntity, this._entityToSave);
+   startSave(currentEntity: TEntity) {
+      this.onBeforeEntitySaved(this.initialEntity, currentEntity);
    }
 
-   protected onBeforeEntitySaved(initialEntity: TEntity, entityToSave: TEntity) {
+   protected onBeforeEntitySaved(initialEntity: TEntity, currentEntity: TEntity) {
    }
 
    abstract getStateKey(): string;
 
    getState(): any {
       return {
-         [keyStateEntity]: this.clonedCurrentEntity
+         [keyStateEntity]: this.currentEntity
       };
    }
 

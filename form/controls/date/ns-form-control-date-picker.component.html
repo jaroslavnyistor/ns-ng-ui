@@ -26,7 +26,7 @@
 
    <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
 
-   <mat-error>{{model.errorMessage}}</mat-error>
+   <mat-error>{{model.errorMessage$ | async}}</mat-error>
 </mat-form-field>
 
 <mat-datepicker #dp

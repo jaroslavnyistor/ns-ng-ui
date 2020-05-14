@@ -1,17 +1,17 @@
+import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { NsFormModel } from '../../ns-form.model';
-import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlAutocompleteConfiguration } from './ns-form-control-autocomplete.configuration';
 import { NsFormControlAutocompleteService } from './ns-form-control-autocomplete.service';
 
-export class NsFormControlAutocompleteModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControlAutocompleteModel<TEntity>, NsFormControl> {
+export abstract class NsFormControlAutocompleteModel<TEntity,
+   TService extends NsFormControlAutocompleteService>
+   extends NsFormControlModel<TEntity, FormControl, NsFormControlAutocompleteConfiguration<TService>> {
 
    private readonly _data$: BehaviorSubject<string[]>;
-   private _service: NsFormControlAutocompleteService;
+   private readonly _service: TService;
    private _isLoading = false;
    private _searchTimeoutId = null;
    private _lastSearchValue = '';
@@ -32,30 +32,22 @@ export class NsFormControlAutocompleteModel<TEntity>
       return !this._isLoading;
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>,
-               config: NsFormControlAutocompleteConfiguration
-   ) {
-      super(parent, config);
+   protected get service(): TService {
+      return this._service;
+   }
+
+   protected constructor(config: NsFormControlAutocompleteConfiguration<TService>) {
+      super(new FormControl(), config);
 
       this._data$ = new BehaviorSubject<string[]>([]);
 
       this.defaultValue = nsNull(config.defaultValue, []);
 
-      this.withService(config.service);
-   }
-
-   withService(service: NsFormControlAutocompleteService): this {
-      if (service == null) {
-         return this;
-      }
-
-      this._service = service;
+      this._service = config.service;
 
       if (this.hasDependingValues) {
          this.handleDependingOnValuesChanged(this.dependingValues);
       }
-
-      return this;
    }
 
    handleInputIsFocused() {

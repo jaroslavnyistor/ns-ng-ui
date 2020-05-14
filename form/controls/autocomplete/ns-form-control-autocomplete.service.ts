@@ -18,7 +18,6 @@ export abstract class NsFormControlAutocompleteService
    parseError(error: any): string {
       const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
          nsApiErrorMapper,
-         this._serviceProvider.langService,
          error
       );
 
@@ -26,6 +25,5 @@ export abstract class NsFormControlAutocompleteService
    }
 
    handleDependingOnValuesChanged(results: any[]) {
-
    }
 }

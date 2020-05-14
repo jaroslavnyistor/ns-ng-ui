@@ -60,7 +60,7 @@ export abstract class NsServiceProviderComponentModel<TServiceProvider extends N
       return this._serviceProvider.titleService;
    }
 
-   protected constructor(private readonly _serviceProvider: TServiceProvider) {
+   protected constructor(protected readonly _serviceProvider: TServiceProvider) {
       super();
    }
 }

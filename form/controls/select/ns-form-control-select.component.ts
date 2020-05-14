@@ -10,7 +10,7 @@ import { NsFormControlSelectModel } from './ns-form-control-select.model';
 export class NsFormControlSelectComponent implements OnInit {
    NsIcon = NsIcon;
 
-   @Input() model: NsFormControlSelectModel<any, any>;
+   @Input() model: NsFormControlSelectModel<any, any, any>;
 
    ngOnInit(): void {
       this.model.loadData();

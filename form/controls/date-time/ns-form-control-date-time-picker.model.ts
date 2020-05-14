@@ -2,7 +2,6 @@ import * as moment from 'moment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsIsNullOrEmpty } from '../../../../utils/helpers/strings/ns-helpers-strings';
-import { NsFormModel } from '../../ns-form.model';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlDateTimePickerConfiguration } from './ns-form-control-date-time-picker.configuration';
@@ -13,13 +12,11 @@ const FORMATS_TIME_ONLY = 'HH:mm';
 const FORMATS_TIME = 'HH:mm';
 
 export class NsFormControlDateTimePickerModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControlDateTimePickerModel<TEntity>, NsFormControl> {
+   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlDateTimePickerConfiguration> {
 
    private readonly _currentTime$ = new BehaviorSubject<string>(null);
    private readonly _dateTimeSelectionFormControl: NsFormControl;
    private _currentDateTime: moment.Moment;
-   private readonly _canChooseDate = true;
-   private readonly _canChooseTime = true;
    private readonly _currentDateTimeFormat;
 
    get dateTimeSelectionFormControl(): NsFormControl {
@@ -31,51 +28,30 @@ export class NsFormControlDateTimePickerModel<TEntity>
    }
 
    get canChooseDate(): boolean {
-      return !this.isDisabled && this._canChooseDate;
+      return !this.isDisabled && (this._config.canChooseDate || true);
    }
 
    get canChooseTime(): boolean {
-      return !this.isDisabled && this._canChooseTime;
+      return !this.isDisabled && (this._config.canChooseTime || true);
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>,
-               config: NsFormControlDateTimePickerConfiguration
-   ) {
-      super(parent, config);
+   constructor(config: NsFormControlDateTimePickerConfiguration) {
+      super(new NsFormControl(), config);
 
       this._dateTimeSelectionFormControl = new NsFormControl(this.formControl.value);
+      this.formControl.addDependsOn(this._dateTimeSelectionFormControl);
 
       this.defaultValue = nsNull(config.defaultValue, null);
 
-      this.processFormControlTouchedChanges();
-
-      this._canChooseDate = config.canChooseDate || true;
-      this._canChooseTime = config.canChooseTime || true;
-
-      if (this._canChooseDate && this._canChooseTime) {
+      if (this.canChooseDate && this.canChooseTime) {
          this._currentDateTimeFormat = FORMATS_DATE_TIME;
-      } else if (this._canChooseDate) {
+      } else if (this.canChooseDate) {
          this._currentDateTimeFormat = FORMATS_DATE_ONLY;
       } else {
          this._currentDateTimeFormat = FORMATS_TIME_ONLY;
       }
 
       this.setCurrentDateTime(this.value);
-   }
-
-   private processFormControlTouchedChanges() {
-      this.subscribeTo(
-         this.formControl.touchedChanges,
-         {
-            next: () => this._dateTimeSelectionFormControl.markAsTouched()
-         }
-      );
-   }
-
-   onInit() {
-      super.onInit();
-
-      this._dateTimeSelectionFormControl.setValidators(this.validatorsFn);
    }
 
    protected handleValueChanged(newValue: any) {
@@ -139,11 +115,12 @@ export class NsFormControlDateTimePickerModel<TEntity>
       }
    }
 
-   protected handleStatusChanged(newStatus: any) {
-      super.handleStatusChanged(newStatus);
-
-      this._dateTimeSelectionFormControl.setErrors(
-         this.formControl.errors
-      );
-   }
+   //
+   // protected handleStatusChanged(newStatus: any) {
+   //    super.handleStatusChanged(newStatus);
+   //
+   //    this._dateTimeSelectionFormControl.setErrors(
+   //       this.formControl.errors
+   //    );
+   // }
 }

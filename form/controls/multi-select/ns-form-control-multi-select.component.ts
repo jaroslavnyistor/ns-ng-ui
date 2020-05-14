@@ -8,7 +8,7 @@ import { NsFormControlMultiSelectModel } from './ns-form-control-multi-select.mo
    styleUrls: ['./ns-form-control-multi-select.component.sass']
 })
 export class NsFormControlMultiSelectComponent {
-   @Input() model: NsFormControlMultiSelectModel<any, any>;
+   @Input() model: NsFormControlMultiSelectModel<any, any, any>;
 
    NsIcon = NsIcon;
 }

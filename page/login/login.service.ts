@@ -65,8 +65,7 @@ export class LoginService extends NsPageEditService<LoginModel, LoginEntity, NsS
       this.model.positiveButton.text = this.langService.translate(LocalizedTextIdNikisoft.LoginButton);
    }
 
-   protected performSave(model: LoginModel): Observable<any> {
-      const entity = model.entityToSave;
+   protected performSave(model: LoginModel, entity: LoginEntity): Observable<any> {
       return this.authService.authenticate(
          entity.userName,
          entity.password

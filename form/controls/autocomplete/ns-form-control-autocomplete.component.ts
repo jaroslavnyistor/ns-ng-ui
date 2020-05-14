@@ -8,7 +8,7 @@ import { NsFormControlAutocompleteModel } from './ns-form-control-autocomplete.m
    styleUrls: ['./ns-form-control-autocomplete.component.sass']
 })
 export class NsFormControlAutocompleteComponent {
-   @Input() model: NsFormControlAutocompleteModel<any>;
+   @Input() model: NsFormControlAutocompleteModel<any, any>;
 
    NsIcon = NsIcon;
 }

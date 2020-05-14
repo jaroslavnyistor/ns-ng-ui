@@ -4,10 +4,11 @@ import { NsFormControlValidator } from './ns-form-control.validator';
 
 export class NsFormControlValidators {
    private readonly _validators: Array<NsFormControlValidator> = [];
-   private readonly _langService: LocalizationLanguagesService;
+   private _langService: LocalizationLanguagesService;
 
-   constructor(langService: LocalizationLanguagesService) {
+   setLangService(langService: LocalizationLanguagesService) {
       this._langService = langService;
+      this._validators.forEach(validator => validator.langService = langService);
    }
 
    add(validator: NsFormControlValidator): this {

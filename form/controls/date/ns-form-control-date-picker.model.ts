@@ -1,14 +1,12 @@
 import { MatDatepicker } from '@angular/material/datepicker';
-import * as moment from 'moment';
 import { NsDate } from '../../../../utils/dates/ns-date';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { NsFormModel } from '../../ns-form.model';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlDatePickerConfiguration } from './ns-form-control-date-picker.configuration';
 
 export class NsFormControlDatePickerModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControlDatePickerModel<TEntity>, NsFormControl> {
+   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlDatePickerConfiguration> {
    private readonly _dateFormControl: NsFormControl;
    private _minDate: Date;
    private _maxDate: Date;
@@ -29,59 +27,39 @@ export class NsFormControlDatePickerModel<TEntity>
       return this._maxDate;
    }
 
-   constructor(parent: NsFormModel<TEntity, any, any>,
-               config: NsFormControlDatePickerConfiguration
-   ) {
-      super(parent, config);
+   constructor(config: NsFormControlDatePickerConfiguration) {
+      super(new NsFormControl(), config);
 
       this._dateFormControl = new NsFormControl(this.formControl.value);
+      this.formControl.addDependsOn(this._dateFormControl);
 
       this.defaultValue = nsNull(config.defaultValue, null);
 
       this.processDateFormControlValueChanges();
-
-      this.processFormControlTouchedChanges();
    }
 
    private processDateFormControlValueChanges() {
       this.subscribeTo(
          this._dateFormControl.valueChanges,
          {
-            next: newValue => this.handleDateFormControlValueChanged(newValue)
+            next: newValue => {
+               let dateStringValue = null;
+               if (newValue != null) {
+                  if (newValue.toISOString) {
+                     dateStringValue = NsDate.from(newValue.toISOString(false)).toString();
+                  } else {
+                     dateStringValue = newValue;
+                  }
+               }
+
+               if (this.value === dateStringValue) {
+                  return;
+               }
+
+               this.setValue(dateStringValue);
+            }
          }
       );
-   }
-
-   private processFormControlTouchedChanges() {
-      this.subscribeTo(
-         this.formControl.touchedChanges,
-         {
-            next: () => this._dateFormControl.markAsTouched()
-         }
-      );
-   }
-
-   onInit() {
-      super.onInit();
-
-      this._dateFormControl.setValidators(this.validatorsFn);
-   }
-
-   private handleDateFormControlValueChanged(newValue: moment.Moment) {
-      let dateStringValue = null;
-      if (newValue != null) {
-         if (newValue.toISOString) {
-            dateStringValue = NsDate.from(newValue.toISOString(false)).toString();
-         } else {
-            dateStringValue = newValue;
-         }
-      }
-
-      if (this.value === dateStringValue) {
-         return;
-      }
-
-      this.setValue(dateStringValue);
    }
 
    protected handleValueChanged(newValue: any) {

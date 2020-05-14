@@ -1,4 +1,4 @@
-<mat-form-field [formGroup]="model.formGroup">
+<mat-form-field>
    <input [type]="model.type"
           [placeholder]="model.label"
           [formControl]="model.formControl"
@@ -21,8 +21,8 @@
 
    <mat-hint *ngIf="model.hasMaxLengthSet"
              align="end">
-      {{model.remainingCharactersFormatted}}
+      {{model.remainingCharacters$ | async}}
    </mat-hint>
 
-   <mat-error>{{model.errorMessage}}</mat-error>
+   <mat-error>{{model.errorMessage$ | async}}</mat-error>
 </mat-form-field>
