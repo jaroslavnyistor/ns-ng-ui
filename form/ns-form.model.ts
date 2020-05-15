@@ -183,8 +183,10 @@ export abstract class NsFormModel<TEntity,
       return model;
    }
 
-   protected add(model: NsFormControlDefinition) {
+   protected add<TModel extends NsFormControlDefinition>(model: TModel): TModel {
       this.register(model);
+
+      return model;
    }
 
    private register(model: NsFormControlDefinition) {
