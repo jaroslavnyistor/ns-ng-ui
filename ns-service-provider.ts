@@ -1,4 +1,3 @@
-import { Provider, Type } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NsApiErrorResolverService } from '../utils/api/error/ns-api-error-resolver.service';
 import { NsAuthenticateService } from '../utils/authentication/ns-authenticate.service';

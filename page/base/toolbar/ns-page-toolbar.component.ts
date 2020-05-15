@@ -1,7 +1,7 @@
 import { Component, Inject, Input, QueryList } from '@angular/core';
 import { NsComponentBase } from '../../../component/ns-component.base';
 import { NsIcon } from '../../../icon/ns-icon.enum';
-import { DI_NS_VERSION } from '../../../ns-di.configuration';
+import { DI_NS_VERSION } from '../../../ns-di.tokens';
 import { NsPageModel } from '../ns-page.model';
 import { NsPageService } from '../ns-page.service';
 import { NsPageToolbarHeaderItemDirective } from './ns-page-toolbar-header-item.directive';

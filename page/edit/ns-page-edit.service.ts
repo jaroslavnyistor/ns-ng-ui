@@ -1,4 +1,3 @@
-import { Provider, Type } from '@angular/core';
 import { Params } from '@angular/router';
 import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap, switchMap } from 'rxjs/operators';
@@ -8,20 +7,9 @@ import { NsNavigationService } from '../../../utils/navigation/ns-navigation.ser
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
-import { NsFormService, provideFormServiceService } from '../../form/ns-form.service';
+import { NsFormService } from '../../form/ns-form.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditModel } from './ns-page-edit.model';
-
-export function providePageEditService<TService extends NsPageEditService<any, any, any, any>,
-   TModel extends NsPageEditModel<any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
-   return [
-      service,
-      { useExisting: service, provide: NsPageEditService },
-      model,
-      { useExisting: model, provide: NsPageEditModel },
-      provideFormServiceService(service, model)
-   ];
-}
 
 export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,

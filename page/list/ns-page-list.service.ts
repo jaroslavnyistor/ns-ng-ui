@@ -1,4 +1,3 @@
-import { Provider, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
@@ -12,16 +11,6 @@ import { NsPageListLoadResponse } from './ns-page-list-load.response';
 import { NsPageListModel } from './ns-page-list.model';
 import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-list-toolbar-order-model.collection';
 import { NsPageListToolbarOrderOption } from './toolbar/order/ns-page-list-toolbar-order.model';
-
-export function providePageListService<TService extends NsPageListService<any, any, any, any, any>,
-   TModel extends NsPageListModel<any, any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
-   return [
-      service,
-      { useExisting: service, provide: NsPageListService },
-      model,
-      { useExisting: model, provide: NsPageListModel }
-   ];
-}
 
 export abstract class NsPageListService<TModel extends NsPageListModel<TListItemModel, TListItemEntity, TServiceProvider, TAppNavService>,
    TListItemModel extends NsPageListLayoutItemEntity,

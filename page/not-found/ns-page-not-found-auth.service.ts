@@ -1,27 +1,16 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
-
-export const DI_NS_NOT_FOUND_AUTH_REQUIRED = new InjectionToken<boolean>(
-   'DI_NS_NOT_FOUND_AUTH_REQUIRED',
-   {
-      factory: () => true
-   }
-);
-
-export function disablePageNotFoundRequiresAuth() {
-   return {
-      provide: DI_NS_NOT_FOUND_AUTH_REQUIRED, useValue: false
-   };
-}
+import { DI_NS_NOT_FOUND_AUTH_REQUIRED } from './ns-page-not-found-auth.di-tokens';
 
 @Injectable({
    providedIn: 'root'
 })
 export class NsPageNotFoundAuthService implements CanActivate {
-   constructor(private _authService: NsAuthenticateService,
-               @Inject(DI_NS_NOT_FOUND_AUTH_REQUIRED) private _isAuthRequired
+   constructor(
+      private _authService: NsAuthenticateService,
+      @Inject(DI_NS_NOT_FOUND_AUTH_REQUIRED) private _isAuthRequired
    ) {
    }
 

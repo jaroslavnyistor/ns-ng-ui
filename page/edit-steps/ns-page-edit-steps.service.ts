@@ -1,4 +1,3 @@
-import { Provider, Type } from '@angular/core';
 import { Params } from '@angular/router';
 import { EMPTY, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -6,20 +5,9 @@ import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { NsFormStepsService, providePageFormStepsService } from '../../form/steps/ns-form-steps.service';
+import { NsFormStepsService } from '../../form/steps/ns-form-steps.service';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsPageEditStepsModel } from './ns-page-edit-steps.model';
-
-export function providePageEditStepsService<TService extends NsPageEditStepsService<any, any, any, any>,
-   TModel extends NsPageEditStepsModel<any, any, any>>(service: Type<TService>, model: Type<TModel>): Provider[] {
-   return [
-      service,
-      { useExisting: service, provide: NsPageEditStepsService },
-      model,
-      { useExisting: model, provide: NsPageEditStepsModel },
-      providePageFormStepsService(service, model)
-   ];
-}
 
 export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,

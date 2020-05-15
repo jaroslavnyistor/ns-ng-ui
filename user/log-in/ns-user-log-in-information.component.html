@@ -36,9 +36,3 @@
    </mat-menu>
 
 </ng-container>
-
-<ng-container *ngIf="model.isLoginButtonVisible$ | async">
-   <ns-button-raised [model]="model.loginButton"
-                     (click)="service.handleLoginClick()">
-   </ns-button-raised>
-</ng-container>
