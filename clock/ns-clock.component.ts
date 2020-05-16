@@ -1,31 +1,29 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable, timer } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { nsFormatNumber } from '../../utils/helpers/numbers/ns-helpers-numbers';
 
 @Component({
    selector: 'ns-clock',
-   template: `{{time}}`,
+   template: `{{time$ | async}}`,
    styles: []
 })
-export class NsClockComponent implements OnInit, OnDestroy {
+export class NsClockComponent {
    private readonly _delimiter = ':';
+   private readonly _time$: Observable<string>;
 
-   private _time: string;
-   private _timeoutId: number;
-
-   get time(): string {
-      return this._time;
+   get time$(): Observable<string> {
+      return this._time$;
    }
 
-   ngOnInit() {
-      this._timeoutId = window.setInterval(
-         () => this.refreshTime(),
-         1000
-      );
-
-      this.refreshTime();
+   constructor() {
+      this._time$ = timer(0, 1000)
+         .pipe(
+            map(() => this.mapTime())
+         );
    }
 
-   private refreshTime() {
+   private mapTime(): string {
       const now = new Date();
 
       const hoursString = nsFormatNumber(now.getHours(), 2);
@@ -34,10 +32,6 @@ export class NsClockComponent implements OnInit, OnDestroy {
       const value = now.getSeconds();
       const isDelimiterVisible = (value % 2) === 0;
       const delimiter = isDelimiterVisible ? this._delimiter : ' ';
-      this._time = `${hoursString}${delimiter}${minutesString}`;
-   }
-
-   ngOnDestroy(): void {
-      clearInterval(this._timeoutId);
+      return `${hoursString}${delimiter}${minutesString}`;
    }
 }
