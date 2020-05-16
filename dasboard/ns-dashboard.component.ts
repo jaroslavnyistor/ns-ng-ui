@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
 import { NsComponentBase } from '../component/ns-component.base';
 import { NsDashboardModel } from './ns-dashboard.model';
 import { NsDashboardService } from './ns-dashboard.service';
@@ -10,24 +9,7 @@ import { NsDashboardService } from './ns-dashboard.service';
    styleUrls: ['./ns-dashboard.component.sass'],
 })
 export class NsDashboardComponent
-   extends NsComponentBase<NsDashboardService<NsDashboardModel, any>, NsDashboardModel> {
-
-   private _header = '';
-   private _hasHeader = false;
-
-   @Input()
-   get header(): string {
-      return this._header;
-   }
-
-   set header(value: string) {
-      this._header = value;
-      this._hasHeader = nsIsNotNullOrEmpty(this._header);
-   }
-
-   get hasHeader(): boolean {
-      return this._hasHeader;
-   }
+   extends NsComponentBase<NsDashboardService<NsDashboardModel<any, any>, any, any>, NsDashboardModel<any, any>> {
 
    @Input() xl = 50;
    @Input() lg = 50;
@@ -41,7 +23,7 @@ export class NsDashboardComponent
    @Input() smItem = 50;
    @Input() xsItem = 100;
 
-   constructor(service: NsDashboardService<NsDashboardModel, any>) {
+   constructor(service: NsDashboardService<NsDashboardModel<any, any>, any, any>) {
       super(service);
    }
 }

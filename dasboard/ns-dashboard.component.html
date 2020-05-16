@@ -10,14 +10,14 @@
         fxLayoutAlign="start stretch"
         fxLayoutGap="16px grid">
 
-      <div *ngIf="hasHeader"
+      <div *ngIf="model.hasHeader"
            fxFlex="1 1 100%">
          <mat-card>
-            <mat-card-header>{{header}}</mat-card-header>
+            <mat-card-header>{{model.header}}</mat-card-header>
          </mat-card>
       </div>
 
-      <ns-card *ngFor="let item of service.model.items$ | async"
+      <ns-card *ngFor="let item of model.dashboardItems$ | async"
                [isInAnotherCard]="false"
                [isClickable]="true"
                [fxFlex.xl]="xlItem"
