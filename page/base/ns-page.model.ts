@@ -3,6 +3,7 @@ import { flatMap, map } from 'rxjs/operators';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
+import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsServiceProvider } from '../../ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
 import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
@@ -41,7 +42,7 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
 
       this._pageVisibility$ = this.isNavigating$
          .pipe(
-            map(isNavigating => isNavigating ? { display: 'none'} : null)
+            map(isNavigating => isNavigating ? { display: 'none' } : null)
          );
 
       this._navigationItems$ = this.buildNavigationItems$();
@@ -55,9 +56,9 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
                   map(appItems => ({ isLoggedIn, appItems }))
                )
             ),
-            flatMap(value => this.addDefaultNavigationItems$(value.isLoggedIn)
+            flatMap(({ isLoggedIn, appItems }) => this.getDefaultNavigationItems$(isLoggedIn)
                .pipe(
-                  map(defaultItems => ([...value.appItems, ...defaultItems]))
+                  map(defaultItems => ([...appItems, ...defaultItems]))
                )
             )
          );
@@ -65,25 +66,29 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
 
    protected abstract getApplicationNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]>;
 
-   private addDefaultNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]> {
-      const items = [
+   private getDefaultNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]> {
+      let items: NsToolbarNavigationItemModel[] = [
          {
             title: this.langService.translate(LocalizedTextIdNikisoft.GoToHomePage),
+            icon: NsIcon.Action_Home,
             action: () => this.navService.toHomePage()
          }
       ];
 
       if (isLoggedIn) {
-         items.push({
+         items = [
+            ...items,
+            {
                title: this.langService.translate(LocalizedTextIdNikisoft.LogOutButton),
+               icon: NsIcon.Action_PowerSettingsNew,
                action: () => this.authService.logout()
             }
-         )
+         ]
       }
 
       return of([
          { items }
-      ]);
+      ] as NsToolbarNavigationItemGroupModel[]);
    }
 
    onInit() {
