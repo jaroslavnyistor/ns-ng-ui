@@ -12,7 +12,7 @@ import { NsPageToolbarHeaderItemDirective } from './ns-page-toolbar-header-item.
    styleUrls: ['./ns-page-toolbar.component.sass']
 })
 export class NsPageToolbarComponent extends NsComponentBase<NsPageService<any, any, any>, NsPageModel<any, any>> {
-   readonly menuIcon = NsIcon.Menu;
+   readonly menuIcon = NsIcon.Navigation_Menu;
    @Input() headerItems!: QueryList<NsPageToolbarHeaderItemDirective>;
 
    constructor(service: NsPageService<any, any, any>, @Inject(DI_NS_VERSION) public readonly version: string) {

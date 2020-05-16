@@ -12,7 +12,7 @@ export class NsSearchInputComponent implements AfterViewInit, OnDestroy {
    private _searchValue = '';
 
    get icon(): NsIcon {
-      return NsIcon.Search;
+      return NsIcon.Action_Search;
    }
 
    @Input() get searchValue(): string {

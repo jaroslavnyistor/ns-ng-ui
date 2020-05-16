@@ -16,7 +16,7 @@ import { NsIcon } from '../ns-icon.enum';
 })
 export class NsIconDefaultDeleteComponent {
    get icon(): NsIcon {
-      return NsIcon.Delete;
+      return NsIcon.Action_DeleteOutline;
    }
 
    @Input() disabled = false;

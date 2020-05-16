@@ -41,7 +41,7 @@ export class NsPageListComponent
    }
 
    get arrowBackIcon(): NsIcon {
-      return NsIcon.ArrowBack;
+      return NsIcon.Navigation_ArrowBack;
    }
 
    constructor(service: NsPageListService<any, any, any, any, any>) {

@@ -16,7 +16,7 @@ import { NsIcon } from '../ns-icon.enum';
 })
 export class NsIconDefaultPickDateComponent {
    get icon(): NsIcon {
-      return NsIcon.Calendar;
+      return NsIcon.Action_CalendarToday;
    }
 
    @Input() disabled = false;

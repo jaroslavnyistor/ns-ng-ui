@@ -3,7 +3,7 @@
      fxLayoutAlign="start center"
      class="nav-bar">
    <ns-icon-default fxFlex="0 0 auto"
-                    [icon]="NsIcon.ArrowBackCalendar"
+                    [icon]="NsIcon.Navigation_ArrowBackIos"
                     [isClickable]="true"
                     (click)="model.moveDateBack()"
                     [tooltip]="'CalendarMonth_MoveBackward' | translate">
@@ -18,14 +18,14 @@
   </span>
 
    <ns-icon-default fxFlex="0 0 auto"
-                    [icon]="NsIcon.ArrowForwardCalendar"
+                    [icon]="NsIcon.Navigation_ArrowForwardIos"
                     [isClickable]="true"
                     (click)="model.moveDateForward()"
                     [tooltip]="'CalendarMonth_MoveForward' | translate">
    </ns-icon-default>
 
    <ns-icon-default fxFlex="0 0 auto"
-                    [icon]="NsIcon.Refresh"
+                    [icon]="NsIcon.Navigation_Refresh"
                     [isClickable]="true"
                     (click)="model.reloadData()"
                     [tooltip]="'CalendarMonth_Refresh' | translate">
@@ -33,7 +33,7 @@
 
    <ns-icon-default *ngIf="hasRightPanelTemplate"
                     fxFlex="0 0 auto"
-                    [icon]="NsIcon.Details"
+                    [icon]="NsIcon.Image_Details"
                     [isClickable]="true"
                     [disabled]="!model.hasSelectedDayData"
                     (click)="model.hasSelectedDayData && model.openRightPanel()"

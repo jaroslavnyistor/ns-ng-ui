@@ -25,7 +25,7 @@ export class NsPageDefaultComponent
    @Input() xs = 100;
 
    get arrowBackIcon(): NsIcon {
-      return NsIcon.ArrowBack;
+      return NsIcon.Navigation_ArrowBack;
    }
 
    @Input() set scrollPage(value: boolean) {

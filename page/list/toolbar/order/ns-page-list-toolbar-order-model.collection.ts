@@ -54,7 +54,7 @@ export class NsPageListToolbarOrderModelCollection {
          text: isAsc ? this._ascText : this._descText,
          item,
          direction,
-         icon: isAsc ? NsIcon.SortAsc : NsIcon.SortDesc,
+         icon: isAsc ? NsIcon.Action_TextRotationDown : NsIcon.Action_TextRotateUp,
          isActive: option.isActive && idx === 0
       } as NsPageListToolbarOrderItemDirection;
 
@@ -81,7 +81,7 @@ export class NsPageListToolbarOrderModelCollection {
 
    get activeItemIcon(): NsIcon {
       if (this._activeItem == null) {
-         return NsIcon.SortAsc;
+         return NsIcon.Action_TextRotationDown;
       }
 
       return this._activeItem.icon;

@@ -16,7 +16,7 @@ import { NsIcon } from '../ns-icon.enum';
 })
 export class NsIconDefaultListComponent {
    get icon(): NsIcon {
-      return NsIcon.List;
+      return NsIcon.Action_List;
    }
 
    @Input() disabled = false;

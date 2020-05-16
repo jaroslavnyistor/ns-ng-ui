@@ -10,7 +10,7 @@
 
    <ns-icon-small [disabled]="!model.canClearValue()"
                   matSuffix
-                  [icon]="NsIcon.Close"
+                  [icon]="NsIcon.Navigation_Close"
                   [isClickable]="true"
                   [isFocusable]="false"
                   (click)="model.canClearValue() && model.clearValue()">
@@ -18,7 +18,7 @@
 
    <ns-icon-small [disabled]="!model.canChooseTime"
                   matSuffix
-                  [icon]="NsIcon.Time"
+                  [icon]="NsIcon.Device_AccessTime"
                   [isClickable]="true"
                   (click)="model.canChooseTime && timePicker.open()">
    </ns-icon-small>
