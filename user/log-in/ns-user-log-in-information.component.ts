@@ -17,7 +17,7 @@ export class NsUserLogInInformationComponent
    extends NsComponentBase<NsUserLogInInformationService, NsUserLogInInformationModel> {
 
    get defaultIcon(): NsIcon {
-      return NsIcon.Person;
+      return NsIcon.Social_Person;
    }
 
    @Input() displayLanguagesPicker = true;

@@ -34,5 +34,11 @@
       </button>
 
    </mat-menu>
+</ng-container>
 
+<ng-container *ngIf="model.isLoginButtonVisible$ | async">
+   <ns-icon-default [icon]="model.loginIcon"
+                    isClickable="true"
+                    (click)="service.handleLoginClick()">
+   </ns-icon-default>
 </ng-container>
