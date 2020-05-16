@@ -1,14 +1,15 @@
 import { Observable } from 'rxjs';
 import { nsApiErrorMapper } from '../../../../utils/api/error/ns-api-error.mapper';
 import { nsArrayItemAt } from '../../../../utils/helpers/arrays/ns-helpers-arrays';
+import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
 import { NsSubscriptionService } from '../../../../utils/subscription/ns-subscription.service';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 
 export abstract class NsFormControlAutocompleteService
    extends NsSubscriptionService {
-   private readonly _serviceProvider: NsServiceProvider;
+   private readonly _serviceProvider: NsServiceProvider<NsNavigationService>;
 
-   protected constructor(serviceProvider: NsServiceProvider) {
+   protected constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
       super();
       this._serviceProvider = serviceProvider;
    }

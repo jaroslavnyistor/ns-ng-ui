@@ -6,9 +6,10 @@ import { NsUserLogInInformationModel } from './ns-user-log-in-information.model'
 
 @Injectable()
 export class NsUserLogInInformationService
-   extends NsServiceProviderComponentService<NsUserLogInInformationModel, NsServiceProvider, NsNavigationService> {
+   extends NsServiceProviderComponentService<NsUserLogInInformationModel, NsServiceProvider<NsNavigationService>,
+      NsNavigationService> {
 
-   constructor(model: NsUserLogInInformationModel, serviceProvider: NsServiceProvider) {
+   constructor(model: NsUserLogInInformationModel, serviceProvider: NsServiceProvider<NsNavigationService>) {
       super(model, serviceProvider);
    }
 

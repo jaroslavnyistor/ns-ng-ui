@@ -9,7 +9,7 @@ import { NsServiceProviderComponentModel } from '../../service-provider/ns-servi
 import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
 import { NsToolbarNavigationItemModel } from './toolbar/navigation/items/ns-toolbar-navigation-item.model';
 
-export abstract class NsPageModel<TServiceProvider extends NsServiceProvider,
+export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 

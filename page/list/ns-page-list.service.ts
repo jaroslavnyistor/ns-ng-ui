@@ -15,7 +15,7 @@ import { NsPageListToolbarOrderOption } from './toolbar/order/ns-page-list-toolb
 export abstract class NsPageListService<TModel extends NsPageListModel<TListItemModel, TListItemEntity, TServiceProvider, TAppNavService>,
    TListItemModel extends NsPageListLayoutItemEntity,
    TListItemEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService>
    implements NsToolbarEditService {

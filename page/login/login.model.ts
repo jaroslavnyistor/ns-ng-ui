@@ -10,7 +10,7 @@ import { LoginEntity } from './login.entity';
 const keyState = 'login';
 
 @Injectable()
-export class LoginModel extends NsPageEditModel<LoginEntity, NsServiceProvider, NsNavigationService> {
+export class LoginModel extends NsPageEditModel<LoginEntity, NsServiceProvider<NsNavigationService>, NsNavigationService> {
    private readonly _userName: NsFormControlInputModel<LoginEntity>;
    private readonly _password: NsFormControlInputModel<LoginEntity>;
 
@@ -22,7 +22,7 @@ export class LoginModel extends NsPageEditModel<LoginEntity, NsServiceProvider, 
       return this._password;
    }
 
-   constructor(serviceProvider: NsServiceProvider) {
+   constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
       super(serviceProvider, nsAuthenticateErrorMapper);
 
       this._userName = this.addText({

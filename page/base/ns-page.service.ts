@@ -4,7 +4,7 @@ import { NsServiceProviderComponentService } from '../../service-provider/ns-ser
 import { NsPageModel } from './ns-page.model';
 
 export abstract class NsPageService<TModel extends NsPageModel<TServiceProvider, TAppNavService>,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
 

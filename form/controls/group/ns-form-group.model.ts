@@ -9,7 +9,7 @@ import { NsFormGroupConfiguration } from './ns-form-group.configuration';
 
 export abstract class NsFormGroupModel<TParentEntity,
    TEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormModel<TEntity, TServiceProvider, TAppNavService>
    implements NsFormControlDefinition {

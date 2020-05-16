@@ -13,7 +13,7 @@ import { NsPageEditModel } from './ns-page-edit.model';
 
 export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormService<TModel, TEntity, TServiceProvider, TAppNavService> {
    private readonly _storagePageService: NsStoragePageService;

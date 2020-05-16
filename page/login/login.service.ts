@@ -11,12 +11,13 @@ import { LoginEntity, newLoginEntity } from './login.entity';
 import { LoginModel } from './login.model';
 
 @Injectable()
-export class LoginService extends NsPageEditService<LoginModel, LoginEntity, NsServiceProvider, NsNavigationService> {
+export class LoginService extends NsPageEditService<LoginModel, LoginEntity, NsServiceProvider<NsNavigationService>,
+   NsNavigationService> {
    private _returnUrl = '';
 
    constructor(
       model: LoginModel,
-      serviceProvider: NsServiceProvider,
+      serviceProvider: NsServiceProvider<NsNavigationService>,
       private _activatedRoute: ActivatedRoute
    ) {
       super(model, serviceProvider, _activatedRoute.params);

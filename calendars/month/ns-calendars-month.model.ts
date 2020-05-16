@@ -14,7 +14,7 @@ import { NsCalendarsMonthDayModel } from './days/ns-calendars-month-day.model';
 import { NsCalendarsMonthWeekModel } from './days/ns-calendars-month-week.model';
 import { NsCalendarsMonthLoadRequestBuilder } from './ns-calendars-month-load-request.builder';
 
-export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServiceProvider,
+export abstract class NsCalendarsMonthModel<TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 

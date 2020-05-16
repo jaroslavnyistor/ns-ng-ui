@@ -4,7 +4,7 @@ import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlArrayItemEntity } from './ns-form-control-array-item.entity';
 
 export abstract class NsFormControlArrayItemModel<TEntity extends NsFormControlArrayItemEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormModel<TEntity, TServiceProvider, TAppNavService> {
 

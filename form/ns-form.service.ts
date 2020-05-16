@@ -5,7 +5,7 @@ import { NsFormModel } from './ns-form.model';
 
 export abstract class NsFormService<TModel extends NsFormModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
 

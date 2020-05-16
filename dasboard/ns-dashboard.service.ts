@@ -5,7 +5,7 @@ import { NsDashboardItemModel } from './ns-dashboard-item.model';
 import { NsDashboardModel } from './ns-dashboard.model';
 
 export abstract class NsDashboardService<TModel extends NsDashboardModel<TServiceProvider, TAppNavService>,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
 

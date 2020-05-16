@@ -11,7 +11,7 @@ import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 const keyStateEntity = 'entity';
 
 export abstract class NsPageEditModel<TEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormModel<TEntity, TServiceProvider, TAppNavService>
    implements NsStoragePageModel {

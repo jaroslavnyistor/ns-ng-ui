@@ -7,7 +7,7 @@ import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity'
 import { NsCalendarsMonthModel } from './ns-calendars-month.model';
 
 export abstract class NsCalendarsMonthService<TModel extends NsCalendarsMonthModel<TServiceProvider, TAppNavService>,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
 

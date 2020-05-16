@@ -5,7 +5,7 @@ import { NsServiceProviderComponentService } from '../../service-provider/ns-ser
 import { NsPageDefaultModel } from './ns-page-default.model';
 
 export abstract class NsPageDefaultService<TModel extends NsPageDefaultModel<TServiceProvider, TAppNavService>,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {
    private readonly _storagePageService: NsStoragePageService;

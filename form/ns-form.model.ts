@@ -20,7 +20,7 @@ import { NsFormControlValidator } from './validators/ns-form-control.validator';
 import { NsFormControlValidators } from './validators/ns-form-control.validators';
 
 export abstract class NsFormModel<TEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 

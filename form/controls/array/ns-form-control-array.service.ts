@@ -6,7 +6,7 @@ import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model'
 export abstract class NsFormControlArrayService<
    TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItemEntity extends NsFormControlArrayItemEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService> {
 
    abstract createNewEntity(lastItem: TArrayItemEntity): TArrayItemEntity;

@@ -7,7 +7,7 @@ import { NsServiceProviderComponentModel } from '../service-provider/ns-service-
 import { NsDashboardItemEntity } from './ns-dashboard-item.entity';
 import { NsDashboardItemModel } from './ns-dashboard-item.model';
 
-export abstract class NsDashboardModel <TServiceProvider extends NsServiceProvider,
+export abstract class NsDashboardModel <TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 

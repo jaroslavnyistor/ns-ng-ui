@@ -20,20 +20,20 @@ export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenti
 }
 
 export interface NsDiConfiguration<TAuthService extends NsAuthenticationApiService,
-   TServiceProvider extends NsServiceProvider, TNavService extends NsNavigationService> {
+   TServiceProvider extends NsServiceProvider<TAppNavService>, TAppNavService extends NsNavigationService> {
    storageKeyPrefix: string;
    defaultLanguage: LocalizationLanguage,
    authentication: NsDiAuthenticationConfiguration<TAuthService>,
-   serviceProvider: NsDiServiceProviderConfiguration<TServiceProvider, TNavService>,
+   serviceProvider: NsDiServiceProviderConfiguration<TServiceProvider, TAppNavService>,
    appVersion: string,
    appLogo?: string,
 }
 
 export class NsDiConfigurator {
    static configure<TAuthService extends NsAuthenticationApiService,
-      TServiceProvider extends NsServiceProvider,
-      TNavService extends NsNavigationService>(
-      config: NsDiConfiguration<TAuthService, TServiceProvider, TNavService>
+      TServiceProvider extends NsServiceProvider<TAppNavService>,
+      TAppNavService extends NsNavigationService>(
+      config: NsDiConfiguration<TAuthService, TServiceProvider, TAppNavService>
    ): Provider[] {
       let providers: Provider[] = [
          NsStorageDiConfigurator.configure(config.storageKeyPrefix),

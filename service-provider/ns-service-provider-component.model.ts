@@ -12,7 +12,7 @@ import { NsServiceProvider } from './ns-service-provider';
 import { NsPageNoPermissionService } from '../page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from '../page/not-found/ns-page-not-found.service';
 
-export abstract class NsServiceProviderComponentModel<TServiceProvider extends NsServiceProvider,
+export abstract class NsServiceProviderComponentModel<TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsComponentModel {
 

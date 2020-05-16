@@ -14,7 +14,7 @@ import { NsPageNoPermissionService } from '../page/no-permission/ns-page-no-perm
 import { NsPageNotFoundService } from '../page/not-found/ns-page-not-found.service';
 
 export abstract class NsServiceProviderComponentService<TModel extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsComponentService<TModel> {
 

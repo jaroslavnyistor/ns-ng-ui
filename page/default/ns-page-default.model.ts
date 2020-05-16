@@ -4,7 +4,7 @@ import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 
-export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvider,
+export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>
    implements NsStoragePageModel {

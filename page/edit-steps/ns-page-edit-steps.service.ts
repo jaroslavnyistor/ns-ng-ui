@@ -11,7 +11,7 @@ import { NsPageEditStepsModel } from './ns-page-edit-steps.model';
 
 export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel<TEntity, TServiceProvider, TAppNavService>,
    TEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormStepsService<TModel, TEntity, TServiceProvider, TAppNavService> {
    private readonly _storagePageService: NsStoragePageService;

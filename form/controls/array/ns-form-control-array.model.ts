@@ -13,7 +13,7 @@ export abstract class NsFormControlArrayModel<TEntity,
    TService extends NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItemEntity extends NsFormControlArrayItemEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormControlModel<TEntity, FormArray,
       NsFormControlArrayConfiguration<TService, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>> {

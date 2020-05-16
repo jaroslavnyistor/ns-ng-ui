@@ -18,7 +18,7 @@ import { NsPageListToolbarOrderModelCollection } from './toolbar/order/ns-page-l
 
 export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutItemEntity,
    TListItemEntity,
-   TServiceProvider extends NsServiceProvider,
+   TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>
    implements NsStoragePageModel, NsToolbarEditModel, NsPageListLoadRequest {
