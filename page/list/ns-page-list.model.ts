@@ -6,8 +6,8 @@ import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-st
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { OrderDirection } from '../../../utils/order/order-direction';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
-import { NsServiceProvider } from '../../ns-service-provider';
-import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
+import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 import { NsToolbarEditModel } from '../toolbar/edit/ns-toolbar-edit.model';
 import { NsPageListLayoutItemEntity } from './layout/item/ns-page-list-layout-item.entity';
 import { NsPageListLoadRequestBuilder } from './ns-page-list-load-request.builder';

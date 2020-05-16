@@ -1,5 +1,5 @@
 import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../../../ns-service-provider';
+import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlConfiguration } from '../ns-form-control.configuration';
 import { NsFormControlArrayItemEntity } from './ns-form-control-array-item.entity';
 import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model';

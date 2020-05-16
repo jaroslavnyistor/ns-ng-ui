@@ -6,7 +6,7 @@ import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-t
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsFormStepsService } from '../../form/steps/ns-form-steps.service';
-import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditStepsModel } from './ns-page-edit-steps.model';
 
 export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel<TEntity, TServiceProvider, TAppNavService>,

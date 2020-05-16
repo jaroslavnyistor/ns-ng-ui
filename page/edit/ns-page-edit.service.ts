@@ -8,7 +8,7 @@ import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-pag
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsFormService } from '../../form/ns-form.service';
-import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditModel } from './ns-page-edit.model';
 
 export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, TServiceProvider, TAppNavService>,

@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../../ns-service-provider';
-import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
+import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
 import { NsCalendarsMonthDayEntity } from './days/ns-calendars-month-day.entity';
 import { NsCalendarsMonthModel } from './ns-calendars-month.model';
 

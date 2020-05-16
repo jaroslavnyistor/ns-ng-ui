@@ -4,8 +4,8 @@ import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-st
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsIcon } from '../../icon/ns-icon.enum';
-import { NsServiceProvider } from '../../ns-service-provider';
-import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
+import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
 import { NsToolbarNavigationItemModel } from './toolbar/navigation/items/ns-toolbar-navigation-item.model';
 

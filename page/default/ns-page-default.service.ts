@@ -1,7 +1,7 @@
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
-import { NsServiceProvider } from '../../ns-service-provider';
-import { NsServiceProviderComponentService } from '../../ns-service-provider-component.service';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
+import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
 import { NsPageDefaultModel } from './ns-page-default.model';
 
 export abstract class NsPageDefaultService<TModel extends NsPageDefaultModel<TServiceProvider, TAppNavService>,

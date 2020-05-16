@@ -1,7 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../ns-service-provider';
-import { NsServiceProviderComponentModel } from '../ns-service-provider-component.model';
+import { NsServiceProvider } from '../service-provider/ns-service-provider';
+import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
 import { NsFormControlCheckboxConfiguration } from './controls/checkbox/ns-form-control-checkbox.configuration';
 import { NsFormControlCheckboxModel } from './controls/checkbox/ns-form-control-checkbox.model';
 import { NsFormControlDateTimePickerConfiguration } from './controls/date-time/ns-form-control-date-time-picker.configuration';

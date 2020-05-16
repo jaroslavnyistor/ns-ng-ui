@@ -4,7 +4,7 @@ import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-st
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
 import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
-import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 
 const keyStateEntity = 'entity';
 

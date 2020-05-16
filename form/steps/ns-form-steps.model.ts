@@ -1,6 +1,6 @@
 import { MatHorizontalStepper } from '@angular/material/stepper';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsFormModel } from '../ns-form.model';
 
 export abstract class NsFormStepsModel<TEntity,

@@ -5,7 +5,7 @@ import { mergeMap, switchMap } from 'rxjs/operators';
 import { NsAuthenticateResponseEntity } from '../../../utils/authentication/ns-authenticate-response.entity';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditService } from '../edit/ns-page-edit.service';
 import { LoginEntity, newLoginEntity } from './login.entity';
 import { LoginModel } from './login.model';

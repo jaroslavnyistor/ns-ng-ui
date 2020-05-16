@@ -2,7 +2,7 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { LocalizationLanguagesService } from '../../../../utils/localization/localization-languages.service';
 import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../../../ns-service-provider';
+import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlDefinition } from '../ns-form-control.definition';
 import { NsFormGroupConfiguration } from './ns-form-group.configuration';

@@ -1,6 +1,6 @@
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../ns-service-provider';
-import { NsServiceProviderComponentService } from '../ns-service-provider-component.service';
+import { NsServiceProvider } from '../service-provider/ns-service-provider';
+import { NsServiceProviderComponentService } from '../service-provider/ns-service-provider-component.service';
 import { NsDashboardItemModel } from './ns-dashboard-item.model';
 import { NsDashboardModel } from './ns-dashboard.model';
 

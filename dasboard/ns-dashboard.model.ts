@@ -2,8 +2,8 @@ import { Observable } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
 import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
-import { NsServiceProvider } from '../ns-service-provider';
-import { NsServiceProviderComponentModel } from '../ns-service-provider-component.model';
+import { NsServiceProvider } from '../service-provider/ns-service-provider';
+import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
 import { NsDashboardItemEntity } from './ns-dashboard-item.entity';
 import { NsDashboardItemModel } from './ns-dashboard-item.model';
 

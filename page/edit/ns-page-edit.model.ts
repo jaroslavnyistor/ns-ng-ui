@@ -6,7 +6,7 @@ import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsFormModel } from '../../form/ns-form.model';
-import { NsServiceProvider } from '../../ns-service-provider';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 
 const keyStateEntity = 'entity';
 

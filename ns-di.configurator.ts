@@ -6,11 +6,11 @@ import { LocalizationLanguage } from '../utils/localization/localization.languag
 import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
 import { NsStorageDiConfigurator } from '../utils/storage/ns-storage.di-configurator';
 import { DI_NS_APP_LOGO, DI_NS_VERSION } from './ns-di.tokens';
-import { NsServiceProvider } from './ns-service-provider';
+import { NsServiceProvider } from './service-provider/ns-service-provider';
 import {
    NsDiServiceProviderConfiguration,
    NsServiceProviderDiConfigurator
-} from './ns-service-provider.di-configurator';
+} from './service-provider/ns-service-provider.di-configurator';
 import { NsPageNotFoundAuthDiConfigurator } from './page/not-found/ns-page-not-found-auth.di-configurator';
 
 export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenticationApiService> {

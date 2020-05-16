@@ -1,8 +1,8 @@
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
-import { NsServiceProvider } from '../../ns-service-provider';
-import { NsServiceProviderComponentModel } from '../../ns-service-provider-component.model';
+import { NsServiceProvider } from '../../service-provider/ns-service-provider';
+import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 
 export abstract class NsPageDefaultModel<TServiceProvider extends NsServiceProvider,
    TAppNavService extends NsNavigationService>

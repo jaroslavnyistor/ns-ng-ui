@@ -1,5 +1,5 @@
 import { Provider, Type } from '@angular/core';
-import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
+import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from './ns-service-provider';
 
 export interface NsDiServiceProviderConfiguration<TServiceProvider extends NsServiceProvider, TNavService extends NsNavigationService> {
