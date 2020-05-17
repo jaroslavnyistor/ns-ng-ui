@@ -1,17 +1,21 @@
 import { Provider, Type } from '@angular/core';
 import { NsAuthenticateDiConfigurator } from '../utils/authentication/ns-authenticate.di-configurator';
-import { NsAuthenticationApiService } from '../utils/authentication/ns-authentication-api.service';
+import {
+   NsAuthenticationApiService,
+   NsNoAuthenticationApiService
+} from '../utils/authentication/ns-authentication-api.service';
+import { nsObjectIsNullValue } from '../utils/helpers/ns-helpers';
 import { LocalizationLanguagesDiConfigurator } from '../utils/localization/localization-languages.di-configurator';
 import { LocalizationLanguage } from '../utils/localization/localization.language';
 import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
 import { NsStorageDiConfigurator } from '../utils/storage/ns-storage.di-configurator';
 import { DI_NS_APP_LOGO, DI_NS_VERSION } from './ns-di.tokens';
+import { NsPageNotFoundAuthDiConfigurator } from './page/not-found/ns-page-not-found-auth.di-configurator';
 import { NsServiceProvider } from './service-provider/ns-service-provider';
 import {
    NsDiServiceProviderConfiguration,
    NsServiceProviderDiConfigurator
 } from './service-provider/ns-service-provider.di-configurator';
-import { NsPageNotFoundAuthDiConfigurator } from './page/not-found/ns-page-not-found-auth.di-configurator';
 
 export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenticationApiService> {
    service: Type<TAuthService>,
@@ -23,7 +27,7 @@ export interface NsDiConfiguration<TAuthService extends NsAuthenticationApiServi
    TServiceProvider extends NsServiceProvider<TAppNavService>, TAppNavService extends NsNavigationService> {
    storageKeyPrefix: string;
    defaultLanguage: LocalizationLanguage,
-   authentication: NsDiAuthenticationConfiguration<TAuthService>,
+   authentication?: NsDiAuthenticationConfiguration<TAuthService>,
    serviceProvider: NsDiServiceProviderConfiguration<TServiceProvider, TAppNavService>,
    appVersion: string,
    appLogo?: string,
@@ -56,10 +60,18 @@ export class NsDiConfigurator {
    private static configureAuthentication<TAuthService extends NsAuthenticationApiService>(
       config: NsDiAuthenticationConfiguration<TAuthService>
    ): Provider[] {
+      const service = nsObjectIsNullValue(config, 'service', NsNoAuthenticationApiService);
+      const notFoundPageRequiresAuth = nsObjectIsNullValue(config, 'notFoundPageRequiresAuth', false);
+      const navigateToLoginOnTokenExpiration = nsObjectIsNullValue(
+         config,
+         'navigateToLoginOnTokenExpiration',
+         false
+      );
+
       return [
-         NsAuthenticateDiConfigurator.provideAuthService(config.service),
-         NsPageNotFoundAuthDiConfigurator.setPageNotFoundRequiresAuth(config.notFoundPageRequiresAuth),
-         NsAuthenticateDiConfigurator.setToLoginOnExpiration(config.navigateToLoginOnTokenExpiration),
+         NsAuthenticateDiConfigurator.provideAuthService(service),
+         NsPageNotFoundAuthDiConfigurator.setPageNotFoundRequiresAuth(notFoundPageRequiresAuth),
+         NsAuthenticateDiConfigurator.setToLoginOnExpiration(navigateToLoginOnTokenExpiration),
       ];
    }
 
