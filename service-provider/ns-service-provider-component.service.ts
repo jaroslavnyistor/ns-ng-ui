@@ -23,7 +23,7 @@ export abstract class NsServiceProviderComponentService<TModel extends NsService
    }
 
    protected get navService(): TAppNavService {
-      return this._serviceProvider.navService as TAppNavService;
+      return this._serviceProvider.navService;
    }
 
    protected get apiErrorResolverService(): NsApiErrorResolverService {
