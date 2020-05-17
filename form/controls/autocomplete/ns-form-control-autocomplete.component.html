@@ -5,9 +5,7 @@
           [formControl]="model.formControl"
           matInput
           [matAutocomplete]="autocomplete"
-          #autocompleteTrigger="matAutocompleteTrigger"
-          (focusin)="model.handleInputIsFocused()"
-          (keyup)="model.performFullTextSearch($event)">
+          #autocompleteTrigger="matAutocompleteTrigger">
 
    <ns-loading-inline-small *ngIf="model.isLoading"
                             matSuffix>
@@ -34,12 +32,11 @@
       </mat-option>
    </ng-container>
 
-   <ng-container *ngIf="model.isLoaded">
-      <mat-option *ngFor="let item of model.data$ | async"
-                  [value]="item"
-                  (onSelectionChange)="model.handleOptionSelected(item)">
-         {{ item }}
-      </mat-option>
-   </ng-container>
+   <mat-option *ngFor="let item of model.data$ | async"
+               [style.display]="model.isLoading ? 'none' : 'block'"
+               [value]="item"
+               (onSelectionChange)="model.handleOptionSelected(item)">
+      {{ item }}
+   </mat-option>
 </mat-autocomplete>
 

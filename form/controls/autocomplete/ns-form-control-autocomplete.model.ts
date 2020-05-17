@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, debounceTime, map, switchMap } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlAutocompleteConfiguration } from './ns-form-control-autocomplete.configuration';
@@ -10,14 +11,12 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
    TService extends NsFormControlAutocompleteService>
    extends NsFormControlModel<TEntity, FormControl, NsFormControlAutocompleteConfiguration<TService>> {
 
-   private readonly _data$: BehaviorSubject<string[]>;
    private readonly _service: TService;
+   private _data$: Observable<string[]>;
    private _isLoading = false;
-   private _searchTimeoutId = null;
-   private _lastSearchValue = '';
 
-   get hasNoItems(): boolean {
-      return this._data$.value.length === 0;
+   protected get service(): TService {
+      return this._service;
    }
 
    get data$(): Observable<string[]> {
@@ -32,14 +31,8 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
       return !this._isLoading;
    }
 
-   protected get service(): TService {
-      return this._service;
-   }
-
    protected constructor(config: NsFormControlAutocompleteConfiguration<TService>) {
       super(new FormControl(), config);
-
-      this._data$ = new BehaviorSubject<string[]>([]);
 
       this.defaultValue = nsNull(config.defaultValue, []);
 
@@ -50,58 +43,28 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
       }
    }
 
-   handleInputIsFocused() {
-      if (this.hasNoItems && !this.isLoading) {
-         this.loadData(this.value);
-      }
-   }
+   onInit() {
+      super.onInit();
 
-   performFullTextSearch($event: KeyboardEvent) {
-      if ($event.code === 'Tab') {
-         return;
-      }
+      this._data$ = this.valueChanges$
+         .pipe(
+            debounceTime(400),
+            switchMap(search => {
+               this._isLoading = true;
 
-      $event.stopPropagation();
-      $event.preventDefault();
-
-      const search = ($event.target as HTMLInputElement).value;
-      this.clearTypingTimer();
-
-      if (this._lastSearchValue === search) {
-         return;
-      }
-
-      this._searchTimeoutId = window.setTimeout(
-         () => this.loadData(search),
-         400
-      );
-   }
-
-   private clearTypingTimer() {
-      if (this._searchTimeoutId != null) {
-         clearTimeout(this._searchTimeoutId);
-         this._searchTimeoutId = null;
-      }
-   }
-
-   private loadData(search: string) {
-      this.clearTypingTimer();
-
-      this._lastSearchValue = search;
-      this._isLoading = true;
-
-      this.subscribeTo(
-         this._service.getLoadListObservable(search),
-         {
-            next: data => this.handleDataLoaded(data),
-            error: error => this.handleError(error)
-         }
-      );
-   }
-
-   private handleDataLoaded(data: string[]) {
-      this._isLoading = false;
-      this._data$.next(data);
+               return this.isDisabled
+                  ? of(this.defaultValue)
+                  : this._service.getLoadListObservable(search);
+            }),
+            map(data => {
+               this._isLoading = false;
+               return data;
+            }),
+            catchError(error => {
+               this.handleError(error);
+               return throwError(error);
+            })
+         );
    }
 
    private handleError(error) {
@@ -117,26 +80,13 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
    clearSelection(autocomplete: MatAutocompleteTrigger) {
       if (this.canClearValue()) {
          this.clearValue();
+
          window.setTimeout(() => autocomplete.openPanel(), 0);
       }
    }
 
    clearValue() {
-      this.resetValueToDefault();
-
-      if (this.isDisabled) {
-         this._data$.next(this.defaultValue);
-      } else {
-         this.loadData('');
-      }
-   }
-
-   private resetValueToDefault() {
-      if (this._service == null) {
-         return;
-      }
-
-      this.patchValue(null);
+      this.patchValue('');
    }
 
    handleOptionSelected(value: string) {
@@ -152,8 +102,6 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
    protected handleDependingOnValuesChanged(results: any[]) {
       super.handleDependingOnValuesChanged(results);
 
-      if (this._service != null) {
-         this._service.handleDependingOnValuesChanged(results);
-      }
+      this._service.handleDependingOnValuesChanged(results);
    }
 }
