@@ -13,3 +13,11 @@ export const notFoundRoutes: Route[] = [
       redirectTo: routeNotFound
    }
 ];
+
+ export function buildDefaultRoute(redirectTo = routeNotFound) {
+   return {
+      path: '',
+      redirectTo,
+      pathMatch: 'full'
+   };
+}
