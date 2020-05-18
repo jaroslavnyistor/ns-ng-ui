@@ -373,6 +373,7 @@ src
       NsDiConfigurator.configure({
          storageKeyPrefix: '' // Prefix used when saving values to local storage,
          defaultLanguage: LocalizationLanguage.EN, // Setups default language
+         usesLocalization: true, // It's optional, default value is true
          authentication: { // Setups authentication, can be left-out
             service: NsFirebaseAuthService,
             notFoundPageRequiresAuth: true,
