@@ -3,7 +3,8 @@ import { NsFormControlDefinition } from './ns-form-control.definition';
 
 export interface NsFormControlConfiguration {
    key: string;
-   labelId: any;
+   labelId?: any;
+   label?: string;
    hintId?: any;
    isRequired?: boolean;
    isDisabled?: boolean;

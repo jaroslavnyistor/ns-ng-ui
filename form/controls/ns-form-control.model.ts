@@ -134,7 +134,8 @@ export abstract class NsFormControlModel<TEntity,
          if (!this.formControl.disabled) {
             this._formControl.disable();
          }
-      } else if (this._formControl.disabled) {
+      }
+      else if (this._formControl.disabled) {
          this._formControl.enable();
       }
    }
@@ -174,19 +175,23 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    private fixLabel() {
-      if (this._config.labelId == null) {
-         return;
+      if (this._config.labelId == null && this._config.label == null) {
+         throw new Error('labelId or label must be provided.');
       }
 
-      this._label = this._langService.translate(this._config.labelId);
+      this._label = this._config.label;
+
+      if (this._config.labelId != null) {
+         this._label = this._langService.translate(this._config.labelId);
+      }
 
       if (this.isRequired) {
          this._label = `${this._label}*`;
       }
 
       this._hint = this._config.hintId == null
-         ? null
-         : this._langService.translate(this._config.hintId);
+                   ? null
+                   : this._langService.translate(this._config.hintId);
    }
 
    private setErrorMessage$() {
@@ -196,8 +201,8 @@ export abstract class NsFormControlModel<TEntity,
                const errors = this._formControl.errors;
 
                return errors != null && nsIsNotNullOrEmpty(errors.error)
-                  ? errors.error
-                  : ''
+                      ? errors.error
+                      : ''
             })
          );
    }
