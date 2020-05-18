@@ -6,6 +6,9 @@ import { NsExpansionPanelComponent } from './ns-expansion-panel.component';
 
 @NgModule({
    declarations: [NsExpansionPanelComponent],
+   exports: [
+      NsExpansionPanelComponent
+   ],
    imports: [
       CommonModule,
       MatExpansionModule

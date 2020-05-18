@@ -27,6 +27,7 @@ export interface NsDiConfiguration<TAuthService extends NsAuthenticationApiServi
    TServiceProvider extends NsServiceProvider<TAppNavService>, TAppNavService extends NsNavigationService> {
    storageKeyPrefix: string;
    defaultLanguage: LocalizationLanguage,
+   usesLocalization?: boolean,
    authentication?: NsDiAuthenticationConfiguration<TAuthService>,
    serviceProvider: NsDiServiceProviderConfiguration<TServiceProvider, TAppNavService>,
    appVersion: string,
@@ -41,7 +42,7 @@ export class NsDiConfigurator {
    ): Provider[] {
       let providers: Provider[] = [
          NsStorageDiConfigurator.configure(config.storageKeyPrefix),
-         ...LocalizationLanguagesDiConfigurator.configure(config.defaultLanguage),
+         ...LocalizationLanguagesDiConfigurator.configure(config.defaultLanguage, config.usesLocalization || true),
          ...NsDiConfigurator.configureAuthentication(config.authentication),
          ...NsServiceProviderDiConfigurator.configure(config.serviceProvider),
          NsDiConfigurator.configureAppVersion(config.appVersion),
