@@ -105,7 +105,8 @@ export abstract class NsPageEditService<TModel extends NsPageEditModel<TEntity, 
             this.langService.translate(
                LocalizedTextIdNikisoft.EditEntityNotFound)
          ];
-      } else {
+      }
+      else {
          this.model.setInitialEntity(entity);
       }
    }

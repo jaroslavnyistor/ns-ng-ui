@@ -54,7 +54,8 @@ export class NsSearchInputComponent implements AfterViewInit, OnDestroy {
 
       if ($event.key === 'Enter') {
          this.notify(value);
-      } else {
+      }
+      else {
          this._timerId = window.setTimeout(
             () => this.notify(value),
             400

@@ -162,8 +162,8 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
 
    get selectedItemId(): number {
       return this._selectedItem == null
-         ? undefined
-         : this._selectedItem.id;
+             ? undefined
+             : this._selectedItem.id;
    }
 
    get selectedItem(): TListItemModel {
@@ -275,7 +275,8 @@ export abstract class NsPageListModel<TListItemModel extends NsPageListLayoutIte
       if (this._selectedItem == null || item.id !== this._selectedItem.id) {
          this._selectedItem = item;
          this._selectedItem.isSelected = true;
-      } else {
+      }
+      else {
          this._selectedItem = null;
       }
    }

@@ -75,8 +75,8 @@ export class NsPageListToolbarOrderModelCollection {
 
    get activeItemTitle(): string {
       return this._activeItem == null
-         ? ''
-         : this._activeItem.item.title;
+             ? ''
+             : this._activeItem.item.title;
    }
 
    get activeItemIcon(): NsIcon {

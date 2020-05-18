@@ -8,9 +8,9 @@ import { NsStorageService } from '../../utils/storage/ns-storage.service';
 import { NsComponentModel } from '../component/ns-component.model';
 import { NsDialogService } from '../dialog/ns-dialog.service';
 import { NsMediaQueryObserver } from '../ns-media-query-observer';
-import { NsServiceProvider } from './ns-service-provider';
 import { NsPageNoPermissionService } from '../page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from '../page/not-found/ns-page-not-found.service';
+import { NsServiceProvider } from './ns-service-provider';
 
 export abstract class NsServiceProviderComponentModel<TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>

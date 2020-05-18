@@ -8,10 +8,10 @@ import { NsStorageService } from '../../utils/storage/ns-storage.service';
 import { NsComponentService } from '../component/ns-component.service';
 import { NsDialogService } from '../dialog/ns-dialog.service';
 import { NsMediaQueryObserver } from '../ns-media-query-observer';
-import { NsServiceProvider } from './ns-service-provider';
-import { NsServiceProviderComponentModel } from './ns-service-provider-component.model';
 import { NsPageNoPermissionService } from '../page/no-permission/ns-page-no-permission.service';
 import { NsPageNotFoundService } from '../page/not-found/ns-page-not-found.service';
+import { NsServiceProvider } from './ns-service-provider';
+import { NsServiceProviderComponentModel } from './ns-service-provider-component.model';
 
 export abstract class NsServiceProviderComponentService<TModel extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService>,
    TServiceProvider extends NsServiceProvider<TAppNavService>,
@@ -64,7 +64,8 @@ export abstract class NsServiceProviderComponentService<TModel extends NsService
 
    protected constructor(
       model: TModel,
-      private readonly _serviceProvider: TServiceProvider) {
+      private readonly _serviceProvider: TServiceProvider
+   ) {
       super(model);
    }
 }

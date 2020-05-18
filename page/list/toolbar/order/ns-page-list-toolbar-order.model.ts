@@ -27,7 +27,8 @@ export interface NsPageListToolbarOrderItemDirection {
 export function buildPageListOrderOption(
    title: string,
    field: string,
-   isActive = false)
+   isActive = false
+)
    : NsPageListToolbarOrderOption {
    return {
       title,

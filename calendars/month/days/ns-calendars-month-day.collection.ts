@@ -41,8 +41,8 @@ export class NsCalendarsMonthDayCollection {
 
    get selectedDate(): string {
       return this._selectedDay == null
-         ? null
-         : this._selectedDay.dateString;
+             ? null
+             : this._selectedDay.dateString;
    }
 
    get hasSelectedDayData(): boolean {
@@ -51,8 +51,8 @@ export class NsCalendarsMonthDayCollection {
 
    get selectedDayData(): NsCalendarsMonthDayEntity {
       return this._selectedDay == null
-         ? null
-         : this._selectedDay.data;
+             ? null
+             : this._selectedDay.data;
    }
 
    get headerDate(): string {
@@ -184,7 +184,8 @@ export class NsCalendarsMonthDayCollection {
 
       if (day == null || (day.isSame(this._selectedDay) && day === this._selectedDay)) {
          this._selectedDay = null;
-      } else {
+      }
+      else {
          this._selectedDay = day;
          this._selectedDay.isSelected = true;
       }

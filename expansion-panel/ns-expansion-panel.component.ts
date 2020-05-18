@@ -4,11 +4,11 @@ import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strin
 @Component({
    selector: 'ns-expansion-panel',
    template: `
-    <mat-expansion-panel>
-       <mat-expansion-panel-header *ngIf="hasHeader">{{header}}</mat-expansion-panel-header>
-       <ng-content></ng-content>
-    </mat-expansion-panel>
-  `,
+      <mat-expansion-panel>
+         <mat-expansion-panel-header *ngIf="hasHeader">{{header}}</mat-expansion-panel-header>
+         <ng-content></ng-content>
+      </mat-expansion-panel>
+   `,
    styles: []
 })
 export class NsExpansionPanelComponent {

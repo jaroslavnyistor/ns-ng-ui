@@ -38,9 +38,9 @@
 
 <ng-container *ngIf="model.isLoginButtonVisible$ | async">
    <ns-icon-normal [icon]="model.loginIcon"
-                    tooltip="{{ 'LoginButton' | translate }}"
-                    isClickable="true"
-                    (click)="service.handleLoginClick()">
+                   tooltip="{{ 'LoginButton' | translate }}"
+                   isClickable="true"
+                   (click)="service.handleLoginClick()">
    </ns-icon-normal>
 
 </ng-container>

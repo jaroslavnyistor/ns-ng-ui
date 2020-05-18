@@ -179,7 +179,8 @@ export abstract class NsFormControlMultiSelectModel<TEntity,
 
       if (this.isDisabled) {
          this._data$.next(this.defaultValue);
-      } else {
+      }
+      else {
          this.loadData('');
       }
    }

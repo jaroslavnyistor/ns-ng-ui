@@ -14,7 +14,7 @@ export const notFoundRoutes: Route[] = [
    }
 ];
 
- export function buildDefaultRoute(redirectTo = routeNotFound) {
+export function buildDefaultRoute(redirectTo = routeNotFound) {
    return {
       path: '',
       redirectTo,

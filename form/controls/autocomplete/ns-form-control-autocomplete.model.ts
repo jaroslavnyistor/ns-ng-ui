@@ -53,8 +53,8 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
                this._isLoading = true;
 
                return this.isDisabled
-                  ? of(this.defaultValue)
-                  : this._service.getLoadListObservable(search);
+                      ? of(this.defaultValue)
+                      : this._service.getLoadListObservable(search);
             }),
             map(data => {
                this._isLoading = false;

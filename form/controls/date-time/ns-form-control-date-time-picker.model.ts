@@ -45,9 +45,11 @@ export class NsFormControlDateTimePickerModel<TEntity>
 
       if (this.canChooseDate && this.canChooseTime) {
          this._currentDateTimeFormat = FORMATS_DATE_TIME;
-      } else if (this.canChooseDate) {
+      }
+      else if (this.canChooseDate) {
          this._currentDateTimeFormat = FORMATS_DATE_ONLY;
-      } else {
+      }
+      else {
          this._currentDateTimeFormat = FORMATS_TIME_ONLY;
       }
 
@@ -69,7 +71,8 @@ export class NsFormControlDateTimePickerModel<TEntity>
    handleDateChanged(newDate: moment.Moment) {
       if (this._currentDateTime == null) {
          this._currentDateTime = newDate;
-      } else {
+      }
+      else {
          this._currentDateTime.year(newDate.year());
          this._currentDateTime.month(newDate.month());
          this._currentDateTime.date(newDate.date());

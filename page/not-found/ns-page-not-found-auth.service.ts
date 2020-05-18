@@ -17,7 +17,7 @@ export class NsPageNotFoundAuthService implements CanActivate {
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
       : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this._isAuthRequired
-         ? this._authService.canActivate(route, state)
-         : true;
+             ? this._authService.canActivate(route, state)
+             : true;
    }
 }

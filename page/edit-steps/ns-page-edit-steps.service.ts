@@ -94,7 +94,8 @@ export abstract class NsPageEditStepsService<TModel extends NsPageEditStepsModel
          this.model.pageErrorMessages = [
             this.langService.translate(LocalizedTextIdNikisoft.EditEntityNotFound)
          ];
-      } else {
+      }
+      else {
          this.model.setInitialEntity(entity);
       }
    }

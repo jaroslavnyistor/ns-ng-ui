@@ -5,7 +5,8 @@ import { NsFormService } from './ns-form.service';
 export class NsFormDiConfigurator {
    static provideService<TService extends NsFormService<any, any, any, any>,
       TModel extends NsFormModel<any, any, any>>(
-         service: Type<TService>, model: Type<TModel>
+      service: Type<TService>,
+      model: Type<TModel>
    ): Provider[] {
       return [
          service,

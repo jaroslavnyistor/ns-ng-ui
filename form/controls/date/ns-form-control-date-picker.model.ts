@@ -47,7 +47,8 @@ export class NsFormControlDatePickerModel<TEntity>
                if (newValue != null) {
                   if (newValue.toISOString) {
                      dateStringValue = NsDate.from(newValue.toISOString(false)).toString();
-                  } else {
+                  }
+                  else {
                      dateStringValue = newValue;
                   }
                }
@@ -67,8 +68,8 @@ export class NsFormControlDatePickerModel<TEntity>
 
       const dateFormControlValue = this._dateFormControl.value;
       const dateStringValue = dateFormControlValue == null
-         ? null
-         : NsDate.from(dateFormControlValue).toString();
+                              ? null
+                              : NsDate.from(dateFormControlValue).toString();
 
       if (newValue === dateStringValue) {
          return;

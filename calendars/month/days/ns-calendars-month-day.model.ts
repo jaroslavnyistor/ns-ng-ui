@@ -124,7 +124,7 @@ export class NsCalendarsMonthDayModel {
 
    isSameDate(date: NsDateTime): NsCalendarsMonthDayModel {
       return this._date.isSame(date)
-         ? this
-         : null;
+             ? this
+             : null;
    }
 }
