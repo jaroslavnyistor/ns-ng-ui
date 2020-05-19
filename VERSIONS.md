@@ -14,6 +14,7 @@
 - Form Control Autocomplete simplified with better use of observable operators
 - UI - buildDefaultRoute function added to handle default route
 - Form control label ID made optional, added label(optional too)
+- NsPageErrors component uses expansion panel on multiple errors, for single one uses one liner text
 
 ### 1.1.0.0
 - Responsive width of right panel in month calendar and left panel with navigation items
