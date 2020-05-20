@@ -2,6 +2,8 @@
 
 ## Versions
 
+### 1.3.0.0
+
 ### 1.2.0.0
 - Refactored forms module in ui lib to simplify it
 - Month calendar weekend days are highlighted, different font size for day cells in diff screen sizes, Fixed click of disabled header items
