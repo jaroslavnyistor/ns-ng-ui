@@ -64,7 +64,9 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
          );
    }
 
-   protected abstract getApplicationNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]>;
+   protected abstract getApplicationNavigationItems$(
+      isLoggedIn: boolean
+   ): Observable<NsToolbarNavigationItemGroupModel[]>;
 
    private getDefaultNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]> {
       let items: NsToolbarNavigationItemModel[] = [
