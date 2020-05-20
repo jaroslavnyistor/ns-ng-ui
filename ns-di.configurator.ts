@@ -42,7 +42,7 @@ export class NsDiConfigurator {
    ): Provider[] {
       let providers: Provider[] = [
          NsStorageDiConfigurator.configure(config.storageKeyPrefix),
-         ...LocalizationLanguagesDiConfigurator.configure(config.defaultLanguage, config.usesLocalization || true),
+         ...LocalizationLanguagesDiConfigurator.configure(config.defaultLanguage, config.usesLocalization),
          ...NsDiConfigurator.configureAuthentication(config.authentication),
          ...NsServiceProviderDiConfigurator.configure(config.serviceProvider),
          NsDiConfigurator.configureAppVersion(config.appVersion),
