@@ -25,7 +25,7 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
    private _css: string[] = [];
    private _hasContent = false;
 
-   @ViewChild('content', { static: false }) content: ElementRef<HTMLElement>;
+   @ViewChild('content') content: ElementRef<HTMLElement>;
    @Input() size: string;
    @Input() icon: NsIcon;
    @Input() keepSpace: boolean;
