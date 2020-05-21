@@ -1,11 +1,11 @@
 import { Observable, of } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
+import { map, switchMap } from 'rxjs/operators';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
+import { NsToolbarNavigationItemGroupEntity } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.entity';
 import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
 import { NsToolbarNavigationItemModel } from './toolbar/navigation/items/ns-toolbar-navigation-item.model';
 
@@ -51,51 +51,73 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
    private buildNavigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
       return this.authService.isLoggedIn$
          .pipe(
-            flatMap(isLoggedIn => this.getApplicationNavigationItems$(isLoggedIn)
-               .pipe(
-                  map(appItems => ({ isLoggedIn, appItems }))
-               )
-            ),
-            flatMap(({ isLoggedIn, appItems }) => this.getDefaultNavigationItems$(isLoggedIn)
-               .pipe(
-                  map(defaultItems => ([...appItems, ...defaultItems]))
-               )
-            )
+            this.processApplicationNavigationItems$(),
+            this.processDefaultNavigationItems$(),
+            this.mapNavigationItems$()
          );
    }
 
-   protected abstract getApplicationNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]>;
+   private processApplicationNavigationItems$() {
+      return switchMap(isLoggedIn => this.getApplicationNavigationItems$()
+         .pipe(
+            map(appItems => ({ isLoggedIn, appItems }))
+         )
+      );
+   }
 
-   private getDefaultNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]> {
-      let items: NsToolbarNavigationItemModel[] = [
-         {
-            title: this.langService.translate(LocalizedTextIdNikisoft.GoToHomePage),
-            icon: NsIcon.Action_Home,
-            action: () => this.navService.toHomePage()
-         }
-      ];
+   protected abstract getApplicationNavigationItems$(): Observable<NsToolbarNavigationItemGroupEntity[]>;
 
-      if (isLoggedIn) {
-         items = [
-            ...items,
-            {
-               title: this.langService.translate(LocalizedTextIdNikisoft.LogOutButton),
-               icon: NsIcon.Action_PowerSettingsNew,
-               action: () => this.authService.logout()
-            }
-         ]
-      }
+   private processDefaultNavigationItems$() {
+      return switchMap(({ isLoggedIn, appItems }) => this.getDefaultNavigationItems$()
+         .pipe(
+            map(
+               defaultItems => (
+                  {
+                     isLoggedIn,
+                     entities: [...appItems, ...defaultItems]
+                  }
+               )
+            )
+         )
+      );
+   }
 
+   private getDefaultNavigationItems$(): Observable<NsToolbarNavigationItemGroupEntity[]> {
       return of([
-         { items }
-      ] as NsToolbarNavigationItemGroupModel[]);
+         {
+            items: [
+               {
+                  titleId: LocalizedTextIdNikisoft.GoToHomePage,
+                  icon: NsIcon.Action_Home,
+                  action: () => this.navService.toHomePage()
+               },
+               {
+                  titleId: LocalizedTextIdNikisoft.LogOutButton,
+                  icon: NsIcon.Action_PowerSettingsNew,
+                  requiresAuth: true,
+                  action: () => this.authService.logout()
+               }
+            ]
+         }
+      ]);
+   }
+
+   private mapNavigationItems$() {
+      return map(({ isLoggedIn, entities }) =>
+         entities.map(
+            entity => new NsToolbarNavigationItemGroupModel(entity, isLoggedIn, this.langService)
+         )
+      );
    }
 
    onInit() {
       super.onInit();
 
       this.titleService.setTitle(this.pageTitle);
+      this.handleIsNavigating$();
+   }
 
+   private handleIsNavigating$() {
       this.subscribeTo(
          this.isNavigating$,
          {
@@ -105,7 +127,7 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
                }
             }
          }
-      )
+      );
    }
 
    handleMenuOpened() {
@@ -126,10 +148,7 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
 
    handleItemClicked(item: NsToolbarNavigationItemModel) {
       this.toggleMenuOpened();
-      item.action();
-   }
 
-   hasTitle(title: string) {
-      return nsIsNotNullOrEmpty(title);
+      item.handleItemClicked(this.navService);
    }
 }
