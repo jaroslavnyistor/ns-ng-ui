@@ -1,7 +1,6 @@
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../service-provider/ns-service-provider-component.service';
-import { NsDashboardItemModel } from './ns-dashboard-item.model';
 import { NsDashboardModel } from './ns-dashboard.model';
 
 export abstract class NsDashboardService<TModel extends NsDashboardModel<TServiceProvider, TAppNavService>,
@@ -11,9 +10,5 @@ export abstract class NsDashboardService<TModel extends NsDashboardModel<TServic
 
    protected constructor(model: TModel, serviceProvider: TServiceProvider) {
       super(model, serviceProvider);
-   }
-
-   handleItemClicked(item: NsDashboardItemModel) {
-      this.navService.toUrl(item.route);
    }
 }

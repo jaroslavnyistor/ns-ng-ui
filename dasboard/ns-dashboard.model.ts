@@ -61,15 +61,17 @@ export abstract class NsDashboardModel<TServiceProvider extends NsServiceProvide
    }
 
    private static filterEntity(entity: NsDashboardItemEntity, isLoggedIn: boolean): boolean {
+      let result = true;
+
       if (entity.requiresAuth === true) {
-         return isLoggedIn;
+         result = isLoggedIn;
       }
 
       if (entity.includeIf != null) {
-         return entity.includeIf();
+         result = entity.includeIf();
       }
 
-      return true;
+      return result;
    }
 
    private toModel(entity: NsDashboardItemEntity, id: number): NsDashboardItemModel {

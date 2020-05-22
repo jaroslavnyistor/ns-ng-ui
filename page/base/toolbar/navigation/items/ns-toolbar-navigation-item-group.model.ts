@@ -37,21 +37,23 @@ export class NsToolbarNavigationItemGroupModel {
                     : '';
 
       this._hasItems = entity.items.length > 0;
+
       this._items = entity.items
-         .filter(entity => NsToolbarNavigationItemGroupModel.filterEntity(entity, isLoggedIn))
+         .filter(item => NsToolbarNavigationItemGroupModel.filterEntity(item, isLoggedIn))
          .map(item => new NsToolbarNavigationItemModel(item, langService));
    }
 
-
    private static filterEntity(entity: NsToolbarNavigationItemEntity, isLoggedIn: boolean): boolean {
+      let result = true;
+
       if (entity.requiresAuth === true) {
-         return isLoggedIn;
+         result = isLoggedIn;
       }
 
       if (entity.includeIf != null) {
-         return entity.includeIf();
+         result = entity.includeIf();
       }
 
-      return true;
+      return result;
    }
 }
