@@ -32,7 +32,12 @@ export class NsToolbarNavigationItemModel {
       private readonly _entity: NsToolbarNavigationItemEntity,
       langService: LocalizationLanguagesService
    ) {
-      this._title = langService.translate(this._entity.titleId);
+      if (_entity.title != null) {
+         this._title = this._entity.title;
+      }
+      else if (this._entity.titleId != null) {
+         this._title = langService.translate(this._entity.titleId);
+      }
 
       this._hasSubtitle = this._entity.subtitleId != null;
       this._subtitle = this._hasSubtitle

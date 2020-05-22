@@ -30,11 +30,14 @@ export class NsToolbarNavigationItemGroupModel {
       isLoggedIn: boolean,
       langService: LocalizationLanguagesService
    ) {
-      this._hasTitle = entity.titleId != null;
+      this._hasTitle = entity.title != null || entity.titleId != null;
 
-      this._title = this._hasTitle
-                    ? langService.translate(entity.titleId)
-                    : '';
+      if (entity.title != null) {
+         this._title = entity.title;
+      }
+      else if (entity.titleId != null) {
+         this._title = langService.translate(entity.titleId);
+      }
 
       this._hasItems = entity.items.length > 0;
 

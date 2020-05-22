@@ -1,7 +1,8 @@
 import { NsIcon } from '../../../../../icon/ns-icon.enum';
 
 export interface NsToolbarNavigationItemEntity {
-   titleId: any;
+   titleId?: any;
+   title?: string;
    subtitleId?: any;
    icon?: NsIcon;
    action: () => void;
