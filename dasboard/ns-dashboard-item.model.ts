@@ -16,7 +16,15 @@ export class NsDashboardItemModel extends NsPageListLayoutItemModel {
    ) {
       super(id);
 
-      this._name = langService.translate(_entity.nameId);
+      if (this._entity.name != null) {
+         this._name = this._entity.name;
+      }
+      else if (this._entity.nameId != null) {
+         this._name = langService.translate(this._entity.nameId);
+      }
+      else {
+         this._name = '';
+      }
    }
 
    handleItemClicked() {
