@@ -1,5 +1,4 @@
 import { LocalizationLanguagesService } from '../../../../../../utils/localization/localization-languages.service';
-import { NsNavigationService } from '../../../../../../utils/navigation/ns-navigation.service';
 import { NsIcon } from '../../../../../icon/ns-icon.enum';
 import { NsToolbarNavigationItemEntity } from './ns-toolbar-navigation-item.entity';
 
@@ -43,13 +42,7 @@ export class NsToolbarNavigationItemModel {
       this._iconStyle = { visibility: this._entity.icon ? 'visible' : 'hidden' }
    }
 
-   handleItemClicked(navService: NsNavigationService) {
-      if (this._entity.route != null) {
-         navService.toUrl(this._entity.route);
-      }
-
-      if (this._entity.action != null) {
-         this._entity.action();
-      }
+   handleItemClicked() {
+      this._entity.action();
    }
 }

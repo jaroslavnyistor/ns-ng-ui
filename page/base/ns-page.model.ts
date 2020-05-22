@@ -126,6 +126,6 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
    handleItemClicked(item: NsToolbarNavigationItemModel) {
       this.toggleMenuOpened();
 
-      item.handleItemClicked(this.navService);
+      item.handleItemClicked();
    }
 }
