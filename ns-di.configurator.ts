@@ -18,7 +18,7 @@ import {
 } from './service-provider/ns-service-provider.di-configurator';
 
 export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenticationApiService> {
-   service: Type<TAuthService>,
+   service: Type<TAuthService>;
    notFoundPageRequiresAuth: boolean;
    navigateToLoginOnTokenExpiration: boolean;
 }
@@ -26,12 +26,12 @@ export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenti
 export interface NsDiConfiguration<TAuthService extends NsAuthenticationApiService,
    TServiceProvider extends NsServiceProvider<TAppNavService>, TAppNavService extends NsNavigationService> {
    storageKeyPrefix: string;
-   defaultLanguage: LocalizationLanguage,
-   usesLocalization?: boolean,
-   authentication?: NsDiAuthenticationConfiguration<TAuthService>,
-   serviceProvider: NsDiServiceProviderConfiguration<TServiceProvider, TAppNavService>,
-   appVersion: string,
-   appLogo?: string,
+   defaultLanguage: LocalizationLanguage;
+   usesLocalization?: boolean;
+   authentication?: NsDiAuthenticationConfiguration<TAuthService>;
+   serviceProvider: NsDiServiceProviderConfiguration<TServiceProvider, TAppNavService>;
+   appVersion: string;
+   appLogo?: string;
 }
 
 export class NsDiConfigurator {

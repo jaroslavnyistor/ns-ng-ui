@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
@@ -13,6 +13,8 @@ export abstract class NsDashboardModel<TServiceProvider extends NsServiceProvide
 
    private _header = '';
    private _hasHeader = false;
+   private _dashboardItems: NsDashboardItemEntity[];
+   private _dashboardItems$: Observable<NsDashboardItemModel[]>;
 
    get header(): string {
       return this._header;
@@ -27,26 +29,54 @@ export abstract class NsDashboardModel<TServiceProvider extends NsServiceProvide
       return this._hasHeader;
    }
 
-   private readonly _dashboardItems$: Observable<NsDashboardItemModel[]>;
-
    get dashboardItems$(): Observable<NsDashboardItemModel[]> {
       return this._dashboardItems$;
    }
 
    protected constructor(serviceProvider: TServiceProvider) {
       super(serviceProvider);
+   }
+
+   onInit() {
+      super.onInit();
+
+      this._dashboardItems = this.getDashboardItems();
 
       this._dashboardItems$ = this.buildDashboardItems$();
    }
 
+   protected abstract getDashboardItems(): NsDashboardItemEntity[];
+
    private buildDashboardItems$() {
       return this.authService.isLoggedIn$
          .pipe(
-            flatMap(isLoggedIn => this.getDashboardItems$(isLoggedIn)),
-            map(entities => entities.map(entity => new NsDashboardItemModel(entity)))
+            switchMap(isLoggedIn => of(this.mapEntities(isLoggedIn)))
          );
    }
 
-   protected abstract getDashboardItems$(isLoggedIn: boolean): Observable<NsDashboardItemEntity[]>;
+   private mapEntities(isLoggedIn: boolean): NsDashboardItemModel[] {
+      return this._dashboardItems
+         .filter(entity => NsDashboardModel.filterEntity(entity, isLoggedIn))
+         .map((entity, idx) => this.toModel(entity, idx));
+   }
 
+   private static filterEntity(entity: NsDashboardItemEntity, isLoggedIn: boolean): boolean {
+      if (entity.requiresAuth === true) {
+         return isLoggedIn;
+      }
+
+      if (entity.includeIf != null) {
+         return entity.includeIf();
+      }
+
+      return true;
+   }
+
+   private toModel(entity: NsDashboardItemEntity, id: number): NsDashboardItemModel {
+      return new NsDashboardItemModel(
+         id + 1,
+         entity,
+         this.langService
+      );
+   }
 }

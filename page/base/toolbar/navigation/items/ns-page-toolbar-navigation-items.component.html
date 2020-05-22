@@ -1,7 +1,7 @@
 <mat-action-list>
    <ng-container *ngFor="let group of model.navigationItems$ | async; last as lastGroup;">
-      <ng-container *ngIf="group.items.length > 0">
-         <h3 *ngIf="model.hasTitle(group.title)"
+      <ng-container *ngIf="group.hasItems">
+         <h3 *ngIf="group.hasTitle"
              mat-subheader>
             {{group.title}}
          </h3>
@@ -9,7 +9,7 @@
          <mat-list-item *ngFor="let item of group.items; last as lastItem;"
                         (click)="model.handleItemClicked(item)">
             <ns-icon-default *ngIf="item.icon"
-                             [ngStyle]="{ visibility: item.icon ? 'visible' : 'hidden'}"
+                             [ngStyle]="item.iconStyle"
                              [icon]="item.icon"
                              mat-list-icon>
             </ns-icon-default>
@@ -17,7 +17,7 @@
             <div mat-line>
                <div>{{item.title}}</div>
 
-               <small *ngIf="item.subtitle"
+               <small *ngIf="item.hasSubtitle"
                       style="display: block">
                   {{item.subtitle}}
                </small>

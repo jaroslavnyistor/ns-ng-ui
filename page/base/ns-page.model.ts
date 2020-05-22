@@ -1,11 +1,11 @@
 import { Observable, of } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
+import { map, switchMap } from 'rxjs/operators';
 import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
 import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
+import { NsToolbarNavigationItemGroupEntity } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.entity';
 import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
 import { NsToolbarNavigationItemModel } from './toolbar/navigation/items/ns-toolbar-navigation-item.model';
 
@@ -13,8 +13,9 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 
-   private readonly _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
    private readonly _pageVisibility$: Observable<object>;
+   private _navigationItems: NsToolbarNavigationItemGroupEntity[];
+   private _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
    private _isMenuOpened = false;
 
    abstract get pageTitle(): string;
@@ -44,60 +45,23 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
          .pipe(
             map(isNavigating => isNavigating ? { display: 'none' } : null)
          );
-
-      this._navigationItems$ = this.buildNavigationItems$();
-   }
-
-   private buildNavigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
-      return this.authService.isLoggedIn$
-         .pipe(
-            flatMap(isLoggedIn => this.getApplicationNavigationItems$(isLoggedIn)
-               .pipe(
-                  map(appItems => ({ isLoggedIn, appItems }))
-               )
-            ),
-            flatMap(({ isLoggedIn, appItems }) => this.getDefaultNavigationItems$(isLoggedIn)
-               .pipe(
-                  map(defaultItems => ([...appItems, ...defaultItems]))
-               )
-            )
-         );
-   }
-
-   protected abstract getApplicationNavigationItems$(
-      isLoggedIn: boolean
-   ): Observable<NsToolbarNavigationItemGroupModel[]>;
-
-   private getDefaultNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]> {
-      let items: NsToolbarNavigationItemModel[] = [
-         {
-            title: this.langService.translate(LocalizedTextIdNikisoft.GoToHomePage),
-            icon: NsIcon.Action_Home,
-            action: () => this.navService.toHomePage()
-         }
-      ];
-
-      if (isLoggedIn) {
-         items = [
-            ...items,
-            {
-               title: this.langService.translate(LocalizedTextIdNikisoft.LogOutButton),
-               icon: NsIcon.Action_PowerSettingsNew,
-               action: () => this.authService.logout()
-            }
-         ]
-      }
-
-      return of([
-         { items }
-      ] as NsToolbarNavigationItemGroupModel[]);
    }
 
    onInit() {
       super.onInit();
 
       this.titleService.setTitle(this.pageTitle);
+      this.handleIsNavigating$();
 
+      this._navigationItems = [
+         ...this.getApplicationNavigationItems(),
+         ...this.getDefaultNavigationItems()
+      ];
+
+      this._navigationItems$ = this.buildNavigationItems$();
+   }
+
+   private handleIsNavigating$() {
       this.subscribeTo(
          this.isNavigating$,
          {
@@ -107,7 +71,40 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
                }
             }
          }
-      )
+      );
+   }
+
+   protected abstract getApplicationNavigationItems(): NsToolbarNavigationItemGroupEntity[];
+
+   private getDefaultNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+      return [
+         {
+            items: [
+               {
+                  titleId: LocalizedTextIdNikisoft.GoToHomePage,
+                  icon: NsIcon.Action_Home,
+                  action: () => this.navService.toHomePage()
+               },
+               {
+                  titleId: LocalizedTextIdNikisoft.LogOutButton,
+                  icon: NsIcon.Action_PowerSettingsNew,
+                  requiresAuth: true,
+                  action: () => this.authService.logout()
+               }
+            ]
+         }
+      ];
+   }
+
+   private buildNavigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
+      return this.authService.isLoggedIn$
+         .pipe(
+            switchMap(isLoggedIn => of(
+               this._navigationItems.map(
+                  entity => new NsToolbarNavigationItemGroupModel(entity, isLoggedIn, this.langService)
+               ))
+            )
+         );
    }
 
    handleMenuOpened() {
@@ -128,10 +125,7 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
 
    handleItemClicked(item: NsToolbarNavigationItemModel) {
       this.toggleMenuOpened();
-      item.action();
-   }
 
-   hasTitle(title: string) {
-      return nsIsNotNullOrEmpty(title);
+      item.handleItemClicked(this.navService);
    }
 }
