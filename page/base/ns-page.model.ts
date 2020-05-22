@@ -13,8 +13,9 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 
-   private readonly _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
    private readonly _pageVisibility$: Observable<object>;
+   private _navigationItems: NsToolbarNavigationItemGroupEntity[];
+   private _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
    private _isMenuOpened = false;
 
    abstract get pageTitle(): string;
@@ -44,46 +45,39 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
          .pipe(
             map(isNavigating => isNavigating ? { display: 'none' } : null)
          );
+   }
+
+   onInit() {
+      super.onInit();
+
+      this.titleService.setTitle(this.pageTitle);
+      this.handleIsNavigating$();
+
+      this._navigationItems = [
+         ...this.getApplicationNavigationItems(),
+         ...this.getDefaultNavigationItems()
+      ];
 
       this._navigationItems$ = this.buildNavigationItems$();
    }
 
-   private buildNavigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
-      return this.authService.isLoggedIn$
-         .pipe(
-            this.processApplicationNavigationItems$(),
-            this.processDefaultNavigationItems$(),
-            this.mapNavigationItems$()
-         );
-   }
-
-   private processApplicationNavigationItems$() {
-      return switchMap(isLoggedIn => this.getApplicationNavigationItems$()
-         .pipe(
-            map(appItems => ({ isLoggedIn, appItems }))
-         )
+   private handleIsNavigating$() {
+      this.subscribeTo(
+         this.isNavigating$,
+         {
+            next: isNavigating => {
+               if (this.isMenuOpened && isNavigating) {
+                  this._isMenuOpened = false
+               }
+            }
+         }
       );
    }
 
-   protected abstract getApplicationNavigationItems$(): Observable<NsToolbarNavigationItemGroupEntity[]>;
+   protected abstract getApplicationNavigationItems(): NsToolbarNavigationItemGroupEntity[];
 
-   private processDefaultNavigationItems$() {
-      return switchMap(({ isLoggedIn, appItems }) => this.getDefaultNavigationItems$()
-         .pipe(
-            map(
-               defaultItems => (
-                  {
-                     isLoggedIn,
-                     entities: [...appItems, ...defaultItems]
-                  }
-               )
-            )
-         )
-      );
-   }
-
-   private getDefaultNavigationItems$(): Observable<NsToolbarNavigationItemGroupEntity[]> {
-      return of([
+   private getDefaultNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+      return [
          {
             items: [
                {
@@ -99,35 +93,18 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
                }
             ]
          }
-      ]);
+      ];
    }
 
-   private mapNavigationItems$() {
-      return map(({ isLoggedIn, entities }) =>
-         entities.map(
-            entity => new NsToolbarNavigationItemGroupModel(entity, isLoggedIn, this.langService)
-         )
-      );
-   }
-
-   onInit() {
-      super.onInit();
-
-      this.titleService.setTitle(this.pageTitle);
-      this.handleIsNavigating$();
-   }
-
-   private handleIsNavigating$() {
-      this.subscribeTo(
-         this.isNavigating$,
-         {
-            next: isNavigating => {
-               if (this.isMenuOpened && isNavigating) {
-                  this._isMenuOpened = false
-               }
-            }
-         }
-      );
+   private buildNavigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
+      return this.authService.isLoggedIn$
+         .pipe(
+            switchMap(isLoggedIn => of(
+               this._navigationItems.map(
+                  entity => new NsToolbarNavigationItemGroupModel(entity, isLoggedIn, this.langService)
+               ))
+            )
+         );
    }
 
    handleMenuOpened() {
