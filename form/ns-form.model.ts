@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { FormGroup } from '@angular/forms';
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
@@ -84,10 +83,10 @@ export abstract class NsFormModel<TEntity,
    }
 
    protected handleValueChanged(newValue: TEntity) {
-      this._currentEntity = _.merge(
-         this._initialEntity,
-         newValue
-      );
+      this._currentEntity = {
+         ...this._initialEntity,
+         ...newValue
+      };
    }
 
    private subscribeToFormStatusChanges() {
@@ -123,6 +122,13 @@ export abstract class NsFormModel<TEntity,
       });
 
       this._formGroup.patchValue(value);
+   }
+
+   validate(): boolean {
+      this.formGroup.markAllAsTouched();
+      this.formGroup.markAsDirty({ onlySelf: false })
+      this.formGroup.updateValueAndValidity({onlySelf: false, emitEvent: true});
+      return this.isFormValid;
    }
 
    protected addText(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {

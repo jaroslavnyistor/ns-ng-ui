@@ -85,12 +85,6 @@ export abstract class NsPageEditModel<TEntity,
       );
    }
 
-   validate(): boolean {
-      this.formGroup.markAllAsTouched();
-      this.formGroup.updateValueAndValidity();
-      return this.isFormValid;
-   }
-
    startSave(currentEntity: TEntity) {
       this.onBeforeEntitySaved(this.initialEntity, currentEntity);
    }
