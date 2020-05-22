@@ -26,6 +26,7 @@ export abstract class NsFormControlArrayModel<TEntity,
    private readonly _formModels$: BehaviorSubject<TFormArrayItemModel[]>;
    private readonly _canDeleteItems = true;
    private readonly _service: TService;
+   private readonly _noItemsMessage: string;
 
    get formModels$(): Observable<TFormArrayItemModel[]> {
       return this._formModels$;
@@ -35,7 +36,7 @@ export abstract class NsFormControlArrayModel<TEntity,
       return this._formModels$.value;
    }
 
-   get hasNoItems(): boolean {
+   get isEmpty(): boolean {
       return this.formModels.length === 0;
    }
 
@@ -45,6 +46,10 @@ export abstract class NsFormControlArrayModel<TEntity,
 
    protected get service(): TService {
       return this._service;
+   }
+
+   get noItemsMessage(): string {
+      return this._noItemsMessage;
    }
 
    protected constructor(
@@ -63,10 +68,11 @@ export abstract class NsFormControlArrayModel<TEntity,
       this.defaultValue = nsNull(config.defaultValue, []);
 
       this._service = config.service;
+
+      this._noItemsMessage = this.getNoItemsMessage();
    }
 
-   clearValue() {
-   }
+   protected abstract getNoItemsMessage(): string;
 
    onValuePatch(value: any) {
       super.onValuePatch(value);
