@@ -1,6 +1,6 @@
 export interface NsDashboardItemEntity {
    nameId?: string;
-   route: string;
+   action: () => void;
    requiresAuth?: boolean;
    includeIf?: () => boolean;
 }

@@ -1,4 +1,3 @@
-import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../utils/localization/localization-languages.service';
 import { NsPageListLayoutItemModel } from '../page/list/layout/item/ns-page-list-layout-item.model';
 import { NsDashboardItemEntity } from './ns-dashboard-item.entity';
@@ -10,14 +9,6 @@ export class NsDashboardItemModel extends NsPageListLayoutItemModel {
       return this._name;
    }
 
-   get isClickable(): boolean {
-      return nsIsNotNullOrEmpty(this.route);
-   }
-
-   get route(): string {
-      return this._entity.route;
-   }
-
    constructor(
       id: number,
       private readonly _entity: NsDashboardItemEntity,
@@ -26,5 +17,9 @@ export class NsDashboardItemModel extends NsPageListLayoutItemModel {
       super(id);
 
       this._name = langService.translate(_entity.nameId);
+   }
+
+   handleItemClicked() {
+      this._entity.action();
    }
 }
