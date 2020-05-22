@@ -113,6 +113,14 @@ export abstract class NsFormModel<TEntity,
    }
 
    patchValue(value: any) {
+      this._formModels.forEach(formModel => {
+         const formModelValue = value[formModel.key];
+
+         if (formModelValue != null) {
+            formModel.onValuePatch(formModelValue);
+         }
+      });
+
       this._formGroup.patchValue(value);
    }
 

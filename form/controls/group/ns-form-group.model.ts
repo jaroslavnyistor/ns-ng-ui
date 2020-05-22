@@ -51,4 +51,7 @@ export abstract class NsFormGroupModel<TParentEntity,
 
    setLangService(langService: LocalizationLanguagesService) {
    }
+
+   onValuePatch(value: any) {
+   }
 }

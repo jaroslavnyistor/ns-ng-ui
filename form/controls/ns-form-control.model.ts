@@ -1,6 +1,6 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { nsObjectHasValue } from '../../../utils/helpers/ns-helpers';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
@@ -214,8 +214,7 @@ export abstract class NsFormControlModel<TEntity,
                const formGroup = this._formControl.parent;
                const prevValue = formGroup.value[this.key];
                return value !== prevValue;
-            }),
-            tap(newValue => this.handleValueChanged(newValue))
+            })
          );
 
       this.subscribeTo(
@@ -276,5 +275,8 @@ export abstract class NsFormControlModel<TEntity,
          error: errorMessage
       });
       this._formControl.markAsTouched({ onlySelf: false });
+   }
+
+   onValuePatch(value: any) {
    }
 }

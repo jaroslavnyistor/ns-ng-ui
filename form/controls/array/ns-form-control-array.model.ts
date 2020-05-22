@@ -10,23 +10,28 @@ import { NsFormControlArrayConfiguration } from './ns-form-control-array.configu
 import { NsFormControlArrayService } from './ns-form-control-array.service';
 
 export abstract class NsFormControlArrayModel<TEntity,
-   TService extends NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>,
-   TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
+   TService extends NsFormControlArrayService<TFormArrayItemModel, TArrayItemEntity, TServiceProvider, TAppNavService>,
+   TFormArrayItemModel extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
    TArrayItemEntity extends NsFormControlArrayItemEntity,
    TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
-   extends NsFormControlModel<TEntity, FormArray,
-      NsFormControlArrayConfiguration<TService, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>> {
+   extends NsFormControlModel<TEntity,
+      FormArray,
+      NsFormControlArrayConfiguration<TService,
+         TFormArrayItemModel,
+         TArrayItemEntity,
+         TServiceProvider,
+         TAppNavService>> {
 
-   private readonly _formModels$: BehaviorSubject<TArrayItem[]>;
+   private readonly _formModels$: BehaviorSubject<TFormArrayItemModel[]>;
    private readonly _canDeleteItems = true;
    private readonly _service: TService;
 
-   get formModels$(): Observable<TArrayItem[]> {
+   get formModels$(): Observable<TFormArrayItemModel[]> {
       return this._formModels$;
    }
 
-   private get formModels(): TArrayItem[] {
+   private get formModels(): TFormArrayItemModel[] {
       return this._formModels$.value;
    }
 
@@ -43,36 +48,33 @@ export abstract class NsFormControlArrayModel<TEntity,
    }
 
    protected constructor(
-      config: NsFormControlArrayConfiguration<TService, TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>
+      config: NsFormControlArrayConfiguration<TService,
+         TFormArrayItemModel,
+         TArrayItemEntity,
+         TServiceProvider,
+         TAppNavService>
    ) {
       super(new FormArray([]), config);
 
-      this._formModels$ = new BehaviorSubject<TArrayItem[]>([]);
+      this._formModels$ = new BehaviorSubject<TFormArrayItemModel[]>([]);
 
       this._canDeleteItems = nsNull(config.canDeleteItems, true);
 
       this.defaultValue = nsNull(config.defaultValue, []);
 
       this._service = config.service;
-
-      this.mapEntitiesToFormModels(this.value);
    }
 
    clearValue() {
-      this.mapEntitiesToFormModels(this.defaultValue);
    }
 
-   protected handleValueChanged(newValue: any) {
-      super.handleValueChanged(newValue);
+   onValuePatch(value: any) {
+      super.onValuePatch(value);
 
-      this.mapEntitiesToFormModels(newValue);
+      this.mapEntitiesToFormModels(value);
    }
 
    private mapEntitiesToFormModels(entities: TArrayItemEntity[]): void {
-      if (this._service == null) {
-         return;
-      }
-
       this.formModels.forEach(formModel => formModel.onDestroy());
 
       this.formControl.clear();
@@ -95,11 +97,12 @@ export abstract class NsFormControlArrayModel<TEntity,
       this.updateFormModelsListeners(formModels);
    }
 
-   private createNewFormModel(entity: TArrayItemEntity): TArrayItem {
-      const newFormModel = this._service.mapEntityToFormModel(entity);
-      this.formControl.push(newFormModel.formGroup);
-
+   private createNewFormModel(entity: TArrayItemEntity): TFormArrayItemModel {
+      const newFormModel = this._service.mapEntityToFormModel();
       newFormModel.onInit();
+      newFormModel.setInitialEntity(entity);
+
+      this.formControl.push(newFormModel.formGroup);
 
       return newFormModel;
    }
@@ -115,7 +118,7 @@ export abstract class NsFormControlArrayModel<TEntity,
       this.updateFormModelsListeners(formModels);
    }
 
-   private updateFormModelsListeners(formModels: TArrayItem[]) {
+   private updateFormModelsListeners(formModels: TFormArrayItemModel[]) {
       this._formModels$.next(formModels);
    }
 

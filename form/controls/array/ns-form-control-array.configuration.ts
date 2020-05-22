@@ -5,9 +5,9 @@ import { NsFormControlArrayItemEntity } from './ns-form-control-array-item.entit
 import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model';
 import { NsFormControlArrayService } from './ns-form-control-array.service';
 
-export interface NsFormControlArrayConfiguration<TService extends NsFormControlArrayService<TArrayItem, TArrayItemEntity, TServiceProvider, TAppNavService>,
-   TArrayItem extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
-   TArrayItemEntity extends NsFormControlArrayItemEntity,
+export interface NsFormControlArrayConfiguration<TService extends NsFormControlArrayService<TFormArrayItemModel, TFormArrayItemEntity, TServiceProvider, TAppNavService>,
+   TFormArrayItemModel extends NsFormControlArrayItemModel<TFormArrayItemEntity, TServiceProvider, TAppNavService>,
+   TFormArrayItemEntity extends NsFormControlArrayItemEntity,
    TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormControlConfiguration {

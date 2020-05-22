@@ -18,4 +18,6 @@ export interface NsFormControlDefinition {
    onInit();
 
    onDestroy();
+
+   onValuePatch(value: any);
 }
