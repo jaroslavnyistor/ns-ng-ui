@@ -1,10 +1,11 @@
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { LocalizationLanguagesService } from '../../../../utils/localization/localization-languages.service';
 import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlDefinition } from '../ns-form-control.definition';
+import { NsFormGroup } from './ns-form-group';
 import { NsFormGroupConfiguration } from './ns-form-group.configuration';
 
 export abstract class NsFormGroupModel<TParentEntity,
@@ -43,10 +44,14 @@ export abstract class NsFormGroupModel<TParentEntity,
 
    protected constructor(
       config: NsFormGroupConfiguration,
+      entity: TEntity,
       serviceProvider: TServiceProvider,
    ) {
-      super(serviceProvider, new FormGroup({}));
+      super(entity, serviceProvider);
       this._key = config.key;
+   }
+
+   setFormControl(formControl: NsFormGroup) {
    }
 
    setLangService(langService: LocalizationLanguagesService) {

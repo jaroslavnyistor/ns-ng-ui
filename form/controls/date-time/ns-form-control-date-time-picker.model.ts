@@ -36,7 +36,7 @@ export class NsFormControlDateTimePickerModel<TEntity>
    }
 
    constructor(config: NsFormControlDateTimePickerConfiguration) {
-      super(new NsFormControl(), config);
+      super(config);
 
       this._dateTimeSelectionFormControl = new NsFormControl(this.formControl.value);
       this.formControl.addDependsOn(this._dateTimeSelectionFormControl);

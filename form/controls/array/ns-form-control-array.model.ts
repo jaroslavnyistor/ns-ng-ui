@@ -1,9 +1,9 @@
-import { FormArray } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlModel } from '../ns-form-control.model';
+import { NsFormArray } from './ns-form-array';
 import { NsFormControlArrayItemEntity } from './ns-form-control-array-item.entity';
 import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model';
 import { NsFormControlArrayConfiguration } from './ns-form-control-array.configuration';
@@ -16,7 +16,7 @@ export abstract class NsFormControlArrayModel<TEntity,
    TServiceProvider extends NsServiceProvider<TAppNavService>,
    TAppNavService extends NsNavigationService>
    extends NsFormControlModel<TEntity,
-      FormArray,
+      NsFormArray,
       NsFormControlArrayConfiguration<TService,
          TFormArrayItemModel,
          TArrayItemEntity,
@@ -59,7 +59,7 @@ export abstract class NsFormControlArrayModel<TEntity,
          TServiceProvider,
          TAppNavService>
    ) {
-      super(new FormArray([]), config);
+      super(config);
 
       this._formModels$ = new BehaviorSubject<TFormArrayItemModel[]>([]);
 
@@ -71,8 +71,6 @@ export abstract class NsFormControlArrayModel<TEntity,
 
       this._noItemsMessage = this.getNoItemsMessage();
    }
-
-   protected abstract getNoItemsMessage(): string;
 
    onValuePatch(value: any) {
       super.onValuePatch(value);
@@ -89,6 +87,8 @@ export abstract class NsFormControlArrayModel<TEntity,
 
       this.updateFormModelsListeners(formModels);
    }
+
+   protected abstract getNoItemsMessage(): string;
 
    handleAdd() {
       const formModels = [...this.formModels];

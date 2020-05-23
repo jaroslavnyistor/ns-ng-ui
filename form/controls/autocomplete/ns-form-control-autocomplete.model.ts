@@ -1,15 +1,15 @@
-import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, debounceTime, map, switchMap } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
+import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlAutocompleteConfiguration } from './ns-form-control-autocomplete.configuration';
 import { NsFormControlAutocompleteService } from './ns-form-control-autocomplete.service';
 
 export abstract class NsFormControlAutocompleteModel<TEntity,
    TService extends NsFormControlAutocompleteService>
-   extends NsFormControlModel<TEntity, FormControl, NsFormControlAutocompleteConfiguration<TService>> {
+   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlAutocompleteConfiguration<TService>> {
 
    private readonly _service: TService;
    private _data$: Observable<string[]>;
@@ -32,7 +32,7 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
    }
 
    protected constructor(config: NsFormControlAutocompleteConfiguration<TService>) {
-      super(new FormControl(), config);
+      super(config);
 
       this.defaultValue = nsNull(config.defaultValue, []);
 

@@ -1,10 +1,11 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { LocalizationLanguagesService } from '../../../../utils/localization/localization-languages.service';
 import { NsFormControlValidators } from '../../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../../validators/provided/ns-form-control-required.validator';
+import { NsFormGroup } from '../group/ns-form-group';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlMultiSelectItemEntity } from './ns-form-control-multi-select-item.entity';
@@ -16,7 +17,7 @@ import { NsFormControlMultiSelectRequiredValidator } from './validators/ns-form-
 export abstract class NsFormControlMultiSelectModel<TEntity,
    TService extends NsFormControlMultiSelectService<TMultiSelectItem>,
    TMultiSelectItem extends NsFormControlMultiSelectItemEntity>
-   extends NsFormControlModel<TEntity, FormGroup, NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>> {
+   extends NsFormControlModel<TEntity, NsFormGroup, NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>> {
 
    private readonly _data$: BehaviorSubject<TMultiSelectItem[]>;
    private readonly _textValidators: NsFormControlValidators;
@@ -64,7 +65,7 @@ export abstract class NsFormControlMultiSelectModel<TEntity,
    }
 
    protected constructor(config: NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>) {
-      super(new FormGroup({}), config);
+      super(config);
 
       this._data$ = new BehaviorSubject<TMultiSelectItem[]>([]);
       this._textValidators = new NsFormControlValidators();

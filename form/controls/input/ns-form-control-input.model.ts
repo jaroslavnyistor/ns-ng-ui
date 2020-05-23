@@ -1,4 +1,3 @@
-import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
@@ -7,12 +6,13 @@ import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-fo
 import { NsFormControlLengthMinValidator } from '../../validators/provided/ns-form-control-length-min.validator';
 import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
 import { NsFormControlValueMinValidator } from '../../validators/provided/ns-form-control-value-min.validator';
+import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlInputType } from './ns-form-control-input-type.enum';
 import { NsFormControlInputConfiguration } from './ns-form-control-input.configuration';
 
 export class NsFormControlInputModel<TEntity>
-   extends NsFormControlModel<TEntity, FormControl, NsFormControlInputConfiguration> {
+   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlInputConfiguration> {
    private readonly _type: NsFormControlInputType;
    private _remainingCharacters$: Observable<string>;
 
@@ -41,7 +41,7 @@ export class NsFormControlInputModel<TEntity>
    }
 
    constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
-      super(new FormControl(), config);
+      super(config);
 
       this._type = type;
 

@@ -1,6 +1,6 @@
-import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlSelectItemEntity } from './ns-form-control-select-item.entity';
 import { NsFormControlSelectConfiguration } from './ns-form-control-select.configuration';
@@ -9,7 +9,7 @@ import { NsFormControlSelectService } from './ns-form-control-select.service';
 export abstract class NsFormControlSelectModel<TEntity,
    TService extends NsFormControlSelectService<TSelectItem>,
    TSelectItem extends NsFormControlSelectItemEntity>
-   extends NsFormControlModel<TEntity, FormControl, NsFormControlSelectConfiguration<TService, TSelectItem>> {
+   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlSelectConfiguration<TService, TSelectItem>> {
    private readonly _data$: BehaviorSubject<TSelectItem[]>;
    private readonly _textProperty: string;
    private readonly _service: TService;
@@ -32,7 +32,7 @@ export abstract class NsFormControlSelectModel<TEntity,
    }
 
    protected constructor(config: NsFormControlSelectConfiguration<TService, TSelectItem>) {
-      super(new FormControl(), config);
+      super(config);
 
       this._data$ = new BehaviorSubject([]);
       this._textProperty = config.textProperty;

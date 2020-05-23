@@ -1,11 +1,13 @@
 <div fxLayout="row nowrap"
-     fxLayoutAlign="start baseline"
+     fxLayoutAlign="start center"
      class="top-bar">
+   <mat-label>{{model.label}}</mat-label>
+
    <ns-icon-default-add (click)="model.handleAdd()">
    </ns-icon-default-add>
-
-   <mat-error class="errors">{{model.errorMessage$ | async}}</mat-error>
 </div>
+
+<mat-error class="errors">{{model.errorMessage$ | async}}</mat-error>
 
 <mat-divider class="custom-mat-divider"></mat-divider>
 

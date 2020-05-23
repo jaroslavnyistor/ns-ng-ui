@@ -1,4 +1,3 @@
-import { FormGroup } from '@angular/forms';
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
@@ -8,14 +7,16 @@ import { NsFormControlDateTimePickerConfiguration } from './controls/date-time/n
 import { NsFormControlDateTimePickerModel } from './controls/date-time/ns-form-control-date-time-picker.model';
 import { NsFormControlDatePickerConfiguration } from './controls/date/ns-form-control-date-picker.configuration';
 import { NsFormControlDatePickerModel } from './controls/date/ns-form-control-date-picker.model';
+import { NsFormGroup } from './controls/group/ns-form-group';
 import { NsFormControlInputType } from './controls/input/ns-form-control-input-type.enum';
 import { NsFormControlInputConfiguration } from './controls/input/ns-form-control-input.configuration';
 import { NsFormControlInputModel } from './controls/input/ns-form-control-input.model';
-import { NsFormControlDefinition } from './controls/ns-form-control.definition';
+import { NsAbstractControl, NsFormControlDefinition } from './controls/ns-form-control.definition';
 import { NsFormControlNumberConfiguration } from './controls/number/ns-form-control-number.configuration';
 import { NsFormControlNumberModel } from './controls/number/ns-form-control-number.model';
 import { NsFormControlTimePickerConfiguration } from './controls/time/ns-form-control-time-picker.configuration';
 import { NsFormControlTimePickerModel } from './controls/time/ns-form-control-time-picker.model';
+import { NsFormBuilder } from './ns-form.builder';
 import { NsFormControlValidator } from './validators/ns-form-control.validator';
 import { NsFormControlValidators } from './validators/ns-form-control.validators';
 
@@ -24,13 +25,12 @@ export abstract class NsFormModel<TEntity,
    TAppNavService extends NsNavigationService>
    extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
 
-   private readonly _formGroup: FormGroup;
+   private readonly _formGroup: NsFormGroup;
    private readonly _formModels: NsFormControlDefinition[];
    private readonly _validators: NsFormControlValidators;
    private _initialEntity: TEntity;
-   private _currentEntity: TEntity;
 
-   get formGroup(): FormGroup {
+   get formGroup(): NsFormGroup {
       return this._formGroup;
    }
 
@@ -43,13 +43,19 @@ export abstract class NsFormModel<TEntity,
    }
 
    get currentEntity(): TEntity {
-      return this._currentEntity;
+      return this.formGroup.value;
    }
 
-   protected constructor(serviceProvider: TServiceProvider, formGroup: FormGroup = null) {
+   protected constructor(entity: TEntity, serviceProvider: TServiceProvider, formGroup: NsFormGroup = null) {
       super(serviceProvider);
 
-      this._formGroup = formGroup || new FormGroup({});
+      if (formGroup != null) {
+         this._formGroup = formGroup;
+      }
+      else {
+         const builder = new NsFormBuilder();
+         this._formGroup = builder.build(entity);
+      }
 
       this._formModels = [];
       this._validators = new NsFormControlValidators();
@@ -58,35 +64,18 @@ export abstract class NsFormModel<TEntity,
    onInit() {
       super.onInit();
 
-      this.subscribeToFormValueChanges();
-
       this.subscribeToFormStatusChanges();
 
       this._validators.setLangService(this.langService);
 
-      this._formModels.forEach(model => {
-         model.setLangService(this.langService);
-         this._formGroup.addControl(model.key, model.formControl);
-         model.onInit();
+      this._formModels.forEach(formModel => {
+         const formControl = this._formGroup.get(formModel.key) as NsAbstractControl;
+         formModel.setFormControl(formControl);
+         formModel.setLangService(this.langService);
+         formModel.onInit();
       });
 
       this._formGroup.setValidators(this._validators.build());
-   }
-
-   private subscribeToFormValueChanges() {
-      this.subscribeTo(
-         this._formGroup.valueChanges,
-         {
-            next: () => this.handleValueChanged(this.formGroup.getRawValue())
-         }
-      );
-   }
-
-   protected handleValueChanged(newValue: TEntity) {
-      this._currentEntity = {
-         ...this._initialEntity,
-         ...newValue
-      };
    }
 
    private subscribeToFormStatusChanges() {
@@ -127,7 +116,7 @@ export abstract class NsFormModel<TEntity,
    validate(): boolean {
       this.formGroup.markAllAsTouched();
       this.formGroup.markAsDirty({ onlySelf: false })
-      this.formGroup.updateValueAndValidity({onlySelf: false, emitEvent: true});
+      this.formGroup.updateValueAndValidity({ onlySelf: false, emitEvent: true });
       return this.isFormValid;
    }
 

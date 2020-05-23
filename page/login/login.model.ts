@@ -5,7 +5,7 @@ import { NsNavigationService } from '../../../utils/navigation/ns-navigation.ser
 import { NsFormControlInputModel } from '../../form/controls/input/ns-form-control-input.model';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditModel } from '../edit/ns-page-edit.model';
-import { LoginEntity } from './login.entity';
+import { LoginEntity, newLoginEntity } from './login.entity';
 
 const keyState = 'login';
 
@@ -23,7 +23,7 @@ export class LoginModel extends NsPageEditModel<LoginEntity, NsServiceProvider<N
    }
 
    constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
-      super(serviceProvider, nsAuthenticateErrorMapper);
+      super(newLoginEntity(), serviceProvider, nsAuthenticateErrorMapper);
 
       this._userName = this.addText({
          key: 'userName',

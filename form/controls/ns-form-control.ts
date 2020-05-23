@@ -6,9 +6,15 @@ import {
    ValidationErrors,
    ValidatorFn
 } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 
 export class NsFormControl extends FormControl {
+   private _touchedChanges = new Subject<boolean>();
    private readonly _dependsOn: AbstractControl[] = [];
+
+   get touchedChanges(): Observable<boolean> {
+      return this._touchedChanges;
+   }
 
    constructor(
       formState?: any,
@@ -47,6 +53,7 @@ export class NsFormControl extends FormControl {
 
       if (!prevValue) {
          this._dependsOn.forEach(control => control.markAsTouched());
+         this._touchedChanges.next(this.touched);
       }
    }
 
@@ -55,6 +62,7 @@ export class NsFormControl extends FormControl {
 
       if (!this.touched) {
          this._dependsOn.forEach(control => control.markAsTouched());
+         this._touchedChanges.next(true);
       }
    }
 }

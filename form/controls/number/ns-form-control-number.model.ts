@@ -31,7 +31,7 @@ export class NsFormControlNumberModel<TEntity>
    }
 
    constructor(config: NsFormControlNumberConfiguration) {
-      super(new NsFormControl(), config);
+      super(config);
 
       if (this.minValue != null) {
          this.addValidator(new NsFormControlValueMinValidator(this.minValue));

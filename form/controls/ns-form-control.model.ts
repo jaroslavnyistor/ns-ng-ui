@@ -1,4 +1,4 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { nsObjectHasValue } from '../../../utils/helpers/ns-helpers';
@@ -8,15 +8,20 @@ import { NsSubscriptionModel } from '../../../utils/subscription/ns-subscription
 import { NsFormControlValidator } from '../validators/ns-form-control.validator';
 import { NsFormControlValidators } from '../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../validators/provided/ns-form-control-required.validator';
+import { NsFormArray } from './array/ns-form-array';
+import { NsFormGroup } from './group/ns-form-group';
+import { NsFormControl } from './ns-form-control';
 import { NsFormControlConfiguration } from './ns-form-control.configuration';
 import { NsFormControlDefinition } from './ns-form-control.definition';
 
 export abstract class NsFormControlModel<TEntity,
-   TFormControl extends AbstractControl,
+   TFormControl extends NsFormControl | NsFormGroup | NsFormArray,
    TConfiguration extends NsFormControlConfiguration>
    extends NsSubscriptionModel
    implements NsFormControlDefinition {
 
+   protected readonly _config: TConfiguration;
+   private _formControl: TFormControl;
    private _langService: LocalizationLanguagesService;
    private _tabIndex: number;
    private _label: string;
@@ -109,20 +114,16 @@ export abstract class NsFormControlModel<TEntity,
       return this._valueChanges$;
    }
 
-   protected constructor(
-      private readonly _formControl: TFormControl,
-      protected readonly _config: TConfiguration,
-   ) {
+   protected constructor(config: TConfiguration) {
       super();
 
+      this._config = config;
       this._validators = new NsFormControlValidators();
       this._validators.addRange(this._config.validators);
 
       if (this._config.isRequired === true) {
          this._validators.add(new NsFormControlRequiredValidator());
       }
-
-      this.isDisabled = _config.isDisabled === true;
    }
 
    protected addValidator(validator: NsFormControlValidator) {
@@ -148,13 +149,22 @@ export abstract class NsFormControlModel<TEntity,
       this.setValue(this.defaultValue);
    }
 
+   setFormControl(formControl: TFormControl) {
+      this._formControl = formControl;
+   }
+
    setLangService(langService: LocalizationLanguagesService) {
       this._langService = langService;
       this._validators.setLangService(langService);
    }
 
+   onValuePatch(value: any) {
+   }
+
    onInit() {
       super.onInit();
+
+      this.isDisabled = this._config.isDisabled === true;
 
       this.initValidators();
 
@@ -275,8 +285,5 @@ export abstract class NsFormControlModel<TEntity,
          error: errorMessage
       });
       this._formControl.markAsTouched({ onlySelf: false });
-   }
-
-   onValuePatch(value: any) {
    }
 }
