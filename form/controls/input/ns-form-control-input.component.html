@@ -5,8 +5,6 @@
           [tabIndex]="model.tabIndex"
           [readonly]="model.isDisabled"
           [attr.maxlength]="model.maxLength"
-          [min]="model.minValue"
-          [max]="model.maxValue"
           matInput>
 
    <ns-icon-small [disabled]="!model.canClearValue()"
@@ -14,7 +12,7 @@
                   [icon]="NsIcon.Navigation_Close"
                   [isClickable]="true"
                   [isFocusable]="false"
-                  (click)="model.canClearValue() && model.clearValue()">
+                  (mouseup)="model.canClearValue() && model.clearValue()">
    </ns-icon-small>
 
    <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>

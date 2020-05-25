@@ -6,7 +6,7 @@ import { NsFormService } from './ns-form.service';
 @Component({
    selector: 'ns-form',
    templateUrl: './ns-form.component.html',
-   styleUrls: ['./ns-form.component.sass']
+   styles: []
 })
 export class NsFormComponent extends NsComponentBase<NsFormService<any, any, any, any>, NsFormModel<any, any, any>> {
    constructor(service: NsFormService<any, any, any, any>) {

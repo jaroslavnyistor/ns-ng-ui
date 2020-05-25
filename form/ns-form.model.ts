@@ -115,7 +115,6 @@ export abstract class NsFormModel<TEntity,
 
    validate(): boolean {
       this.formGroup.markAllAsTouched();
-      this.formGroup.markAsDirty({ onlySelf: false })
       this.formGroup.updateValueAndValidity({ onlySelf: false, emitEvent: true });
       return this.isFormValid;
    }
@@ -126,14 +125,6 @@ export abstract class NsFormModel<TEntity,
 
    protected addPassword(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
       return this.addInput(NsFormControlInputType.Password, config);
-   }
-
-   protected addNumber(config: NsFormControlNumberConfiguration): NsFormControlNumberModel<TEntity> {
-      const model = new NsFormControlNumberModel<TEntity>(config);
-
-      this.register(model);
-
-      return model;
    }
 
    protected addEmail(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
@@ -149,6 +140,14 @@ export abstract class NsFormModel<TEntity,
       config: NsFormControlInputConfiguration
    ): NsFormControlInputModel<TEntity> {
       const model = new NsFormControlInputModel<TEntity>(type, config);
+
+      this.register(model);
+
+      return model;
+   }
+
+   protected addNumber(config: NsFormControlNumberConfiguration): NsFormControlNumberModel<TEntity> {
+      const model = new NsFormControlNumberModel<TEntity>(config);
 
       this.register(model);
 

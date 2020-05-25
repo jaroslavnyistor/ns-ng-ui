@@ -10,21 +10,21 @@
                   [icon]="NsIcon.Navigation_Close"
                   [isClickable]="true"
                   [isFocusable]="false"
-                  (click)="model.canClearValue() && model.clearValue()">
+                  (mouseup)="model.canClearValue() && model.clearValue()">
    </ns-icon-small>
 
    <ns-icon-small *ngIf="model.canChooseDate"
                   matSuffix
                   [icon]="NsIcon.Action_CalendarToday"
                   [isClickable]="true"
-                  (click)="datePicker.open()">
+                  (mouseup)="datePicker.open()">
    </ns-icon-small>
 
    <ns-icon-small *ngIf="model.canChooseTime"
                   matSuffix
                   [icon]="NsIcon.Device_AccessTime"
                   isClickable="true"
-                  (click)="timePicker.open()">
+                  (mouseup)="timePicker.open()">
    </ns-icon-small>
 
    <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>

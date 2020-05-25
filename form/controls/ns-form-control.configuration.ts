@@ -6,6 +6,7 @@ export interface NsFormControlConfiguration {
    labelId?: any;
    label?: string;
    hintId?: any;
+   hint?: string;
    isRequired?: boolean;
    isDisabled?: boolean;
    dependsOn?: NsFormControlDefinition[];

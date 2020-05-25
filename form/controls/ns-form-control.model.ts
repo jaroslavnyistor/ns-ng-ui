@@ -199,9 +199,13 @@ export abstract class NsFormControlModel<TEntity,
          this._label = `${this._label}*`;
       }
 
-      this._hint = this._config.hintId == null
-                   ? null
-                   : this._langService.translate(this._config.hintId);
+      this._hint = null;
+      if (nsIsNotNullOrEmpty(this._config.hint)) {
+         this._hint = this._config.hint;
+      }
+      else if (this._config.hintId != null) {
+         this._hint = this._langService.translate(this._config.hintId);
+      }
    }
 
    private setErrorMessage$() {

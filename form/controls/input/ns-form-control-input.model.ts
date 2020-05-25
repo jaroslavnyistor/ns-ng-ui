@@ -4,8 +4,6 @@ import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsStringLength } from '../../../../utils/helpers/strings/ns-helpers-strings';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
 import { NsFormControlLengthMinValidator } from '../../validators/provided/ns-form-control-length-min.validator';
-import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
-import { NsFormControlValueMinValidator } from '../../validators/provided/ns-form-control-value-min.validator';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlInputType } from './ns-form-control-input-type.enum';
@@ -28,14 +26,6 @@ export class NsFormControlInputModel<TEntity>
       return this._config.maxLength;
    }
 
-   get minValue(): number {
-      return this._config.minValue;
-   }
-
-   get maxValue(): number {
-      return this._config.maxValue;
-   }
-
    get remainingCharacters$(): Observable<string> {
       return this._remainingCharacters$;
    }
@@ -51,14 +41,6 @@ export class NsFormControlInputModel<TEntity>
 
       if (this.maxLength != null) {
          this.addValidator(new NsFormControlLengthMaxValidator(this.maxLength));
-      }
-
-      if (this.minValue != null) {
-         this.addValidator(new NsFormControlValueMinValidator(this.minValue));
-      }
-
-      if (this.maxValue != null) {
-         this.addValidator(new NsFormControlValueMaxValidator(this.maxValue));
       }
 
       this.defaultValue = nsNull(config.defaultValue, null);
