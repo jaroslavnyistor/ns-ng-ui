@@ -5,6 +5,11 @@ import { NsGridColumnDirective } from './ns-grid-column.directive';
   selector: 'ns-grid-row',
   templateUrl: './ns-grid-row.component.html',
   styles: [
+     `
+     .space-right {
+       padding-right: 16px;
+     }
+     `
   ]
 })
 export class NsGridRowComponent {

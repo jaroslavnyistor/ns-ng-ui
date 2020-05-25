@@ -1,9 +1,10 @@
 <div fxLayout="row wrap"
      fxLayout.lt-lg="column nowrap">
 
-   <div *ngFor="let column of columns"
+   <div *ngFor="let column of columns; let last = last"
         [fxFlex]="columnWidth"
-        fxFlex.lt-lg="0 0 100%">
+        fxFlex.lt-lg="0 0 100%"
+        [class.space-right]="last === false">
       <ng-template [ngTemplateOutlet]="column.ref">
       </ng-template>
    </div>

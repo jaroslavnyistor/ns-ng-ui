@@ -53,7 +53,7 @@ export class NsFormControl extends FormControl {
 
       if (!prevValue) {
          this._dependsOn.forEach(control => control.markAsTouched());
-         this._touchedChanges.next();
+         this._touchedChanges.next(this.touched);
       }
    }
 
@@ -62,7 +62,7 @@ export class NsFormControl extends FormControl {
 
       if (!this.touched) {
          this._dependsOn.forEach(control => control.markAsTouched());
-         this._touchedChanges.next();
+         this._touchedChanges.next(true);
       }
    }
 }
