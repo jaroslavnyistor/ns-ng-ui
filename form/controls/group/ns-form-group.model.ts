@@ -38,6 +38,10 @@ export abstract class NsFormGroupModel<TParentEntity,
       return this.formControl.valueChanges;
    }
 
+   get value(): any {
+      return this.formGroup.value;
+   }
+
    get hasValue(): boolean {
       return this.formGroup.value[this.key] != null;
    }

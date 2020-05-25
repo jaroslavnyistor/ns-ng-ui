@@ -1,6 +1,7 @@
 import { ValidatorFn } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { nsArrayIsEmpty } from '../../../utils/helpers/arrays/ns-helpers-arrays';
 import { nsObjectHasValue } from '../../../utils/helpers/ns-helpers';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
 import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
@@ -252,24 +253,33 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    private setDependsOn$() {
-      if (this._config.dependsOn == null || this._config.dependsOn.length === 0) {
+      const dependsOn = this._config.dependsOn;
+
+      if (nsArrayIsEmpty(dependsOn)) {
          return;
       }
 
-      const obs$ = this._config.dependsOn.map(each => each.valueChanges$);
+      const obs$ = dependsOn.map(each => each.valueChanges$);
       this.subscribeTo(
          combineLatest(obs$),
          {
-            next: results => {
-               this.isDisabled = this._config.dependsOn.some(dependsOn => !dependsOn.hasValue);
-               this.handleDependingOnValuesChanged(results);
-
-               if (this.isDisabled) {
-                  this.clearValue();
-               }
-            }
+            next: () => this.handleDependsOnChange()
          }
       );
+
+      this.handleDependsOnChange();
+   }
+
+   private handleDependsOnChange() {
+      const dependsOn = this._config.dependsOn;
+      this.isDisabled = dependsOn.some(item => !item.hasValue);
+
+      const results = dependsOn.map(item => item.value);
+      this.handleDependingOnValuesChanged(results);
+
+      if (this.isDisabled) {
+         this.clearValue();
+      }
    }
 
    protected handleDependingOnValuesChanged(results: any[]) {
