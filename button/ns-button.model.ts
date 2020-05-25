@@ -1,15 +1,13 @@
-import { NsButtonType } from './ns-button-type';
+import { ThemePalette } from '@angular/material/core';
+import { NsButtonMaterialType } from './ns-button-material-type';
+import { NsButtonType } from './ns-button-type.enum';
 
 export abstract class NsButtonModel {
    private _text: string;
    private _isVisible: boolean;
    private _isDisabled: boolean;
-   private _type: NsButtonType = NsButtonType.None;
-
-   protected constructor(text: string, isVisible = true) {
-      this._text = text;
-      this._isVisible = isVisible;
-   }
+   private _type: NsButtonType = NsButtonType.Button;
+   private _materialType: NsButtonMaterialType = NsButtonMaterialType.None;
 
    get text(): string {
       return this._text;
@@ -39,7 +37,28 @@ export abstract class NsButtonModel {
       return this._type;
    }
 
+   get materialTypeText(): ThemePalette {
+      return this._materialType as ThemePalette;
+   }
+
+   get type(): NsButtonType {
+      return this._type;
+   }
+
    set type(value: NsButtonType) {
       this._type = value;
+   }
+
+   get materialType(): NsButtonMaterialType {
+      return this._materialType;
+   }
+
+   set materialType(value: NsButtonMaterialType) {
+      this._materialType = value;
+   }
+
+   protected constructor(text: string, isVisible = true) {
+      this._text = text;
+      this._isVisible = isVisible;
    }
 }

@@ -6,7 +6,8 @@ import { NsButtonDefaultModel } from './ns-button-default.model';
    template: `
       <button *ngIf="model.isVisible"
               mat-stroked-button
-              [color]="model.typeText"
+              [color]="model.materialTypeText"
+              [type]="model.materialType"
               [disabled]="disabled">
           {{model.text}}
       </button>

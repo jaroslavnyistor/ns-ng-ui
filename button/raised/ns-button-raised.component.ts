@@ -6,7 +6,9 @@ import { NsButtonRaisedModel } from './ns-button-raised.model';
    template: `
       <button *ngIf="model.isVisible"
               mat-raised-button
-              [color]="model.typeText"
+              type="submit"
+              [color]="model.materialTypeText"
+              [type]="model.typeText"
               [disabled]="disabled">
          {{model.text}}
       </button>
