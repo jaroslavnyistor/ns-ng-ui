@@ -1,0 +1,11 @@
+<div fxLayout="row wrap"
+     fxLayout.lt-lg="column nowrap">
+
+   <div *ngFor="let column of columns"
+        [fxFlex]="columnWidth"
+        fxFlex.lt-lg="0 0 100%">
+      <ng-template [ngTemplateOutlet]="column.ref">
+      </ng-template>
+   </div>
+
+</div>
