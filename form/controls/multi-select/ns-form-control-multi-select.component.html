@@ -18,7 +18,7 @@
                   [isClickable]="true"
                   [isFocusable]="false"
                   matSuffix
-                  (click)="model.clearSelection(autocompleteTrigger)">
+                  (mouseup)="model.clearSelection(autocompleteTrigger)">
    </ns-icon-small>
 
    <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>

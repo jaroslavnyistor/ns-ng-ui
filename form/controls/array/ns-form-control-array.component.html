@@ -3,7 +3,7 @@
      class="top-bar">
    <mat-label>{{model.label}}</mat-label>
 
-   <ns-icon-default-add (click)="model.handleAdd()">
+   <ns-icon-default-add (mouseup)="model.handleAdd()">
    </ns-icon-default-add>
 </div>
 
@@ -27,6 +27,6 @@
 
    <ns-icon-default-delete *ngIf="model.canDeleteItems"
                            fxFlex="0 0 0"
-                           (click)="model.handleDelete(i)">
+                           (mouseup)="model.handleDelete(i)">
    </ns-icon-default-delete>
 </div>

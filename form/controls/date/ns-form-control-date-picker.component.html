@@ -4,7 +4,7 @@
           readonly
           matInput
           [matDatepicker]="datePicker"
-          (click)="model.open(datePicker)"
+          (mouseup)="model.open(datePicker)"
           [min]="model.minDate"
           [max]="model.maxDate">
 
