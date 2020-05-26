@@ -24,7 +24,6 @@ export abstract class NsFormControlModel<TEntity,
    protected readonly _config: TConfiguration;
    private _formControl: TFormControl;
    private _langService: LocalizationLanguagesService;
-   private _tabIndex: number;
    private _label: string;
    private _hint: string;
    private _isDisabled: boolean;
@@ -45,14 +44,6 @@ export abstract class NsFormControlModel<TEntity,
 
    get key(): string {
       return this._config.key;
-   }
-
-   get tabIndex(): number {
-      return this._tabIndex;
-   }
-
-   set tabIndex(value: number) {
-      this._tabIndex = value;
    }
 
    get label(): string {

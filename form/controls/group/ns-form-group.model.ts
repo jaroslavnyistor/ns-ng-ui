@@ -16,18 +16,9 @@ export abstract class NsFormGroupModel<TParentEntity,
    implements NsFormControlDefinition {
 
    private readonly _key: string;
-   private _tabIndex: number;
 
    get key(): string {
       return this._key;
-   }
-
-   get tabIndex(): number {
-      return this._tabIndex;
-   }
-
-   set tabIndex(value: number) {
-      this._tabIndex = value;
    }
 
    get formControl(): AbstractControl {

@@ -10,8 +10,6 @@ export type NsAbstractControl = NsFormControl | NsFormArray | NsFormGroup;
 export interface NsFormControlDefinition {
    key: string;
 
-   tabIndex: number;
-
    formControl: AbstractControl;
 
    hasValue: boolean;
