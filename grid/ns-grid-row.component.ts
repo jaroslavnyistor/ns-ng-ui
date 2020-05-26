@@ -9,6 +9,10 @@ import { NsGridColumnDirective } from './ns-grid-column.directive';
      .space-right {
        padding-right: 16px;
      }
+
+     .no-space-right {
+       padding: 0;
+     }
      `
   ]
 })

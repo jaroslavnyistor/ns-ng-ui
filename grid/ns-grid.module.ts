@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { NsGridColumnDirective } from './ns-grid-column.directive';
 import { NsGridRowComponent } from './ns-grid-row.component';
 
@@ -16,7 +16,8 @@ import { NsGridRowComponent } from './ns-grid-row.component';
   ],
   imports: [
     CommonModule,
-    FlexModule
+    FlexModule,
+    FlexLayoutModule,
   ]
 })
 export class NsGridModule { }
