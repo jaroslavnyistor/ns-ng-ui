@@ -31,6 +31,10 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
       return !this._isLoading;
    }
 
+   get autofocus(): boolean {
+      return this._config.autofocus === true;
+   }
+
    protected constructor(config: NsFormControlAutocompleteConfiguration<TService>) {
       super(config);
 

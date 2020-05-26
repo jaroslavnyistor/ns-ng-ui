@@ -4,4 +4,5 @@ import { NsFormControlAutocompleteService } from './ns-form-control-autocomplete
 export interface NsFormControlAutocompleteConfiguration<TService extends NsFormControlAutocompleteService>
    extends NsFormControlConfiguration {
    service: TService;
+   autofocus?: boolean;
 }
