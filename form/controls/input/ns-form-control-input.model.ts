@@ -30,6 +30,10 @@ export class NsFormControlInputModel<TEntity>
       return this._remainingCharacters$;
    }
 
+   get autofocus(): boolean {
+      return this._config.autofocus === true;
+   }
+
    constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
       super(config);
 

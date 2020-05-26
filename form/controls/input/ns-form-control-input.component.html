@@ -1,5 +1,6 @@
 <mat-form-field>
-   <input [type]="model.type"
+   <input #inputElement
+          [type]="model.type"
           [placeholder]="model.label"
           [formControl]="model.formControl"
           [readonly]="model.isDisabled"
