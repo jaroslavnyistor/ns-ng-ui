@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsStringLength } from '../../../../utils/helpers/strings/ns-helpers-strings';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
@@ -10,7 +12,7 @@ import { NsFormControlInputConfiguration } from './ns-form-control-input.configu
 export class NsFormControlInputModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControl, NsFormControlInputConfiguration> {
    private readonly _type: NsFormControlInputType;
-   private _remainingCharacters: string;
+   private _remainingCharacters$: Observable<string>;
 
    get type(): NsFormControlInputType {
       return this._type;
@@ -24,8 +26,8 @@ export class NsFormControlInputModel<TEntity>
       return this._config.maxLength;
    }
 
-   get remainingCharacters(): string {
-      return this._remainingCharacters;
+   get remainingCharacters$(): Observable<string> {
+      return this._remainingCharacters$;
    }
 
    constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
@@ -47,21 +49,17 @@ export class NsFormControlInputModel<TEntity>
    onInit() {
       super.onInit();
 
-      this.setRemainingCharacters(this.value);
-   }
+      this._remainingCharacters$ = this.valueChanges$
+         .pipe(
+            startWith<TEntity, any>(this.value),
+            map(() => {
+               if (this.maxLength == null) {
+                  return ''
+               }
 
-   protected handleValueChanged(newValue: any) {
-      super.handleValueChanged(newValue);
-
-      this.setRemainingCharacters(newValue);
-   }
-
-   private setRemainingCharacters(value: string) {
-      if (this.maxLength == null) {
-         return ''
-      }
-
-      const valueLength = nsStringLength(value);
-      this._remainingCharacters = `${valueLength}/${this.maxLength}`;
+               const valueLength = nsStringLength(this.value);
+               return `${valueLength}/${this.maxLength}`;
+            })
+         );
    }
 }
