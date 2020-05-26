@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsStringLength } from '../../../../utils/helpers/strings/ns-helpers-strings';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
@@ -12,7 +10,7 @@ import { NsFormControlInputConfiguration } from './ns-form-control-input.configu
 export class NsFormControlInputModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControl, NsFormControlInputConfiguration> {
    private readonly _type: NsFormControlInputType;
-   private _remainingCharacters$: Observable<string>;
+   private _remainingCharacters: string;
 
    get type(): NsFormControlInputType {
       return this._type;
@@ -26,8 +24,8 @@ export class NsFormControlInputModel<TEntity>
       return this._config.maxLength;
    }
 
-   get remainingCharacters$(): Observable<string> {
-      return this._remainingCharacters$;
+   get remainingCharacters(): string {
+      return this._remainingCharacters;
    }
 
    constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
@@ -49,20 +47,21 @@ export class NsFormControlInputModel<TEntity>
    onInit() {
       super.onInit();
 
-      this.setRemainingCharacters$();
+      this.setRemainingCharacters(this.value);
    }
 
-   private setRemainingCharacters$() {
-      this._remainingCharacters$ = this.valueChanges$
-         .pipe(
-            map(newValue => {
-               if (this.maxLength == null) {
-                  return ''
-               }
+   protected handleValueChanged(newValue: any) {
+      super.handleValueChanged(newValue);
 
-               const valueLength = nsStringLength(newValue);
-               return `${valueLength}/${this.maxLength}`;
-            })
-         );
+      this.setRemainingCharacters(newValue);
+   }
+
+   private setRemainingCharacters(value: string) {
+      if (this.maxLength == null) {
+         return ''
+      }
+
+      const valueLength = nsStringLength(value);
+      this._remainingCharacters = `${valueLength}/${this.maxLength}`;
    }
 }

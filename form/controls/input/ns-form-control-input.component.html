@@ -19,7 +19,7 @@
 
    <mat-hint *ngIf="model.hasMaxLengthSet"
              align="end">
-      {{model.remainingCharacters$ | async}}
+      {{model.remainingCharacters}}
    </mat-hint>
 
    <mat-error>{{model.errorMessage$ | async}}</mat-error>

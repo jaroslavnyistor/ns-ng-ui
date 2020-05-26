@@ -110,7 +110,7 @@ export abstract class NsFormModel<TEntity,
          }
       });
 
-      this._formGroup.patchValue(value);
+      this._formGroup.patchValue(value, { emitEvent: true, onlySelf: false });
    }
 
    validate(): boolean {

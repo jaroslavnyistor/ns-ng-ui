@@ -34,7 +34,7 @@ export abstract class NsFormGroupModel<TParentEntity,
       return this.formGroup
    }
 
-   get valueChanges$(): Observable<any> {
+   get valueChange$(): Observable<any> {
       return this.formControl.valueChanges;
    }
 

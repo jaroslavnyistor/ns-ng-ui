@@ -33,7 +33,7 @@ export abstract class NsFormControlModel<TEntity,
    private readonly _validators: NsFormControlValidators;
    private _validatorsFn: ValidatorFn[];
    private _errorMessage$: Observable<string>;
-   private _valueChanges$: Observable<any>;
+   private _valueChange$: Observable<any>;
 
    protected get langService(): LocalizationLanguagesService {
       return this._langService;
@@ -111,8 +111,8 @@ export abstract class NsFormControlModel<TEntity,
       return this._errorMessage$;
    }
 
-   get valueChanges$(): Observable<any> {
-      return this._valueChanges$;
+   get valueChange$(): Observable<any> {
+      return this._valueChange$;
    }
 
    protected constructor(config: TConfiguration) {
@@ -175,7 +175,7 @@ export abstract class NsFormControlModel<TEntity,
 
       this.setErrorMessage$();
 
-      this.setValueChanges$();
+      this.setValueChange$();
 
       this.setDependsOn$();
    }
@@ -222,8 +222,8 @@ export abstract class NsFormControlModel<TEntity,
          );
    }
 
-   private setValueChanges$() {
-      this._valueChanges$ = this.formControl.valueChanges
+   private setValueChange$() {
+      this._valueChange$ = this.formControl.valueChanges
          .pipe(
             filter(value => {
                const formGroup = this._formControl.parent;
@@ -233,11 +233,11 @@ export abstract class NsFormControlModel<TEntity,
          );
 
       this.subscribeTo(
-         this.valueChanges$,
+         this.valueChange$,
          {
             next: newValue => this.handleValueChanged(newValue)
          }
-      )
+      );
    }
 
    protected handleValueChanged(newValue: any) {
@@ -259,7 +259,7 @@ export abstract class NsFormControlModel<TEntity,
          return;
       }
 
-      const obs$ = dependsOn.map(each => each.valueChanges$);
+      const obs$ = dependsOn.map(each => each.valueChange$);
       this.subscribeTo(
          combineLatest(obs$),
          {
