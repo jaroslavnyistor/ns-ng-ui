@@ -193,8 +193,6 @@ export abstract class NsFormModel<TEntity,
    }
 
    private register(model: NsFormControlDefinition) {
-      model.tabIndex = this._formModels.length + 1;
-
       this._formModels.push(model);
    }
 
