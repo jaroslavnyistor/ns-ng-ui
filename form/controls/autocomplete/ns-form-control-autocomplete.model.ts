@@ -46,7 +46,7 @@ export abstract class NsFormControlAutocompleteModel<TEntity,
    onInit() {
       super.onInit();
 
-      this._data$ = this.valueChange$
+      this._data$ = this.valueChanges$
          .pipe(
             debounceTime(400),
             switchMap(search => {

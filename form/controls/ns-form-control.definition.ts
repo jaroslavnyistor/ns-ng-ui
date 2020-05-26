@@ -18,7 +18,7 @@ export interface NsFormControlDefinition {
 
    value: any;
 
-   valueChange$: Observable<any>;
+   valueChanges$: Observable<any>;
 
    setLangService(langService: LocalizationLanguagesService);
 
