@@ -54,8 +54,9 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
       this.handleIsNavigating$();
 
       this._navigationItems = [
+         ...this.getFirstDefaultNavigationItems(),
          ...this.getApplicationNavigationItems(),
-         ...this.getDefaultNavigationItems()
+         ...this.getLastNavigationItems(),
       ];
 
       this._navigationItems$ = this.buildNavigationItems$();
@@ -74,9 +75,7 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
       );
    }
 
-   protected abstract getApplicationNavigationItems(): NsToolbarNavigationItemGroupEntity[];
-
-   private getDefaultNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+   private getFirstDefaultNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
       return [
          {
             items: [
@@ -85,6 +84,17 @@ export abstract class NsPageModel<TServiceProvider extends NsServiceProvider<TAp
                   icon: NsIcon.Action_Home,
                   action: () => this.navService.toHomePage()
                },
+            ]
+         }
+      ];
+   }
+
+   protected abstract getApplicationNavigationItems(): NsToolbarNavigationItemGroupEntity[];
+
+   private getLastNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+      return [
+         {
+            items: [
                {
                   titleId: LocalizedTextIdNikisoft.LogOutButton,
                   icon: NsIcon.Action_PowerSettingsNew,
