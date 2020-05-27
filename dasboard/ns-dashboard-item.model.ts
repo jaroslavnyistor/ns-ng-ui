@@ -3,10 +3,10 @@ import { NsPageListLayoutItemModel } from '../page/list/layout/item/ns-page-list
 import { NsDashboardItemEntity } from './ns-dashboard-item.entity';
 
 export class NsDashboardItemModel extends NsPageListLayoutItemModel {
-   private readonly _name: string;
+   private readonly _title: string;
 
-   get name(): string {
-      return this._name;
+   get title(): string {
+      return this._title;
    }
 
    constructor(
@@ -16,14 +16,14 @@ export class NsDashboardItemModel extends NsPageListLayoutItemModel {
    ) {
       super(id);
 
-      if (this._entity.name != null) {
-         this._name = this._entity.name;
+      if (this._entity.title != null) {
+         this._title = this._entity.title;
       }
-      else if (this._entity.nameId != null) {
-         this._name = langService.translate(this._entity.nameId);
+      else if (this._entity.titleId != null) {
+         this._title = langService.translate(this._entity.titleId);
       }
       else {
-         this._name = '';
+         this._title = '';
       }
    }
 
