@@ -1,6 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, startWith } from 'rxjs/operators';
 import { nsArrayIsEmpty } from '../../../utils/helpers/arrays/ns-helpers-arrays';
 import { nsObjectHasValue } from '../../../utils/helpers/ns-helpers';
 import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
@@ -33,6 +33,7 @@ export abstract class NsFormControlModel<TEntity,
    private _validatorsFn: ValidatorFn[];
    private _errorMessage$: Observable<string>;
    private _valueChanges$: Observable<any>;
+   private _statusChanges$: Observable<any>;
 
    protected get langService(): LocalizationLanguagesService {
       return this._langService;
@@ -106,6 +107,14 @@ export abstract class NsFormControlModel<TEntity,
       return this._valueChanges$;
    }
 
+   get status(): any {
+      return this.formControl.status;
+   }
+
+   get statusChanges$(): Observable<any> {
+      return this._statusChanges$;
+   }
+
    protected constructor(config: TConfiguration) {
       super();
 
@@ -125,11 +134,11 @@ export abstract class NsFormControlModel<TEntity,
    protected updateDisabledState() {
       if (this._isDisabled) {
          if (!this.formControl.disabled) {
-            this._formControl.disable();
+            this.formControl.disable({ emitEvent: false });
          }
       }
-      else if (this._formControl.disabled) {
-         this._formControl.enable();
+      else if (this.formControl.disabled) {
+         this.formControl.enable({ emitEvent: false });
       }
    }
 
@@ -173,7 +182,7 @@ export abstract class NsFormControlModel<TEntity,
 
    private initValidators() {
       this._validatorsFn = this._validators.build();
-      this._formControl.setValidators(this._validatorsFn);
+      this.formControl.setValidators(this._validatorsFn);
    }
 
    private fixLabel() {
@@ -201,10 +210,10 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    private setErrorMessage$() {
-      this._errorMessage$ = this._formControl.statusChanges
+      this._errorMessage$ = this.formControl.statusChanges
          .pipe(
             map(() => {
-               const errors = this._formControl.errors;
+               const errors = this.formControl.errors;
 
                return errors != null && nsIsNotNullOrEmpty(errors.error)
                       ? errors.error
@@ -217,7 +226,7 @@ export abstract class NsFormControlModel<TEntity,
       this._valueChanges$ = this.formControl.valueChanges
          .pipe(
             filter(value => {
-               const formGroup = this._formControl.parent;
+               const formGroup = this.formControl.parent;
                const prevValue = formGroup.value[this.key];
                return value !== prevValue;
             })
@@ -232,15 +241,29 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    protected handleValueChanged(newValue: any) {
-      this.setHasValue(newValue);
-   }
-
-   private setHasValue(newValue: any) {
       this._hasValue = this.resolveHasValue(newValue);
    }
 
    protected resolveHasValue(newValue: any): boolean {
       return nsObjectHasValue(newValue);
+   }
+
+   private setStatusChanges$() {
+      this._statusChanges$ = this.formControl.statusChanges
+         .pipe(
+            startWith(this.formControl.status)
+         );
+
+      this.subscribeTo(
+         this._statusChanges$,
+         {
+            next: () => this.handleStatusChanged()
+         }
+      );
+   }
+
+   protected handleStatusChanged() {
+
    }
 
    private setDependsOn$() {
@@ -278,17 +301,18 @@ export abstract class NsFormControlModel<TEntity,
    }
 
    setValue(value: any) {
-      this._formControl.setValue(value);
+      this.formControl.setValue(value);
    }
 
    patchValue(value: any) {
-      this._formControl.patchValue(value);
+      this.formControl.patchValue(value);
    }
 
    protected handleErrorMessage(errorMessage: string) {
-      this._formControl.setErrors({
+      this.formControl.setErrors({
          error: errorMessage
       });
-      this._formControl.markAsTouched({ onlySelf: false });
+
+      this.formControl.markAsTouched();
    }
 }
