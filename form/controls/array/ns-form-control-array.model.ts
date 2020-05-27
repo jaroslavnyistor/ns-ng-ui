@@ -24,9 +24,9 @@ export abstract class NsFormControlArrayModel<TEntity,
          TAppNavService>> {
 
    private readonly _formModels$: BehaviorSubject<TFormArrayItemModel[]>;
-   private readonly _canDeleteItems = true;
    private readonly _service: TService;
    private readonly _noItemsMessage: string;
+   private _canDeleteItems = true;
 
    get formModels$(): Observable<TFormArrayItemModel[]> {
       return this._formModels$;
@@ -42,6 +42,10 @@ export abstract class NsFormControlArrayModel<TEntity,
 
    get canDeleteItems(): boolean {
       return this._canDeleteItems;
+   }
+
+   set canDeleteItems(value: boolean) {
+      this._canDeleteItems = value;
    }
 
    protected get service(): TService {
