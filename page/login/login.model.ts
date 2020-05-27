@@ -23,7 +23,7 @@ export class LoginModel extends NsPageEditModel<LoginEntity, NsServiceProvider<N
    }
 
    constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
-      super(newLoginEntity(), serviceProvider, nsAuthenticateErrorMapper);
+      super(serviceProvider, newLoginEntity(), nsAuthenticateErrorMapper);
 
       this._userName = this.addText({
          key: 'userName',

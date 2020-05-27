@@ -69,11 +69,11 @@ export abstract class NsPageEditModel<TEntity,
    }
 
    protected constructor(
-      entity: TEntity,
       serviceProvider: TServiceProvider,
+      entity: TEntity,
       private readonly _apiErrorMapper: any = nsApiErrorMapper,
    ) {
-      super(entity, serviceProvider);
+      super(serviceProvider, entity);
 
       this.negativeButton = new NsButtonDefaultModel('');
       this.positiveButton = new NsButtonRaisedModel('');

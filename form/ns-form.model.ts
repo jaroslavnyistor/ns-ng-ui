@@ -57,7 +57,7 @@ export abstract class NsFormModel<TEntity,
       return this._statusChanges$;
    }
 
-   protected constructor(entity: TEntity, serviceProvider: TServiceProvider, formGroup: NsFormGroup = null) {
+   constructor(serviceProvider: TServiceProvider, entity: TEntity, formGroup: NsFormGroup = null) {
       super(serviceProvider);
 
       if (formGroup != null) {

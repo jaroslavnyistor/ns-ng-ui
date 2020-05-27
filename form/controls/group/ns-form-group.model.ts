@@ -38,11 +38,11 @@ export abstract class NsFormGroupModel<TParentEntity,
    }
 
    protected constructor(
-      config: NsFormGroupConfiguration,
-      entity: TEntity,
       serviceProvider: TServiceProvider,
+      entity: TEntity,
+      config: NsFormGroupConfiguration,
    ) {
-      super(entity, serviceProvider);
+      super(serviceProvider, entity);
       this._key = config.key;
    }
 

@@ -8,7 +8,7 @@ export abstract class NsFormControlArrayItemModel<TEntity extends NsFormControlA
    TAppNavService extends NsNavigationService>
    extends NsFormModel<TEntity, TServiceProvider, TAppNavService> {
 
-   protected constructor(entity: TEntity, serviceProvider: TServiceProvider) {
-      super(entity, serviceProvider);
+   protected constructor(serviceProvider: TServiceProvider, entity: TEntity) {
+      super(serviceProvider, entity);
    }
 }

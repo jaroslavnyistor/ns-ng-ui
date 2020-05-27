@@ -53,11 +53,11 @@ export abstract class NsPageEditStepsModel<TEntity,
    }
 
    protected constructor(
-      entity: TEntity,
       serviceProvider: TServiceProvider,
+      entity: TEntity,
       private readonly _apiErrorMapper: any = nsApiErrorMapper,
    ) {
-      super(entity, serviceProvider);
+      super(serviceProvider, entity);
    }
 
    resolveEntityLoadingError(error: NsApiResponseError) {
