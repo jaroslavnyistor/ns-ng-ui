@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { nsNull } from '../../../../utils/helpers/ns-helpers';
 import { nsStringLength } from '../../../../utils/helpers/strings/ns-helpers-strings';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
@@ -12,7 +10,7 @@ import { NsFormControlInputConfiguration } from './ns-form-control-input.configu
 export class NsFormControlInputModel<TEntity>
    extends NsFormControlModel<TEntity, NsFormControl, NsFormControlInputConfiguration> {
    private readonly _type: NsFormControlInputType;
-   private _remainingCharacters$: Observable<string>;
+   private _remainingCharacters: string;
 
    get type(): NsFormControlInputType {
       return this._type;
@@ -26,8 +24,8 @@ export class NsFormControlInputModel<TEntity>
       return this._config.maxLength;
    }
 
-   get remainingCharacters$(): Observable<string> {
-      return this._remainingCharacters$;
+   get remainingCharacters(): string {
+      return this._remainingCharacters;
    }
 
    get autofocus(): boolean {
@@ -53,17 +51,21 @@ export class NsFormControlInputModel<TEntity>
    onInit() {
       super.onInit();
 
-      this._remainingCharacters$ = this.valueChanges$
-         .pipe(
-            startWith<TEntity, any>(this.value),
-            map(() => {
-               if (this.maxLength == null) {
-                  return ''
-               }
+      this.updateRemainingCharacters(this.value)
+   }
 
-               const valueLength = nsStringLength(this.value);
-               return `${valueLength}/${this.maxLength}`;
-            })
-         );
+   protected handleValueChanged(newValue: any) {
+      super.handleValueChanged(newValue);
+
+      this.updateRemainingCharacters(newValue);
+   }
+
+   private updateRemainingCharacters(value: string) {
+      if (this.maxLength == null) {
+         return ''
+      }
+
+      const valueLength = nsStringLength(this.value);
+      this._remainingCharacters = `${valueLength}/${this.maxLength}`;
    }
 }
