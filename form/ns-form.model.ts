@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
@@ -29,6 +31,7 @@ export abstract class NsFormModel<TEntity,
    private readonly _formModels: NsFormControlDefinition[];
    private readonly _validators: NsFormControlValidators;
    private _initialEntity: TEntity;
+   private _statusChanges$: Observable<any>;
 
    get formGroup(): NsFormGroup {
       return this._formGroup;
@@ -44,6 +47,14 @@ export abstract class NsFormModel<TEntity,
 
    get currentEntity(): TEntity {
       return this.formGroup.value;
+   }
+
+   get status(): any {
+      return this.formGroup.status;
+   }
+
+   get statusChanges$(): Observable<any> {
+      return this._statusChanges$;
    }
 
    protected constructor(entity: TEntity, serviceProvider: TServiceProvider, formGroup: NsFormGroup = null) {
@@ -64,30 +75,42 @@ export abstract class NsFormModel<TEntity,
    onInit() {
       super.onInit();
 
-      this.subscribeToFormStatusChanges();
+      this.initializeFormModels();
 
-      this._validators.setLangService(this.langService);
+      this.setValidators();
 
+      this.setStatusChanges$();
+   }
+
+   private initializeFormModels() {
       this._formModels.forEach(formModel => {
-         const formControl = this._formGroup.get(formModel.key) as NsAbstractControl;
+         const formControl = this.formGroup.get(formModel.key) as NsAbstractControl;
          formModel.setFormControl(formControl);
          formModel.setLangService(this.langService);
          formModel.onInit();
       });
-
-      this._formGroup.setValidators(this._validators.build());
    }
 
-   private subscribeToFormStatusChanges() {
+   private setValidators() {
+      this._validators.setLangService(this.langService);
+      this.formGroup.setValidators(this._validators.build());
+   }
+
+   private setStatusChanges$() {
+      this._statusChanges$ = this.formGroup.statusChanges
+         .pipe(
+            startWith(this.formGroup.status),
+         );
+
       this.subscribeTo(
-         this._formGroup.statusChanges,
+         this._statusChanges$,
          {
-            next: () => this.handleStatusChanged()
+            next: status => this.handleStatusChanged(status)
          }
       );
    }
 
-   protected handleStatusChanged() {
+   protected handleStatusChanged(newStatus: any) {
    }
 
    onDestroy(): void {
@@ -110,7 +133,8 @@ export abstract class NsFormModel<TEntity,
          }
       });
 
-      this._formGroup.patchValue(value, { emitEvent: true, onlySelf: false });
+      this.formGroup.patchValue(value);
+      this.formGroup.updateValueAndValidity();
    }
 
    validate(): boolean {
