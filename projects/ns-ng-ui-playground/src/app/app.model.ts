@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NsPageModel } from 'ns-ng-ui/lib/page/base/ns-page.model';
-import { NsToolbarNavigationItemGroupEntity } from 'ns-ng-ui/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.entity';
+import { NsToolbarNavigationItemGroupEntity } from 'ns-ng-ui';
+import { NsPageModel } from 'ns-ng-ui';
 import { Observable, of } from 'rxjs';
 import { AppNavigationService } from './service-provider/app-navigation.service';
 import { AppServiceProvider } from './service-provider/app-service-provider';

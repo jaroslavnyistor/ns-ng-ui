@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NsClockModule } from 'ns-ng-ui/lib/clock/ns-clock.module';
-import { NsDiConfigurator } from 'ns-ng-ui/lib/ns-di.configurator';
-import { NsPageModule } from 'ns-ng-ui/lib/page/base/ns-page.module';
+import { LocalizationLanguage } from 'ns-js-utils';
+import { NsDiConfigurator } from 'ns-ng-ui';
+import { NsClockModule } from 'ns-ng-ui';
+import { NsPageModule } from 'ns-ng-ui';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { customersServiceDataProvider } from './modules/data/customers.service';
 import { AppNavigationService } from './service-provider/app-navigation.service';
 import { AppServiceProvider } from './service-provider/app-service-provider';
-import { LocalizationLanguage } from 'ns-js-utils/lib/localization/localization.language';
 
 @NgModule({
   declarations: [AppComponent],

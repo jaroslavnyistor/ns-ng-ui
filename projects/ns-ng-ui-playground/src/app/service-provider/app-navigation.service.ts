@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import { NsRouterService } from 'ns-js-utils';
+import { NsStorageService } from 'ns-js-utils';
+import { NsNavigationService } from 'ns-js-utils';
 import { formsArrayRoute } from '../modules/forms-array/forms-array.routes';
 import { formsCheckboxRoute } from '../modules/forms-checkbox/forms-checkbox.routes';
 import { formsDashboardRoute } from '../modules/forms-dashboard/forms-dashboard.routes';
 import { formsAutocompleteRoute } from '../modules/forms-autocomplete/forms-autocomplete.routes';
 import { formsInputRoute } from '../modules/forms-input/forms-input.routes';
-import { NsStorageService } from 'ns-js-utils/lib/storage/ns-storage.service';
-import { NsRouterService } from 'ns-js-utils/lib/navigation/ns-router.service';
-import { NsNavigationService } from 'ns-js-utils/lib/navigation/ns-navigation.service';
 
 @Injectable({
   providedIn: 'root',

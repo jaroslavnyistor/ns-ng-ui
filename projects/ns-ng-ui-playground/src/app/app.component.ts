@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageDiConfigurator } from 'ns-ng-ui/lib/page/base/ns-page.di-configurator';
+import { NsPageDiConfigurator } from 'ns-ng-ui';
 import { AppModel } from './app.model';
 import { AppService } from './app.service';
 

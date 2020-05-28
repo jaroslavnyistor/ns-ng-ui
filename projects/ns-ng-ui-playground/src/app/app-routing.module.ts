@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { loginRoutes } from 'ns-ng-ui/lib/page/login/login.routes';
-import { routeNoPermissionRoutes } from 'ns-ng-ui/lib/page/no-permission/ns-page-no-permission.routes';
-import { buildDefaultRoute, notFoundRoutes } from 'ns-ng-ui/lib/page/not-found/ns-page-not-found.routes';
+import { notFoundRoutes } from 'ns-ng-ui';
+import { routeNoPermissionRoutes } from 'ns-ng-ui';
+import { loginRoutes } from 'ns-ng-ui';
+import { buildDefaultRoute } from 'ns-ng-ui';
 import { formsArrayRoutes } from './modules/forms-array/forms-array.routes';
 import { formsCheckboxRoutes } from './modules/forms-checkbox/forms-checkbox.routes';
 import { formsDashboardRoutes } from './modules/forms-dashboard/forms-dashboard.routes';
