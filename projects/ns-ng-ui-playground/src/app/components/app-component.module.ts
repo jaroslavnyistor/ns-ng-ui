@@ -6,20 +6,9 @@ import { ButtonPatchValueComponent } from './buttons/button-patch-value.componen
 import { ButtonValidateComponent } from './buttons/button-validate.component';
 import { ExamplePageComponent } from './example-page/example-page.component';
 
-
-
 @NgModule({
   declarations: [ResultSectionComponent, ButtonPatchValueComponent, ButtonValidateComponent, ExamplePageComponent],
-  imports: [
-    CommonModule,
-    NsExpansionPanelModule,
-    NsButtonModule
-  ],
-   exports: [
-      ResultSectionComponent,
-      ButtonPatchValueComponent,
-      ButtonValidateComponent,
-      ExamplePageComponent
-   ]
+  imports: [CommonModule, NsExpansionPanelModule, NsButtonModule],
+  exports: [ResultSectionComponent, ButtonPatchValueComponent, ButtonValidateComponent, ExamplePageComponent],
 })
-export class AppComponentModule { }
+export class AppComponentModule {}

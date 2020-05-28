@@ -7,16 +7,8 @@ import { FormsAutocompleteBasicComponent } from './basic/forms-autocomplete-basi
 import { FormsAutocompleteRoutingModule } from './forms-autocomplete-routing.module';
 import { FormsAutocompleteComponent } from './forms-autocomplete.component';
 
-
 @NgModule({
-   declarations: [FormsAutocompleteComponent, FormsAutocompleteBasicComponent],
-   imports: [
-      CommonModule,
-      FormsAutocompleteRoutingModule,
-      NsFormModule,
-      NsPageDefaultModule,
-      AppComponentModule,
-   ]
+  declarations: [FormsAutocompleteComponent, FormsAutocompleteBasicComponent],
+  imports: [CommonModule, FormsAutocompleteRoutingModule, NsFormModule, NsPageDefaultModule, AppComponentModule],
 })
-export class FormsAutocompleteModule {
-}
+export class FormsAutocompleteModule {}

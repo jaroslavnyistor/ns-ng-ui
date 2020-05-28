@@ -7,31 +7,29 @@ import { FormsArrayInitialValueEntity } from './forms-array-initial-value.entity
 import { FormsArrayInitialValueModel } from './forms-array-initial-value.model';
 
 @Injectable()
-export class FormsArrayInitialValueService
-   extends NsFormService<FormsArrayInitialValueModel,
-      FormsArrayInitialValueEntity,
-      AppServiceProvider,
-      AppNavigationService> {
+export class FormsArrayInitialValueService extends NsFormService<
+  FormsArrayInitialValueModel,
+  FormsArrayInitialValueEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
+  constructor(
+    model: FormsArrayInitialValueModel,
+    serviceProvider: AppServiceProvider,
+    private readonly _customersService: CustomersService,
+  ) {
+    super(model, serviceProvider);
+  }
 
-   constructor(
-      model: FormsArrayInitialValueModel,
-      serviceProvider: AppServiceProvider,
-      private readonly _customersService: CustomersService
-   ) {
-      super(model, serviceProvider);
-   }
+  onInit() {
+    super.onInit();
 
-   onInit() {
-      super.onInit();
-
-      this.subscribeTo(
-         this._customersService.load(),
-         {
-            next: customers => this.model.setInitialEntity({
-               supervisor: '',
-               customers
-            })
-         }
-      );
-   }
+    this.subscribeTo(this._customersService.load(), {
+      next: (customers) =>
+        this.model.setInitialEntity({
+          supervisor: '',
+          customers,
+        }),
+    });
+  }
 }

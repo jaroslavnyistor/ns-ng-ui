@@ -12,31 +12,22 @@ import { AppServiceProvider } from './service-provider/app-service-provider';
 import { LocalizationLanguage } from 'ns-js-utils/lib/localization/localization.language';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-   ],
-   imports: [
-      BrowserModule,
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      NsPageModule,
-      NsClockModule
-   ],
-   providers: [
-      NsDiConfigurator.configure({
-         storageKeyPrefix: 'ns-web-fe-playground-ui',
-         defaultLanguage: LocalizationLanguage.EN,
-         usesLocalization: false,
-         appVersion: '1.3.0.0',
-         appLogo: 'assets/app_logo.png',
-         serviceProvider: {
-            service: AppServiceProvider,
-            navService: AppNavigationService
-         }
-      }),
-      customersServiceDataProvider
-   ],
-   bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NsPageModule, NsClockModule],
+  providers: [
+    NsDiConfigurator.configure({
+      storageKeyPrefix: 'ns-web-fe-playground-ui',
+      defaultLanguage: LocalizationLanguage.EN,
+      usesLocalization: false,
+      appVersion: '1.3.0.0',
+      appLogo: 'assets/app_logo.png',
+      serviceProvider: {
+        service: AppServiceProvider,
+        navService: AppNavigationService,
+      },
+    }),
+    customersServiceDataProvider,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

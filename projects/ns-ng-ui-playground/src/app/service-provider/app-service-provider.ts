@@ -13,34 +13,34 @@ import { NsStorageService } from 'ns-js-utils/lib/storage/ns-storage.service';
 import { NsRouterService } from 'ns-js-utils/lib/navigation/ns-router.service';
 
 @Injectable({
-   providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppServiceProvider extends NsServiceProvider<AppNavigationService> {
-   constructor(
-      langService: LocalizationLanguagesService,
-      navService: AppNavigationService,
-      apiErrorResolverService: NsApiErrorResolverService,
-      authService: NsAuthenticateService,
-      dialogService: NsDialogService,
-      storageService: NsStorageService,
-      noPermissionService: NsPageNoPermissionService,
-      notFoundService: NsPageNotFoundService,
-      mediaQueryObserver: NsMediaQueryObserver,
-      routerService: NsRouterService,
-      titleService: Title
-   ) {
-      super(
-         langService,
-         navService,
-         apiErrorResolverService,
-         authService,
-         dialogService,
-         storageService,
-         noPermissionService,
-         notFoundService,
-         mediaQueryObserver,
-         routerService,
-         titleService
-      );
-   }
+  constructor(
+    langService: LocalizationLanguagesService,
+    navService: AppNavigationService,
+    apiErrorResolverService: NsApiErrorResolverService,
+    authService: NsAuthenticateService,
+    dialogService: NsDialogService,
+    storageService: NsStorageService,
+    noPermissionService: NsPageNoPermissionService,
+    notFoundService: NsPageNotFoundService,
+    mediaQueryObserver: NsMediaQueryObserver,
+    routerService: NsRouterService,
+    titleService: Title,
+  ) {
+    super(
+      langService,
+      navService,
+      apiErrorResolverService,
+      authService,
+      dialogService,
+      storageService,
+      noPermissionService,
+      notFoundService,
+      mediaQueryObserver,
+      routerService,
+      titleService,
+    );
+  }
 }

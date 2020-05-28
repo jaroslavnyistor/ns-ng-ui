@@ -5,16 +5,13 @@ import { AppServiceProvider } from '../../service-provider/app-service-provider'
 
 @Injectable()
 export class HomeModel extends NsDashboardModel<AppServiceProvider, AppNavigationService> {
+  constructor(serviceProvider: AppServiceProvider) {
+    super(serviceProvider);
 
-   constructor(serviceProvider: AppServiceProvider) {
-      super(serviceProvider);
+    this.header = 'Home';
+  }
 
-      this.header = 'Home';
-   }
-
-   protected getDashboardItems(): NsDashboardItemEntity[] {
-      return [
-         { title: 'Forms', action: () => this.navService.toFormsDashboard() }
-      ];
-   }
+  protected getDashboardItems(): NsDashboardItemEntity[] {
+    return [{ title: 'Forms', action: () => this.navService.toFormsDashboard() }];
+  }
 }

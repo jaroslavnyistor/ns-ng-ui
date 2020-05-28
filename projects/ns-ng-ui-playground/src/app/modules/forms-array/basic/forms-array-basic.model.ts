@@ -8,26 +8,26 @@ import { FormsArrayBasicEntity, newFormsArrayBasicEntity } from './forms-array-b
 
 @Injectable()
 export class FormsArrayBasicModel extends NsFormModel<FormsArrayBasicEntity, AppServiceProvider, AppNavigationService> {
-   private readonly _customers: CustomersArrayModel;
-   private readonly _canDeleteCustomers: CanDeleteCustomersModel;
+  private readonly _customers: CustomersArrayModel;
+  private readonly _canDeleteCustomers: CanDeleteCustomersModel;
 
-   get customers(): CustomersArrayModel {
-      return this._customers;
-   }
+  get customers(): CustomersArrayModel {
+    return this._customers;
+  }
 
-   get canDeleteCustomers(): CanDeleteCustomersModel {
-      return this._canDeleteCustomers;
-   }
+  get canDeleteCustomers(): CanDeleteCustomersModel {
+    return this._canDeleteCustomers;
+  }
 
-   constructor(
-      serviceProvider: AppServiceProvider,
-      customers: CustomersArrayModel,
-      canDeleteCustomersModel: CanDeleteCustomersModel
-   ) {
-      super(serviceProvider, newFormsArrayBasicEntity());
+  constructor(
+    serviceProvider: AppServiceProvider,
+    customers: CustomersArrayModel,
+    canDeleteCustomersModel: CanDeleteCustomersModel,
+  ) {
+    super(serviceProvider, newFormsArrayBasicEntity());
 
-      this._customers = this.add(customers);
+    this._customers = this.add(customers);
 
-      this._canDeleteCustomers = this.add(canDeleteCustomersModel);
-   }
+    this._canDeleteCustomers = this.add(canDeleteCustomersModel);
+  }
 }

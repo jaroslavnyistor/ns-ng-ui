@@ -6,16 +6,19 @@ import { CustomerEntity } from '../../data/customer.entity';
 import { FormsCheckboxBasicModel } from './forms-checkbox-basic.model';
 
 @Injectable()
-export class FormsCheckboxBasicService
-   extends NsFormService<FormsCheckboxBasicModel, CustomerEntity, AppServiceProvider, AppNavigationService> {
+export class FormsCheckboxBasicService extends NsFormService<
+  FormsCheckboxBasicModel,
+  CustomerEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
+  constructor(model: FormsCheckboxBasicModel, serviceProvider: AppServiceProvider) {
+    super(model, serviceProvider);
+  }
 
-   constructor(model: FormsCheckboxBasicModel, serviceProvider: AppServiceProvider) {
-      super(model, serviceProvider);
-   }
-
-   makeCustomerVip() {
-      this.model.patchValue({
-         isVip: true
-      });
-   }
+  makeCustomerVip() {
+    this.model.patchValue({
+      isVip: true,
+    });
+  }
 }

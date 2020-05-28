@@ -6,19 +6,21 @@ import { CustomerEntity, newCustomer } from '../../data/customer.entity';
 import { CustomersArrayItemModel } from './customers-array-item.model';
 
 @Injectable()
-export class CustomersArrayService
-   extends NsFormControlArrayService<CustomersArrayItemModel, CustomerEntity,
-      AppServiceProvider, AppNavigationService> {
+export class CustomersArrayService extends NsFormControlArrayService<
+  CustomersArrayItemModel,
+  CustomerEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
+  constructor(private readonly _serviceProvider: AppServiceProvider) {
+    super();
+  }
 
-   constructor(private readonly _serviceProvider: AppServiceProvider) {
-      super();
-   }
+  createNewEntity(lastItem: CustomerEntity): CustomerEntity {
+    return newCustomer();
+  }
 
-   createNewEntity(lastItem: CustomerEntity): CustomerEntity {
-      return newCustomer();
-   }
-
-   mapEntityToFormModel(): CustomersArrayItemModel {
-      return new CustomersArrayItemModel(this._serviceProvider);
-   }
+  mapEntityToFormModel(): CustomersArrayItemModel {
+    return new CustomersArrayItemModel(this._serviceProvider);
+  }
 }

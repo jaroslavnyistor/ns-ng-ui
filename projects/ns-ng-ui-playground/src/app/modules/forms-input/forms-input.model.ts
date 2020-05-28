@@ -5,11 +5,11 @@ import { AppServiceProvider } from '../../service-provider/app-service-provider'
 
 @Injectable()
 export class FormsInputModel extends NsPageDefaultModel<AppServiceProvider, AppNavigationService> {
-   constructor(serviceProvider: AppServiceProvider) {
-      super(serviceProvider);
-   }
+  constructor(serviceProvider: AppServiceProvider) {
+    super(serviceProvider);
+  }
 
-   getStateKey(): string {
-      return 'forms-input';
-   }
+  getStateKey(): string {
+    return 'forms-input';
+  }
 }

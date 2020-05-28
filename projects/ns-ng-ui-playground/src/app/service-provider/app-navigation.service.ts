@@ -9,30 +9,30 @@ import { NsRouterService } from 'ns-js-utils/lib/navigation/ns-router.service';
 import { NsNavigationService } from 'ns-js-utils/lib/navigation/ns-navigation.service';
 
 @Injectable({
-   providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppNavigationService extends NsNavigationService {
-   constructor(routerService: NsRouterService, storageService: NsStorageService) {
-      super(routerService, storageService);
-   }
+  constructor(routerService: NsRouterService, storageService: NsStorageService) {
+    super(routerService, storageService);
+  }
 
-   toFormsDashboard() {
-      return this.navigate(formsDashboardRoute);
-   }
+  toFormsDashboard() {
+    return this.navigate(formsDashboardRoute);
+  }
 
-   toFormsArray() {
-      return this.navigate(formsArrayRoute);
-   }
+  toFormsArray() {
+    return this.navigate(formsArrayRoute);
+  }
 
-   toFormsAutocomplete() {
-      return this.navigate(formsAutocompleteRoute);
-   }
+  toFormsAutocomplete() {
+    return this.navigate(formsAutocompleteRoute);
+  }
 
-   toFormsCheckbox() {
-      return this.navigate(formsCheckboxRoute);
-   }
+  toFormsCheckbox() {
+    return this.navigate(formsCheckboxRoute);
+  }
 
-   toFormsInput() {
-      return this.navigate(formsInputRoute);
-   }
+  toFormsInput() {
+    return this.navigate(formsInputRoute);
+  }
 }

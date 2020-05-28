@@ -9,16 +9,15 @@ import { FormsArrayBasicService } from './forms-array-basic.service';
 @Component({
   selector: 'forms-array-basic',
   templateUrl: './forms-array-basic.component.html',
-  styles: [  ],
+  styles: [],
   providers: [
-     NsFormDiConfigurator.provideService(FormsArrayBasicService, FormsArrayBasicModel),
-     CustomersArrayModel,
-     CustomersArrayService,
-     CanDeleteCustomersModel,
-  ]
+    NsFormDiConfigurator.provideService(FormsArrayBasicService, FormsArrayBasicModel),
+    CustomersArrayModel,
+    CustomersArrayService,
+    CanDeleteCustomersModel,
+  ],
 })
 export class FormsArrayBasicComponent extends NsComponentBase<FormsArrayBasicService, FormsArrayBasicModel> {
-
   constructor(service: FormsArrayBasicService) {
     super(service);
   }

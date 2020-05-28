@@ -6,10 +6,7 @@ import { FormsArrayService } from './forms-array.service';
 @Component({
   selector: 'forms-array',
   templateUrl: './forms-array.component.html',
-  styles: [  ],
-  providers: [
-     NsPageDefaultDiConfigurator.provideService(FormsArrayService, FormsArrayModel),
-  ]
+  styles: [],
+  providers: [NsPageDefaultDiConfigurator.provideService(FormsArrayService, FormsArrayModel)],
 })
-export class FormsArrayComponent {
-}
+export class FormsArrayComponent {}

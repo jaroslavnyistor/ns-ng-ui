@@ -8,16 +8,8 @@ import { FormsInputComponent } from './forms-input.component';
 import { FormsInputBasicComponent } from './basic/forms-input-basic.component';
 import { FormsInputDependsOnComponent } from './depends-on/forms-input-depends-on.component';
 
-
 @NgModule({
   declarations: [FormsInputComponent, FormsInputBasicComponent, FormsInputDependsOnComponent],
-   imports: [
-      CommonModule,
-      FormsInputRoutingModule,
-      NsPageDefaultModule,
-      AppComponentModule,
-      NsFormModule,
-      NsGridModule
-   ]
+  imports: [CommonModule, FormsInputRoutingModule, NsPageDefaultModule, AppComponentModule, NsFormModule, NsGridModule],
 })
-export class FormsInputModule { }
+export class FormsInputModule {}

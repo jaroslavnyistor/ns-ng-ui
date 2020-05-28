@@ -6,10 +6,13 @@ import { CustomerEntity } from '../../data/customer.entity';
 import { FormsInputDependsOnModel } from './forms-input-depends-on.model';
 
 @Injectable()
-export class FormsInputDependsOnService
-   extends NsFormService<FormsInputDependsOnModel, CustomerEntity, AppServiceProvider, AppNavigationService> {
-
-   constructor(model: FormsInputDependsOnModel, serviceProvider: AppServiceProvider) {
-      super(model, serviceProvider);
-   }
+export class FormsInputDependsOnService extends NsFormService<
+  FormsInputDependsOnModel,
+  CustomerEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
+  constructor(model: FormsInputDependsOnModel, serviceProvider: AppServiceProvider) {
+    super(model, serviceProvider);
+  }
 }

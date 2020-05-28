@@ -6,10 +6,13 @@ import { FormsArrayBasicEntity } from './forms-array-basic.entity';
 import { FormsArrayBasicModel } from './forms-array-basic.model';
 
 @Injectable()
-export class FormsArrayBasicService
-   extends NsFormService<FormsArrayBasicModel, FormsArrayBasicEntity, AppServiceProvider, AppNavigationService> {
-
-   constructor(model: FormsArrayBasicModel, serviceProvider: AppServiceProvider) {
-      super(model, serviceProvider);
-   }
+export class FormsArrayBasicService extends NsFormService<
+  FormsArrayBasicModel,
+  FormsArrayBasicEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
+  constructor(model: FormsArrayBasicModel, serviceProvider: AppServiceProvider) {
+    super(model, serviceProvider);
+  }
 }

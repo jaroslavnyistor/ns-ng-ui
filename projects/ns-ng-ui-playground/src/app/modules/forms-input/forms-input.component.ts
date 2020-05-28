@@ -6,10 +6,7 @@ import { FormsInputService } from './forms-input.service';
 @Component({
   selector: 'forms-input',
   templateUrl: './forms-input.component.html',
-  styles: [  ],
-  providers: [
-     NsPageDefaultDiConfigurator.provideService(FormsInputService, FormsInputModel)
-  ]
+  styles: [],
+  providers: [NsPageDefaultDiConfigurator.provideService(FormsInputService, FormsInputModel)],
 })
-export class FormsInputComponent {
-}
+export class FormsInputComponent {}

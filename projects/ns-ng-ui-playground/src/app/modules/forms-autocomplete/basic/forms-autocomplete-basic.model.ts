@@ -6,22 +6,20 @@ import { FormsAutocompleteBasicCustomerNameModel } from './customer-name/forms-a
 import { FormsAutocompleteBasicEntity, newFormsAutocompleteBasicEntity } from './forms-autocomplete-basic.entity';
 
 @Injectable()
-export class FormsAutocompleteBasicModel
-   extends NsFormModel<FormsAutocompleteBasicEntity, AppServiceProvider, AppNavigationService> {
-   private readonly _customerName: FormsAutocompleteBasicCustomerNameModel;
+export class FormsAutocompleteBasicModel extends NsFormModel<
+  FormsAutocompleteBasicEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
+  private readonly _customerName: FormsAutocompleteBasicCustomerNameModel;
 
-   get customerName(): FormsAutocompleteBasicCustomerNameModel {
-      return this._customerName;
-   }
+  get customerName(): FormsAutocompleteBasicCustomerNameModel {
+    return this._customerName;
+  }
 
-   constructor(
-      serviceProvider: AppServiceProvider,
-      customerName: FormsAutocompleteBasicCustomerNameModel
-   ) {
-      super(serviceProvider, newFormsAutocompleteBasicEntity());
+  constructor(serviceProvider: AppServiceProvider, customerName: FormsAutocompleteBasicCustomerNameModel) {
+    super(serviceProvider, newFormsAutocompleteBasicEntity());
 
-      this._customerName = this.add(customerName);
-   }
+    this._customerName = this.add(customerName);
+  }
 }
-
-

@@ -4,13 +4,9 @@ import { AppModel } from './app.model';
 import { AppService } from './app.service';
 
 @Component({
-   selector: 'app-root',
-   templateUrl: './app.component.html',
-   styleUrls: ['./app.component.sass'],
-   providers: [
-      NsPageDiConfigurator.provideService(AppService, AppModel),
-   ]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.sass'],
+  providers: [NsPageDiConfigurator.provideService(AppService, AppModel)],
 })
-export class AppComponent {
-
-}
+export class AppComponent {}

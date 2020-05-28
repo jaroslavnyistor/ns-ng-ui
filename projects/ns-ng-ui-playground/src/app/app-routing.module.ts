@@ -10,23 +10,21 @@ import { formsAutocompleteRoutes } from './modules/forms-autocomplete/forms-auto
 import { formsInputRoutes } from './modules/forms-input/forms-input.routes';
 import { homeRoute, homeRoutes } from './modules/home/home.routes';
 
-
 const routes: Routes = [
-   buildDefaultRoute(homeRoute),
-   ...formsDashboardRoutes,
-   ...formsArrayRoutes,
-   ...formsAutocompleteRoutes,
-   ...formsCheckboxRoutes,
-   ...formsInputRoutes,
-   ...homeRoutes,
-   ...loginRoutes,
-   ...routeNoPermissionRoutes,
-   ...notFoundRoutes
+  buildDefaultRoute(homeRoute),
+  ...formsDashboardRoutes,
+  ...formsArrayRoutes,
+  ...formsAutocompleteRoutes,
+  ...formsCheckboxRoutes,
+  ...formsInputRoutes,
+  ...homeRoutes,
+  ...loginRoutes,
+  ...routeNoPermissionRoutes,
+  ...notFoundRoutes,
 ];
 
 @NgModule({
-   imports: [RouterModule.forRoot(routes)],
-   exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

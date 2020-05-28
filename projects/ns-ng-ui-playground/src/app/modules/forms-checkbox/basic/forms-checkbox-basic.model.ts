@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { NsFormControlCheckboxModel, NsFormModel } from "ns-ng-ui";
-import { AppNavigationService } from "../../../service-provider/app-navigation.service";
-import { AppServiceProvider } from "../../../service-provider/app-service-provider";
-import { CustomerEntity, newCustomer } from "../../data/customer.entity";
+import { Injectable } from '@angular/core';
+import { NsFormControlCheckboxModel, NsFormModel } from 'ns-ng-ui';
+import { AppNavigationService } from '../../../service-provider/app-navigation.service';
+import { AppServiceProvider } from '../../../service-provider/app-service-provider';
+import { CustomerEntity, newCustomer } from '../../data/customer.entity';
 
 @Injectable()
 export class FormsCheckboxBasicModel extends NsFormModel<CustomerEntity, AppServiceProvider, AppNavigationService> {
@@ -16,9 +16,9 @@ export class FormsCheckboxBasicModel extends NsFormModel<CustomerEntity, AppServ
     super(serviceProvider, newCustomer());
 
     this._isVip = this.addCheckBox({
-      key: "isVip",
-      label: "Is VIP customer?",
-      isRequired: true
+      key: 'isVip',
+      label: 'Is VIP customer?',
+      isRequired: true,
     });
   }
 }

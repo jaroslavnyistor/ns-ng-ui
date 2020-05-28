@@ -4,14 +4,9 @@ import { HomeModel } from './home.model';
 import { HomeService } from './home.service';
 
 @Component({
-   selector: 'home',
-   template: `
-      <ns-dashboard></ns-dashboard>
-   `,
-   styles: [],
-   providers: [
-      NsDashboardDiConfigurator.provideService(HomeService, HomeModel)
-   ]
+  selector: 'home',
+  template: ` <ns-dashboard></ns-dashboard> `,
+  styles: [],
+  providers: [NsDashboardDiConfigurator.provideService(HomeService, HomeModel)],
 })
-export class HomeComponent {
-}
+export class HomeComponent {}

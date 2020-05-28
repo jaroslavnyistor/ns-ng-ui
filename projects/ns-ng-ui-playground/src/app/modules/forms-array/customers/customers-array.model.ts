@@ -8,18 +8,20 @@ import { CustomersArrayItemModel } from './customers-array-item.model';
 import { CustomersArrayService } from './customers-array.service';
 
 @Injectable()
-export class CustomersArrayModel extends NsFormControlArrayModel<FormsArrayBasicEntity, CustomersArrayService,
+export class CustomersArrayModel extends NsFormControlArrayModel<
+  FormsArrayBasicEntity,
+  CustomersArrayService,
   CustomersArrayItemModel,
   CustomerEntity,
   AppServiceProvider,
-  AppNavigationService> {
-
+  AppNavigationService
+> {
   constructor(service: CustomersArrayService) {
     super({
       key: 'customers',
       label: 'Customers',
       service,
-      isRequired: true
+      isRequired: true,
     });
   }
 

@@ -5,9 +5,11 @@ import { AppServiceProvider } from '../../service-provider/app-service-provider'
 import { FormsCheckboxModel } from './forms-checkbox.model';
 
 @Injectable()
-export class FormsCheckboxService
-  extends NsPageDefaultService<FormsCheckboxModel, AppServiceProvider, AppNavigationService> {
-
+export class FormsCheckboxService extends NsPageDefaultService<
+  FormsCheckboxModel,
+  AppServiceProvider,
+  AppNavigationService
+> {
   constructor(model: FormsCheckboxModel, serviceProvider: AppServiceProvider) {
     super(model, serviceProvider);
   }

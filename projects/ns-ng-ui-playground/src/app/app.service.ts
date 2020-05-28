@@ -6,7 +6,7 @@ import { AppServiceProvider } from './service-provider/app-service-provider';
 
 @Injectable()
 export class AppService extends NsPageService<AppModel, AppServiceProvider, AppNavigationService> {
-   constructor(model: AppModel, serviceProvider: AppServiceProvider) {
-      super(model, serviceProvider);
-   }
+  constructor(model: AppModel, serviceProvider: AppServiceProvider) {
+    super(model, serviceProvider);
+  }
 }

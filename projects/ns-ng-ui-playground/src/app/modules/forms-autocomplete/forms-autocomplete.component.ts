@@ -5,13 +5,12 @@ import { FormsAutocompleteModel } from './forms-autocomplete.model';
 import { FormsAutocompleteService } from './forms-autocomplete.service';
 
 @Component({
-   selector: 'forms-autocomplete',
-   templateUrl: './forms-autocomplete.component.html',
-   styleUrls: ['./forms-autocomplete.component.sass'],
-   providers: [
-      NsPageDefaultDiConfigurator.provideService(FormsAutocompleteService, FormsAutocompleteModel),
-      FormsAutocompleteDataService,
-   ]
+  selector: 'forms-autocomplete',
+  templateUrl: './forms-autocomplete.component.html',
+  styleUrls: ['./forms-autocomplete.component.sass'],
+  providers: [
+    NsPageDefaultDiConfigurator.provideService(FormsAutocompleteService, FormsAutocompleteModel),
+    FormsAutocompleteDataService,
+  ],
 })
-export class FormsAutocompleteComponent {
-}
+export class FormsAutocompleteComponent {}

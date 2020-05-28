@@ -5,19 +5,18 @@ import { AppServiceProvider } from '../../service-provider/app-service-provider'
 
 @Injectable()
 export class FormsDashboardModel extends NsDashboardModel<AppServiceProvider, AppNavigationService> {
+  constructor(serviceProvider: AppServiceProvider) {
+    super(serviceProvider);
 
-   constructor(serviceProvider: AppServiceProvider) {
-      super(serviceProvider);
+    this.header = 'Forms';
+  }
 
-      this.header = 'Forms';
-   }
-
-   protected getDashboardItems(): NsDashboardItemEntity[] {
-      return [
-         { title: 'Array', action: () => this.navService.toFormsArray() },
-         { title: 'Autocomplete', action: () => this.navService.toFormsAutocomplete() },
-         { title: 'Checkbox', action: () => this.navService.toFormsCheckbox() },
-         { title: 'Input', action: () => this.navService.toFormsInput() },
-      ];
-   }
+  protected getDashboardItems(): NsDashboardItemEntity[] {
+    return [
+      { title: 'Array', action: () => this.navService.toFormsArray() },
+      { title: 'Autocomplete', action: () => this.navService.toFormsAutocomplete() },
+      { title: 'Checkbox', action: () => this.navService.toFormsCheckbox() },
+      { title: 'Input', action: () => this.navService.toFormsInput() },
+    ];
+  }
 }

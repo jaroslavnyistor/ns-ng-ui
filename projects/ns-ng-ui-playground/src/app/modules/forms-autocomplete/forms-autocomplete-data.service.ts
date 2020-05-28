@@ -9,29 +9,22 @@ import { CustomersService } from '../data/customers.service';
 
 @Injectable()
 export class FormsAutocompleteDataService extends NsFormControlAutocompleteService {
+  constructor(
+    serviceProvider: NsServiceProvider<NsNavigationService>,
+    private readonly _customersService: CustomersService,
+  ) {
+    super(serviceProvider);
+  }
 
-   constructor(
-      serviceProvider: NsServiceProvider<NsNavigationService>,
-      private readonly _customersService: CustomersService
-   ) {
-      super(serviceProvider);
-   }
+  getLoadListObservable(search: string): Observable<string[]> {
+    return this._customersService.load().pipe(switchMap((customers) => this.mapCustomers(customers, search)));
+  }
 
-   getLoadListObservable(search: string): Observable<string[]> {
-      return this._customersService.load()
-         .pipe(
-            switchMap(customers => this.mapCustomers(customers, search))
-         );
-   }
+  private mapCustomers(customers: CustomerEntity[], search: string): Observable<string[]> {
+    const result = customers
+      .filter((customer) => customer.firstName.indexOf(search) >= 0 || customer.lastName.indexOf(search) >= 0)
+      .map((customer) => nsStringJoin(' ', [customer.lastName, customer.firstName]));
 
-   private mapCustomers(customers: CustomerEntity[], search: string): Observable<string[]> {
-      const result = customers
-         .filter(customer =>
-            customer.firstName.indexOf(search) >= 0
-            || customer.lastName.indexOf(search) >= 0
-         )
-         .map(customer => nsStringJoin(' ', [customer.lastName, customer.firstName]));
-
-      return of(result);
-   }
+    return of(result);
+  }
 }

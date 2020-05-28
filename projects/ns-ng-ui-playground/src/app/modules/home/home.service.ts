@@ -6,8 +6,7 @@ import { HomeModel } from './home.model';
 
 @Injectable()
 export class HomeService extends NsDashboardService<HomeModel, AppServiceProvider, AppNavigationService> {
-
-   constructor(model: HomeModel, serviceProvider: AppServiceProvider) {
-      super(model, serviceProvider);
-   }
+  constructor(model: HomeModel, serviceProvider: AppServiceProvider) {
+    super(model, serviceProvider);
+  }
 }

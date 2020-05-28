@@ -7,16 +7,8 @@ import { FormsCheckboxBasicComponent } from './basic/forms-checkbox-basic.compon
 import { FormsCheckboxRoutingModule } from './forms-checkbox-routing.module';
 import { FormsCheckboxComponent } from './forms-checkbox.component';
 
-
 @NgModule({
-   declarations: [FormsCheckboxComponent, FormsCheckboxBasicComponent],
-   imports: [
-      CommonModule,
-      FormsCheckboxRoutingModule,
-      NsPageDefaultModule,
-      AppComponentModule,
-      NsFormModule
-   ]
+  declarations: [FormsCheckboxComponent, FormsCheckboxBasicComponent],
+  imports: [CommonModule, FormsCheckboxRoutingModule, NsPageDefaultModule, AppComponentModule, NsFormModule],
 })
-export class FormsCheckboxModule {
-}
+export class FormsCheckboxModule {}
