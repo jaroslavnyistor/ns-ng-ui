@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import { nsIsNullOrEmpty, nsNull } from 'ns-js-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsFormControl } from '../ns-form-control';
