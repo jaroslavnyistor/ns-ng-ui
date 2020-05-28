@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+
+@include ns-theme($mat-blue-grey, $mat-amber)
+
+$page-background-color: #e5e5e5
+@include ns-page-background-color($page-background-color)
+
+.button-spacing
+  margin-right: 16px
+
+section.code-section
+  padding: 16px 32px
+  margin-bottom: 16px
+  background: #f2f2f2
+  border: #e5e5e5 solid 1px
+  border-radius: 4px

@@ -1,0 +1,11 @@
+<example-page pageTitle="Basic example"
+              pageDescription="This examples shows basic use of Autocomplete with support for the loading data."
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+   <ns-form>
+      <ns-form-control-autocomplete [model]="model.customerName">
+      </ns-form-control-autocomplete>
+
+      <button-validate></button-validate>
+   </ns-form>
+</example-page>

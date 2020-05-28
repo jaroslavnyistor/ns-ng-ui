@@ -1,0 +1,9 @@
+<section class="code-section">
+   <ng-content></ng-content>
+
+   <p class="status">Current status is {{ status$ | async }}.</p>
+
+   <ns-expansion-panel header="Current value">
+      <pre>{{value | json }}</pre>
+   </ns-expansion-panel>
+</section>

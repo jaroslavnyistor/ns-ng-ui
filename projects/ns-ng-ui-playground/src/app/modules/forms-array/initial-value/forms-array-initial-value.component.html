@@ -1,0 +1,21 @@
+<example-page pageTitle="Initial value example"
+              pageDescription="This examples shows basic use of forms array with initial value."
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+   <ns-form>
+      <ns-form-control-input [model]="model.supervisor">
+      </ns-form-control-input>
+
+      <customers-array>
+      </customers-array>
+
+      <button-patch-value class="button-spacing"
+                          explanation="Replaces value in 'Supervisor' field."
+                          (click)="model.handlePatch()">
+      </button-patch-value>
+
+      <button-validate class="button-spacing">
+      </button-validate>
+   </ns-form>
+</example-page>
+

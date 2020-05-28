@@ -1,0 +1,28 @@
+<example-page pageTitle="Depends on feature"
+              [pageDescriptionTemplate]="desc"
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+   <ns-form>
+      <ns-grid-row>
+         <ns-form-control-input *nsGridColumn
+                                [model]="model.userName">
+         </ns-form-control-input>
+
+         <ns-form-control-input *nsGridColumn
+                                [model]="model.password">
+         </ns-form-control-input>
+      </ns-grid-row>
+
+      <button-validate></button-validate>
+   </ns-form>
+</example-page>
+
+<ng-template #desc>
+   <p>
+      Show use of <strong>depends on</strong> feature, where one form component is disabled until the other one
+      does not have a value.
+   </p>
+   <p>
+      The <strong>User name</strong> must have a value so the <strong>Password</strong> fields is enabled.
+   </p>
+</ng-template>

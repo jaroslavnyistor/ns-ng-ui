@@ -1,0 +1,46 @@
+<example-page pageTitle="Basic example"
+              [pageDescriptionTemplate]="desc"
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+   <ns-form>
+      <ns-grid-row>
+         <ns-form-control-input *nsGridColumn
+                                [model]="model.firstName">
+         </ns-form-control-input>
+
+         <ns-form-control-input *nsGridColumn
+                                [model]="model.lastName">
+         </ns-form-control-input>
+      </ns-grid-row>
+
+      <ns-grid-row>
+         <ns-form-control-input *nsGridColumn
+                                [model]="model.password">
+         </ns-form-control-input>
+
+         <ns-form-control-input *nsGridColumn
+                                [model]="model.email">
+         </ns-form-control-input>
+      </ns-grid-row>
+
+      <ns-form-control-input [model]="model.website">
+      </ns-form-control-input>
+
+      <button-patch-value class="button-spacing"
+                          explanation="Replaces value in 'Last name' field."
+                          (click)="service.patchValue()">
+      </button-patch-value>
+
+      <button-validate>
+      </button-validate>
+   </ns-form>
+</example-page>
+
+<ng-template #desc>
+   <p>Basic usage of ns-form-control-input which currently supports these types: Text, Password, Email and Url.</p>
+   <p>Also each form input set some specific attributes:</p>
+   <ul>
+      <li>First name: isRequired, minLength, hint</li>
+      <li>Last name: maxLength, hint</li>
+   </ul>
+</ng-template>

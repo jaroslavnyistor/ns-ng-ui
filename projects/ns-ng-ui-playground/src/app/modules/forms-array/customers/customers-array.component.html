@@ -1,0 +1,11 @@
+<ns-form-control-array [model]="model">
+   <ns-grid-row *nsFormControlArrayItemTemplate="let rowModel">
+      <ns-form-control-input *nsGridColumn
+                             [model]="rowModel.firstName">
+      </ns-form-control-input>
+
+      <ns-form-control-input *nsGridColumn
+                             [model]="rowModel.lastName">
+      </ns-form-control-input>
+   </ns-grid-row>
+</ns-form-control-array>

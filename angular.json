@@ -52,7 +52,7 @@
       },
       "root": "projects/ns-ng-ui-playground",
       "sourceRoot": "projects/ns-ng-ui-playground/src",
-      "prefix": "app",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -65,10 +65,10 @@
             "aot": true,
             "assets": [
               "projects/ns-ng-ui-playground/src/favicon.ico",
-              "projects/ns-ng-ui-playground/src/assets"
+              "projects/ns-ng-ui-playground/src/assets",
+              "projects/ns-ng-ui-playground/src/assets/favicon"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ns-ng-ui-playground/src/styles.sass"
             ],
             "scripts": []

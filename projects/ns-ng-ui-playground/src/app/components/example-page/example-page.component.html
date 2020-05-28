@@ -1,0 +1,17 @@
+<h2>{{pageTitle}}</h2>
+
+<ng-container *ngIf="pageDescription">
+   <p>
+      {{pageDescription}}
+   </p>
+</ng-container>
+
+<ng-container *ngIf="pageDescriptionTemplate">
+   <ng-template *ngTemplateOutlet="pageDescriptionTemplate">
+   </ng-template>
+</ng-container>
+
+<result-section [value]="value"
+                [status$]="status$">
+   <ng-content></ng-content>
+</result-section>

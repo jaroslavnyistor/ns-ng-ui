@@ -1,0 +1,18 @@
+<example-page pageTitle="Basic example"
+              pageDescription="This examples shows basic use of checkbox."
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+
+   <ns-form>
+      <ns-form-control-checkbox [model]="model.isVip">
+      </ns-form-control-checkbox>
+
+      <button-patch-value explanation="Make customer VIP."
+                          (click)="service.makeCustomerVip()">
+      </button-patch-value>
+
+      <button-validate>
+      </button-validate>
+   </ns-form>
+
+</example-page>
