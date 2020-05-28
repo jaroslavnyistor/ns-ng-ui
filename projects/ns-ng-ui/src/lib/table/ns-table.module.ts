@@ -6,16 +6,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NsTableComponent } from './ns-table.component';
 import { NsTableItemValueComponent } from './table-item-value/ns-table-item-value.component';
 
-
 @NgModule({
-   declarations: [NsTableComponent, NsTableItemValueComponent],
-   imports: [
-      CommonModule,
-      MatTableModule,
-      MatToolbarModule,
-      ExtendedModule
-   ],
-   exports: [NsTableComponent, NsTableItemValueComponent]
+  declarations: [NsTableComponent, NsTableItemValueComponent],
+  imports: [CommonModule, MatTableModule, MatToolbarModule, ExtendedModule],
+  exports: [NsTableComponent, NsTableItemValueComponent],
 })
-export class NsTableModule {
-}
+export class NsTableModule {}

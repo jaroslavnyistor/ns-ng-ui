@@ -4,14 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { NsButtonDefaultComponent } from './default/ns-button-default.component';
 import { NsButtonRaisedComponent } from './raised/ns-button-raised.component';
 
-
 @NgModule({
-   declarations: [NsButtonDefaultComponent, NsButtonRaisedComponent],
-   imports: [
-      CommonModule,
-      MatButtonModule
-   ],
-   exports: [NsButtonDefaultComponent, NsButtonRaisedComponent]
+  declarations: [NsButtonDefaultComponent, NsButtonRaisedComponent],
+  imports: [CommonModule, MatButtonModule],
+  exports: [NsButtonDefaultComponent, NsButtonRaisedComponent],
 })
-export class NsButtonModule {
-}
+export class NsButtonModule {}

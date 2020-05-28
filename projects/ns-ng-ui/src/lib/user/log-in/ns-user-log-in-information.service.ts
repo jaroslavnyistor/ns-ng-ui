@@ -5,19 +5,20 @@ import { NsServiceProviderComponentService } from '../../service-provider/ns-ser
 import { NsUserLogInInformationModel } from './ns-user-log-in-information.model';
 
 @Injectable()
-export class NsUserLogInInformationService
-   extends NsServiceProviderComponentService<NsUserLogInInformationModel, NsServiceProvider<NsNavigationService>,
-      NsNavigationService> {
+export class NsUserLogInInformationService extends NsServiceProviderComponentService<
+  NsUserLogInInformationModel,
+  NsServiceProvider<NsNavigationService>,
+  NsNavigationService
+> {
+  constructor(model: NsUserLogInInformationModel, serviceProvider: NsServiceProvider<NsNavigationService>) {
+    super(model, serviceProvider);
+  }
 
-   constructor(model: NsUserLogInInformationModel, serviceProvider: NsServiceProvider<NsNavigationService>) {
-      super(model, serviceProvider);
-   }
+  handleLoginClick() {
+    this.navService.toLogin();
+  }
 
-   handleLoginClick() {
-      this.navService.toLogin();
-   }
-
-   handleLogOutClick() {
-      this.authService.logout();
-   }
+  handleLogOutClick() {
+    this.authService.logout();
+  }
 }

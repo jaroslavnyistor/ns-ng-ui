@@ -2,26 +2,21 @@ import { nsApiErrorMapper, nsArrayItemAt, NsNavigationService, NsSubscriptionSer
 import { Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 
-export abstract class NsFormControlAutocompleteService
-   extends NsSubscriptionService {
-   private readonly _serviceProvider: NsServiceProvider<NsNavigationService>;
+export abstract class NsFormControlAutocompleteService extends NsSubscriptionService {
+  private readonly _serviceProvider: NsServiceProvider<NsNavigationService>;
 
-   protected constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
-      super();
-      this._serviceProvider = serviceProvider;
-   }
+  protected constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
+    super();
+    this._serviceProvider = serviceProvider;
+  }
 
-   abstract getLoadListObservable(search: string): Observable<string[]>;
+  abstract getLoadListObservable(search: string): Observable<string[]>;
 
-   parseError(error: any): string {
-      const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
-         nsApiErrorMapper,
-         error
-      );
+  parseError(error: any): string {
+    const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(nsApiErrorMapper, error);
 
-      return nsArrayItemAt(errorMessages, 0);
-   }
+    return nsArrayItemAt(errorMessages, 0);
+  }
 
-   handleDependingOnValuesChanged(results: any[]) {
-   }
+  handleDependingOnValuesChanged(results: any[]) {}
 }

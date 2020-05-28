@@ -8,24 +8,19 @@ import { NsLoadingInlineSmallComponent } from './inline/small/ns-loading-inline-
 import { NsLoadingComponent } from './ns-loading.component';
 
 @NgModule({
-   declarations: [
-      NsLoadingComponent,
-      NsLoadingInlineComponent,
-      NsLoadingInlineNormalComponent,
-      NsLoadingInlineSmallComponent,
-   ],
-   imports: [
-      CommonModule,
-      MatProgressSpinnerModule,
-      HttpClientModule,
-   ],
-   exports: [
-      HttpClientModule,
-      NsLoadingComponent,
-      NsLoadingInlineComponent,
-      NsLoadingInlineNormalComponent,
-      NsLoadingInlineSmallComponent,
-   ]
+  declarations: [
+    NsLoadingComponent,
+    NsLoadingInlineComponent,
+    NsLoadingInlineNormalComponent,
+    NsLoadingInlineSmallComponent,
+  ],
+  imports: [CommonModule, MatProgressSpinnerModule, HttpClientModule],
+  exports: [
+    HttpClientModule,
+    NsLoadingComponent,
+    NsLoadingInlineComponent,
+    NsLoadingInlineNormalComponent,
+    NsLoadingInlineSmallComponent,
+  ],
 })
-export class NsLoadingModule {
-}
+export class NsLoadingModule {}

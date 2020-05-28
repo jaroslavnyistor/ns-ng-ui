@@ -1,11 +1,10 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-   selector: '[nsFormStep]'
+  selector: '[nsFormStep]',
 })
 export class NsFormStepDirective {
-   @Input() nsFormStep: string;
+  @Input() nsFormStep: string;
 
-   constructor(public ref: TemplateRef<any>) {
-   }
+  constructor(public ref: TemplateRef<any>) {}
 }

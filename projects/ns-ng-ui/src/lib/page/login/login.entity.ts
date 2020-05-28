@@ -1,11 +1,11 @@
 export interface LoginEntity {
-   userName: string;
-   password: string;
+  userName: string;
+  password: string;
 }
 
 export function newLoginEntity(): LoginEntity {
-   return {
-      userName: '',
-      password: ''
-   };
+  return {
+    userName: '',
+    password: '',
+  };
 }

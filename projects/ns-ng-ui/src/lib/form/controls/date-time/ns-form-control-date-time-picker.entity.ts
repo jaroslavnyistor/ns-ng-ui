@@ -1,4 +1,4 @@
 export interface NsFormControlDateTimePickerEntity {
-   date: any;
-   time: any;
+  date: any;
+  time: any;
 }

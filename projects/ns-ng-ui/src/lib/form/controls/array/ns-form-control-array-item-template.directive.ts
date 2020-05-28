@@ -1,7 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-   selector: '[nsFormControlArrayItemTemplate]'
+  selector: '[nsFormControlArrayItemTemplate]',
 })
-export class NsFormControlArrayItemTemplateDirective {
-}
+export class NsFormControlArrayItemTemplateDirective {}

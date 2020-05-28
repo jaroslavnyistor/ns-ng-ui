@@ -7,19 +7,8 @@ import { NsPageNotFoundRoutingModule } from './ns-page-not-found-routing.module'
 import { NsPageNotFoundComponent } from './ns-page-not-found.component';
 
 @NgModule({
-   declarations: [
-      NsPageNotFoundComponent
-   ],
-   imports: [
-      CommonModule,
-      FlexModule,
-      LocalizationLanguagesModule,
-      NsPageNotFoundRoutingModule,
-      MatCardModule,
-   ],
-   exports: [
-      NsPageNotFoundComponent
-   ]
+  declarations: [NsPageNotFoundComponent],
+  imports: [CommonModule, FlexModule, LocalizationLanguagesModule, NsPageNotFoundRoutingModule, MatCardModule],
+  exports: [NsPageNotFoundComponent],
 })
-export class NsPageNotFoundModule {
-}
+export class NsPageNotFoundModule {}

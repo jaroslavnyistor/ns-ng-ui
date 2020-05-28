@@ -1,9 +1,8 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-   selector: '[nsPageListToolbarItem]'
+  selector: '[nsPageListToolbarItem]',
 })
 export class NsPageListToolbarItemDirective {
-   constructor(public templateRef: TemplateRef<any>) {
-   }
+  constructor(public templateRef: TemplateRef<any>) {}
 }

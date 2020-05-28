@@ -3,7 +3,7 @@ import { NsIcon } from '../../../../icon/ns-icon.enum';
 import {
   NsPageListToolbarOrderItem,
   NsPageListToolbarOrderItemDirection,
-  NsPageListToolbarOrderOption
+  NsPageListToolbarOrderOption,
 } from './ns-page-list-toolbar-order.model';
 
 export class NsPageListToolbarOrderModelCollection {
@@ -29,11 +29,12 @@ export class NsPageListToolbarOrderModelCollection {
     const item: NsPageListToolbarOrderItem = {
       title: option.title,
       field: option.field,
-      directions: []
+      directions: [],
     };
 
-    item.directions = option.directions
-      .map((direction, idx) => this.parseOptionDirection(id, option, item, direction, idx));
+    item.directions = option.directions.map((direction, idx) =>
+      this.parseOptionDirection(id, option, item, direction, idx),
+    );
 
     return item;
   }
@@ -43,17 +44,17 @@ export class NsPageListToolbarOrderModelCollection {
     option: NsPageListToolbarOrderOption,
     item: NsPageListToolbarOrderItem,
     direction: OrderDirection,
-    idx: number
+    idx: number,
   ): NsPageListToolbarOrderItemDirection {
     const isAsc = direction === OrderDirection.Asc;
 
     const itemDirection = {
-      id: (baseId * 2) + idx,
+      id: baseId * 2 + idx,
       text: isAsc ? this._ascText : this._descText,
       item,
       direction,
       icon: isAsc ? NsIcon.Action_TextRotationDown : NsIcon.Action_TextRotateUp,
-      isActive: option.isActive && idx === 0
+      isActive: option.isActive && idx === 0,
     } as NsPageListToolbarOrderItemDirection;
 
     if (itemDirection.isActive) {
@@ -72,9 +73,7 @@ export class NsPageListToolbarOrderModelCollection {
   }
 
   get activeItemTitle(): string {
-    return this._activeItem == null
-           ? ''
-           : this._activeItem.item.title;
+    return this._activeItem == null ? '' : this._activeItem.item.title;
   }
 
   get activeItemIcon(): NsIcon {
@@ -107,8 +106,8 @@ export class NsPageListToolbarOrderModelCollection {
 
   activateById(id: number) {
     if (id != null) {
-      this._items.forEach(item => {
-        const directions = item.directions.filter(direction => direction.id === id);
+      this._items.forEach((item) => {
+        const directions = item.directions.filter((direction) => direction.id === id);
         const active = nsArrayItemAt(directions, 0);
 
         if (active != null) {

@@ -1,4 +1,4 @@
 export interface NsTableItemValueRowEntity {
-   item: string;
-   value: string;
+  item: string;
+  value: string;
 }

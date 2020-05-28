@@ -10,23 +10,17 @@ import { NsPageErrorsModule } from '../errors/ns-page-errors.module';
 import { NsPageEditComponent } from './ns-page-edit.component';
 
 @NgModule({
-   declarations: [
-      NsPageEditComponent
-   ],
-   imports: [
-      CommonModule,
-      NsLoadingModule,
-      MatCardModule,
-      FlexModule,
-      MatDividerModule,
-      NsPageErrorsModule,
-      NsFormModule,
-      NsButtonModule
-   ],
-   exports: [
-      NsPageEditComponent,
-      NsFormModule,
-   ]
+  declarations: [NsPageEditComponent],
+  imports: [
+    CommonModule,
+    NsLoadingModule,
+    MatCardModule,
+    FlexModule,
+    MatDividerModule,
+    NsPageErrorsModule,
+    NsFormModule,
+    NsButtonModule,
+  ],
+  exports: [NsPageEditComponent, NsFormModule],
 })
-export class NsPageEditModule {
-}
+export class NsPageEditModule {}

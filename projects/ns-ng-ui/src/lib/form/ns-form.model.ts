@@ -22,205 +22,197 @@ import { NsFormBuilder } from './ns-form.builder';
 import { NsFormControlValidator } from './validators/ns-form-control.validator';
 import { NsFormControlValidators } from './validators/ns-form-control.validators';
 
-export abstract class NsFormModel<TEntity,
-   TServiceProvider extends NsServiceProvider<TAppNavService>,
-   TAppNavService extends NsNavigationService>
-   extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
+export abstract class NsFormModel<
+  TEntity,
+  TServiceProvider extends NsServiceProvider<TAppNavService>,
+  TAppNavService extends NsNavigationService
+> extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
+  private readonly _formGroup: NsFormGroup;
+  private readonly _formModels: NsFormControlDefinition[];
+  private readonly _validators: NsFormControlValidators;
+  private _initialEntity: TEntity;
+  private _statusChanges$: Observable<any>;
 
-   private readonly _formGroup: NsFormGroup;
-   private readonly _formModels: NsFormControlDefinition[];
-   private readonly _validators: NsFormControlValidators;
-   private _initialEntity: TEntity;
-   private _statusChanges$: Observable<any>;
+  get formGroup(): NsFormGroup {
+    return this._formGroup;
+  }
 
-   get formGroup(): NsFormGroup {
-      return this._formGroup;
-   }
+  get isFormValid(): boolean {
+    return this.formGroup.valid;
+  }
 
-   get isFormValid(): boolean {
-      return this.formGroup.valid;
-   }
+  get initialEntity(): TEntity {
+    return this._initialEntity;
+  }
 
-   get initialEntity(): TEntity {
-      return this._initialEntity;
-   }
+  get currentEntity(): TEntity {
+    return this.formGroup.value;
+  }
 
-   get currentEntity(): TEntity {
-      return this.formGroup.value;
-   }
+  get status(): any {
+    return this.formGroup.status;
+  }
 
-   get status(): any {
-      return this.formGroup.status;
-   }
+  get statusChanges$(): Observable<any> {
+    return this._statusChanges$;
+  }
 
-   get statusChanges$(): Observable<any> {
-      return this._statusChanges$;
-   }
+  constructor(serviceProvider: TServiceProvider, entity: TEntity, formGroup: NsFormGroup = null) {
+    super(serviceProvider);
 
-   constructor(serviceProvider: TServiceProvider, entity: TEntity, formGroup: NsFormGroup = null) {
-      super(serviceProvider);
+    if (formGroup != null) {
+      this._formGroup = formGroup;
+    } else {
+      const builder = new NsFormBuilder();
+      this._formGroup = builder.build(entity);
+    }
 
-      if (formGroup != null) {
-         this._formGroup = formGroup;
+    this._formModels = [];
+    this._validators = new NsFormControlValidators();
+  }
+
+  onInit() {
+    super.onInit();
+
+    this.initializeFormModels();
+
+    this.setValidators();
+
+    this.setStatusChanges$();
+  }
+
+  private initializeFormModels() {
+    this._formModels.forEach((formModel) => {
+      const formControl = this.formGroup.get(formModel.key) as NsAbstractControl;
+      formModel.setFormControl(formControl);
+      formModel.setLangService(this.langService);
+      formModel.onInit();
+    });
+  }
+
+  private setValidators() {
+    this._validators.setLangService(this.langService);
+    this.formGroup.setValidators(this._validators.build());
+  }
+
+  private setStatusChanges$() {
+    this._statusChanges$ = this.formGroup.statusChanges.pipe(startWith(this.formGroup.status));
+
+    this.subscribeTo(this._statusChanges$, {
+      next: (status) => this.handleStatusChanged(status),
+    });
+  }
+
+  protected handleStatusChanged(newStatus: any) {}
+
+  onDestroy(): void {
+    super.onDestroy();
+
+    this._formModels.forEach((model) => model.onDestroy());
+  }
+
+  setInitialEntity(value: TEntity) {
+    this._initialEntity = value;
+    this.patchValue(value);
+  }
+
+  patchValue(value: any) {
+    this._formModels.forEach((formModel) => {
+      const formModelValue = value[formModel.key];
+
+      if (formModelValue != null) {
+        formModel.onValuePatch(formModelValue);
       }
-      else {
-         const builder = new NsFormBuilder();
-         this._formGroup = builder.build(entity);
-      }
+    });
 
-      this._formModels = [];
-      this._validators = new NsFormControlValidators();
-   }
+    this.formGroup.patchValue(value);
+    this.formGroup.updateValueAndValidity();
+  }
 
-   onInit() {
-      super.onInit();
+  validate(): boolean {
+    this.formGroup.markAllAsTouched();
+    this.formGroup.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+    return this.isFormValid;
+  }
 
-      this.initializeFormModels();
+  protected addText(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
+    return this.addInput(NsFormControlInputType.Text, config);
+  }
 
-      this.setValidators();
+  protected addPassword(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
+    return this.addInput(NsFormControlInputType.Password, config);
+  }
 
-      this.setStatusChanges$();
-   }
+  protected addEmail(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
+    return this.addInput(NsFormControlInputType.Email, config);
+  }
 
-   private initializeFormModels() {
-      this._formModels.forEach(formModel => {
-         const formControl = this.formGroup.get(formModel.key) as NsAbstractControl;
-         formModel.setFormControl(formControl);
-         formModel.setLangService(this.langService);
-         formModel.onInit();
-      });
-   }
+  protected addUrl(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
+    return this.addInput(NsFormControlInputType.Url, config);
+  }
 
-   private setValidators() {
-      this._validators.setLangService(this.langService);
-      this.formGroup.setValidators(this._validators.build());
-   }
+  private addInput(
+    type: NsFormControlInputType,
+    config: NsFormControlInputConfiguration,
+  ): NsFormControlInputModel<TEntity> {
+    const model = new NsFormControlInputModel<TEntity>(type, config);
 
-   private setStatusChanges$() {
-      this._statusChanges$ = this.formGroup.statusChanges
-         .pipe(
-            startWith(this.formGroup.status),
-         );
+    this.register(model);
 
-      this.subscribeTo(
-         this._statusChanges$,
-         {
-            next: status => this.handleStatusChanged(status)
-         }
-      );
-   }
+    return model;
+  }
 
-   protected handleStatusChanged(newStatus: any) {
-   }
+  protected addNumber(config: NsFormControlNumberConfiguration): NsFormControlNumberModel<TEntity> {
+    const model = new NsFormControlNumberModel<TEntity>(config);
 
-   onDestroy(): void {
-      super.onDestroy();
+    this.register(model);
 
-      this._formModels.forEach(model => model.onDestroy());
-   }
+    return model;
+  }
 
-   setInitialEntity(value: TEntity) {
-      this._initialEntity = value;
-      this.patchValue(value);
-   }
+  protected addCheckBox(config: NsFormControlCheckboxConfiguration): NsFormControlCheckboxModel<TEntity> {
+    const model = new NsFormControlCheckboxModel<TEntity>(config);
 
-   patchValue(value: any) {
-      this._formModels.forEach(formModel => {
-         const formModelValue = value[formModel.key];
+    this.register(model);
 
-         if (formModelValue != null) {
-            formModel.onValuePatch(formModelValue);
-         }
-      });
+    return model;
+  }
 
-      this.formGroup.patchValue(value);
-      this.formGroup.updateValueAndValidity();
-   }
+  protected addDate(config: NsFormControlDatePickerConfiguration): NsFormControlDatePickerModel<TEntity> {
+    const model = new NsFormControlDatePickerModel<TEntity>(config);
 
-   validate(): boolean {
-      this.formGroup.markAllAsTouched();
-      this.formGroup.updateValueAndValidity({ onlySelf: false, emitEvent: true });
-      return this.isFormValid;
-   }
+    this.register(model);
 
-   protected addText(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
-      return this.addInput(NsFormControlInputType.Text, config);
-   }
+    return model;
+  }
 
-   protected addPassword(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
-      return this.addInput(NsFormControlInputType.Password, config);
-   }
+  protected addTime(config: NsFormControlTimePickerConfiguration): NsFormControlTimePickerModel<TEntity> {
+    const model = new NsFormControlTimePickerModel<TEntity>(config);
 
-   protected addEmail(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
-      return this.addInput(NsFormControlInputType.Email, config);
-   }
+    this.register(model);
 
-   protected addUrl(config: NsFormControlInputConfiguration): NsFormControlInputModel<TEntity> {
-      return this.addInput(NsFormControlInputType.Url, config);
-   }
+    return model;
+  }
 
-   private addInput(
-      type: NsFormControlInputType,
-      config: NsFormControlInputConfiguration
-   ): NsFormControlInputModel<TEntity> {
-      const model = new NsFormControlInputModel<TEntity>(type, config);
+  protected addDateTime(config: NsFormControlDateTimePickerConfiguration): NsFormControlDateTimePickerModel<TEntity> {
+    const model = new NsFormControlDateTimePickerModel<TEntity>(config);
 
-      this.register(model);
+    this.register(model);
 
-      return model;
-   }
+    return model;
+  }
 
-   protected addNumber(config: NsFormControlNumberConfiguration): NsFormControlNumberModel<TEntity> {
-      const model = new NsFormControlNumberModel<TEntity>(config);
+  protected add<TModel extends NsFormControlDefinition>(model: TModel): TModel {
+    this.register(model);
 
-      this.register(model);
+    return model;
+  }
 
-      return model;
-   }
+  private register(model: NsFormControlDefinition) {
+    this._formModels.push(model);
+  }
 
-   protected addCheckBox(config: NsFormControlCheckboxConfiguration): NsFormControlCheckboxModel<TEntity> {
-      const model = new NsFormControlCheckboxModel<TEntity>(config);
-
-      this.register(model);
-
-      return model;
-   }
-
-   protected addDate(config: NsFormControlDatePickerConfiguration): NsFormControlDatePickerModel<TEntity> {
-      const model = new NsFormControlDatePickerModel<TEntity>(config);
-
-      this.register(model);
-
-      return model;
-   }
-
-   protected addTime(config: NsFormControlTimePickerConfiguration): NsFormControlTimePickerModel<TEntity> {
-      const model = new NsFormControlTimePickerModel<TEntity>(config);
-
-      this.register(model);
-
-      return model;
-   }
-
-   protected addDateTime(config: NsFormControlDateTimePickerConfiguration): NsFormControlDateTimePickerModel<TEntity> {
-      const model = new NsFormControlDateTimePickerModel<TEntity>(config);
-
-      this.register(model);
-
-      return model;
-   }
-
-   protected add<TModel extends NsFormControlDefinition>(model: TModel): TModel {
-      this.register(model);
-
-      return model;
-   }
-
-   private register(model: NsFormControlDefinition) {
-      this._formModels.push(model);
-   }
-
-   protected addValidators(validators: NsFormControlValidator[]) {
-      this._validators.addRange(validators);
-   }
+  protected addValidators(validators: NsFormControlValidator[]) {
+    this._validators.addRange(validators);
+  }
 }

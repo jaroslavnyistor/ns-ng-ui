@@ -11,23 +11,18 @@ import { NsPageErrorsModule } from '../errors/ns-page-errors.module';
 import { NsPageDefaultComponent } from './ns-page-default.component';
 
 @NgModule({
-   declarations: [
-      NsPageDefaultComponent
-   ],
-   imports: [
-      CommonModule,
-      NsLoadingModule,
-      MatCardModule,
-      MatListModule,
-      NsPageErrorsModule,
-      NsFormModule,
-      NsButtonModule,
-      FlexModule,
-      NsIconModule
-   ],
-   exports: [
-      NsPageDefaultComponent
-   ]
+  declarations: [NsPageDefaultComponent],
+  imports: [
+    CommonModule,
+    NsLoadingModule,
+    MatCardModule,
+    MatListModule,
+    NsPageErrorsModule,
+    NsFormModule,
+    NsButtonModule,
+    FlexModule,
+    NsIconModule,
+  ],
+  exports: [NsPageDefaultComponent],
 })
-export class NsPageDefaultModule {
-}
+export class NsPageDefaultModule {}

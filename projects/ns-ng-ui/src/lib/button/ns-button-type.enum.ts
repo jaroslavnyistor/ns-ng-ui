@@ -1,5 +1,5 @@
 export enum NsButtonType {
-   Button = 'button',
-   Submit = 'submit',
-   Reset = 'reset',
+  Button = 'button',
+  Submit = 'submit',
+  Reset = 'reset',
 }

@@ -1,3 +1,3 @@
 export interface NsCalendarsMonthLoadRequestBuilder {
-   value(value: any): this;
+  value(value: any): this;
 }

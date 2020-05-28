@@ -8,71 +8,70 @@ import { NsFormControlNumberConfiguration } from './ns-form-control-number.confi
 
 const defaultStep = 1;
 
-export class NsFormControlNumberModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlNumberConfiguration> {
+export class NsFormControlNumberModel<TEntity> extends NsFormControlModel<
+  TEntity,
+  NsFormControl,
+  NsFormControlNumberConfiguration
+> {
+  private readonly _numberTextFormControl: NsFormControl;
 
-   private readonly _numberTextFormControl: NsFormControl;
+  get numberTextFormControl(): FormControl {
+    return this._numberTextFormControl;
+  }
 
-   get numberTextFormControl(): FormControl {
-      return this._numberTextFormControl;
-   }
+  get minValue(): number {
+    return this._config.minValue;
+  }
 
-   get minValue(): number {
-      return this._config.minValue;
-   }
+  get maxValue(): number {
+    return this._config.maxValue;
+  }
 
-   get maxValue(): number {
-      return this._config.maxValue;
-   }
+  get step(): number {
+    return this._config.step || defaultStep;
+  }
 
-   get step(): number {
-      return this._config.step || defaultStep;
-   }
+  constructor(config: NsFormControlNumberConfiguration) {
+    super(config);
 
-   constructor(config: NsFormControlNumberConfiguration) {
-      super(config);
+    if (this.minValue != null) {
+      this.addValidator(new NsFormControlValueMinValidator(this.minValue));
+    }
 
-      if (this.minValue != null) {
-         this.addValidator(new NsFormControlValueMinValidator(this.minValue));
-      }
+    if (this.maxValue != null) {
+      this.addValidator(new NsFormControlValueMaxValidator(this.maxValue));
+    }
 
-      if (this.maxValue != null) {
-         this.addValidator(new NsFormControlValueMaxValidator(this.maxValue));
-      }
+    this.defaultValue = nsNull(config.defaultValue, null);
 
-      this.defaultValue = nsNull(config.defaultValue, null);
+    this._numberTextFormControl = new NsFormControl(this.formControl.value);
+    this.formControl.addDependsOn(this._numberTextFormControl);
 
-      this._numberTextFormControl = new NsFormControl(this.formControl.value);
-      this.formControl.addDependsOn(this._numberTextFormControl);
+    this.processNumberTextFormControlValueChanges();
+  }
 
-      this.processNumberTextFormControlValueChanges();
-   }
+  private processNumberTextFormControlValueChanges() {
+    this.subscribeTo(this._numberTextFormControl.valueChanges, {
+      next: (newValue) => {
+        const numberValue = nsStringToNumber(newValue);
 
-   private processNumberTextFormControlValueChanges() {
-      this.subscribeTo(
-         this._numberTextFormControl.valueChanges,
-         {
-            next: newValue => {
-               const numberValue = nsStringToNumber(newValue);
+        if (this.value === numberValue) {
+          return;
+        }
 
-               if (this.value === numberValue) {
-                  return;
-               }
+        this.setValue(numberValue);
+      },
+    });
+  }
 
-               this.setValue(numberValue);
-            }
-         }
-      );
-   }
+  protected handleValueChanged(newValue: any) {
+    super.handleValueChanged(newValue);
 
-   protected handleValueChanged(newValue: any) {
-      super.handleValueChanged(newValue);
+    const numberValue = nsStringToNumber(this._numberTextFormControl.value);
+    if (newValue === numberValue) {
+      return;
+    }
 
-      const numberValue = nsStringToNumber(this._numberTextFormControl.value);
-      if (newValue === numberValue) {
-         return;
-      }
-
-      this._numberTextFormControl.setValue(newValue);
-   }
+    this._numberTextFormControl.setValue(newValue);
+  }
 }

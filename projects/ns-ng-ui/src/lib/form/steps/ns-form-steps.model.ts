@@ -3,41 +3,41 @@ import { NsNavigationService } from 'ns-js-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsFormModel } from '../ns-form.model';
 
-export abstract class NsFormStepsModel<TEntity,
-   TServiceProvider extends NsServiceProvider<TAppNavService>,
-   TAppNavService extends NsNavigationService>
-   extends NsFormModel<TEntity, TServiceProvider, TAppNavService> {
+export abstract class NsFormStepsModel<
+  TEntity,
+  TServiceProvider extends NsServiceProvider<TAppNavService>,
+  TAppNavService extends NsNavigationService
+> extends NsFormModel<TEntity, TServiceProvider, TAppNavService> {
+  private _stepper: MatHorizontalStepper;
+  private _stepsCount: number;
+  private _lastStepIndex: number;
 
-   private _stepper: MatHorizontalStepper;
-   private _stepsCount: number;
-   private _lastStepIndex: number;
+  get stepper(): MatHorizontalStepper {
+    return this._stepper;
+  }
 
-   get stepper(): MatHorizontalStepper {
-      return this._stepper;
-   }
+  set stepper(value: MatHorizontalStepper) {
+    this._stepper = value;
+  }
 
-   set stepper(value: MatHorizontalStepper) {
-      this._stepper = value;
-   }
+  get stepsCount(): number {
+    return this._stepsCount;
+  }
 
-   get stepsCount(): number {
-      return this._stepsCount;
-   }
+  set stepsCount(value: number) {
+    this._stepsCount = value;
+    this._lastStepIndex = this._stepsCount - 1;
+  }
 
-   set stepsCount(value: number) {
-      this._stepsCount = value;
-      this._lastStepIndex = this._stepsCount - 1;
-   }
+  get isPreviousButtonVisible(): boolean {
+    return this.stepper != null && this.stepper.selectedIndex > 0;
+  }
 
-   get isPreviousButtonVisible(): boolean {
-      return this.stepper != null && this.stepper.selectedIndex > 0;
-   }
+  get isNextButtonVisible(): boolean {
+    return this.stepper != null && this.stepper.selectedIndex < this._lastStepIndex;
+  }
 
-   get isNextButtonVisible(): boolean {
-      return this.stepper != null && this.stepper.selectedIndex < this._lastStepIndex;
-   }
-
-   protected constructor(serviceProvider: TServiceProvider, entity: TEntity) {
-      super(serviceProvider, entity);
-   }
+  protected constructor(serviceProvider: TServiceProvider, entity: TEntity) {
+    super(serviceProvider, entity);
+  }
 }

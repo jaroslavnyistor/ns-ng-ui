@@ -5,17 +5,17 @@ import { NsPageService } from './ns-page.service';
 import { NsPageToolbarHeaderItemDirective } from './toolbar/ns-page-toolbar-header-item.directive';
 
 @Component({
-   selector: 'ns-page',
-   templateUrl: './ns-page.component.html',
-   styleUrls: ['./ns-page.component.sass']
+  selector: 'ns-page',
+  templateUrl: './ns-page.component.html',
+  styleUrls: ['./ns-page.component.sass'],
 })
 export class NsPageComponent extends NsComponentBase<NsPageService<any, any, any>, NsPageModel<any, any>> {
-   @Input() pageTitle: string;
+  @Input() pageTitle: string;
 
-   @ContentChildren(NsPageToolbarHeaderItemDirective, { descendants: true })
-   headerItems!: QueryList<NsPageToolbarHeaderItemDirective>;
+  @ContentChildren(NsPageToolbarHeaderItemDirective, { descendants: true })
+  headerItems!: QueryList<NsPageToolbarHeaderItemDirective>;
 
-   constructor(service: NsPageService<any, any, any>) {
-      super(service);
-   }
+  constructor(service: NsPageService<any, any, any>) {
+    super(service);
+  }
 }

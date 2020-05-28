@@ -7,19 +7,8 @@ import { NsIconModule } from '../icon/ns-icon.module';
 import { NsSearchInputComponent } from './input/ns-search-input.component';
 
 @NgModule({
-   declarations: [
-      NsSearchInputComponent
-   ],
-   imports: [
-      CommonModule,
-      MatInputModule,
-      NsIconModule,
-      MatButtonModule,
-      MatTooltipModule,
-   ],
-   exports: [
-      NsSearchInputComponent
-   ]
+  declarations: [NsSearchInputComponent],
+  imports: [CommonModule, MatInputModule, NsIconModule, MatButtonModule, MatTooltipModule],
+  exports: [NsSearchInputComponent],
 })
-export class NsSearchModule {
-}
+export class NsSearchModule {}

@@ -23,36 +23,32 @@ import { NsPageToolbarHeaderItemDirective } from './toolbar/ns-page-toolbar-head
 import { NsPageToolbarComponent } from './toolbar/ns-page-toolbar.component';
 
 @NgModule({
-   declarations: [
-      NsPageComponent,
-      NsPageToolbarComponent,
-      NsPageToolbarNavigationComponent,
-      NsPageToolbarNavigationItemsComponent,
-      NsPageToolbarHeaderItemDirective,
-   ],
-   imports: [
-      CommonModule,
-      MatToolbarModule,
-      MatSidenavModule,
-      MatListModule,
-      MatCardModule,
-      MatButtonModule,
-      NsIconModule,
-      NsLoadingModule,
-      NsButtonModule,
-      LocalizationLanguagesModule,
-      FlexLayoutModule,
-      NsSearchModule,
-      MatPaginatorModule,
-      MatMenuModule,
-      NsDialogModule,
-      MatTooltipModule,
-      NsFormModule,
-   ],
-   exports: [
-      NsPageComponent,
-      NsPageToolbarHeaderItemDirective,
-   ]
+  declarations: [
+    NsPageComponent,
+    NsPageToolbarComponent,
+    NsPageToolbarNavigationComponent,
+    NsPageToolbarNavigationItemsComponent,
+    NsPageToolbarHeaderItemDirective,
+  ],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    NsIconModule,
+    NsLoadingModule,
+    NsButtonModule,
+    LocalizationLanguagesModule,
+    FlexLayoutModule,
+    NsSearchModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    NsDialogModule,
+    MatTooltipModule,
+    NsFormModule,
+  ],
+  exports: [NsPageComponent, NsPageToolbarHeaderItemDirective],
 })
-export class NsPageModule {
-}
+export class NsPageModule {}

@@ -1,3 +1,3 @@
 export interface NsFormGroupConfiguration {
-   key: string;
+  key: string;
 }

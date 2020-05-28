@@ -4,16 +4,15 @@ import { NsPageNotFoundAuthService } from './ns-page-not-found-auth.service';
 import { NsPageNotFoundComponent } from './ns-page-not-found.component';
 
 const routes: Routes = [
-   {
-      path: '',
-      component: NsPageNotFoundComponent,
-      canActivate: [NsPageNotFoundAuthService]
-   },
+  {
+    path: '',
+    component: NsPageNotFoundComponent,
+    canActivate: [NsPageNotFoundAuthService],
+  },
 ];
 
 @NgModule({
-   imports: [RouterModule.forChild(routes)],
-   exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class NsPageNotFoundRoutingModule {
-}
+export class NsPageNotFoundRoutingModule {}

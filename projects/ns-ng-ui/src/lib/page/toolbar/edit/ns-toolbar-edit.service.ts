@@ -1,7 +1,7 @@
 export interface NsToolbarEditService {
-   handleAddRequested();
+  handleAddRequested();
 
-   handleEditRequested();
+  handleEditRequested();
 
-   handleDeleteRequested();
+  handleDeleteRequested();
 }

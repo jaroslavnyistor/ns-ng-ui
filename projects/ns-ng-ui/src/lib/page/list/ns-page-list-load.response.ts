@@ -1,4 +1,4 @@
 export interface NsPageListLoadResponse<TEntity> {
-   list: TEntity[];
-   totalCount: number;
+  list: TEntity[];
+  totalCount: number;
 }

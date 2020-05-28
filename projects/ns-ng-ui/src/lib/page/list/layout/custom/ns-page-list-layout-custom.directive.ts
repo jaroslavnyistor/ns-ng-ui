@@ -1,9 +1,8 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-   selector: '[nsPageListLayoutCustom]'
+  selector: '[nsPageListLayoutCustom]',
 })
 export class NsPageListLayoutCustomDirective {
-   constructor(public templateRef: TemplateRef<any>) {
-   }
+  constructor(public templateRef: TemplateRef<any>) {}
 }

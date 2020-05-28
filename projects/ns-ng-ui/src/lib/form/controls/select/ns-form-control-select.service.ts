@@ -3,26 +3,24 @@ import { Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlSelectItemEntity } from './ns-form-control-select-item.entity';
 
-export abstract class NsFormControlSelectService<TSelectItem extends NsFormControlSelectItemEntity>
-   extends NsSubscriptionService {
-   protected readonly _serviceProvider: NsServiceProvider<NsNavigationService>;
+export abstract class NsFormControlSelectService<
+  TSelectItem extends NsFormControlSelectItemEntity
+> extends NsSubscriptionService {
+  protected readonly _serviceProvider: NsServiceProvider<NsNavigationService>;
 
-   protected constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
-      super();
+  protected constructor(serviceProvider: NsServiceProvider<NsNavigationService>) {
+    super();
 
-      this._serviceProvider = serviceProvider;
-   }
+    this._serviceProvider = serviceProvider;
+  }
 
-   abstract getLoadListObservable(): Observable<TSelectItem[]>;
+  abstract getLoadListObservable(): Observable<TSelectItem[]>;
 
-   parseError(error: any): string {
-      const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(
-         nsApiErrorMapper,
-         error
-      );
+  parseError(error: any): string {
+    const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(nsApiErrorMapper, error);
 
-      return nsArrayItemAt(errorMessages, 0);
-   }
+    return nsArrayItemAt(errorMessages, 0);
+  }
 
-   abstract getEmptyValue(): TSelectItem;
+  abstract getEmptyValue(): TSelectItem;
 }

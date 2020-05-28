@@ -1,9 +1,8 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-   selector: '[nsGridColumn]'
+  selector: '[nsGridColumn]',
 })
 export class NsGridColumnDirective {
-   constructor(public ref: TemplateRef<any>) {
-   }
+  constructor(public ref: TemplateRef<any>) {}
 }

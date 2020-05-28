@@ -6,21 +6,9 @@ import { NsCardModule } from '../card/ns-card.module';
 import { NsPageListModule } from '../page/list/ns-page-list.module';
 import { NsDashboardComponent } from './ns-dashboard.component';
 
-
 @NgModule({
-   declarations: [
-      NsDashboardComponent
-   ],
-   imports: [
-      CommonModule,
-      NsPageListModule,
-      NsCardModule,
-      FlexModule,
-      MatCardModule
-   ],
-   exports: [
-      NsDashboardComponent
-   ]
+  declarations: [NsDashboardComponent],
+  imports: [CommonModule, NsPageListModule, NsCardModule, FlexModule, MatCardModule],
+  exports: [NsDashboardComponent],
 })
-export class NsDashboardModule {
-}
+export class NsDashboardModule {}

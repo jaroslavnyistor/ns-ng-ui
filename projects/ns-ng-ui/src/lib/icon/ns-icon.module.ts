@@ -18,39 +18,31 @@ import { NsIconSemiLargeComponent } from './semi-large/ns-icon-semi-large.compon
 import { NsIconSmallComponent } from './small/ns-icon-small.component';
 
 @NgModule({
-   declarations: [
-      NsIconComponent,
-      NsIconDefaultComponent,
-      NsIconSmallComponent,
-      NsIconSemiLargeComponent,
-      NsIconLargeComponent,
-      NsIconNormalComponent,
-      NsIconDefaultAddComponent,
-      NsIconDefaultEditComponent,
-      NsIconDefaultDeleteComponent,
-      NsIconDefaultPickDateComponent,
-      NsIconDefaultListComponent,
-   ],
-   imports: [
-      CommonModule,
-      MatIconModule,
-      MatListModule,
-      MatButtonModule,
-      MatTooltipModule,
-      LocalizationLanguagesModule
-   ],
-   exports: [
-      NsIconDefaultComponent,
-      NsIconSmallComponent,
-      NsIconSemiLargeComponent,
-      NsIconLargeComponent,
-      NsIconNormalComponent,
-      NsIconDefaultAddComponent,
-      NsIconDefaultEditComponent,
-      NsIconDefaultDeleteComponent,
-      NsIconDefaultPickDateComponent,
-      NsIconDefaultListComponent,
-   ]
+  declarations: [
+    NsIconComponent,
+    NsIconDefaultComponent,
+    NsIconSmallComponent,
+    NsIconSemiLargeComponent,
+    NsIconLargeComponent,
+    NsIconNormalComponent,
+    NsIconDefaultAddComponent,
+    NsIconDefaultEditComponent,
+    NsIconDefaultDeleteComponent,
+    NsIconDefaultPickDateComponent,
+    NsIconDefaultListComponent,
+  ],
+  imports: [CommonModule, MatIconModule, MatListModule, MatButtonModule, MatTooltipModule, LocalizationLanguagesModule],
+  exports: [
+    NsIconDefaultComponent,
+    NsIconSmallComponent,
+    NsIconSemiLargeComponent,
+    NsIconLargeComponent,
+    NsIconNormalComponent,
+    NsIconDefaultAddComponent,
+    NsIconDefaultEditComponent,
+    NsIconDefaultDeleteComponent,
+    NsIconDefaultPickDateComponent,
+    NsIconDefaultListComponent,
+  ],
 })
-export class NsIconModule {
-}
+export class NsIconModule {}

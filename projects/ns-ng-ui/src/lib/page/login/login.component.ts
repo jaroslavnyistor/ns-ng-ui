@@ -5,16 +5,13 @@ import { LoginModel } from './login.model';
 import { LoginService } from './login.service';
 
 @Component({
-   selector: 'login',
-   templateUrl: './login.component.html',
-   styles: [],
-   providers: [
-      NsPageEditDiConfigurator.provideService(LoginService, LoginModel)
-   ]
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styles: [],
+  providers: [NsPageEditDiConfigurator.provideService(LoginService, LoginModel)],
 })
 export class LoginComponent extends NsComponentBase<LoginService, LoginModel> {
-
-   constructor(service: LoginService) {
-      super(service);
-   }
+  constructor(service: LoginService) {
+    super(service);
+  }
 }

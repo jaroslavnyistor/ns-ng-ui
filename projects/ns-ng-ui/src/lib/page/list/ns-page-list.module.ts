@@ -22,39 +22,38 @@ import { NsPageListToolbarComponent } from './toolbar/ns-page-list-toolbar.compo
 import { NsPageListToolbarOrderComponent } from './toolbar/order/ns-page-list-toolbar-order.component';
 
 @NgModule({
-   declarations: [
-      NsPageListComponent,
-      NsPageListLayoutDefaultComponent,
-      NsPageListToolbarComponent,
-      NsPageListToolbarItemDirective,
-      NsPageListToolbarOrderComponent,
-      NsPageListLayoutCustomDirective,
-      NsPageListLayoutCustomComponent,
-      NsPageListLayoutCustomItemDirective,
-   ],
-   imports: [
-      CommonModule,
-      FlexModule,
-      MatCardModule,
-      MatDividerModule,
-      NsIconModule,
-      MatMenuModule,
-      MatTooltipModule,
-      LocalizationLanguagesModule,
-      NsSearchModule,
-      NsLoadingModule,
-      NsPageErrorsModule,
-      MatPaginatorModule,
-      NsToolbarModule
-   ],
-   exports: [
-      NsPageListComponent,
-      NsPageListToolbarItemDirective,
-      NsPageListToolbarComponent,
-      NsPageListLayoutCustomDirective,
-      NsPageListLayoutCustomComponent,
-      NsPageListLayoutCustomItemDirective,
-   ]
+  declarations: [
+    NsPageListComponent,
+    NsPageListLayoutDefaultComponent,
+    NsPageListToolbarComponent,
+    NsPageListToolbarItemDirective,
+    NsPageListToolbarOrderComponent,
+    NsPageListLayoutCustomDirective,
+    NsPageListLayoutCustomComponent,
+    NsPageListLayoutCustomItemDirective,
+  ],
+  imports: [
+    CommonModule,
+    FlexModule,
+    MatCardModule,
+    MatDividerModule,
+    NsIconModule,
+    MatMenuModule,
+    MatTooltipModule,
+    LocalizationLanguagesModule,
+    NsSearchModule,
+    NsLoadingModule,
+    NsPageErrorsModule,
+    MatPaginatorModule,
+    NsToolbarModule,
+  ],
+  exports: [
+    NsPageListComponent,
+    NsPageListToolbarItemDirective,
+    NsPageListToolbarComponent,
+    NsPageListLayoutCustomDirective,
+    NsPageListLayoutCustomComponent,
+    NsPageListLayoutCustomItemDirective,
+  ],
 })
-export class NsPageListModule {
-}
+export class NsPageListModule {}

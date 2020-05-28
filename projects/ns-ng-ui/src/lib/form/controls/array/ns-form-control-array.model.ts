@@ -8,20 +8,18 @@ import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model'
 import { NsFormControlArrayConfiguration } from './ns-form-control-array.configuration';
 import { NsFormControlArrayService } from './ns-form-control-array.service';
 
-export abstract class NsFormControlArrayModel<TEntity,
+export abstract class NsFormControlArrayModel<
+  TEntity,
   TService extends NsFormControlArrayService<TFormArrayItemModel, TArrayItemEntity, TServiceProvider, TAppNavService>,
   TFormArrayItemModel extends NsFormControlArrayItemModel<TArrayItemEntity, TServiceProvider, TAppNavService>,
   TArrayItemEntity extends NsFormControlArrayItemEntity,
   TServiceProvider extends NsServiceProvider<TAppNavService>,
-  TAppNavService extends NsNavigationService>
-  extends NsFormControlModel<TEntity,
-    NsFormArray,
-    NsFormControlArrayConfiguration<TService,
-      TFormArrayItemModel,
-      TArrayItemEntity,
-      TServiceProvider,
-      TAppNavService>> {
-
+  TAppNavService extends NsNavigationService
+> extends NsFormControlModel<
+  TEntity,
+  NsFormArray,
+  NsFormControlArrayConfiguration<TService, TFormArrayItemModel, TArrayItemEntity, TServiceProvider, TAppNavService>
+> {
   private readonly _formModels$: BehaviorSubject<TFormArrayItemModel[]>;
   private readonly _service: TService;
   private readonly _noItemsMessage: string;
@@ -56,11 +54,13 @@ export abstract class NsFormControlArrayModel<TEntity,
   }
 
   protected constructor(
-    config: NsFormControlArrayConfiguration<TService,
+    config: NsFormControlArrayConfiguration<
+      TService,
       TFormArrayItemModel,
       TArrayItemEntity,
       TServiceProvider,
-      TAppNavService>
+      TAppNavService
+    >,
   ) {
     super(config);
 
@@ -82,11 +82,11 @@ export abstract class NsFormControlArrayModel<TEntity,
   }
 
   private mapEntitiesToFormModels(entities: TArrayItemEntity[]): void {
-    this.formModels.forEach(formModel => formModel.onDestroy());
+    this.formModels.forEach((formModel) => formModel.onDestroy());
 
     this.formControl.clear();
 
-    const formModels = entities.map(entity => this.createNewFormModel(entity));
+    const formModels = entities.map((entity) => this.createNewFormModel(entity));
 
     this.updateFormModelsListeners(formModels);
   }
@@ -134,6 +134,6 @@ export abstract class NsFormControlArrayModel<TEntity,
   onDestroy() {
     super.onDestroy();
 
-    this.formModels.forEach(formModel => formModel.onDestroy());
+    this.formModels.forEach((formModel) => formModel.onDestroy());
   }
 }

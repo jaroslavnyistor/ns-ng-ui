@@ -8,23 +8,23 @@ import { NsFormControl } from './ns-form-control';
 export type NsAbstractControl = NsFormControl | NsFormArray | NsFormGroup;
 
 export interface NsFormControlDefinition {
-   key: string;
+  key: string;
 
-   formControl: AbstractControl;
+  formControl: AbstractControl;
 
-   hasValue: boolean;
+  hasValue: boolean;
 
-   value: any;
+  value: any;
 
-   valueChanges$: Observable<any>;
+  valueChanges$: Observable<any>;
 
-   setLangService(langService: LocalizationLanguagesService);
+  setLangService(langService: LocalizationLanguagesService);
 
-   setFormControl(formControl: NsAbstractControl);
+  setFormControl(formControl: NsAbstractControl);
 
-   onInit();
+  onInit();
 
-   onDestroy();
+  onDestroy();
 
-   onValuePatch(value: any);
+  onValuePatch(value: any);
 }

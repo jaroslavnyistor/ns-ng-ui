@@ -5,17 +5,8 @@ import { LocalizationLanguagesModule } from '../../localization/languages/locali
 import { NsPageErrorsComponent } from './ns-page-errors.component';
 
 @NgModule({
-   declarations: [
-      NsPageErrorsComponent,
-   ],
-   imports: [
-      CommonModule,
-      MatExpansionModule,
-      LocalizationLanguagesModule
-   ],
-   exports: [
-      NsPageErrorsComponent,
-   ]
+  declarations: [NsPageErrorsComponent],
+  imports: [CommonModule, MatExpansionModule, LocalizationLanguagesModule],
+  exports: [NsPageErrorsComponent],
 })
-export class NsPageErrorsModule {
-}
+export class NsPageErrorsModule {}

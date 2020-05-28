@@ -1,4 +1,3 @@
 import { NsFormControlConfiguration } from '../ns-form-control.configuration';
 
-export interface NsFormControlTimePickerConfiguration extends NsFormControlConfiguration {
-}
+export interface NsFormControlTimePickerConfiguration extends NsFormControlConfiguration {}

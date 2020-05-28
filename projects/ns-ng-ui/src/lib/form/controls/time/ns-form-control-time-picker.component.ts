@@ -4,13 +4,13 @@ import { NsFormControlTimePickerModel } from './ns-form-control-time-picker.mode
 import { nsFormControlTimePickerTheme } from './ns-form-control-time-picker.theme';
 
 @Component({
-   selector: 'ns-form-control-time-picker',
-   templateUrl: './ns-form-control-time-picker.component.html',
-   styleUrls: ['./ns-form-control-time-picker.component.sass']
+  selector: 'ns-form-control-time-picker',
+  templateUrl: './ns-form-control-time-picker.component.html',
+  styleUrls: ['./ns-form-control-time-picker.component.sass'],
 })
 export class NsFormControlTimePickerComponent {
-   NsIcon = NsIcon;
-   theme = nsFormControlTimePickerTheme;
+  NsIcon = NsIcon;
+  theme = nsFormControlTimePickerTheme;
 
-   @Input() model: NsFormControlTimePickerModel<any>;
+  @Input() model: NsFormControlTimePickerModel<any>;
 }

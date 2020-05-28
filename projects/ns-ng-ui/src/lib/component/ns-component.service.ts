@@ -4,80 +4,75 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { NsComponentModel } from './ns-component.model';
 
 export abstract class NsComponentService<TModel extends NsComponentModel> extends NsSubscriptionService {
-   private readonly _model: TModel;
-   private _isInitialized = false;
-   private _isDestroyed = false;
+  private readonly _model: TModel;
+  private _isInitialized = false;
+  private _isDestroyed = false;
 
-   get isInitialized(): boolean {
-      return this._isInitialized;
-   }
+  get isInitialized(): boolean {
+    return this._isInitialized;
+  }
 
-   get isDestroyed(): boolean {
-      return this._isDestroyed;
-   }
+  get isDestroyed(): boolean {
+    return this._isDestroyed;
+  }
 
-   protected constructor(model: TModel) {
-      super();
+  protected constructor(model: TModel) {
+    super();
 
-      this._model = model;
-   }
+    this._model = model;
+  }
 
-   get model(): TModel {
-      return this._model;
-   }
+  get model(): TModel {
+    return this._model;
+  }
 
-   onInit(): void {
-      super.onInit();
+  onInit(): void {
+    super.onInit();
 
-      this.model.onInit();
+    this.model.onInit();
 
-      this._isInitialized = true;
-   }
+    this._isInitialized = true;
+  }
 
-   onDestroy(): void {
-      super.onDestroy();
+  onDestroy(): void {
+    super.onDestroy();
 
-      this.model.onDestroy();
+    this.model.onDestroy();
 
-      this._isDestroyed = true;
-   }
+    this._isDestroyed = true;
+  }
 
-   protected withLoading(source: Observable<any>): Observable<any> {
-      this.model.startLoading();
+  protected withLoading(source: Observable<any>): Observable<any> {
+    this.model.startLoading();
 
-      return source
-         .pipe(this.loadingFinished());
-   }
+    return source.pipe(this.loadingFinished());
+  }
 
-   protected pipeLoading(source: Observable<any>, ...operators: OperatorFunction<any, any>[]) {
-      let result = source
-         .pipe(this.loadingStarted());
+  protected pipeLoading(source: Observable<any>, ...operators: OperatorFunction<any, any>[]) {
+    let result = source.pipe(this.loadingStarted());
 
-      operators.forEach(operator => {
-         result = result.pipe(operator);
-      });
+    operators.forEach((operator) => {
+      result = result.pipe(operator);
+    });
 
-      return result.pipe(this.loadingFinished());
-   }
+    return result.pipe(this.loadingFinished());
+  }
 
-   protected loadingStarted(): OperatorFunction<any, any> {
-      return source => source
-         .pipe(
-            tap(() => this.model.startLoading())
-         );
-   }
+  protected loadingStarted(): OperatorFunction<any, any> {
+    return (source) => source.pipe(tap(() => this.model.startLoading()));
+  }
 
-   protected loadingFinished(): OperatorFunction<any, any> {
-      return source => source
-         .pipe(
-            map(value => {
-               this.model.loadingFinished();
-               return value;
-            }),
-            catchError(error => {
-               this.model.loadingFailed();
-               return throwError(error);
-            })
-         );
-   }
+  protected loadingFinished(): OperatorFunction<any, any> {
+    return (source) =>
+      source.pipe(
+        map((value) => {
+          this.model.loadingFinished();
+          return value;
+        }),
+        catchError((error) => {
+          this.model.loadingFailed();
+          return throwError(error);
+        }),
+      );
+  }
 }

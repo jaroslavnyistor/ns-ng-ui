@@ -4,16 +4,15 @@ import { NsAuthenticateService } from 'ns-js-utils';
 import { NsPageNoPermissionComponent } from './ns-page-no-permission.component';
 
 const routes: Routes = [
-   {
-      path: '',
-      component: NsPageNoPermissionComponent,
-      canActivate: [NsAuthenticateService]
-   },
+  {
+    path: '',
+    component: NsPageNoPermissionComponent,
+    canActivate: [NsAuthenticateService],
+  },
 ];
 
 @NgModule({
-   imports: [RouterModule.forChild(routes)],
-   exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class NsPageNoPermissionRoutingModule {
-}
+export class NsPageNoPermissionRoutingModule {}

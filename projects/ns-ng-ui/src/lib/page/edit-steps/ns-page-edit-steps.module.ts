@@ -8,20 +8,8 @@ import { NsPageErrorsModule } from '../errors/ns-page-errors.module';
 import { NsPageEditStepsComponent } from './ns-page-edit-steps.component';
 
 @NgModule({
-   declarations: [
-      NsPageEditStepsComponent
-   ],
-   imports: [
-      CommonModule,
-      NsLoadingModule,
-      MatCardModule,
-      FlexModule,
-      MatListModule,
-      NsPageErrorsModule
-   ],
-   exports: [
-      NsPageEditStepsComponent
-   ]
+  declarations: [NsPageEditStepsComponent],
+  imports: [CommonModule, NsLoadingModule, MatCardModule, FlexModule, MatListModule, NsPageErrorsModule],
+  exports: [NsPageEditStepsComponent],
 })
-export class NsPageEditStepsModule {
-}
+export class NsPageEditStepsModule {}

@@ -1,39 +1,39 @@
 import { NsSubscriptionModel } from 'ns-js-utils';
 
 export enum ComponentModelState {
-   DONE = 'DONE',
-   LOADING = 'LOADING',
-   ERROR = 'ERROR'
+  DONE = 'DONE',
+  LOADING = 'LOADING',
+  ERROR = 'ERROR',
 }
 
 export abstract class NsComponentModel extends NsSubscriptionModel {
-   private _state: ComponentModelState = ComponentModelState.DONE;
+  private _state: ComponentModelState = ComponentModelState.DONE;
 
-   private get state(): ComponentModelState {
-      return this._state;
-   }
+  private get state(): ComponentModelState {
+    return this._state;
+  }
 
-   get isDone(): boolean {
-      return this.state === ComponentModelState.DONE;
-   }
+  get isDone(): boolean {
+    return this.state === ComponentModelState.DONE;
+  }
 
-   get isLoading(): boolean {
-      return this.state === ComponentModelState.LOADING;
-   }
+  get isLoading(): boolean {
+    return this.state === ComponentModelState.LOADING;
+  }
 
-   get isError(): boolean {
-      return this.state === ComponentModelState.ERROR;
-   }
+  get isError(): boolean {
+    return this.state === ComponentModelState.ERROR;
+  }
 
-   startLoading() {
-      this._state = ComponentModelState.LOADING;
-   }
+  startLoading() {
+    this._state = ComponentModelState.LOADING;
+  }
 
-   loadingFinished() {
-      this._state = ComponentModelState.DONE;
-   }
+  loadingFinished() {
+    this._state = ComponentModelState.DONE;
+  }
 
-   loadingFailed() {
-      this._state = ComponentModelState.ERROR;
-   }
+  loadingFailed() {
+    this._state = ComponentModelState.ERROR;
+  }
 }

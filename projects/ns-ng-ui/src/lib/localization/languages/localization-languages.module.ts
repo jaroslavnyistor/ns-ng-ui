@@ -9,23 +9,8 @@ import { LocalizationLanguagesPickerComponent } from './picker/localization-lang
 import { TranslatePipe } from './translation/translate.pipe';
 
 @NgModule({
-   declarations: [
-      TranslatePipe,
-      LocalizationLanguagesPickerComponent,
-      LocalizationLanguagesMenuComponent,
-   ],
-   imports: [
-      CommonModule,
-      MatSelectModule,
-      MatMenuModule,
-      MatIconModule,
-      FlexModule,
-   ],
-   exports: [
-      TranslatePipe,
-      LocalizationLanguagesPickerComponent,
-      LocalizationLanguagesMenuComponent,
-   ]
+  declarations: [TranslatePipe, LocalizationLanguagesPickerComponent, LocalizationLanguagesMenuComponent],
+  imports: [CommonModule, MatSelectModule, MatMenuModule, MatIconModule, FlexModule],
+  exports: [TranslatePipe, LocalizationLanguagesPickerComponent, LocalizationLanguagesMenuComponent],
 })
-export class LocalizationLanguagesModule {
-}
+export class LocalizationLanguagesModule {}

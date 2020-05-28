@@ -7,19 +7,8 @@ import { NsPageNoPermissionRoutingModule } from './ns-page-no-permission-routing
 import { NsPageNoPermissionComponent } from './ns-page-no-permission.component';
 
 @NgModule({
-   declarations: [
-      NsPageNoPermissionComponent
-   ],
-   imports: [
-      CommonModule,
-      FlexModule,
-      LocalizationLanguagesModule,
-      NsPageNoPermissionRoutingModule,
-      MatCardModule
-   ],
-   exports: [
-      NsPageNoPermissionComponent
-   ]
+  declarations: [NsPageNoPermissionComponent],
+  imports: [CommonModule, FlexModule, LocalizationLanguagesModule, NsPageNoPermissionRoutingModule, MatCardModule],
+  exports: [NsPageNoPermissionComponent],
 })
-export class NsPageNoPermissionModule {
-}
+export class NsPageNoPermissionModule {}

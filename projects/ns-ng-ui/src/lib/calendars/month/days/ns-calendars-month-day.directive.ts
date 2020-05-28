@@ -1,7 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-   selector: '[nsCalendarsMonthDay]'
+  selector: '[nsCalendarsMonthDay]',
 })
-export class NsCalendarsMonthDayDirective {
-}
+export class NsCalendarsMonthDayDirective {}

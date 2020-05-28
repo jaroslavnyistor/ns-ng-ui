@@ -5,36 +5,33 @@ import { NsDialogDeleteComponent } from './ns-dialog-delete.component';
 import { NsDialogDeleteModel } from './ns-dialog-delete.model';
 
 @Injectable({
-   providedIn: 'root'
+  providedIn: 'root',
 })
 export class NsDialogDeleteService extends NsSubscriptionService {
-   private readonly _dialog: MatDialog;
+  private readonly _dialog: MatDialog;
 
-   constructor(dialog: MatDialog) {
-      super();
+  constructor(dialog: MatDialog) {
+    super();
 
-      this._dialog = dialog;
-   }
+    this._dialog = dialog;
+  }
 
-   open(title: string, message: string, confirmCallback: () => void) {
-      const data: NsDialogDeleteModel = {
-         title,
-         message
-      };
+  open(title: string, message: string, confirmCallback: () => void) {
+    const data: NsDialogDeleteModel = {
+      title,
+      message,
+    };
 
-      const config = {
-         data
-      };
+    const config = {
+      data,
+    };
 
-      this.subscribeTo(
-         this._dialog.open(NsDialogDeleteComponent, config).afterClosed(),
-         {
-            next: confirmed => {
-               if (confirmed) {
-                  confirmCallback();
-               }
-            }
-         }
-      );
-   }
+    this.subscribeTo(this._dialog.open(NsDialogDeleteComponent, config).afterClosed(), {
+      next: (confirmed) => {
+        if (confirmed) {
+          confirmCallback();
+        }
+      },
+    });
+  }
 }

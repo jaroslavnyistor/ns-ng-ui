@@ -6,65 +6,68 @@ import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlInputType } from './ns-form-control-input-type.enum';
 import { NsFormControlInputConfiguration } from './ns-form-control-input.configuration';
 
-export class NsFormControlInputModel<TEntity>
-   extends NsFormControlModel<TEntity, NsFormControl, NsFormControlInputConfiguration> {
-   private readonly _type: NsFormControlInputType;
-   private _remainingCharacters: string;
+export class NsFormControlInputModel<TEntity> extends NsFormControlModel<
+  TEntity,
+  NsFormControl,
+  NsFormControlInputConfiguration
+> {
+  private readonly _type: NsFormControlInputType;
+  private _remainingCharacters: string;
 
-   get type(): NsFormControlInputType {
-      return this._type;
-   }
+  get type(): NsFormControlInputType {
+    return this._type;
+  }
 
-   get hasMaxLengthSet(): boolean {
-      return this._config.maxLength != null;
-   }
+  get hasMaxLengthSet(): boolean {
+    return this._config.maxLength != null;
+  }
 
-   get maxLength(): number {
-      return this._config.maxLength;
-   }
+  get maxLength(): number {
+    return this._config.maxLength;
+  }
 
-   get remainingCharacters(): string {
-      return this._remainingCharacters;
-   }
+  get remainingCharacters(): string {
+    return this._remainingCharacters;
+  }
 
-   get autofocus(): boolean {
-      return this._config.autofocus === true;
-   }
+  get autofocus(): boolean {
+    return this._config.autofocus === true;
+  }
 
-   constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
-      super(config);
+  constructor(type: NsFormControlInputType, config: NsFormControlInputConfiguration) {
+    super(config);
 
-      this._type = type;
+    this._type = type;
 
-      if (config.minLength != null) {
-         this.addValidator(new NsFormControlLengthMinValidator(config.minLength));
-      }
+    if (config.minLength != null) {
+      this.addValidator(new NsFormControlLengthMinValidator(config.minLength));
+    }
 
-      if (this.maxLength != null) {
-         this.addValidator(new NsFormControlLengthMaxValidator(this.maxLength));
-      }
+    if (this.maxLength != null) {
+      this.addValidator(new NsFormControlLengthMaxValidator(this.maxLength));
+    }
 
-      this.defaultValue = nsNull(config.defaultValue, null);
-   }
+    this.defaultValue = nsNull(config.defaultValue, null);
+  }
 
-   onInit() {
-      super.onInit();
+  onInit() {
+    super.onInit();
 
-      this.updateRemainingCharacters(this.value)
-   }
+    this.updateRemainingCharacters(this.value);
+  }
 
-   protected handleValueChanged(newValue: any) {
-      super.handleValueChanged(newValue);
+  protected handleValueChanged(newValue: any) {
+    super.handleValueChanged(newValue);
 
-      this.updateRemainingCharacters(newValue);
-   }
+    this.updateRemainingCharacters(newValue);
+  }
 
-   private updateRemainingCharacters(value: string) {
-      if (this.maxLength == null) {
-         return ''
-      }
+  private updateRemainingCharacters(value: string) {
+    if (this.maxLength == null) {
+      return '';
+    }
 
-      const valueLength = nsStringLength(this.value);
-      this._remainingCharacters = `${valueLength}/${this.maxLength}`;
-   }
+    const valueLength = nsStringLength(this.value);
+    this._remainingCharacters = `${valueLength}/${this.maxLength}`;
+  }
 }

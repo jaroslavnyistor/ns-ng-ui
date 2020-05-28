@@ -6,17 +6,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { NsDividerModule } from '../divider/ns-divider.module';
 import { NsCardComponent } from './ns-card.component';
 
-
 @NgModule({
-   declarations: [NsCardComponent],
-   imports: [
-      CommonModule,
-      MatCardModule,
-      FlexModule,
-      MatDividerModule,
-      NsDividerModule
-   ],
-   exports: [NsCardComponent]
+  declarations: [NsCardComponent],
+  imports: [CommonModule, MatCardModule, FlexModule, MatDividerModule, NsDividerModule],
+  exports: [NsCardComponent],
 })
-export class NsCardModule {
-}
+export class NsCardModule {}

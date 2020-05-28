@@ -2,13 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { LocalizationLanguagesService } from 'ns-js-utils';
 
 @Pipe({
-   name: 'translate'
+  name: 'translate',
 })
 export class TranslatePipe implements PipeTransform {
-   constructor(private _langService: LocalizationLanguagesService) {
-   }
+  constructor(private _langService: LocalizationLanguagesService) {}
 
-   transform(value: any, ...args: any[]): string {
-      return this._langService.translate(value);
-   }
+  transform(value: any, ...args: any[]): string {
+    return this._langService.translate(value);
+  }
 }

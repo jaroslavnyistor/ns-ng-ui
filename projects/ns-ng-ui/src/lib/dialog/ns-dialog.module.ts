@@ -6,17 +6,9 @@ import { LocalizationLanguagesModule } from '../localization/languages/localizat
 import { NsDialogDeleteComponent } from './delete/ns-dialog-delete.component';
 
 @NgModule({
-   declarations: [NsDialogDeleteComponent],
-   imports: [
-      CommonModule,
-      MatDialogModule,
-      MatButtonModule,
-      LocalizationLanguagesModule,
-   ],
-   exports: [
-      MatDialogModule
-   ],
-   entryComponents: [NsDialogDeleteComponent]
+  declarations: [NsDialogDeleteComponent],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, LocalizationLanguagesModule],
+  exports: [MatDialogModule],
+  entryComponents: [NsDialogDeleteComponent],
 })
-export class NsDialogModule {
-}
+export class NsDialogModule {}

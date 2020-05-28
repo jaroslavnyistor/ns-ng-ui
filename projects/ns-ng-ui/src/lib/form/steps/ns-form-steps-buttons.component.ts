@@ -5,16 +5,17 @@ import { NsFormStepsModel } from './ns-form-steps.model';
 import { NsFormStepsService } from './ns-form-steps.service';
 
 @Component({
-   selector: 'ns-form-steps-buttons',
-   templateUrl: './ns-form-steps-buttons.component.html',
-   styleUrls: ['./ns-form-steps-buttons.component.sass']
+  selector: 'ns-form-steps-buttons',
+  templateUrl: './ns-form-steps-buttons.component.html',
+  styleUrls: ['./ns-form-steps-buttons.component.sass'],
 })
-export class NsFormStepsButtonsComponent
-   extends NsComponentBase<NsFormStepsService<any, any, any, any>, NsFormStepsModel<any, any, any>> {
+export class NsFormStepsButtonsComponent extends NsComponentBase<
+  NsFormStepsService<any, any, any, any>,
+  NsFormStepsModel<any, any, any>
+> {
+  NsIcon = NsIcon;
 
-   NsIcon = NsIcon;
-
-   constructor(service: NsFormStepsService<any, any, any, any>) {
-      super(service);
-   }
+  constructor(service: NsFormStepsService<any, any, any, any>) {
+    super(service);
+  }
 }

@@ -5,24 +5,22 @@ import { NsUserLogInInformationModel } from './ns-user-log-in-information.model'
 import { NsUserLogInInformationService } from './ns-user-log-in-information.service';
 
 @Component({
-   selector: 'ns-user-log-in-information',
-   templateUrl: './ns-user-log-in-information.component.html',
-   styleUrls: ['./ns-user-log-in-information.component.sass'],
-   providers: [
-      NsUserLogInInformationService,
-      NsUserLogInInformationModel
-   ]
+  selector: 'ns-user-log-in-information',
+  templateUrl: './ns-user-log-in-information.component.html',
+  styleUrls: ['./ns-user-log-in-information.component.sass'],
+  providers: [NsUserLogInInformationService, NsUserLogInInformationModel],
 })
-export class NsUserLogInInformationComponent
-   extends NsComponentBase<NsUserLogInInformationService, NsUserLogInInformationModel> {
+export class NsUserLogInInformationComponent extends NsComponentBase<
+  NsUserLogInInformationService,
+  NsUserLogInInformationModel
+> {
+  get defaultIcon(): NsIcon {
+    return NsIcon.Social_Person;
+  }
 
-   get defaultIcon(): NsIcon {
-      return NsIcon.Social_Person;
-   }
+  @Input() displayLanguagesPicker = true;
 
-   @Input() displayLanguagesPicker = true;
-
-   constructor(service: NsUserLogInInformationService) {
-      super(service);
-   }
+  constructor(service: NsUserLogInInformationService) {
+    super(service);
+  }
 }

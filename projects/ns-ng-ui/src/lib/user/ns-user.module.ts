@@ -8,20 +8,8 @@ import { LocalizationLanguagesModule } from '../localization/languages/localizat
 import { NsUserLogInInformationComponent } from './log-in/ns-user-log-in-information.component';
 
 @NgModule({
-   declarations: [
-      NsUserLogInInformationComponent
-   ],
-   imports: [
-      CommonModule,
-      NsIconModule,
-      MatMenuModule,
-      MatDividerModule,
-      LocalizationLanguagesModule,
-      NsButtonModule
-   ],
-   exports: [
-      NsUserLogInInformationComponent
-   ]
+  declarations: [NsUserLogInInformationComponent],
+  imports: [CommonModule, NsIconModule, MatMenuModule, MatDividerModule, LocalizationLanguagesModule, NsButtonModule],
+  exports: [NsUserLogInInformationComponent],
 })
-export class NsUserModule {
-}
+export class NsUserModule {}

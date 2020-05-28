@@ -7,29 +7,33 @@ import { NsCalendarsMonthService } from './ns-calendars-month.service';
 import { NsCalendarsMonthToolbarDirective } from './toolbar/ns-calendars-month-toolbar.directive';
 
 @Component({
-   selector: 'ns-calendars-month',
-   templateUrl: './ns-calendars-month.component.html',
-   styleUrls: ['./ns-calendars-month.component.sass'],
+  selector: 'ns-calendars-month',
+  templateUrl: './ns-calendars-month.component.html',
+  styleUrls: ['./ns-calendars-month.component.sass'],
 })
-export class NsCalendarsMonthComponent
-   extends NsComponentBase<NsCalendarsMonthService<any, any, any>, NsCalendarsMonthModel<any, any>> {
-   @ContentChild(NsCalendarsMonthDayDirective, { read: TemplateRef, static: true }) dataItemTemplate: TemplateRef<any>;
+export class NsCalendarsMonthComponent extends NsComponentBase<
+  NsCalendarsMonthService<any, any, any>,
+  NsCalendarsMonthModel<any, any>
+> {
+  @ContentChild(NsCalendarsMonthDayDirective, { read: TemplateRef, static: true }) dataItemTemplate: TemplateRef<any>;
 
-   @ContentChild(NsCalendarsMonthToolbarDirective, {
-      read: TemplateRef,
-      static: true
-   }) toolbarTemplate: TemplateRef<any>;
+  @ContentChild(NsCalendarsMonthToolbarDirective, {
+    read: TemplateRef,
+    static: true,
+  })
+  toolbarTemplate: TemplateRef<any>;
 
-   @ContentChild(NsCalendarsMonthRightPanelDirective, {
-      read: TemplateRef,
-      static: true
-   }) rightPanelTemplate: TemplateRef<any>;
+  @ContentChild(NsCalendarsMonthRightPanelDirective, {
+    read: TemplateRef,
+    static: true,
+  })
+  rightPanelTemplate: TemplateRef<any>;
 
-   get hasRightPanelTemplate(): boolean {
-      return this.rightPanelTemplate != null;
-   }
+  get hasRightPanelTemplate(): boolean {
+    return this.rightPanelTemplate != null;
+  }
 
-   constructor(service: NsCalendarsMonthService<any, any, any>) {
-      super(service);
-   }
+  constructor(service: NsCalendarsMonthService<any, any, any>) {
+    super(service);
+  }
 }

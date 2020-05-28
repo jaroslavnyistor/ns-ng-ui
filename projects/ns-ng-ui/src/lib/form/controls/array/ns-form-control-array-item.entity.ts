@@ -1,3 +1,3 @@
 export interface NsFormControlArrayItemEntity {
-   id: number;
+  id: number;
 }

@@ -15,34 +15,32 @@ import { NsCalendarsMonthComponent } from './ns-calendars-month.component';
 import { NsCalendarsMonthToolbarComponent } from './toolbar/ns-calendars-month-toolbar.component';
 import { NsCalendarsMonthToolbarDirective } from './toolbar/ns-calendars-month-toolbar.directive';
 
-
 @NgModule({
-   declarations: [
-      NsCalendarsMonthComponent,
-      NsCalendarsMonthToolbarComponent,
-      NsCalendarsMonthHeadersComponent,
-      NsCalendarsMonthDaysComponent,
-      NsCalendarsMonthDayDirective,
-      NsCalendarsMonthToolbarDirective,
-      NsCalendarsMonthRightPanelDirective
-   ],
-   exports: [
-      NsCalendarsMonthComponent,
-      NsCalendarsMonthDayDirective,
-      NsCalendarsMonthToolbarDirective,
-      NsCalendarsMonthRightPanelDirective,
-   ],
-   imports: [
-      CommonModule,
-      NsIconModule,
-      FlexModule,
-      NsLoadingModule,
-      NsPageErrorsModule,
-      MatSidenavModule,
-      LocalizationLanguagesModule,
-      MatTooltipModule,
-      ExtendedModule,
-   ]
+  declarations: [
+    NsCalendarsMonthComponent,
+    NsCalendarsMonthToolbarComponent,
+    NsCalendarsMonthHeadersComponent,
+    NsCalendarsMonthDaysComponent,
+    NsCalendarsMonthDayDirective,
+    NsCalendarsMonthToolbarDirective,
+    NsCalendarsMonthRightPanelDirective,
+  ],
+  exports: [
+    NsCalendarsMonthComponent,
+    NsCalendarsMonthDayDirective,
+    NsCalendarsMonthToolbarDirective,
+    NsCalendarsMonthRightPanelDirective,
+  ],
+  imports: [
+    CommonModule,
+    NsIconModule,
+    FlexModule,
+    NsLoadingModule,
+    NsPageErrorsModule,
+    MatSidenavModule,
+    LocalizationLanguagesModule,
+    MatTooltipModule,
+    ExtendedModule,
+  ],
 })
-export class NsCalendarsMonthModule {
-}
+export class NsCalendarsMonthModule {}

@@ -1,96 +1,90 @@
 import {
-   nsApiErrorMapper,
-   NsApiResponseError,
-   nsIsNotNullOrEmpty,
-   NsNavigationService,
-   NsStoragePageModel
+  nsApiErrorMapper,
+  NsApiResponseError,
+  nsIsNotNullOrEmpty,
+  NsNavigationService,
+  NsStoragePageModel,
 } from 'ns-js-utils';
 import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 
 const keyStateEntity = 'entity';
 
-export abstract class NsPageEditStepsModel<TEntity,
-   TServiceProvider extends NsServiceProvider<TAppNavService>,
-   TAppNavService extends NsNavigationService>
-   extends NsFormStepsModel<TEntity, TServiceProvider, TAppNavService>
-   implements NsStoragePageModel {
-   private _hasSubtitle = false;
-   private _subtitle: string;
-   private _pageErrorMessages = [];
-   private _savedEntity: TEntity;
-   private _entityToSave: TEntity;
+export abstract class NsPageEditStepsModel<
+  TEntity,
+  TServiceProvider extends NsServiceProvider<TAppNavService>,
+  TAppNavService extends NsNavigationService
+> extends NsFormStepsModel<TEntity, TServiceProvider, TAppNavService> implements NsStoragePageModel {
+  private _hasSubtitle = false;
+  private _subtitle: string;
+  private _pageErrorMessages = [];
+  private _savedEntity: TEntity;
+  private _entityToSave: TEntity;
 
-   get hasSubtitle(): boolean {
-      return this._hasSubtitle;
-   }
+  get hasSubtitle(): boolean {
+    return this._hasSubtitle;
+  }
 
-   get subtitle(): string {
-      return this._subtitle;
-   }
+  get subtitle(): string {
+    return this._subtitle;
+  }
 
-   set subtitle(value: string) {
-      this._subtitle = value;
-      this._hasSubtitle = nsIsNotNullOrEmpty(this._subtitle);
-   }
+  set subtitle(value: string) {
+    this._subtitle = value;
+    this._hasSubtitle = nsIsNotNullOrEmpty(this._subtitle);
+  }
 
-   get pageErrorMessages(): any[] {
-      return this._pageErrorMessages;
-   }
+  get pageErrorMessages(): any[] {
+    return this._pageErrorMessages;
+  }
 
-   set pageErrorMessages(value: any[]) {
-      this._pageErrorMessages = value;
-   }
+  set pageErrorMessages(value: any[]) {
+    this._pageErrorMessages = value;
+  }
 
-   get hasSavedEntity(): boolean {
-      return this._savedEntity != null;
-   }
+  get hasSavedEntity(): boolean {
+    return this._savedEntity != null;
+  }
 
-   get savedEntity(): TEntity {
-      return this._savedEntity;
-   }
+  get savedEntity(): TEntity {
+    return this._savedEntity;
+  }
 
-   get entityToSave(): TEntity {
-      return this._entityToSave;
-   }
+  get entityToSave(): TEntity {
+    return this._entityToSave;
+  }
 
-   protected constructor(
-      serviceProvider: TServiceProvider,
-      entity: TEntity,
-      private readonly _apiErrorMapper: any = nsApiErrorMapper,
-   ) {
-      super(serviceProvider, entity);
-   }
+  protected constructor(
+    serviceProvider: TServiceProvider,
+    entity: TEntity,
+    private readonly _apiErrorMapper: any = nsApiErrorMapper,
+  ) {
+    super(serviceProvider, entity);
+  }
 
-   resolveEntityLoadingError(error: NsApiResponseError) {
-      this._pageErrorMessages = this.apiErrorResolverService.resolve(
-         this._apiErrorMapper,
-         error
-      );
-   }
+  resolveEntityLoadingError(error: NsApiResponseError) {
+    this._pageErrorMessages = this.apiErrorResolverService.resolve(this._apiErrorMapper, error);
+  }
 
-   startSave(currentEntity: TEntity) {
-      this.onBeforeEntitySaved(this.initialEntity, currentEntity);
-   }
+  startSave(currentEntity: TEntity) {
+    this.onBeforeEntitySaved(this.initialEntity, currentEntity);
+  }
 
-   protected onBeforeEntitySaved(initialEntity: TEntity, currentEntity: TEntity) {
-   }
+  protected onBeforeEntitySaved(initialEntity: TEntity, currentEntity: TEntity) {}
 
-   abstract getStateKey(): string;
+  abstract getStateKey(): string;
 
-   getState(): any {
-      return {
-         [keyStateEntity]: this.currentEntity
-      };
-   }
+  getState(): any {
+    return {
+      [keyStateEntity]: this.currentEntity,
+    };
+  }
 
-   setState(state: any) {
-      this._savedEntity = state[keyStateEntity];
-   }
+  setState(state: any) {
+    this._savedEntity = state[keyStateEntity];
+  }
 
-   onNavigationToState(state: any) {
-   }
+  onNavigationToState(state: any) {}
 
-   onNavigationBackState(state: any) {
-   }
+  onNavigationBackState(state: any) {}
 }
