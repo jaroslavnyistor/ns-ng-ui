@@ -64,12 +64,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4596d82-092a-4554-acc6-23c1ce55482d" name="to-be-committed" comment="">
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui-playground/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui-playground/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui-playground/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui-playground/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/raised/ns-button-raised.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/raised/ns-button-raised.model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +150,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="build-lib" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build-lib" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -184,6 +192,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build-lib" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.lint" />
@@ -201,7 +210,8 @@
       <option name="presentableId" value="Default" />
       <updated>1590609688002</updated>
       <workItem from="1590609689219" duration="6247000" />
-      <workItem from="1590671607782" duration="1660000" />
+      <workItem from="1590671607782" duration="1936000" />
+      <workItem from="1590673562284" duration="352000" />
     </task>
     <task id="LOCAL-00001" summary="Init setup of npm package ver 1.3.0.0">
       <created>1590609940380</created>
@@ -287,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590673008737</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added required npm packaged including ns-js-utils">
+      <created>1590673349527</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1590673349527</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,37 +335,43 @@
     <MESSAGE value="Revert project README.md" />
     <MESSAGE value="Added source codes" />
     <MESSAGE value="Added index.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added index.ts" />
+    <MESSAGE value="Added required npm packaged including ns-js-utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added required npm packaged including ns-js-utils" />
   </component>
   <component name="WindowStateProjectService">
     <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog" timestamp="1590672885001">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590672885001" />
-    <state width="1259" height="400" key="GridCell.Tab.0.bottom" timestamp="1590637080649">
+    <state width="1259" height="400" key="GridCell.Tab.0.bottom" timestamp="1590673545087">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624608" />
-    <state width="1259" height="400" key="GridCell.Tab.0.center" timestamp="1590637080649">
+    <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545087" />
+    <state width="1259" height="400" key="GridCell.Tab.0.center" timestamp="1590673545087">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624607" />
-    <state width="1259" height="400" key="GridCell.Tab.0.left" timestamp="1590637080649">
+    <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545087" />
+    <state width="1259" height="400" key="GridCell.Tab.0.left" timestamp="1590673545086">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624607" />
-    <state width="1259" height="400" key="GridCell.Tab.0.right" timestamp="1590637080649">
+    <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545086" />
+    <state width="1259" height="400" key="GridCell.Tab.0.right" timestamp="1590673545087">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624608" />
-    <state x="811" y="344" key="SettingsEditor" timestamp="1590612766299">
+    <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545087" />
+    <state x="811" y="344" key="SettingsEditor" timestamp="1590673913801">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="811" y="344" key="SettingsEditor/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590612766299" />
+    <state x="811" y="344" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1590673913801" />
     <state x="1146" y="615" key="VCS.EditChangelistDialog" timestamp="1590609904602">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
