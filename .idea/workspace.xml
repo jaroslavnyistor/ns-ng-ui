@@ -64,14 +64,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4596d82-092a-4554-acc6-23c1ce55482d" name="to-be-committed" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/ng-package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/ng-package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/tsconfig.lib.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/tsconfig.lib.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/tsconfig.lib.prod.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/tsconfig.lib.prod.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/index.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +221,7 @@
       <workItem from="1590609689219" duration="6247000" />
       <workItem from="1590671607782" duration="1936000" />
       <workItem from="1590673562284" duration="2875000" />
-      <workItem from="1590676445938" duration="581000" />
+      <workItem from="1590676445938" duration="920000" />
     </task>
     <task id="LOCAL-00001" summary="Init setup of npm package ver 1.3.0.0">
       <created>1590609940380</created>
@@ -341,7 +335,35 @@
       <option name="project" value="LOCAL" />
       <updated>1590675279139</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="preserveSymlinks added to non-prod build of lib">
+      <created>1590677185774</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1590677185774</updated>
+    </task>
+    <task id="LOCAL-00018" summary="allowSyntheticDefaultImports added tsconfig.json">
+      <created>1590677222343</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1590677222343</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Minor changes">
+      <created>1590677238947</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1590677238947</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added missing global names for external libs">
+      <created>1590677280191</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1590677280191</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,41 +404,45 @@
     <MESSAGE value="Fixed public api of lib" />
     <MESSAGE value="Fixed source code errors in lib" />
     <MESSAGE value="Code formatted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code formatted" />
+    <MESSAGE value="preserveSymlinks added to non-prod build of lib" />
+    <MESSAGE value="allowSyntheticDefaultImports added tsconfig.json" />
+    <MESSAGE value="Minor changes" />
+    <MESSAGE value="added missing global names for external libs" />
+    <option name="LAST_COMMIT_MESSAGE" value="added missing global names for external libs" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590673922030">
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590677332202">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590673922030" />
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590677332202" />
     <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog" timestamp="1590672885001">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590672885001" />
-    <state width="2519" height="400" key="GridCell.Tab.0.bottom" timestamp="1590676603029">
+    <state width="1339" height="400" key="GridCell.Tab.0.bottom" timestamp="1590677342748">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624608" />
-    <state width="2519" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1590676603029" />
-    <state width="2519" height="400" key="GridCell.Tab.0.center" timestamp="1590676603028">
+    <state width="1339" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1590677342748" />
+    <state width="1339" height="400" key="GridCell.Tab.0.center" timestamp="1590677342748">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624607" />
-    <state width="2519" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1590676603028" />
-    <state width="2519" height="400" key="GridCell.Tab.0.left" timestamp="1590676603028">
+    <state width="1339" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1590677342748" />
+    <state width="1339" height="400" key="GridCell.Tab.0.left" timestamp="1590677342748">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624607" />
-    <state width="2519" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1590676603028" />
-    <state width="2519" height="400" key="GridCell.Tab.0.right" timestamp="1590676603029">
+    <state width="1339" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1590677342748" />
+    <state width="1339" height="400" key="GridCell.Tab.0.right" timestamp="1590677342748">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624608" />
-    <state width="2519" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1590676603029" />
+    <state width="1339" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1590677342748" />
     <state x="811" y="344" key="SettingsEditor" timestamp="1590673913801">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
