@@ -18,7 +18,13 @@
   "homepage": "https://github.com/jaroslavnyistor/ns-ng-ui#readme",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9"
+    "@angular/core": "^9.1.9",
+    "@angular/cdk": "^9.2.4",
+    "@angular/flex-layout": "^9.0.0-beta.31",
+    "@angular/material": "^9.2.4",
+    "@angular/material-moment-adapter": "^9.2.4",
+    "moment": "^2.26.0",
+    "ngx-material-timepicker": "^5.5.2"
   },
   "dependencies": {
     "tslib": "^1.10.0"
