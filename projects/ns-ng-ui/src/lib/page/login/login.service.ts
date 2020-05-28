@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Params } from '@angular/router';
 import { LocalizedTextIdNikisoft, NsAuthenticateResponseEntity, NsNavigationService } from 'ns-js-utils';
 import { Observable, of } from 'rxjs';
 import { mergeMap, switchMap } from 'rxjs/operators';
