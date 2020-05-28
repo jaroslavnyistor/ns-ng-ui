@@ -1,6 +1,4 @@
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
+import { nsIsNotNullOrEmpty, NsNavigationService, NsStoragePageModel } from 'ns-js-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 

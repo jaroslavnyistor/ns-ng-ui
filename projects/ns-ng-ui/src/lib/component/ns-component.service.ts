@@ -1,6 +1,6 @@
+import { NsSubscriptionService } from 'ns-js-utils';
 import { Observable, OperatorFunction, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { NsSubscriptionService } from '../../utils/subscription/ns-subscription.service';
 import { NsComponentModel } from './ns-component.model';
 
 export abstract class NsComponentService<TModel extends NsComponentModel> extends NsSubscriptionService {

@@ -1,7 +1,5 @@
+import { NsDateTime, nsIsNotNullOrEmpty, nsIsNullOrEmpty, NsMap } from 'ns-js-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { NsDateTime } from '../../../../utils/dates/ns-date-time';
-import { nsIsNotNullOrEmpty, nsIsNullOrEmpty } from '../../../../utils/helpers/strings/ns-helpers-strings';
-import { NsMap } from '../../../../utils/map/ns-map';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 import { NsCalendarsMonthDayModel } from './ns-calendars-month-day.model';
 import { NsCalendarsMonthWeekModel } from './ns-calendars-month-week.model';

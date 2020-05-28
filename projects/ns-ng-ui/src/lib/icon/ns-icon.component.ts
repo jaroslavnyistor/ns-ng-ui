@@ -8,7 +8,7 @@ import {
    SimpleChanges,
    ViewChild
 } from '@angular/core';
-import { nsIsNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
+import { nsIsNullOrEmpty } from 'ns-js-utils';
 import { NsIcon } from './ns-icon.enum';
 
 @Component({

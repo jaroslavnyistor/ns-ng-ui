@@ -65,9 +65,98 @@
   <component name="ChangeListManager">
     <list default="true" id="f4596d82-092a-4554-acc6-23c1ce55482d" name="to-be-committed" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/raised/ns-button-raised.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/raised/ns-button-raised.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.collection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.collection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-week.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-week.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/card/ns-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/card/ns-card.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/clock/ns-clock.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/clock/ns-clock.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard-item.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard-item.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/expansion-panel/ns-expansion-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/expansion-panel/ns-expansion-panel.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array-item.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array-item.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.configuration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/group/ns-form-group.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/group/ns-form-group.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.definition.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.definition.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/ns-form-control.validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/ns-form-control.validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/ns-form-control.validators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/ns-form-control.validators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-date-range.validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-date-range.validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/ns-icon.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/ns-icon.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/ns-loading-inline.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/ns-loading-inline.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/menu/localization-languages-menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/menu/localization-languages-menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/picker/localization-languages-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/picker/localization-languages-picker.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/translation/translate.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/translation/translate.pipe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-di.configurator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-di.configurator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/errors/ns-page-errors.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/errors/ns-page-errors.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default-item.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default-item.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list-load-request.builder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list-load-request.builder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order-model.collection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order-model.collection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found-auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found-auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/search/input/ns-search-input.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/search/input/ns-search-input.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider-component.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider-component.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider-component.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider-component.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider.di-configurator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider.di-configurator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/table-item-value/ns-table-item-value.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/table-item-value/ns-table-item-value.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +300,7 @@
       <updated>1590609688002</updated>
       <workItem from="1590609689219" duration="6247000" />
       <workItem from="1590671607782" duration="1936000" />
-      <workItem from="1590673562284" duration="352000" />
+      <workItem from="1590673562284" duration="1545000" />
     </task>
     <task id="LOCAL-00001" summary="Init setup of npm package ver 1.3.0.0">
       <created>1590609940380</created>
@@ -304,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590673349527</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed public api of lib">
+      <created>1590674155117</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1590674155117</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,37 +432,42 @@
     <MESSAGE value="Added source codes" />
     <MESSAGE value="Added index.ts" />
     <MESSAGE value="Added required npm packaged including ns-js-utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added required npm packaged including ns-js-utils" />
+    <MESSAGE value="Fixed public api of lib" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed public api of lib" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590673922030">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590673922030" />
     <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog" timestamp="1590672885001">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590672885001" />
-    <state width="1259" height="400" key="GridCell.Tab.0.bottom" timestamp="1590673545087">
+    <state width="1431" height="400" key="GridCell.Tab.0.bottom" timestamp="1590674156639">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624608" />
-    <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545087" />
-    <state width="1259" height="400" key="GridCell.Tab.0.center" timestamp="1590673545087">
+    <state width="1431" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1590674156639" />
+    <state width="1431" height="400" key="GridCell.Tab.0.center" timestamp="1590674156639">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624607" />
-    <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545087" />
-    <state width="1259" height="400" key="GridCell.Tab.0.left" timestamp="1590673545086">
+    <state width="1431" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1590674156639" />
+    <state width="1431" height="400" key="GridCell.Tab.0.left" timestamp="1590674156639">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624607" />
-    <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545086" />
-    <state width="1259" height="400" key="GridCell.Tab.0.right" timestamp="1590673545087">
+    <state width="1431" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1590674156639" />
+    <state width="1431" height="400" key="GridCell.Tab.0.right" timestamp="1590674156639">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590637080649" />
     <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@2560.0.2560.1400" timestamp="1590614624608" />
-    <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1590673545087" />
+    <state width="1431" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1590674156639" />
     <state x="811" y="344" key="SettingsEditor" timestamp="1590673913801">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -376,14 +477,15 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1146" y="615" key="VCS.EditChangelistDialog/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590609904602" />
-    <state x="962" y="440" width="636" height="520" key="find.popup" timestamp="1590673213000">
+    <state x="962" y="440" width="636" height="520" key="find.popup" timestamp="1590674331050">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="962" y="440" width="636" height="520" key="find.popup/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590615004808" />
-    <state x="962" y="440" width="636" height="520" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1590673213000" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1590612885447">
+    <state x="962" y="440" width="636" height="520" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1590674331050" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1590674103816">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590612885447" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1590674103816" />
   </component>
 </project>

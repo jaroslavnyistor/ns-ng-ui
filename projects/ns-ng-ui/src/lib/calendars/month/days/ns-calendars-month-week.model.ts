@@ -1,6 +1,5 @@
+import { NsDateTime, NsMap } from 'ns-js-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { NsDateTime } from '../../../../utils/dates/ns-date-time';
-import { NsMap } from '../../../../utils/map/ns-map';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 import { NsCalendarsMonthDayModel } from './ns-calendars-month-day.model';
 

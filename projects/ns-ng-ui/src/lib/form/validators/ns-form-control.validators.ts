@@ -1,9 +1,9 @@
 import { ValidatorFn } from '@angular/forms';
-import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
+import { LocalizationLanguagesService } from 'ns-js-utils';
 import { NsFormControlValidator } from './ns-form-control.validator';
 
 export class NsFormControlValidators {
-   private readonly _validators: Array<NsFormControlValidator> = [];
+   private readonly _validators: NsFormControlValidator[] = [];
    private _langService: LocalizationLanguagesService;
 
    setLangService(langService: LocalizationLanguagesService) {

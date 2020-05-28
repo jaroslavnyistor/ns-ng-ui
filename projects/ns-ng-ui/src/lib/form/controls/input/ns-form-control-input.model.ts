@@ -1,5 +1,4 @@
-import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { nsStringLength } from '../../../../utils/helpers/strings/ns-helpers-strings';
+import { nsNull, nsStringLength } from 'ns-js-utils';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
 import { NsFormControlLengthMinValidator } from '../../validators/provided/ns-form-control-length-min.validator';
 import { NsFormControl } from '../ns-form-control';

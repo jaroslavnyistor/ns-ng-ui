@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsRouterService } from '../../../utils/navigation/ns-router.service';
-import { routeNoPermission } from './ns-page-no-permission.routes';
+import { NsRouterService, routeNoPermission } from 'ns-js-utils';
 
 @Injectable({
    providedIn: 'root'

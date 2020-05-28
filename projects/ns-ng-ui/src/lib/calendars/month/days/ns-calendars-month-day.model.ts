@@ -1,4 +1,4 @@
-import { NsDateTime } from '../../../../utils/dates/ns-date-time';
+import { NsDateTime } from 'ns-js-utils';
 import { NsNgClassBreakpoints } from '../../../ns-media-query-observer';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 

@@ -1,4 +1,4 @@
-import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
+import { NsNavigationService } from 'ns-js-utils';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../service-provider/ns-service-provider-component.service';
 import { NsDashboardModel } from './ns-dashboard.model';

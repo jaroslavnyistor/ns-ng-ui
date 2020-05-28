@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService } from '../../../../../../utils/localization/localization-languages.service';
+import { LocalizationLanguagesService } from 'ns-js-utils';
 import { NsIcon } from '../../../../../icon/ns-icon.enum';
 import { NsToolbarNavigationItemEntity } from './ns-toolbar-navigation-item.entity';
 

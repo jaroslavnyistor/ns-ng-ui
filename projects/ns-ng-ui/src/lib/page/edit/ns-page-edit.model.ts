@@ -1,8 +1,10 @@
-import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
+import {
+   nsApiErrorMapper,
+   NsApiResponseError,
+   nsIsNotNullOrEmpty,
+   NsNavigationService,
+   NsStoragePageModel
+} from 'ns-js-utils';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsFormModel } from '../../form/ns-form.model';

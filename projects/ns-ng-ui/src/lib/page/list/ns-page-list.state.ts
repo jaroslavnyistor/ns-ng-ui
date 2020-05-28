@@ -1,4 +1,4 @@
-import { OrderDirection } from '../../../utils/order/order-direction';
+import { OrderDirection } from 'ns-js-utils';
 
 export interface NsPageListState {
    pageIndex?: number;

@@ -1,7 +1,6 @@
+import { LocalizedTextIdNikisoft, NsNavigationService } from 'ns-js-utils';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';

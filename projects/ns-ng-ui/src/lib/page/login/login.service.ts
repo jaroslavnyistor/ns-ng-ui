@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { LocalizedTextIdNikisoft, NsAuthenticateResponseEntity, NsNavigationService } from 'ns-js-utils';
 import { Observable, of } from 'rxjs';
 import { mergeMap, switchMap } from 'rxjs/operators';
-import { NsAuthenticateResponseEntity } from '../../../utils/authentication/ns-authenticate-response.entity';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditService } from '../edit/ns-page-edit.service';
 import { LoginEntity, newLoginEntity } from './login.entity';

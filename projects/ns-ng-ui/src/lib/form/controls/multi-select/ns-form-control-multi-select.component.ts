@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { NsIcon } from 'src/app/nikisoft/ui/icon/ns-icon.enum';
 import { NsFormControlMultiSelectModel } from './ns-form-control-multi-select.model';
+import { NsIcon } from '../../../icon/ns-icon.enum';
 
 @Component({
    selector: 'ns-form-control-autocomplete',

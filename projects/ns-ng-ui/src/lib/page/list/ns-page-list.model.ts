@@ -1,11 +1,12 @@
 import { PageEvent } from '@angular/material/paginator';
+import {
+   nsApiErrorMapper,
+   NsApiResponseError,
+   nsIsNotNullOrEmpty,
+   NsNavigationService,
+   NsStoragePageModel, OrderDirection
+} from 'ns-js-utils';
 import { BehaviorSubject } from 'rxjs';
-import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { OrderDirection } from '../../../utils/order/order-direction';
-import { NsStoragePageModel } from '../../../utils/storage/page/ns-storage-page.model';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 import { NsToolbarEditModel } from '../toolbar/edit/ns-toolbar-edit.model';

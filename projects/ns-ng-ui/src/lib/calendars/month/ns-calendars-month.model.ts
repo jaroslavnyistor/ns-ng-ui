@@ -1,10 +1,12 @@
+import {
+   nsApiErrorMapper,
+   NsApiResponseError,
+   NsDate,
+   NsDateTime,
+   nsIsNotNullOrEmpty,
+   NsNavigationService
+} from 'ns-js-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { nsApiErrorMapper } from '../../../utils/api/error/ns-api-error.mapper';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsDate } from '../../../utils/dates/ns-date';
-import { NsDateTime } from '../../../utils/dates/ns-date-time';
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsMediaQueryBreakpoint, NsMediaQueryBreakpointChanges } from '../../ns-media-query-observer';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';

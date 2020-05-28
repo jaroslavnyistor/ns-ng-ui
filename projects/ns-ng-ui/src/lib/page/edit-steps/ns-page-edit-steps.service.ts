@@ -1,10 +1,7 @@
 import { Params } from '@angular/router';
+import { LocalizedTextIdNikisoft, NsApiResponseError, NsNavigationService, NsStoragePageService } from 'ns-js-utils';
 import { EMPTY, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsFormStepsService } from '../../form/steps/ns-form-steps.service';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditStepsModel } from './ns-page-edit-steps.model';

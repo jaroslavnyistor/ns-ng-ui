@@ -1,10 +1,7 @@
 import { Params } from '@angular/router';
+import { LocalizedTextIdNikisoft, NsApiResponseError, NsNavigationService, NsStoragePageService } from 'ns-js-utils';
 import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap, switchMap } from 'rxjs/operators';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { LocalizedTextIdNikisoft } from '../../../utils/localization/localized-text-id.nikisoft';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsFormService } from '../../form/ns-form.service';

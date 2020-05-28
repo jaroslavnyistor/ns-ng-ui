@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
-
-export const loginRoute = 'Login';
+import { loginRoute } from 'ns-js-utils';
 
 export const loginRoutes: Route[] = [
    {

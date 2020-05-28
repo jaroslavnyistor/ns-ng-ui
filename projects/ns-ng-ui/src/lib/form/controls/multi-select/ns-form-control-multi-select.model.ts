@@ -1,8 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { LocalizationLanguagesService, nsNull } from 'ns-js-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { LocalizationLanguagesService } from '../../../../utils/localization/localization-languages.service';
 import { NsFormControlValidators } from '../../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../../validators/provided/ns-form-control-required.validator';
 import { NsFormGroup } from '../group/ns-form-group';

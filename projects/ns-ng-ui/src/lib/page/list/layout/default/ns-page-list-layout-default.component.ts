@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from '../../../../../utils/helpers/strings/ns-helpers-strings';
+import { nsIsNotNullOrEmpty } from 'ns-js-utils';
 import { NsIcon } from '../../../../icon/ns-icon.enum';
 import { NsPageListModel } from '../../ns-page-list.model';
 import { NsPageListService } from '../../ns-page-list.service';

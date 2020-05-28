@@ -1,6 +1,5 @@
 import { MatDatepicker } from '@angular/material/datepicker';
-import { NsDate } from '../../../../utils/dates/ns-date';
-import { nsNull } from '../../../../utils/helpers/ns-helpers';
+import { NsDate, nsNull } from 'ns-js-utils';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlDatePickerConfiguration } from './ns-form-control-date-picker.configuration';

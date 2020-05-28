@@ -1,14 +1,10 @@
 import { Provider, Type } from '@angular/core';
-import { NsAuthenticateDiConfigurator } from '../utils/authentication/ns-authenticate.di-configurator';
 import {
-   NsAuthenticationApiService,
-   NsNoAuthenticationApiService
-} from '../utils/authentication/ns-authentication-api.service';
-import { nsObjectIsNullValue } from '../utils/helpers/ns-helpers';
-import { LocalizationLanguagesDiConfigurator } from '../utils/localization/localization-languages.di-configurator';
-import { LocalizationLanguage } from '../utils/localization/localization.language';
-import { NsNavigationService } from '../utils/navigation/ns-navigation.service';
-import { NsStorageDiConfigurator } from '../utils/storage/ns-storage.di-configurator';
+   LocalizationLanguage,
+   LocalizationLanguagesDiConfigurator,
+   NsAuthenticateDiConfigurator, NsAuthenticationApiService, NsNavigationService,
+   NsNoAuthenticationApiService, nsObjectIsNullValue, NsStorageDiConfigurator
+} from 'ns-js-utils';
 import { DI_NS_APP_LOGO, DI_NS_VERSION } from './ns-di.tokens';
 import { NsPageNotFoundAuthDiConfigurator } from './page/not-found/ns-page-not-found-auth.di-configurator';
 import { NsServiceProvider } from './service-provider/ns-service-provider';

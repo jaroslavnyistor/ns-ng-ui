@@ -1,7 +1,6 @@
+import { nsIsNotNullOrEmpty, NsNavigationService } from 'ns-js-utils';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { nsIsNotNullOrEmpty } from '../../utils/helpers/strings/ns-helpers-strings';
-import { NsNavigationService } from '../../utils/navigation/ns-navigation.service';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
 import { NsDashboardItemEntity } from './ns-dashboard-item.entity';

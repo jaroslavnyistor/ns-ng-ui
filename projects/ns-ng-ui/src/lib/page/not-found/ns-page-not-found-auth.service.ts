@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { NsAuthenticateService } from 'ns-js-utils';
 import { Observable } from 'rxjs';
-import { NsAuthenticateService } from '../../../utils/authentication/ns-authenticate.service';
 import { DI_NS_NOT_FOUND_AUTH_REQUIRED } from './ns-page-not-found-auth.di-tokens';
 
 @Injectable({

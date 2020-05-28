@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { loginRoute, NsNavigationService } from 'ns-js-utils';
 import { Observable, of } from 'rxjs';
 import { filter, flatMap, map } from 'rxjs/operators';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
 import { NsIcon } from '../../icon/ns-icon.enum';
-import { loginRoute } from '../../page/login/login.routes';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 

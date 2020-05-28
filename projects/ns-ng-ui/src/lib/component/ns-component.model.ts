@@ -1,4 +1,4 @@
-import { NsSubscriptionModel } from '../../utils/subscription/ns-subscription.model';
+import { NsSubscriptionModel } from 'ns-js-utils';
 
 export enum ComponentModelState {
    DONE = 'DONE',

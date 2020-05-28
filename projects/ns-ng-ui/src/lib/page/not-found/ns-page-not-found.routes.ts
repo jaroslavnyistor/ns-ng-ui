@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
-
-export const routeNotFound = 'not-found';
+import { routeNotFound } from 'ns-js-utils';
 
 export const notFoundRoutes: Route[] = [
    {

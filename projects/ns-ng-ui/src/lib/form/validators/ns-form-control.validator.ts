@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
+import { LocalizationLanguagesService } from 'ns-js-utils';
 
 export abstract class NsFormControlValidator {
    private readonly _validator: ValidatorFn;

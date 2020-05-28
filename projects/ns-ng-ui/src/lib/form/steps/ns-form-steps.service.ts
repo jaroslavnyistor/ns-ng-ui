@@ -1,4 +1,4 @@
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
+import { NsNavigationService } from 'ns-js-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsFormService } from '../ns-form.service';
 import { NsFormStepsModel } from './ns-form-steps.model';

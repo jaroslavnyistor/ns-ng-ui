@@ -1,5 +1,4 @@
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
+import { NsNavigationService, NsStoragePageService } from 'ns-js-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
 import { NsPageDefaultModel } from './ns-page-default.model';

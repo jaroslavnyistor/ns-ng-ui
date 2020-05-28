@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService } from '../../utils/localization/localization-languages.service';
+import { LocalizationLanguagesService } from 'ns-js-utils';
 import { NsPageListLayoutItemModel } from '../page/list/layout/item/ns-page-list-layout-item.model';
 import { NsDashboardItemEntity } from './ns-dashboard-item.entity';
 

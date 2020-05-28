@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty } from '../../../../../utils/helpers/strings/ns-helpers-strings';
+import { nsIsNotNullOrEmpty } from 'ns-js-utils';
 import { NsPageListLayoutItemModel } from '../item/ns-page-list-layout-item.model';
 
 export abstract class NsPageListLayoutDefaultItemModel

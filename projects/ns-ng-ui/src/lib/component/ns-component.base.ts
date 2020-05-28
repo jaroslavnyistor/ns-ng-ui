@@ -1,5 +1,5 @@
 import { OnDestroy, OnInit } from '@angular/core';
-import { NsSubscriptionBase } from '../../utils/subscription/ns-subscription.base';
+import { NsSubscriptionBase } from 'ns-js-utils';
 import { NsComponentModel } from './ns-component.model';
 import { NsComponentService } from './ns-component.service';
 

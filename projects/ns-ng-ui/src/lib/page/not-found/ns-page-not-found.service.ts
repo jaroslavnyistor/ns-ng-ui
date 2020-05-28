@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsRouterService } from '../../../utils/navigation/ns-router.service';
-import { routeNotFound } from './ns-page-not-found.routes';
+import { NsRouterService, routeNotFound } from 'ns-js-utils';
 
 @Injectable({
    providedIn: 'root'

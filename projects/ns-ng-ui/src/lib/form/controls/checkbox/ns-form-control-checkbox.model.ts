@@ -1,4 +1,4 @@
-import { nsNull } from '../../../../utils/helpers/ns-helpers';
+import { nsNull } from 'ns-js-utils';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlCheckboxConfiguration } from './ns-form-control-checkbox.configuration';

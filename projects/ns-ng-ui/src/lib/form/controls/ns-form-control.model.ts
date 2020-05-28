@@ -1,11 +1,13 @@
 import { ValidatorFn } from '@angular/forms';
+import {
+   LocalizationLanguagesService,
+   nsArrayIsEmpty,
+   nsIsNotNullOrEmpty,
+   nsObjectHasValue,
+   NsSubscriptionModel
+} from 'ns-js-utils';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
-import { nsArrayIsEmpty } from '../../../utils/helpers/arrays/ns-helpers-arrays';
-import { nsObjectHasValue } from '../../../utils/helpers/ns-helpers';
-import { nsIsNotNullOrEmpty } from '../../../utils/helpers/strings/ns-helpers-strings';
-import { LocalizationLanguagesService } from '../../../utils/localization/localization-languages.service';
-import { NsSubscriptionModel } from '../../../utils/subscription/ns-subscription.model';
 import { NsFormControlValidator } from '../validators/ns-form-control.validator';
 import { NsFormControlValidators } from '../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../validators/provided/ns-form-control-required.validator';

@@ -1,8 +1,6 @@
+import { NsApiResponseError, NsNavigationService, NsStoragePageService } from 'ns-js-utils';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { NsApiResponseError } from '../../../utils/api/ns-api-response.error';
-import { NsNavigationService } from '../../../utils/navigation/ns-navigation.service';
-import { NsStoragePageService } from '../../../utils/storage/page/ns-storage-page.service';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
 import { NsToolbarEditService } from '../toolbar/edit/ns-toolbar-edit.service';

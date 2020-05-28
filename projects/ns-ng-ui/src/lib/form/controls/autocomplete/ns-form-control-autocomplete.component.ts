@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { NsIcon } from 'src/app/nikisoft/ui/icon/ns-icon.enum';
 import { NsFormControlAutocompleteModel } from './ns-form-control-autocomplete.model';
+import { NsIcon } from '../../../icon/ns-icon.enum';
 
 @Component({
    selector: 'ns-form-control-autocomplete',

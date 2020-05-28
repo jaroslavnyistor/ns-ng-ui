@@ -1,4 +1,4 @@
-import { NsDateTime } from '../../../../utils/dates/ns-date-time';
+import { NsDateTime } from 'ns-js-utils';
 
 export abstract class NsCalendarsMonthDayEntity {
    private readonly _date: string;

@@ -1,8 +1,5 @@
+import { nsApiErrorMapper, nsArrayItemAt, NsNavigationService, NsSubscriptionService } from 'ns-js-utils';
 import { Observable } from 'rxjs';
-import { nsApiErrorMapper } from '../../../../utils/api/error/ns-api-error.mapper';
-import { nsArrayItemAt } from '../../../../utils/helpers/arrays/ns-helpers-arrays';
-import { NsNavigationService } from '../../../../utils/navigation/ns-navigation.service';
-import { NsSubscriptionService } from '../../../../utils/subscription/ns-subscription.service';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlSelectItemEntity } from './ns-form-control-select-item.entity';
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { nsFormatNumber } from '../../utils/helpers/numbers/ns-helpers-numbers';
+import { nsFormatNumber } from 'ns-js-utils';
 
 @Component({
    selector: 'ns-clock',

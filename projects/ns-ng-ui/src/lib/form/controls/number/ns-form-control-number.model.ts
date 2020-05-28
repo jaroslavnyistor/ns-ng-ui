@@ -1,6 +1,5 @@
 import { FormControl } from '@angular/forms';
-import { nsNull } from '../../../../utils/helpers/ns-helpers';
-import { nsStringToNumber } from '../../../../utils/helpers/strings/ns-helpers-strings';
+import { nsNull, nsStringToNumber } from 'ns-js-utils';
 import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
 import { NsFormControlValueMinValidator } from '../../validators/provided/ns-form-control-value-min.validator';
 import { NsFormControl } from '../ns-form-control';
