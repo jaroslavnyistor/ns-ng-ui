@@ -1,0 +1,33 @@
+<mat-form-field>
+   <input [placeholder]="model.label"
+          [formControl]="model.formControl"
+          readonly
+          matInput
+          [ngxTimepicker]="timePicker"
+          [disableClick]="model.isDisabled"
+          [format]="24">
+
+   <ns-icon-small [disabled]="!model.canClearValue()"
+                  matSuffix
+                  [icon]="NsIcon.Navigation_Close"
+                  [isClickable]="true"
+                  [isFocusable]="false"
+                  (mouseup)="model.canClearValue() && model.clearValue()">
+   </ns-icon-small>
+
+   <ns-icon-small [disabled]="!model.canChooseTime"
+                  matSuffix
+                  [icon]="NsIcon.Device_AccessTime"
+                  [isClickable]="true"
+                  (mouseup)="model.canChooseTime && timePicker.open()">
+   </ns-icon-small>
+
+   <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
+
+   <mat-error>{{model.errorMessage$ | async}}</mat-error>
+</mat-form-field>
+
+<ngx-material-timepicker #timePicker
+                         [format]="24"
+                         [theme]="theme">
+</ngx-material-timepicker>

@@ -64,17 +64,340 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4596d82-092a-4554-acc6-23c1ce55482d" name="to-be-committed" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VERSIONS.md" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/VERSIONS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/ng-package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/ng-package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/tslint.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/default/ns-button-default.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/default/ns-button-default.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/ns-button-material-type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/ns-button-type.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/ns-button.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/ns-button.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/raised/ns-button-raised.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/button/raised/ns-button-raised.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.collection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-day.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-days.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-days.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-days.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/days/ns-calendars-month-week.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/headers/ns-calendars-month-headers.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/headers/ns-calendars-month-headers.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/headers/ns-calendars-month-headers.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month-load-request.builder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month-right-panel.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/ns-calendars-month.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/toolbar/ns-calendars-month-toolbar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/toolbar/ns-calendars-month-toolbar.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/toolbar/ns-calendars-month-toolbar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/calendars/month/toolbar/ns-calendars-month-toolbar.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/card/ns-card.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/card/ns-card.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/card/ns-card.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/card/ns-card.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/clock/ns-clock.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/clock/ns-clock.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.base.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/component/ns-component.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard-item.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dasboard/ns-dashboard.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/delete/ns-dialog-delete.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/ns-dialog.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/dialog/ns-dialog.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/divider/ns-divider.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/divider/ns-divider.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/expansion-panel/ns-expansion-panel.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/expansion-panel/ns-expansion-panel.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-array.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array-item-template.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array-item.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/array/ns-form-control-array.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date-time/ns-form-control-date-time-picker.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/group/ns-form-group.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/group/ns-form-group.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/group/ns-form-group.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input-type.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/input/ns-form-control-input.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/ns-form-control-multi-select.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/multi-select/validators/ns-form-control-multi-select-required.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.definition.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/ns-form-control.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/number/ns-form-control-number.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/select/ns-form-control-select.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/controls/time/ns-form-control-time-picker.theme.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.builder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/ns-form.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-step.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps-buttons.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps-buttons.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps-buttons.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/steps/ns-form-steps.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/ns-form-control.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/ns-form-control.validators.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-date-range.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-email.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-length-max.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-length-min.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-required.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-value-max.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/form/validators/provided/ns-form-control-value-min.validator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/grid/ns-grid-column.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/grid/ns-grid-row.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/grid/ns-grid-row.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/grid/ns-grid.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/default/ns-icon-default-add.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/default/ns-icon-default-delete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/default/ns-icon-default-edit.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/default/ns-icon-default-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/default/ns-icon-default-pick-date.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/default/ns-icon-default.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/large/ns-icon-large.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/normal/ns-icon-normal.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/ns-icon.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/ns-icon.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/ns-icon.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/ns-icon.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/semi-large/ns-icon-semi-large.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/icon/small/ns-icon-small.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/normal/ns-loading-inline-normal.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/ns-loading-inline.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/ns-loading-inline.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/ns-loading-inline.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/inline/small/ns-loading-inline-small.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/ns-loading.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/ns-loading.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/loading/ns-loading.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/localization-languages.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/menu/localization-languages-menu.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/menu/localization-languages-menu.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/picker/localization-languages-picker.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/picker/localization-languages-picker.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/picker/localization-languages-picker.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/localization/languages/translation/translate.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-di.configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-di.tokens.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-media-query-observer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/ns-page.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-page-toolbar-navigation-items.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-page-toolbar-navigation-items.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-page-toolbar-navigation-items.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/items/ns-toolbar-navigation-item.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/ns-page-toolbar-navigation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/ns-page-toolbar-navigation.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/navigation/ns-page-toolbar-navigation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/ns-page-toolbar-header-item.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/ns-page-toolbar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/ns-page-toolbar.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/base/toolbar/ns-page-toolbar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/default/ns-page-default.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit-steps/ns-page-edit-steps.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/edit/ns-page-edit.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/errors/ns-page-errors.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/errors/ns-page-errors.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/custom/ns-page-list-layout-custom-item.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/custom/ns-page-list-layout-custom.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/custom/ns-page-list-layout-custom.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/custom/ns-page-list-layout-custom.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/custom/ns-page-list-layout-custom.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default-item.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/default/ns-page-list-layout-default.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/item/ns-page-list-layout-item.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/layout/item/ns-page-list-layout-item.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list-load-request.builder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list-load.request.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list-load.response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/ns-page-list.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/ns-page-list-toolbar-item.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/ns-page-list-toolbar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/ns-page-list-toolbar.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/ns-page-list-toolbar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order-model.collection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/list/toolbar/order/ns-page-list-toolbar-order.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/login/login.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/no-permission/ns-page-no-permission.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found-auth.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found-auth.di-tokens.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found-auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/not-found/ns-page-not-found.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/toolbar/edit/ns-toolbar-edit.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/toolbar/edit/ns-toolbar-edit.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/toolbar/edit/ns-toolbar-edit.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/toolbar/edit/ns-toolbar-edit.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/toolbar/edit/ns-toolbar-edit.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/page/toolbar/ns-toolbar.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/search/input/ns-search-input.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/search/input/ns-search-input.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/search/input/ns-search-input.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/search/ns-search.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider-component.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider-component.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider.di-configurator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/service-provider/ns-service-provider.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/styles/nikisoft-theming.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/styles/nikisoft.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.column.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/ns-table.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/table-item-value/ns-table-item-value-row.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/table-item-value/ns-table-item-value.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/table-item-value/ns-table-item-value.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/table/table-item-value/ns-table-item-value.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.component.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/log-in/ns-user-log-in-information.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/user/ns-user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-ng-ui.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-ng-ui.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-ng-ui.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-ng-ui.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/lib/ns-ng-ui.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/src/public-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/public-api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +529,7 @@
       <option name="presentableId" value="Default" />
       <updated>1590609688002</updated>
       <workItem from="1590609689219" duration="6247000" />
-      <workItem from="1590671607782" duration="655000" />
+      <workItem from="1590671607782" duration="1194000" />
     </task>
     <task id="LOCAL-00001" summary="Init setup of npm package ver 1.3.0.0">
       <created>1590609940380</created>
@@ -257,7 +580,28 @@
       <option name="project" value="LOCAL" />
       <updated>1590615102519</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Setup of app and lib">
+      <created>1590672490360</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1590672490360</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Setup of app and lib">
+      <created>1590672500363</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1590672500363</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Revert project README.md">
+      <created>1590672560729</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1590672560729</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,9 +628,15 @@
     <MESSAGE value="Version 1.3.1" />
     <MESSAGE value="Version 1.3.2" />
     <MESSAGE value="Version 1.3.3 and code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.3.3 and code cleanup" />
+    <MESSAGE value="Setup of app and lib" />
+    <MESSAGE value="Revert project README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert project README.md" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog" timestamp="1590672885001">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="100" y="100" width="2360" height="1200" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1590672885001" />
     <state width="1259" height="400" key="GridCell.Tab.0.bottom" timestamp="1590637080649">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

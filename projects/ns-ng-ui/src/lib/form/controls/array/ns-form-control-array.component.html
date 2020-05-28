@@ -1,0 +1,32 @@
+<div fxLayout="row nowrap"
+     fxLayoutAlign="start center"
+     class="top-bar">
+   <mat-label>{{model.label}}</mat-label>
+
+   <ns-icon-default-add (mouseup)="model.handleAdd()">
+   </ns-icon-default-add>
+</div>
+
+<mat-error class="errors">{{model.errorMessage$ | async}}</mat-error>
+
+<mat-divider class="custom-mat-divider"></mat-divider>
+
+<span *ngIf="model.isEmpty"
+      class="no-items">
+  {{ model.noItemsMessage }}
+</span>
+
+<div *ngFor="let formModel of model.formModels$ | async; let i = index"
+     fxLayout="row nowrap"
+     fxLayoutAlign="start baseline">
+   <div fxFlex="1 1 auto"
+        class="overflow-y-hidden">
+      <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: formModel}">
+      </ng-container>
+   </div>
+
+   <ns-icon-default-delete *ngIf="model.canDeleteItems"
+                           fxFlex="0 0 0"
+                           (mouseup)="model.handleDelete(i)">
+   </ns-icon-default-delete>
+</div>

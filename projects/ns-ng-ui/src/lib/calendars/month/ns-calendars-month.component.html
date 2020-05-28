@@ -1,0 +1,41 @@
+<ns-loading *ngIf="model.isLoading">
+</ns-loading>
+
+<ns-page-errors [errors]="model.errorMessages">
+</ns-page-errors>
+
+<mat-sidenav-container *ngIf="model.isDone">
+   <mat-sidenav *ngIf="rightPanelTemplate"
+                position="end"
+                ngClass.lt-sm="lt-sm"
+                ngClass.lt-md="lt-md"
+                ngClass.lt-xl="lt-xl"
+                [(opened)]="model.isRightPanelOpened">
+      <ng-container *ngTemplateOutlet="rightPanelTemplate">
+      </ng-container>
+   </mat-sidenav>
+
+   <mat-sidenav-content>
+      <div fxLayout="column nowrap"
+           class="inner-container">
+         <ns-calendars-month-toolbar fxFlex="0 0 0"
+                                     [service]="service"
+                                     [toolbarTemplate]="toolbarTemplate"
+                                     [hasRightPanelTemplate]="hasRightPanelTemplate">
+         </ns-calendars-month-toolbar>
+
+         <div fxFlex="1 1 100%"
+              fxLayout="column nowrap"
+              class="calendar-container">
+            <ns-calendars-month-headers fxFlex="0 0 0"
+                                        [service]="service">
+            </ns-calendars-month-headers>
+
+            <ns-calendars-month-days fxFlex="1 1 0"
+                                     [service]="service"
+                                     [dataItemTemplate]="dataItemTemplate">
+            </ns-calendars-month-days>
+         </div>
+      </div>
+   </mat-sidenav-content>
+</mat-sidenav-container>

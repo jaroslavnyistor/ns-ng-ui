@@ -1,0 +1,17 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="start stretch"
+     fxLayoutGap="16px grid">
+
+   <div *ngFor="let item of model.items$ | async"
+        [fxFlex.xl]="xl"
+        [fxFlex.lg]="lg"
+        [fxFlex.md]="md"
+        [fxFlex.sm]="sm"
+        [fxFlex.xs]="xs"
+        fxLayout="row">
+
+      <ng-template *ngTemplateOutlet="itemTemplate.templateRef; context: { $implicit: item }">
+      </ng-template>
+
+   </div>
+</div>

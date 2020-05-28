@@ -1,0 +1,42 @@
+<mat-form-field>
+   <input #inputElement
+          type="text"
+          [placeholder]="model.label"
+          [formControl]="model.formControl"
+          matInput
+          [matAutocomplete]="autocomplete"
+          #autocompleteTrigger="matAutocompleteTrigger">
+
+   <ns-loading-inline-small *ngIf="model.isLoading"
+                            matSuffix>
+   </ns-loading-inline-small>
+
+   <ns-icon-small [disabled]="!model.canClearValue()"
+                  [icon]="NsIcon.Navigation_Close"
+                  [isClickable]="true"
+                  [isFocusable]="false"
+                  matSuffix
+                  (mouseup)="model.clearSelection(autocompleteTrigger)">
+   </ns-icon-small>
+
+   <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
+
+   <mat-error>{{model.errorMessage$ | async}}</mat-error>
+</mat-form-field>
+
+<mat-autocomplete #autocomplete="matAutocomplete">
+   <ng-container *ngIf="model.isLoading">
+      <mat-option [disabled]="true">
+         <ns-loading-inline-normal [text]="'Loading' | translate">
+         </ns-loading-inline-normal>
+      </mat-option>
+   </ng-container>
+
+   <mat-option *ngFor="let item of model.data$ | async"
+               [style.display]="model.isLoading ? 'none' : 'block'"
+               [value]="item"
+               (onSelectionChange)="model.handleOptionSelected(item)">
+      {{ item }}
+   </mat-option>
+</mat-autocomplete>
+
