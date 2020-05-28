@@ -63,7 +63,19 @@
     <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4596d82-092a-4554-acc6-23c1ce55482d" name="to-be-committed" comment="" />
+    <list default="true" id="f4596d82-092a-4554-acc6-23c1ce55482d" name="to-be-committed" comment="">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VERSIONS.md" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/src/VERSIONS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/ng-package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/ng-package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ns-ng-ui/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ns-ng-ui/tslint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +100,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/projects/ns-ng-ui/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -100,7 +112,47 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
     <property name="ts.external.directory.path" value="D:\Projects\NikiSoft\Projects\nikisoft\ns-web-fe\ns-ng-ui\node_modules\typescript\lib" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\NikiSoft\Projects\nikisoft\ns-web-fe\ns-ng-ui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (ns-ng-ui-playground)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/projects/ns-ng-ui-playground/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$/projects/ns-ng-ui-playground" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests (ns-ng-ui)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/projects/ns-ng-ui/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$/projects/ns-ng-ui" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (ns-ng-ui-playground)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/projects/ns-ng-ui-playground/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -150,6 +202,7 @@
       <option name="presentableId" value="Default" />
       <updated>1590609688002</updated>
       <workItem from="1590609689219" duration="6247000" />
+      <workItem from="1590671607782" duration="655000" />
     </task>
     <task id="LOCAL-00001" summary="Init setup of npm package ver 1.3.0.0">
       <created>1590609940380</created>
@@ -216,6 +269,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

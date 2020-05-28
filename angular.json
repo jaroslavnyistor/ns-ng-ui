@@ -167,5 +167,5 @@
   "cli": {
     "analytics": "099c0516-8f0b-4e8a-918d-7f98284bc7f2"
   },
-  "defaultProject": "ns-ng-ui"
+  "defaultProject": "ns-ng-ui-playground"
 }
