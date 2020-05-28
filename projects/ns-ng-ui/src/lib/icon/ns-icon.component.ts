@@ -1,13 +1,5 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { nsIsNullOrEmpty } from 'ns-js-utils';
 import { NsIcon } from './ns-icon.enum';
 
@@ -16,12 +8,12 @@ import { NsIcon } from './ns-icon.enum';
   templateUrl: 'ns-icon.component.html',
   styles: [
     `
-      :host {
-        display: flex;
-        align-items: center;
-      }
-    `,
-  ],
+        :host {
+           display: flex;
+           align-items: center;
+        }
+      `
+  ]
 })
 export class NsIconComponent implements OnChanges, AfterViewInit {
   private _css: string[] = [];
@@ -52,7 +44,7 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
   get buttonStyle(): object {
     if (this._hasContent) {
       return {
-        padding: '3px 8px',
+        padding: '3px 8px'
       };
     }
 
@@ -60,7 +52,7 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
     return {
       'line-height': `${buttonSize}px`,
       width: `${buttonSize}px`,
-      height: `${buttonSize}px`,
+      height: `${buttonSize}px`
     };
   }
 
@@ -72,13 +64,13 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
       width: `${this.size}px`,
       height: `${this.size}px`,
       ...this.spaceStyle,
-      ...this.disabledStyle,
+      ...this.disabledStyle
     };
 
     if (this._hasContent) {
       style = {
         ...style,
-        'margin-right': '10px',
+        'margin-right': '10px'
       };
     }
 
@@ -104,7 +96,8 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
     return this._css;
   }
 
-  constructor(private _cdRef: ChangeDetectorRef) {}
+  constructor(private _cdRef: ChangeDetectorRef) {
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.isClickable) {

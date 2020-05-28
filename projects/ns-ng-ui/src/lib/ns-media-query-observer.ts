@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
+import { MediaChange } from '@angular/flex-layout';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
