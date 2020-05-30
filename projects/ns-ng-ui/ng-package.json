@@ -8,5 +8,8 @@
       "ns-js-utils": "ns-js-utils",
       "ngx-material-timepicker": "ngx-material-timepicker"
     }
-  }
+  },
+  "assets": [
+    "src/styles/*.sass"
+  ]
 }
