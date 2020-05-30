@@ -4,19 +4,8 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MatDatepicker } from '@angular/material/datepicker';
 import { LocalizationLanguagesService } from 'ns-js-utils';
 import { NsIcon } from '../../../icon/ns-icon.enum';
+import { NS_DATE_TIME_PICKER_FORMATS } from '../date-time/ns-form-control-date-time-picker.formats';
 import { NsFormControlDatePickerModel } from './ns-form-control-date-picker.model';
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'LL',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'ns-form-control-date-picker',
@@ -28,7 +17,7 @@ export const MY_FORMATS = {
     // `MatMomentDateModule` in your applications root module. We provide it at the component level
     // here, due to limitations of our example generation script.
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_DATE_FORMATS, useValue: NS_DATE_TIME_PICKER_FORMATS },
   ],
 })
 export class NsFormControlDatePickerComponent {
