@@ -29,11 +29,11 @@
     "@angular/router": "~9.1.9",
     "moment": "^2.26.0",
     "ngx-material-timepicker": "^5.5.2",
+    "ns-js-utils": "file:../ns-js-utils-workspace/dist/ns-js-utils",
+    "ns-ng-ui": "file:dist/ns-ng-ui",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "ns-js-utils": "^1.3.5-beta",
-    "ns-ng-ui": "^1.3.5-beta"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.7",
