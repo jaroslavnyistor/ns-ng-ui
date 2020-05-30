@@ -65,6 +65,7 @@ export * from './form/controls/checkbox/ns-form-control-checkbox.model';
 export * from './form/controls/date-time/ns-form-control-date-time-picker.component';
 export * from './form/controls/date-time/ns-form-control-date-time-picker.configuration';
 export * from './form/controls/date-time/ns-form-control-date-time-picker.entity';
+export * from './form/controls/date-time/ns-form-control-date-time-picker.formats';
 export * from './form/controls/date-time/ns-form-control-date-time-picker.model';
 export * from './form/controls/date/ns-form-control-date-picker.component';
 export * from './form/controls/date/ns-form-control-date-picker.configuration';
