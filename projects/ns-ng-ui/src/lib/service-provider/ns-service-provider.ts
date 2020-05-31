@@ -1,16 +1,16 @@
 import { Title } from '@angular/platform-browser';
+import { NsNotFoundService } from 'ns-js-utils';
+import { NsNoPermissionService } from 'ns-js-utils';
 import {
   LocalizationLanguagesService,
   NsApiErrorResolverService,
   NsAuthenticateService,
   NsNavigationService,
   NsRouterService,
-  NsStorageService,
+  NsStorageService
 } from 'ns-js-utils';
 import { NsDialogService } from '../dialog/ns-dialog.service';
 import { NsMediaQueryObserver } from '../ns-media-query-observer';
-import { NsPageNoPermissionService } from '../page/no-permission/ns-page-no-permission.service';
-import { NsPageNotFoundService } from '../page/not-found/ns-page-not-found.service';
 
 export abstract class NsServiceProvider<TAppNavService extends NsNavigationService> {
   get langService(): LocalizationLanguagesService {
@@ -37,11 +37,11 @@ export abstract class NsServiceProvider<TAppNavService extends NsNavigationServi
     return this._storageService;
   }
 
-  get noPermissionService(): NsPageNoPermissionService {
+  get noPermissionService(): NsNoPermissionService {
     return this._noPermissionService;
   }
 
-  get notFoundService(): NsPageNotFoundService {
+  get notFoundService(): NsNotFoundService {
     return this._notFoundService;
   }
 
@@ -64,8 +64,8 @@ export abstract class NsServiceProvider<TAppNavService extends NsNavigationServi
     private readonly _authService: NsAuthenticateService,
     private readonly _dialogService: NsDialogService,
     private readonly _storageService: NsStorageService,
-    private readonly _noPermissionService: NsPageNoPermissionService,
-    private readonly _notFoundService: NsPageNotFoundService,
+    private readonly _noPermissionService: NsNoPermissionService,
+    private readonly _notFoundService: NsNotFoundService,
     private readonly _mediaQueryObserver: NsMediaQueryObserver,
     private readonly _routerService: NsRouterService,
     private readonly _titleService: Title,

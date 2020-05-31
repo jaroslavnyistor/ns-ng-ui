@@ -1,17 +1,17 @@
 import { Title } from '@angular/platform-browser';
+import { NsNoPermissionService } from 'ns-js-utils';
+import { NsNotFoundService } from 'ns-js-utils';
 import {
   LocalizationLanguagesService,
   NsApiErrorResolverService,
   NsAuthenticateService,
   NsNavigationService,
   NsRouterService,
-  NsStorageService,
+  NsStorageService
 } from 'ns-js-utils';
 import { NsComponentModel } from '../component/ns-component.model';
 import { NsDialogService } from '../dialog/ns-dialog.service';
 import { NsMediaQueryObserver } from '../ns-media-query-observer';
-import { NsPageNoPermissionService } from '../page/no-permission/ns-page-no-permission.service';
-import { NsPageNotFoundService } from '../page/not-found/ns-page-not-found.service';
 import { NsServiceProvider } from './ns-service-provider';
 
 export abstract class NsServiceProviderComponentModel<
@@ -42,11 +42,11 @@ export abstract class NsServiceProviderComponentModel<
     return this._serviceProvider.storageService;
   }
 
-  protected get noPermissionService(): NsPageNoPermissionService {
+  protected get noPermissionService(): NsNoPermissionService {
     return this._serviceProvider.noPermissionService;
   }
 
-  protected get notFoundService(): NsPageNotFoundService {
+  protected get notFoundService(): NsNotFoundService {
     return this._serviceProvider.notFoundService;
   }
 

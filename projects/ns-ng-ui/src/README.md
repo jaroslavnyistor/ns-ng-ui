@@ -287,8 +287,8 @@ src
 - Create file **app-navigation.service.ts** with class AppNavigationService in folder **src\app\service-provider** and past following
 
     ```typescript
-    import { NsNavigationService } from '../nikisoft/utils/navigation/ns-navigation.service';
-    import { NsRouterService } from '../nikisoft/utils/navigation/ns-router.service';
+    import { NsNavigationService } from '../nikisoft/utils/nav/ns-nav.service';
+    import { NsRouterService } from '../nikisoft/utils/nav/ns-router.service';
     import { NsStorageService } from '../nikisoft/utils/storage/ns-storage.service';
     
     @Injectable({
@@ -330,9 +330,9 @@ src
     import { NsApiErrorResolverService } from '../nikisoft/utils/api/error/ns-api-error-resolver.service';
     import { NsAuthenticateService } from '../nikisoft/utils/authentication/ns-authenticate.service';
     import { LocalizationLanguagesService } from '../nikisoft/utils/localization/localization-languages.service';
-    import { NsRouterService } from '../nikisoft/utils/navigation/ns-router.service';
+    import { NsRouterService } from '../nikisoft/utils/nav/ns-router.service';
     import { NsStorageService } from '../nikisoft/utils/storage/ns-storage.service';
-    import { AppNavigationService } from './app-navigation.service';
+    import { AppNavigationService } from './app-nav.service';
     
     @Injectable({
        providedIn: 'root'
@@ -426,17 +426,17 @@ Currently supported languages are English and Slovak. To have localized text in 
 
 ### app.component
 - Model 
-    - Create **app.model.ts** and let the class AppModel extends **NsPageModel** class
+    - Create **app.model.ts** and let the class AppModel extends **NsPageAppModel** class
     ```typescript
     import { Injectable } from '@angular/core';
     import { Observable, of } from 'rxjs';
-    import { NsPageModel } from './nikisoft/ui/page/base/ns-page.model';
-    import { NsToolbarNavigationItemGroupModel } from './nikisoft/ui/page/base/toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
-    import { AppNavigationService } from './service-provider/app-navigation.service';
+    import { NsPageAppModel } from './nikisoft/ui/page/app/ns-page.model';
+    import { NsPageAppToolbarNavItemGroupModel } from './nikisoft/ui/page/app/toolbar/nav/items/ns-toolbar-nav-item-group.model';
+    import { AppNavigationService } from './service-provider/app-nav.service';
     import { AppServiceProvider } from './service-provider/app-service-provider';
 
     @Injectable()
-    export class AppModel extends NsPageModel<AppServiceProvider, AppNavigationService> {
+    export class AppModel extends NsPageAppModel<AppServiceProvider, AppNavigationService> {
        private readonly _isNavigationVisible$ = of(true);
     
        get isNavigationVisible$(): Observable<boolean> {
@@ -451,24 +451,24 @@ Currently supported languages are English and Slovak. To have localized text in 
           super(serviceProvider);
        }
     
-       protected getApplicationNavigationItems$(isLoggedIn: boolean): Observable<NsToolbarNavigationItemGroupModel[]> {
+       protected getApplicationNavigationItems$(isLoggedIn: boolean): Observable<NsPageAppToolbarNavItemGroupModel[]> {
           return of([]);
        }
     }
     ```
     
 - Service 
-    - Create **app.service.ts** and let the class AppService extends **NsPageService** class
+    - Create **app.service.ts** and let the class AppService extends **NsPageAppService** class
     
     ```typescript
     import { Injectable } from '@angular/core';
     import { AppModel } from './app.model';
-    import { NsPageService } from './nikisoft/ui/page/base/ns-page.service';
-    import { AppNavigationService } from './service-provider/app-navigation.service';
+    import { NsPageAppService } from './nikisoft/ui/page/app/ns-page.service';
+    import { AppNavigationService } from './service-provider/app-nav.service';
     import { AppServiceProvider } from './service-provider/app-service-provider';
     
     @Injectable()
-    export class AppService extends NsPageService<AppModel, AppServiceProvider, AppNavigationService> {
+    export class AppService extends NsPageAppService<AppModel, AppServiceProvider, AppNavigationService> {
        constructor(model: AppModel, serviceProvider: AppServiceProvider) {
           super(model, serviceProvider);
        }
@@ -482,14 +482,14 @@ Currently supported languages are English and Slovak. To have localized text in 
     import { Component } from '@angular/core';
     import { AppModel } from './app.model';
     import { AppService } from './app.service';
-    import { NsPageDiConfigurator } from './nikisoft/ui/page/base/ns-page.di-configurator';
+    import { NsPageAppDiConfigurator } from './nikisoft/ui/page/app/ns-page.di-configurator';
     
     @Component({
        selector: 'app-root',
        templateUrl: './app.component.html',
        styleUrls: ['./app.component.sass'],
        providers: [
-          NsPageDiConfigurator.provideService(AppService, AppModel),
+          NsPageAppDiConfigurator.provideService(AppService, AppModel),
        ]
     })
     export class AppComponent {
@@ -500,7 +500,7 @@ Currently supported languages are English and Slovak. To have localized text in 
     - HTML - Paste below content into **app.component.html**
 
     ```html
-    <ns-page>
+    <ns-page-app>
     
       <ns-clock *nsPageToolbarHeaderItem>
       </ns-clock>
@@ -509,7 +509,7 @@ Currently supported languages are English and Slovak. To have localized text in 
       </ns-user-log-in-information>
     
       <router-outlet></router-outlet>
-    </ns-page>
+    </ns-page-app>
     ```
   
   - **ns-clock** - Display clock - _optional_
