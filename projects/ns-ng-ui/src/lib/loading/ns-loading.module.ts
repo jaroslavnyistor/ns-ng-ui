@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NsLoadingInlineNormalComponent } from './inline/normal/ns-loading-inline-normal.component';
@@ -14,9 +13,8 @@ import { NsLoadingComponent } from './ns-loading.component';
     NsLoadingInlineNormalComponent,
     NsLoadingInlineSmallComponent,
   ],
-  imports: [CommonModule, MatProgressSpinnerModule, HttpClientModule],
+  imports: [CommonModule, MatProgressSpinnerModule],
   exports: [
-    HttpClientModule,
     NsLoadingComponent,
     NsLoadingInlineComponent,
     NsLoadingInlineNormalComponent,
