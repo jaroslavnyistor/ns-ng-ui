@@ -21,6 +21,6 @@ import { NsPageEditComponent } from './ns-page-edit.component';
     NsFormModule,
     NsButtonModule,
   ],
-  exports: [NsPageEditComponent, NsFormModule],
+  exports: [NsPageEditComponent],
 })
 export class NsPageEditModule {}
