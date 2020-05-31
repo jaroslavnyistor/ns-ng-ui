@@ -2,7 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
-import { LocalizationLanguagesService } from 'ns-js-utils';
+import { provideResolveLanguage } from 'ns-js-utils';
 import { NsSubscriptionBase } from 'ns-js-utils';
 import { NsIcon } from '../../../icon/ns-icon.enum';
 import { nsFormControlTimePickerTheme } from '../time/ns-form-control-time-picker.theme';
@@ -14,7 +14,7 @@ import { NsFormControlDateTimePickerModel } from './ns-form-control-date-time-pi
   templateUrl: './ns-form-control-date-time-picker.component.html',
   styleUrls: ['./ns-form-control-date-time-picker.component.sass'],
   providers: [
-    { provide: MAT_DATE_LOCALE, useFactory: () => LocalizationLanguagesService.resolveLanguage() },
+    { provide: MAT_DATE_LOCALE, useFactory: provideResolveLanguage },
     // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
     // `MatMomentDateModule` in your applications root module. We provide it at the component level
     // here, due to limitations of our example generation script.
