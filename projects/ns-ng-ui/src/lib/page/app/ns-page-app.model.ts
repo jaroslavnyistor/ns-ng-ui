@@ -4,24 +4,24 @@ import { map, switchMap } from 'rxjs/operators';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
-import { NsToolbarNavigationItemGroupEntity } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.entity';
-import { NsToolbarNavigationItemGroupModel } from './toolbar/navigation/items/ns-toolbar-navigation-item-group.model';
-import { NsToolbarNavigationItemModel } from './toolbar/navigation/items/ns-toolbar-navigation-item.model';
+import { NsPageAppToolbarNavItemGroupEntity } from './toolbar/nav/items/ns-page-app-toolbar-nav-item-group.entity';
+import { NsPageAppToolbarNavItemGroupModel } from './toolbar/nav/items/ns-page-app-toolbar-nav-item-group.model';
+import { NsPageAppToolbarNavItemModel } from './toolbar/nav/items/ns-page-app-toolbar-nav-item.model';
 
-export abstract class NsPageModel<
+export abstract class NsPageAppModel<
   TServiceProvider extends NsServiceProvider<TAppNavService>,
   TAppNavService extends NsNavigationService
 > extends NsServiceProviderComponentModel<TServiceProvider, TAppNavService> {
   private readonly _pageVisibility$: Observable<object>;
-  private _navigationItems: NsToolbarNavigationItemGroupEntity[];
-  private _navigationItems$: Observable<NsToolbarNavigationItemGroupModel[]>;
+  private _navigationItems: NsPageAppToolbarNavItemGroupEntity[];
+  private _navigationItems$: Observable<NsPageAppToolbarNavItemGroupModel[]>;
   private _isMenuOpened = false;
 
   abstract get pageTitle(): string;
 
   abstract get isNavigationVisible$(): Observable<boolean>;
 
-  get navigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
+  get navigationItems$(): Observable<NsPageAppToolbarNavItemGroupModel[]> {
     return this._navigationItems$;
   }
 
@@ -68,7 +68,7 @@ export abstract class NsPageModel<
     });
   }
 
-  private getFirstDefaultNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+  private getFirstDefaultNavigationItems(): NsPageAppToolbarNavItemGroupEntity[] {
     return [
       {
         items: [
@@ -82,9 +82,9 @@ export abstract class NsPageModel<
     ];
   }
 
-  protected abstract getApplicationNavigationItems(): NsToolbarNavigationItemGroupEntity[];
+  protected abstract getApplicationNavigationItems(): NsPageAppToolbarNavItemGroupEntity[];
 
-  private getLastNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+  private getLastNavigationItems(): NsPageAppToolbarNavItemGroupEntity[] {
     return [
       {
         items: [
@@ -99,12 +99,12 @@ export abstract class NsPageModel<
     ];
   }
 
-  private buildNavigationItems$(): Observable<NsToolbarNavigationItemGroupModel[]> {
+  private buildNavigationItems$(): Observable<NsPageAppToolbarNavItemGroupModel[]> {
     return this.authService.isLoggedIn$.pipe(
       switchMap((isLoggedIn) =>
         of(
           this._navigationItems.map(
-            (entity) => new NsToolbarNavigationItemGroupModel(entity, isLoggedIn, this.langService),
+            (entity) => new NsPageAppToolbarNavItemGroupModel(entity, isLoggedIn, this.langService),
           ),
         ),
       ),
@@ -127,7 +127,7 @@ export abstract class NsPageModel<
     this._isMenuOpened = !this._isMenuOpened;
   }
 
-  handleItemClicked(item: NsToolbarNavigationItemModel) {
+  handleItemClicked(item: NsPageAppToolbarNavItemModel) {
     this.toggleMenuOpened();
 
     item.handleItemClicked();

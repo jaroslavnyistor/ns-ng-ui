@@ -1,6 +1,6 @@
 import { NsIcon } from '../../../../../icon/ns-icon.enum';
 
-export interface NsToolbarNavigationItemEntity {
+export interface NsPageAppToolbarNavItemEntity {
   titleId?: any;
   title?: string;
   subtitleId?: any;

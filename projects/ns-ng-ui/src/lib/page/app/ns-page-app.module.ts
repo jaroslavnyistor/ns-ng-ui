@@ -16,19 +16,19 @@ import { NsIconModule } from '../../icon/ns-icon.module';
 import { NsLoadingModule } from '../../loading/ns-loading.module';
 import { LocalizationLanguagesModule } from '../../localization/languages/localization-languages.module';
 import { NsSearchModule } from '../../search/ns-search.module';
-import { NsPageComponent } from './ns-page.component';
-import { NsPageToolbarNavigationItemsComponent } from './toolbar/navigation/items/ns-page-toolbar-navigation-items.component';
-import { NsPageToolbarNavigationComponent } from './toolbar/navigation/ns-page-toolbar-navigation.component';
-import { NsPageToolbarHeaderItemDirective } from './toolbar/ns-page-toolbar-header-item.directive';
-import { NsPageToolbarComponent } from './toolbar/ns-page-toolbar.component';
+import { NsPageAppComponent } from './ns-page-app.component';
+import { NsPageAppToolbarNavItemsComponent } from './toolbar/nav/items/ns-page-app-toolbar-nav-items.component';
+import { NsPageAppToolbarNavComponent } from './toolbar/nav/ns-page-app-toolbar-nav.component';
+import { NsPageAppToolbarHeaderItemDirective } from './toolbar/ns-page-app-toolbar-header-item.directive';
+import { NsPageAppToolbarComponent } from './toolbar/ns-page-app-toolbar.component';
 
 @NgModule({
   declarations: [
-    NsPageComponent,
-    NsPageToolbarComponent,
-    NsPageToolbarNavigationComponent,
-    NsPageToolbarNavigationItemsComponent,
-    NsPageToolbarHeaderItemDirective,
+    NsPageAppComponent,
+    NsPageAppToolbarComponent,
+    NsPageAppToolbarNavComponent,
+    NsPageAppToolbarNavItemsComponent,
+    NsPageAppToolbarHeaderItemDirective,
   ],
   imports: [
     CommonModule,
@@ -49,6 +49,6 @@ import { NsPageToolbarComponent } from './toolbar/ns-page-toolbar.component';
     MatTooltipModule,
     NsFormModule,
   ],
-  exports: [NsPageComponent, NsPageToolbarHeaderItemDirective],
+  exports: [NsPageAppComponent, NsPageAppToolbarHeaderItemDirective],
 })
-export class NsPageModule {}
+export class NsPageAppModule {}

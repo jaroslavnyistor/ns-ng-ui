@@ -1,8 +1,8 @@
 import { LocalizationLanguagesService } from 'ns-js-utils';
 import { NsIcon } from '../../../../../icon/ns-icon.enum';
-import { NsToolbarNavigationItemEntity } from './ns-toolbar-navigation-item.entity';
+import { NsPageAppToolbarNavItemEntity } from './ns-page-app-toolbar-nav-item.entity';
 
-export class NsToolbarNavigationItemModel {
+export class NsPageAppToolbarNavItemModel {
   private readonly _title: string;
   private readonly _subtitle: string;
   private readonly _hasSubtitle: boolean;
@@ -28,7 +28,7 @@ export class NsToolbarNavigationItemModel {
     return this._iconStyle;
   }
 
-  constructor(private readonly _entity: NsToolbarNavigationItemEntity, langService: LocalizationLanguagesService) {
+  constructor(private readonly _entity: NsPageAppToolbarNavItemEntity, langService: LocalizationLanguagesService) {
     if (_entity.title != null) {
       this._title = this._entity.title;
     } else if (this._entity.titleId != null) {

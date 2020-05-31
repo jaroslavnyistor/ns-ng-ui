@@ -1,13 +1,13 @@
 import { LocalizationLanguagesService } from 'ns-js-utils';
-import { NsToolbarNavigationItemGroupEntity } from './ns-toolbar-navigation-item-group.entity';
-import { NsToolbarNavigationItemEntity } from './ns-toolbar-navigation-item.entity';
-import { NsToolbarNavigationItemModel } from './ns-toolbar-navigation-item.model';
+import { NsPageAppToolbarNavItemGroupEntity } from './ns-page-app-toolbar-nav-item-group.entity';
+import { NsPageAppToolbarNavItemEntity } from './ns-page-app-toolbar-nav-item.entity';
+import { NsPageAppToolbarNavItemModel } from './ns-page-app-toolbar-nav-item.model';
 
-export class NsToolbarNavigationItemGroupModel {
+export class NsPageAppToolbarNavItemGroupModel {
   private readonly _title: string;
   private readonly _hasTitle: boolean;
   private readonly _hasItems: boolean;
-  private readonly _items: NsToolbarNavigationItemModel[];
+  private readonly _items: NsPageAppToolbarNavItemModel[];
 
   get title(): string {
     return this._title;
@@ -21,12 +21,12 @@ export class NsToolbarNavigationItemGroupModel {
     return this._hasItems;
   }
 
-  get items(): NsToolbarNavigationItemModel[] {
+  get items(): NsPageAppToolbarNavItemModel[] {
     return this._items;
   }
 
   constructor(
-    entity: NsToolbarNavigationItemGroupEntity,
+    entity: NsPageAppToolbarNavItemGroupEntity,
     isLoggedIn: boolean,
     langService: LocalizationLanguagesService,
   ) {
@@ -41,11 +41,11 @@ export class NsToolbarNavigationItemGroupModel {
     this._hasItems = entity.items.length > 0;
 
     this._items = entity.items
-      .filter((item) => NsToolbarNavigationItemGroupModel.filterEntity(item, isLoggedIn))
-      .map((item) => new NsToolbarNavigationItemModel(item, langService));
+      .filter((item) => NsPageAppToolbarNavItemGroupModel.filterEntity(item, isLoggedIn))
+      .map((item) => new NsPageAppToolbarNavItemModel(item, langService));
   }
 
-  private static filterEntity(entity: NsToolbarNavigationItemEntity, isLoggedIn: boolean): boolean {
+  private static filterEntity(entity: NsPageAppToolbarNavItemEntity, isLoggedIn: boolean): boolean {
     let result = true;
 
     if (entity.requiresAuth === true) {

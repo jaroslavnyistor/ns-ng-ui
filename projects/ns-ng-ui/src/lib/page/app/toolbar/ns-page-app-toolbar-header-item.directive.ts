@@ -1,8 +1,8 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[nsPageToolbarHeaderItem]',
+  selector: '[nsPageAppToolbarHeaderItem]',
 })
-export class NsPageToolbarHeaderItemDirective {
+export class NsPageAppToolbarHeaderItemDirective {
   constructor(public template: TemplateRef<any>) {}
 }
