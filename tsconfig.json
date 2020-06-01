@@ -20,9 +20,8 @@
       "@angular/*": [
         "./node_modules/@angular/*"
       ],
-      "ns-ng-ui": [
-        "dist/ns-ng-ui/ns-ng-ui",
-        "dist/ns-ng-ui"
+      "nikisoft-ng-ui": [
+        "dist/nikisoft-ng-ui"
       ]
     }
   },

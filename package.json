@@ -1,12 +1,12 @@
 {
-  "name": "ns-ng-ui-workspace",
+  "name": "nikisoft-ng-ui-workspace",
   "version": "1.4.0",
   "scripts": {
     "ng": "ng",
     "format": "prettier --write \"projects/**/*.ts\"",
-    "start-lib": "ng build ns-ng-ui --watch",
-    "build-lib": "ng build ns-ng-ui --prod",
-    "lint-lib": "ng lint ns-ng-ui",
+    "start-lib": "ng build nikisoft-ng-ui --watch",
+    "build-lib": "ng build nikisoft-ng-ui --prod",
+    "lint-lib": "ng lint nikisoft-ng-ui",
     "start-app": "ng serve --port=4700",
     "build-app": "ng build",
     "test-app": "ng test",
@@ -29,8 +29,6 @@
     "@angular/router": "~9.1.9",
     "moment": "^2.26.0",
     "ngx-material-timepicker": "^5.5.2",
-    "ns-js-utils": "file:../ns-js-utils-workspace/dist/ns-js-utils",
-    "ns-ng-ui": "file:dist/ns-ng-ui",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

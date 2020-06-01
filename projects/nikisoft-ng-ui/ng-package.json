@@ -1,11 +1,11 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ns-ng-ui",
+  "dest": "../../dist/nikisoft-ng-ui",
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
       "moment": "moment",
-      "ns-js-utils": "ns-js-utils",
+      "nikisoft-utils": "nikisoft-utils",
       "ngx-material-timepicker": "ngx-material-timepicker"
     }
   },
