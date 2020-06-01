@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { NsToolbarNavigationItemGroupEntity } from 'ns-ng-ui';
-import { NsPageModel } from 'ns-ng-ui';
+import { NsPageAppToolbarNavItemGroupEntity } from 'ns-ng-ui';
+import { NsPageAppModel } from 'ns-ng-ui';
 import { Observable, of } from 'rxjs';
 import { AppNavigationService } from './service-provider/app-navigation.service';
 import { AppServiceProvider } from './service-provider/app-service-provider';
 
 @Injectable()
-export class AppModel extends NsPageModel<AppServiceProvider, AppNavigationService> {
+export class AppModel extends NsPageAppModel<AppServiceProvider, AppNavigationService> {
   private readonly _isNavigationVisible$ = of(true);
 
   get isNavigationVisible$(): Observable<boolean> {
@@ -21,7 +21,7 @@ export class AppModel extends NsPageModel<AppServiceProvider, AppNavigationServi
     super(serviceProvider);
   }
 
-  protected getApplicationNavigationItems(): NsToolbarNavigationItemGroupEntity[] {
+  protected getApplicationNavigationItems(): NsPageAppToolbarNavItemGroupEntity[] {
     return [
       {
         title: 'Forms',

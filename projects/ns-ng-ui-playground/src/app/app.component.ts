@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageDiConfigurator } from 'ns-ng-ui';
+import { NsPageAppDiConfigurator } from 'ns-ng-ui';
 import { AppModel } from './app.model';
 import { AppService } from './app.service';
 
@@ -7,6 +7,6 @@ import { AppService } from './app.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
-  providers: [NsPageDiConfigurator.provideService(AppService, AppModel)],
+  providers: [NsPageAppDiConfigurator.provideService(AppService, AppModel)],
 })
 export class AppComponent {}
