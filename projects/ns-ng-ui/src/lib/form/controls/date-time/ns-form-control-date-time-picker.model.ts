@@ -15,10 +15,10 @@ export class NsFormControlDateTimePickerModel<TEntity> extends NsFormControlMode
   NsFormControl,
   NsFormControlDateTimePickerConfiguration
 > {
-  private readonly _currentTime$ = new BehaviorSubject<string>(null);
-  private readonly _dateTimeSelectionFormControl: NsFormControl;
+  private _currentTime$ = new BehaviorSubject<string>(null);
+  private _dateTimeSelectionFormControl: NsFormControl;
   private _currentDateTime: moment.Moment;
-  private readonly _currentDateTimeFormat;
+  private _currentDateTimeFormat;
 
   get dateTimeSelectionFormControl(): NsFormControl {
     return this._dateTimeSelectionFormControl;
@@ -39,10 +39,14 @@ export class NsFormControlDateTimePickerModel<TEntity> extends NsFormControlMode
   constructor(config: NsFormControlDateTimePickerConfiguration) {
     super(config);
 
+    this.defaultValue = nsNull(config.defaultValue, null);
+  }
+
+  setFormControl(formControl: NsFormControl) {
+    super.setFormControl(formControl);
+
     this._dateTimeSelectionFormControl = new NsFormControl(this.formControl.value);
     this.formControl.addDependsOn(this._dateTimeSelectionFormControl);
-
-    this.defaultValue = nsNull(config.defaultValue, null);
 
     if (this.canChooseDate && this.canChooseTime) {
       this._currentDateTimeFormat = FORMATS_DATE_TIME;
@@ -51,8 +55,6 @@ export class NsFormControlDateTimePickerModel<TEntity> extends NsFormControlMode
     } else {
       this._currentDateTimeFormat = FORMATS_TIME_ONLY;
     }
-
-    this.setCurrentDateTime(this.value);
   }
 
   protected handleValueChanged(newValue: any) {

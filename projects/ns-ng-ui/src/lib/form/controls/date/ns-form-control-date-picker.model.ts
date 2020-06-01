@@ -9,7 +9,7 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   NsFormControl,
   NsFormControlDatePickerConfiguration
 > {
-  private readonly _dateFormControl: NsFormControl;
+  private _dateFormControl: NsFormControl;
   private _minDate: Date;
   private _maxDate: Date;
 
@@ -32,10 +32,14 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   constructor(config: NsFormControlDatePickerConfiguration) {
     super(config);
 
+    this.defaultValue = nsNull(config.defaultValue, null);
+  }
+
+  setFormControl(formControl: NsFormControl) {
+    super.setFormControl(formControl);
+
     this._dateFormControl = new NsFormControl(this.formControl.value);
     this.formControl.addDependsOn(this._dateFormControl);
-
-    this.defaultValue = nsNull(config.defaultValue, null);
 
     this.processDateFormControlValueChanges();
   }

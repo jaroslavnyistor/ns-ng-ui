@@ -21,7 +21,7 @@ export abstract class NsFormControlMultiSelectModel<
   private readonly _data$: BehaviorSubject<TMultiSelectItem[]>;
   private readonly _textValidators: NsFormControlValidators;
   private readonly _textProperty: string;
-  private readonly _textFormControl: NsFormControl;
+  private _textFormControl: NsFormControl;
   private readonly _service: TService;
   private _isLoading = false;
   private _searchTimeoutId = null;
@@ -66,22 +66,26 @@ export abstract class NsFormControlMultiSelectModel<
   protected constructor(config: NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>) {
     super(config);
 
+    this.defaultValue = nsNull(config.defaultValue, []);
+
     this._data$ = new BehaviorSubject<TMultiSelectItem[]>([]);
     this._textValidators = new NsFormControlValidators();
 
     this._textProperty = config.textProperty;
-
-    this._textFormControl = this.formControl.controls[this._textProperty] as NsFormControl;
-
-    this.defaultValue = nsNull(config.defaultValue, []);
-
-    this.setupValidators();
 
     this._service = config.service;
 
     if (this.hasDependingValues) {
       this.handleDependingOnValuesChanged(this.dependingValues);
     }
+  }
+
+  setFormControl(formControl: NsFormGroup) {
+    super.setFormControl(formControl);
+
+    this._textFormControl = this.formControl.controls[this._textProperty] as NsFormControl;
+
+    this.setupValidators();
   }
 
   setLangService(langService: LocalizationLanguagesService) {

@@ -13,7 +13,7 @@ export class NsFormControlNumberModel<TEntity> extends NsFormControlModel<
   NsFormControl,
   NsFormControlNumberConfiguration
 > {
-  private readonly _numberTextFormControl: NsFormControl;
+  private _numberTextFormControl: NsFormControl;
 
   get numberTextFormControl(): FormControl {
     return this._numberTextFormControl;
@@ -43,6 +43,10 @@ export class NsFormControlNumberModel<TEntity> extends NsFormControlModel<
     }
 
     this.defaultValue = nsNull(config.defaultValue, null);
+  }
+
+  setFormControl(formControl: NsFormControl) {
+    super.setFormControl(formControl);
 
     this._numberTextFormControl = new NsFormControl(this.formControl.value);
     this.formControl.addDependsOn(this._numberTextFormControl);
