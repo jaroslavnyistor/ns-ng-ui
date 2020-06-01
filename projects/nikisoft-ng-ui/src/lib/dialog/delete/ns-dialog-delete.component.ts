@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { nsIsNotNullOrEmpty, NsSubscriptionBase } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty, NsSubscriptionBase } from 'nikisoft-utils';
 import { NsDialogDeleteModel } from './ns-dialog-delete.model';
 
 @Component({

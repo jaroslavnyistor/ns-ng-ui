@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService } from 'ns-js-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
 import { NsIcon } from '../../../../../icon/ns-icon.enum';
 import { NsPageAppToolbarNavItemEntity } from './ns-page-app-toolbar-nav-item.entity';
 

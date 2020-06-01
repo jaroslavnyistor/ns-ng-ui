@@ -4,7 +4,7 @@ import {
   nsIsNotNullOrEmpty,
   NsNavigationService,
   NsStoragePageModel,
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
 import { NsFormModel } from '../../form/ns-form.model';

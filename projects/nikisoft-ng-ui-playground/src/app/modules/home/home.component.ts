@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsDashboardDiConfigurator } from 'ns-ng-ui';
+import { NsDashboardDiConfigurator } from 'nikisoft-ng-ui';
 import { HomeModel } from './home.model';
 import { HomeService } from './home.service';
 

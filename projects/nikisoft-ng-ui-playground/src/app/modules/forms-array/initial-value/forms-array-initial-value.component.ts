@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsComponentBase, NsFormDiConfigurator } from 'ns-ng-ui';
+import { NsComponentBase, NsFormDiConfigurator } from 'nikisoft-ng-ui';
 import { CustomersArrayModel } from '../customers/customers-array.model';
 import { CustomersArrayService } from '../customers/customers-array.service';
 import { FormsArrayInitialValueModel } from './forms-array-initial-value.model';

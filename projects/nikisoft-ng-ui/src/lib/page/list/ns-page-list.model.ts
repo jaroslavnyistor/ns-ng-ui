@@ -6,7 +6,7 @@ import {
   NsNavigationService,
   NsStoragePageModel,
   OrderDirection,
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { BehaviorSubject } from 'rxjs';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';

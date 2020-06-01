@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NsButtonType } from 'ns-ng-ui';
-import { NsButtonRaisedModel } from 'ns-ng-ui';
+import { NsButtonType } from 'nikisoft-ng-ui';
+import { NsButtonRaisedModel } from 'nikisoft-ng-ui';
 
 @Component({
   selector: 'button-validate',

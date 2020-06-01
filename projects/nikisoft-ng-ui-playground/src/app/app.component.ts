@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageAppDiConfigurator } from 'ns-ng-ui';
+import { NsPageAppDiConfigurator } from 'nikisoft-ng-ui';
 import { AppModel } from './app.model';
 import { AppService } from './app.service';
 

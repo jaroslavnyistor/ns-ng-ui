@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsComponentBase, NsFormDiConfigurator } from 'ns-ng-ui';
+import { NsComponentBase, NsFormDiConfigurator } from 'nikisoft-ng-ui';
 import { FormsAutocompleteBasicCustomerNameModel } from './customer-name/forms-autocomplete-basic.customer-name.model';
 import { FormsAutocompleteBasicModel } from './forms-autocomplete-basic.model';
 import { FormsAutocompleteBasicService } from './forms-autocomplete-basic.service';

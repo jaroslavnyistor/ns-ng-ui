@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { NsNotFoundService } from 'ns-js-utils';
-import { NsNoPermissionService } from 'ns-js-utils';
-import { NsRouterService } from 'ns-js-utils';
-import { NsStorageService } from 'ns-js-utils';
-import { NsApiErrorResolverService } from 'ns-js-utils';
-import { LocalizationLanguagesService } from 'ns-js-utils';
-import { NsAuthenticateService } from 'ns-js-utils';
-import { NsMediaQueryObserver } from 'ns-ng-ui';
-import { NsDialogService } from 'ns-ng-ui';
-import { NsServiceProvider } from 'ns-ng-ui';
+import { NsNotFoundService } from 'nikisoft-utils';
+import { NsNoPermissionService } from 'nikisoft-utils';
+import { NsRouterService } from 'nikisoft-utils';
+import { NsStorageService } from 'nikisoft-utils';
+import { NsApiErrorResolverService } from 'nikisoft-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
+import { NsAuthenticateService } from 'nikisoft-utils';
+import { NsMediaQueryObserver } from 'nikisoft-ng-ui';
+import { NsDialogService } from 'nikisoft-ng-ui';
+import { NsServiceProvider } from 'nikisoft-ng-ui';
 import { AppNavigationService } from './app-navigation.service';
 
 @Injectable({

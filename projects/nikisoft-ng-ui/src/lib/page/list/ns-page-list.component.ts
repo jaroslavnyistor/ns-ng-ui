@@ -1,5 +1,5 @@
 import { Component, ContentChild, ContentChildren, Input, QueryList } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
 import { NsComponentBase } from '../../component/ns-component.base';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsPageListLayoutCustomDirective } from './layout/custom/ns-page-list-layout-custom.directive';

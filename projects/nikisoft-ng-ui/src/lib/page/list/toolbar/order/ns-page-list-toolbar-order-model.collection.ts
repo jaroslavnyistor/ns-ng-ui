@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService, nsArrayItemAt, OrderDirection } from 'ns-js-utils';
+import { LocalizationLanguagesService, nsArrayItemAt, OrderDirection } from 'nikisoft-utils';
 import { NsIcon } from '../../../../icon/ns-icon.enum';
 import {
   NsPageListToolbarOrderItem,

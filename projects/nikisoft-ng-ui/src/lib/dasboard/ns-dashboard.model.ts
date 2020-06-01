@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty, NsNavigationService } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty, NsNavigationService } from 'nikisoft-utils';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';

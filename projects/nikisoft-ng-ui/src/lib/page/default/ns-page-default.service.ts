@@ -1,4 +1,4 @@
-import { NsNavigationService, NsStoragePageService } from 'ns-js-utils';
+import { NsNavigationService, NsStoragePageService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
 import { NsPageDefaultModel } from './ns-page-default.model';

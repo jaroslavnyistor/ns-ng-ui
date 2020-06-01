@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsNavigationService } from 'ns-js-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
 import { NsUserLogInInformationModel } from './ns-user-log-in-information.model';

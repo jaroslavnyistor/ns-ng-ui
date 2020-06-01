@@ -1,5 +1,5 @@
 import { MatHorizontalStepper } from '@angular/material/stepper';
-import { NsNavigationService } from 'ns-js-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsFormModel } from '../ns-form.model';
 

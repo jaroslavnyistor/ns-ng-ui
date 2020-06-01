@@ -1,4 +1,4 @@
-import { NsApiResponseError, NsNavigationService } from 'ns-js-utils';
+import { NsApiResponseError, NsNavigationService } from 'nikisoft-utils';
 import { Observable } from 'rxjs';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';

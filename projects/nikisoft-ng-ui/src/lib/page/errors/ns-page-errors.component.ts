@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsArrayHasItems, nsArrayItemAt } from 'ns-js-utils';
+import { nsArrayHasItems, nsArrayItemAt } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-page-errors',

@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
 import { NsPageListLayoutItemModel } from '../item/ns-page-list-layout-item.model';
 
 export abstract class NsPageListLayoutDefaultItemModel extends NsPageListLayoutItemModel {

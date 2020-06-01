@@ -1,5 +1,5 @@
 import { Params } from '@angular/router';
-import { LocalizedTextIdNikisoft, NsApiResponseError, NsNavigationService, NsStoragePageService } from 'ns-js-utils';
+import { LocalizedTextIdNikisoft, NsApiResponseError, NsNavigationService, NsStoragePageService } from 'nikisoft-utils';
 import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap, switchMap } from 'rxjs/operators';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';

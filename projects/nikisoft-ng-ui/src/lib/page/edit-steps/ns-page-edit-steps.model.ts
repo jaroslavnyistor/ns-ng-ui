@@ -4,7 +4,7 @@ import {
   nsIsNotNullOrEmpty,
   NsNavigationService,
   NsStoragePageModel,
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 

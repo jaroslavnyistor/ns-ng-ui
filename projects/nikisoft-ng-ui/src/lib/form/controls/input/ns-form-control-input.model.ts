@@ -1,4 +1,4 @@
-import { nsNull, nsStringLength } from 'ns-js-utils';
+import { nsNull, nsStringLength } from 'nikisoft-utils';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
 import { NsFormControlLengthMinValidator } from '../../validators/provided/ns-form-control-length-min.validator';
 import { NsFormControl } from '../ns-form-control';

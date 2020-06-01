@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LocalizationLanguagesService } from 'ns-js-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
 
 @Pipe({
   name: 'translate',

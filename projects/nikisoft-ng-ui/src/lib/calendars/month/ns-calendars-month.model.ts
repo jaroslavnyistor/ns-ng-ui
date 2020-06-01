@@ -5,7 +5,7 @@ import {
   NsDateTime,
   nsIsNotNullOrEmpty,
   NsNavigationService,
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsMediaQueryBreakpoint, NsMediaQueryBreakpointChanges } from '../../ns-media-query-observer';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';

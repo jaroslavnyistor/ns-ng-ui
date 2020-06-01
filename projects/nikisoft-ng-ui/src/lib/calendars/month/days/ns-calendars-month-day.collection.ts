@@ -1,4 +1,4 @@
-import { NsDateTime, nsIsNotNullOrEmpty, nsIsNullOrEmpty, NsMap } from 'ns-js-utils';
+import { NsDateTime, nsIsNotNullOrEmpty, nsIsNullOrEmpty, NsMap } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 import { NsCalendarsMonthDayModel } from './ns-calendars-month-day.model';

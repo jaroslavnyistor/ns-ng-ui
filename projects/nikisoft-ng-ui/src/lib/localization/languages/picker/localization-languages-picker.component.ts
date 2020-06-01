@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { LocalizationLanguagesService } from 'ns-js-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
 
 @Component({
   selector: 'localization-languages-picker',

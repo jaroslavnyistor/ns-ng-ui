@@ -1,5 +1,5 @@
 import { ValidatorFn } from '@angular/forms';
-import { LocalizationLanguagesService } from 'ns-js-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
 import { NsFormControlValidator } from './ns-form-control.validator';
 
 export class NsFormControlValidators {

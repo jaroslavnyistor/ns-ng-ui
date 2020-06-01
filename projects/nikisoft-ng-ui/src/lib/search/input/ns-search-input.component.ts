@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { nsIsNotNullOrEmpty, nsIsNullOrEmpty } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty, nsIsNullOrEmpty } from 'nikisoft-utils';
 import { NsIcon } from '../../icon/ns-icon.enum';
 
 @Component({

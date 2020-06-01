@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { routeNoPermission } from 'ns-js-utils';
+import { routeNoPermission } from 'nikisoft-utils';
 
 export const routeNoPermissionRoutes: Route[] = [
   {

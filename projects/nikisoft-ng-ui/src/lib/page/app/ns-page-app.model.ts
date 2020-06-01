@@ -1,4 +1,4 @@
-import { LocalizedTextIdNikisoft, NsNavigationService } from 'ns-js-utils';
+import { LocalizedTextIdNikisoft, NsNavigationService } from 'nikisoft-utils';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { NsIcon } from '../../icon/ns-icon.enum';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NsFormModule, NsGridModule, NsPageDefaultModule } from 'ns-ng-ui';
+import { NsFormModule, NsGridModule, NsPageDefaultModule } from 'nikisoft-ng-ui';
 import { AppComponentModule } from '../../components/app-component.module';
 
 import { FormsInputRoutingModule } from './forms-input-routing.module';

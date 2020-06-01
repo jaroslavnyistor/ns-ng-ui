@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { routeNotFound } from 'ns-js-utils';
+import { routeNotFound } from 'nikisoft-utils';
 
 export const notFoundRoutes: Route[] = [
   {

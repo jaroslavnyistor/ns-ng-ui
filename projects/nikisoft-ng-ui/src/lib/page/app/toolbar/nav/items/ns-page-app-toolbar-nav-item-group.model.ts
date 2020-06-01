@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService } from 'ns-js-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
 import { NsPageAppToolbarNavItemGroupEntity } from './ns-page-app-toolbar-nav-item-group.entity';
 import { NsPageAppToolbarNavItemEntity } from './ns-page-app-toolbar-nav-item.entity';
 import { NsPageAppToolbarNavItemModel } from './ns-page-app-toolbar-nav-item.model';

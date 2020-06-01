@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
-import { NsNavigationService } from 'ns-js-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
 import { NsFormControlCheckboxConfiguration } from './controls/checkbox/ns-form-control-checkbox.configuration';

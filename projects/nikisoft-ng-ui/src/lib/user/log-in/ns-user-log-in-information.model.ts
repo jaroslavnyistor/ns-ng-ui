@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { loginRoute, NsNavigationService } from 'ns-js-utils';
+import { loginRoute, NsNavigationService } from 'nikisoft-utils';
 import { Observable, of } from 'rxjs';
 import { filter, flatMap, map } from 'rxjs/operators';
 import { NsIcon } from '../../icon/ns-icon.enum';

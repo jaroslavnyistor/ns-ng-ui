@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { NsAuthenticateService } from 'ns-js-utils';
+import { NsAuthenticateService } from 'nikisoft-utils';
 import { Observable } from 'rxjs';
 import { DI_NS_NOT_FOUND_AUTH_REQUIRED } from './ns-page-not-found-auth.di-tokens';
 

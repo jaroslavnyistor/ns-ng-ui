@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { loginRoute } from 'ns-js-utils';
+import { loginRoute } from 'nikisoft-utils';
 
 export const loginRoutes: Route[] = [
   {

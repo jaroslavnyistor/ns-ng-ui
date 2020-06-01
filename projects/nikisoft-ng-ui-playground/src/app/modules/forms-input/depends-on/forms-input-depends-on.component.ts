@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsComponentBase, NsFormDiConfigurator } from 'ns-ng-ui';
+import { NsComponentBase, NsFormDiConfigurator } from 'nikisoft-ng-ui';
 import { FormsInputDependsOnModel } from './forms-input-depends-on.model';
 import { FormsInputDependsOnService } from './forms-input-depends-on.service';
 

@@ -1,7 +1,7 @@
 import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { LocalizationLanguagesService } from 'ns-js-utils';
-import { NsNavigationService } from 'ns-js-utils';
+import { LocalizationLanguagesService } from 'nikisoft-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormModel } from '../../ns-form.model';
 import { NsFormControlDefinition } from '../ns-form-control.definition';

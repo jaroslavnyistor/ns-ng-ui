@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
 import { DI_NS_APP_LOGO } from '../../ns-di.tokens';
 
 @Component({

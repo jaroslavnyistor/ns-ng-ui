@@ -1,6 +1,6 @@
 import { Title } from '@angular/platform-browser';
-import { NsNotFoundService } from 'ns-js-utils';
-import { NsNoPermissionService } from 'ns-js-utils';
+import { NsNotFoundService } from 'nikisoft-utils';
+import { NsNoPermissionService } from 'nikisoft-utils';
 import {
   LocalizationLanguagesService,
   NsApiErrorResolverService,
@@ -8,7 +8,7 @@ import {
   NsNavigationService,
   NsRouterService,
   NsStorageService
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { NsDialogService } from '../dialog/ns-dialog.service';
 import { NsMediaQueryObserver } from '../ns-media-query-observer';
 

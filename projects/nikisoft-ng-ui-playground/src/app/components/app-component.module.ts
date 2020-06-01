@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NsButtonModule, NsExpansionPanelModule } from 'ns-ng-ui';
+import { NsButtonModule, NsExpansionPanelModule } from 'nikisoft-ng-ui';
 import { ResultSectionComponent } from './result-section/result-section.component';
 import { ButtonPatchValueComponent } from './buttons/button-patch-value.component';
 import { ButtonValidateComponent } from './buttons/button-validate.component';

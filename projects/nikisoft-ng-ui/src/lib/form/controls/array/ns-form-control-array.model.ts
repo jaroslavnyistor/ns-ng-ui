@@ -1,4 +1,4 @@
-import { NsNavigationService, nsNull } from 'ns-js-utils';
+import { NsNavigationService, nsNull } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlModel } from '../ns-form-control.model';

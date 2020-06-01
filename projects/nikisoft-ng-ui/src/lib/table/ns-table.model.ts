@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { nsIsNotNullOrEmpty } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
 import { NsTableColumnModel } from './ns-table.column.model';
 
 export class NsTableModel<TEntity> {

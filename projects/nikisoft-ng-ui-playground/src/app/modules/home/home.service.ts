@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsDashboardService } from 'ns-ng-ui';
+import { NsDashboardService } from 'nikisoft-ng-ui';
 import { AppNavigationService } from '../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../service-provider/app-service-provider';
 import { HomeModel } from './home.model';

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { NsFormModule, NsGridModule, NsPageDefaultModule } from 'ns-ng-ui';
+import { NsFormModule, NsGridModule, NsPageDefaultModule } from 'nikisoft-ng-ui';
 import { AppComponentModule } from '../../components/app-component.module';
 import { FormsArrayInitialValueComponent } from './initial-value/forms-array-initial-value.component';
 import { FormsArrayBasicComponent } from './basic/forms-array-basic.component';

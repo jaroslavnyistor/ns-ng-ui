@@ -1,4 +1,4 @@
-import { OrderDirection } from 'ns-js-utils';
+import { OrderDirection } from 'nikisoft-utils';
 
 export interface NsPageListState {
   pageIndex?: number;

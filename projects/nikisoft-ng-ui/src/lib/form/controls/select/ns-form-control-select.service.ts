@@ -1,4 +1,4 @@
-import { nsApiErrorMapper, nsArrayItemAt, NsNavigationService, NsSubscriptionService } from 'ns-js-utils';
+import { nsApiErrorMapper, nsArrayItemAt, NsNavigationService, NsSubscriptionService } from 'nikisoft-utils';
 import { Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlSelectItemEntity } from './ns-form-control-select-item.entity';

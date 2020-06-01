@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NsDashboardModule } from 'ns-ng-ui';
+import { NsDashboardModule } from 'nikisoft-ng-ui';
 
 import { FormsDashboardRoutingModule } from './forms-dashboard-routing.module';
 import { FormsDashboardComponent } from './forms-dashboard.component';

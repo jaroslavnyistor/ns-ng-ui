@@ -1,4 +1,4 @@
-import { NsDateTime } from 'ns-js-utils';
+import { NsDateTime } from 'nikisoft-utils';
 import { NsNgClassBreakpoints } from '../../../ns-media-query-observer';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 

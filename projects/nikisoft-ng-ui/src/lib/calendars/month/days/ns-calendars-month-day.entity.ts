@@ -1,4 +1,4 @@
-import { NsDateTime } from 'ns-js-utils';
+import { NsDateTime } from 'nikisoft-utils';
 
 export abstract class NsCalendarsMonthDayEntity {
   private readonly _date: string;

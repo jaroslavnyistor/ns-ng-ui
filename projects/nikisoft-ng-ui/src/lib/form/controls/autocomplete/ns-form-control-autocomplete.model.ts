@@ -1,7 +1,7 @@
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, debounceTime, map, switchMap } from 'rxjs/operators';
-import { nsNull } from 'ns-js-utils';
+import { nsNull } from 'nikisoft-utils';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlAutocompleteConfiguration } from './ns-form-control-autocomplete.configuration';

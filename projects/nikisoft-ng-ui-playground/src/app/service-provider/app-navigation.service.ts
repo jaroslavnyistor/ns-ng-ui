@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NsRouterService } from 'ns-js-utils';
-import { NsStorageService } from 'ns-js-utils';
-import { NsNavigationService } from 'ns-js-utils';
+import { NsRouterService } from 'nikisoft-utils';
+import { NsStorageService } from 'nikisoft-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { formsArrayRoute } from '../modules/forms-array/forms-array.routes';
 import { formsCheckboxRoute } from '../modules/forms-checkbox/forms-checkbox.routes';
 import { formsDashboardRoute } from '../modules/forms-dashboard/forms-dashboard.routes';

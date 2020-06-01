@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlAutocompleteModel } from 'ns-ng-ui';
+import { NsFormControlAutocompleteModel } from 'nikisoft-ng-ui';
 import { FormsAutocompleteDataService } from '../../forms-autocomplete-data.service';
 import { FormsAutocompleteBasicEntity } from '../forms-autocomplete-basic.entity';
 

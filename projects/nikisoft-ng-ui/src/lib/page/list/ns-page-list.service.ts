@@ -1,4 +1,4 @@
-import { NsApiResponseError, NsNavigationService, NsStoragePageService } from 'ns-js-utils';
+import { NsApiResponseError, NsNavigationService, NsStoragePageService } from 'nikisoft-utils';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';

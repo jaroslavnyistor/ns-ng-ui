@@ -5,7 +5,7 @@ import {
   nsIsNotNullOrEmpty,
   nsObjectHasValue,
   NsSubscriptionModel,
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
 import { NsFormControlValidator } from '../validators/ns-form-control.validator';

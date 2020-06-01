@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty, NsNavigationService, NsStoragePageModel } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty, NsNavigationService, NsStoragePageModel } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 

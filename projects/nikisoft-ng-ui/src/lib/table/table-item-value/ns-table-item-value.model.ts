@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService, LocalizedTextIdNikisoft } from 'ns-js-utils';
+import { LocalizationLanguagesService, LocalizedTextIdNikisoft } from 'nikisoft-utils';
 import { NsTableColumnModel } from '../ns-table.column.model';
 import { NsTableModel } from '../ns-table.model';
 import { NsTableItemValueRowEntity } from './ns-table-item-value-row.entity';

@@ -1,4 +1,4 @@
-import { NsSubscriptionService } from 'ns-js-utils';
+import { NsSubscriptionService } from 'nikisoft-utils';
 import { Observable, OperatorFunction, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { NsComponentModel } from './ns-component.model';

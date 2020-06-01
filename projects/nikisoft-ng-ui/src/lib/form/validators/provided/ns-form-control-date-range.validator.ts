@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/forms';
-import { LocalizedTextIdNikisoft, NsDateTime, nsIsNullOrEmpty } from 'ns-js-utils';
+import { LocalizedTextIdNikisoft, NsDateTime, nsIsNullOrEmpty } from 'nikisoft-utils';
 import { NsFormControlValidator } from '../ns-form-control.validator';
 
 export class NsFormControlDateRangeValidator extends NsFormControlValidator {

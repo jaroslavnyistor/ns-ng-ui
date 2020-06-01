@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageDefaultDiConfigurator } from 'ns-ng-ui';
+import { NsPageDefaultDiConfigurator } from 'nikisoft-ng-ui';
 import { FormsArrayModel } from './forms-array.model';
 import { FormsArrayService } from './forms-array.service';
 

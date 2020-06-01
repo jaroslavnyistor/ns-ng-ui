@@ -8,7 +8,7 @@ import {
   NsNoAuthenticationApiService,
   nsObjectIsNullValue,
   NsStorageDiConfigurator,
-} from 'ns-js-utils';
+} from 'nikisoft-utils';
 import { DI_NS_APP_LOGO, DI_NS_VERSION } from './ns-di.tokens';
 import { NsPageNotFoundAuthDiConfigurator } from './page/not-found/ns-page-not-found-auth.di-configurator';
 import { NsServiceProvider } from './service-provider/ns-service-provider';

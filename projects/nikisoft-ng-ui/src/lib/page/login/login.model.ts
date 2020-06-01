@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalizedTextIdNikisoft, nsAuthenticateErrorMapper, NsNavigationService } from 'ns-js-utils';
+import { LocalizedTextIdNikisoft, nsAuthenticateErrorMapper, NsNavigationService } from 'nikisoft-utils';
 import { NsFormControlInputModel } from '../../form/controls/input/ns-form-control-input.model';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsPageEditModel } from '../edit/ns-page-edit.model';

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'ns-js-utils';
+import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-loading-inline',

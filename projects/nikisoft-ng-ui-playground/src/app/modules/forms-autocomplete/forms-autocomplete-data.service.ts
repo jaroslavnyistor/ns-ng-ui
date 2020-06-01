@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NsNavigationService, nsStringJoin } from 'ns-js-utils';
-import { NsServiceProvider } from 'ns-ng-ui';
-import { NsFormControlAutocompleteService } from 'ns-ng-ui';
+import { NsNavigationService, nsStringJoin } from 'nikisoft-utils';
+import { NsServiceProvider } from 'nikisoft-ng-ui';
+import { NsFormControlAutocompleteService } from 'nikisoft-ng-ui';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { CustomerEntity } from '../data/customer.entity';

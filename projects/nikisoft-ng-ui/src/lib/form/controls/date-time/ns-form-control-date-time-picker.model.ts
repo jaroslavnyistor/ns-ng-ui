@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { nsIsNullOrEmpty, nsNull } from 'ns-js-utils';
+import { nsIsNullOrEmpty, nsNull } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';

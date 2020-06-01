@@ -1,4 +1,4 @@
-import { NsNavigationService } from 'ns-js-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlArrayItemEntity } from './ns-form-control-array-item.entity';
 import { NsFormControlArrayItemModel } from './ns-form-control-array-item.model';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
-import { LocalizedTextIdNikisoft, NsAuthenticateResponseEntity, NsNavigationService } from 'ns-js-utils';
+import { LocalizedTextIdNikisoft, NsAuthenticateResponseEntity, NsNavigationService } from 'nikisoft-utils';
 import { Observable, of } from 'rxjs';
 import { mergeMap, switchMap } from 'rxjs/operators';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';

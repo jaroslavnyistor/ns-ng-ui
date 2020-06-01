@@ -1,5 +1,5 @@
 import { Provider, Type } from '@angular/core';
-import { NsNavigationService } from 'ns-js-utils';
+import { NsNavigationService } from 'nikisoft-utils';
 import { NsServiceProvider } from './ns-service-provider';
 
 export interface NsDiServiceProviderConfiguration<

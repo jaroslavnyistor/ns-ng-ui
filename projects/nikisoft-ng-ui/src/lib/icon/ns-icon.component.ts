@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
 import { AfterViewInit, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
-import { nsIsNullOrEmpty } from 'ns-js-utils';
+import { nsIsNullOrEmpty } from 'nikisoft-utils';
 import { NsIcon } from './ns-icon.enum';
 
 @Component({
