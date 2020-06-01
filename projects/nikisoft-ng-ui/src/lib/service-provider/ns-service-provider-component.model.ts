@@ -7,7 +7,7 @@ import {
   NsAuthenticateService,
   NsNavigationService,
   NsRouterService,
-  NsStorageService
+  NsStorageService,
 } from 'nikisoft-utils';
 import { NsComponentModel } from '../component/ns-component.model';
 import { NsDialogService } from '../dialog/ns-dialog.service';

@@ -15,12 +15,10 @@ export class NsMediaQueryObserver {
   }
 
   constructor(private readonly _mediaObserver: MediaObserver) {
-    this._mediaChanges = _mediaObserver
-      .asObservable()
-      .pipe(switchMap((value) => NsMediaQueryObserver.handleMediaChange(value)));
+    this._mediaChanges = _mediaObserver.asObservable().pipe(switchMap((value) => this.handleMediaChange(value)));
   }
 
-  private static handleMediaChange(value: MediaChange[]): Observable<string[]> {
+  private handleMediaChange(value: MediaChange[]): Observable<string[]> {
     return of(value.map((item) => item.mqAlias));
   }
 

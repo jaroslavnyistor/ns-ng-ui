@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { notFoundRoutes } from 'nikisoft-ng-ui';
-import { routeNoPermissionRoutes } from 'nikisoft-ng-ui';
-import { loginRoutes } from 'nikisoft-ng-ui';
+import { getRouteNoPermissionRoutes } from 'nikisoft-ng-ui';
+import { getNotFoundRoutes } from 'nikisoft-ng-ui';
+import { getLoginRoutes } from 'nikisoft-ng-ui';
 import { buildDefaultRoute } from 'nikisoft-ng-ui';
 import { formsArrayRoutes } from './modules/forms-array/forms-array.routes';
 import { formsCheckboxRoutes } from './modules/forms-checkbox/forms-checkbox.routes';
@@ -19,9 +19,9 @@ const routes: Routes = [
   ...formsCheckboxRoutes,
   ...formsInputRoutes,
   ...homeRoutes,
-  ...loginRoutes,
-  ...routeNoPermissionRoutes,
-  ...notFoundRoutes,
+  ...getLoginRoutes(),
+  ...getRouteNoPermissionRoutes(),
+  ...getNotFoundRoutes(),
 ];
 
 @NgModule({

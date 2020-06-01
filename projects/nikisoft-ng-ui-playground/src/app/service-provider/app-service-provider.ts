@@ -13,7 +13,7 @@ import { NsServiceProvider } from 'nikisoft-ng-ui';
 import { AppNavigationService } from './app-navigation.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppServiceProvider extends NsServiceProvider<AppNavigationService> {
   constructor(
@@ -27,7 +27,7 @@ export class AppServiceProvider extends NsServiceProvider<AppNavigationService> 
     notFoundService: NsNotFoundService,
     mediaQueryObserver: NsMediaQueryObserver,
     routerService: NsRouterService,
-    titleService: Title
+    titleService: Title,
   ) {
     super(
       langService,
@@ -40,7 +40,7 @@ export class AppServiceProvider extends NsServiceProvider<AppNavigationService> 
       notFoundService,
       mediaQueryObserver,
       routerService,
-      titleService
+      titleService,
     );
   }
 }

@@ -11,7 +11,10 @@ import { NsPageAppToolbarHeaderItemDirective } from './ns-page-app-toolbar-heade
   templateUrl: './ns-page-app-toolbar.component.html',
   styleUrls: ['./ns-page-app-toolbar.component.sass'],
 })
-export class NsPageAppToolbarComponent extends NsComponentBase<NsPageAppService<any, any, any>, NsPageAppModel<any, any>> {
+export class NsPageAppToolbarComponent extends NsComponentBase<
+  NsPageAppService<any, any, any>,
+  NsPageAppModel<any, any>
+> {
   readonly menuIcon = NsIcon.Navigation_Menu;
   @Input() headerItems!: QueryList<NsPageAppToolbarHeaderItemDirective>;
 
