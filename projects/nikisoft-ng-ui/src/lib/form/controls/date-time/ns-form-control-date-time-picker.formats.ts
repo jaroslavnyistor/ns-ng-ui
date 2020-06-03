@@ -19,7 +19,7 @@ export const NS_DATE_TIME_PICKER_FORMATS = {
 
 export function provideNsDateTimePickersProviders(): Provider[] {
   return [
-    { provide: MAT_DATE_LOCALE, useFactory: provideResolveLanguage },
+    { provide: MAT_DATE_LOCALE, useFactory: provideResolveLanguage() },
     // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
     // `MatMomentDateModule` in your applications root module. We provide it at the component level
     // here, due to limitations of our example generation script.
