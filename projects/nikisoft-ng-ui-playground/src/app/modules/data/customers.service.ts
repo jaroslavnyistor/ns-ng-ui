@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, Injectable, Provider } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { CustomerEntity } from './customer.entity';
 
 @Injectable({
@@ -12,9 +13,11 @@ export class CustomersService {
   constructor(private _httpClient: HttpClient) {}
 
   loadOnStartup() {
-    this._httpClient.get<CustomerEntity[]>(`assets/data/customers.json`).subscribe({
-      next: (value) => (this._data$ = of(value)),
-    });
+    return this._httpClient.get<CustomerEntity[]>(`assets/data/customers.json`)
+      .pipe(
+        tap(value => this._data$ = of(value))
+      )
+      .toPromise();
   }
 
   load(): Observable<CustomerEntity[]> {
