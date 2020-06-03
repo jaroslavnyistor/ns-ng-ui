@@ -16,6 +16,7 @@ export class FormsDashboardModel extends NsDashboardModel<AppServiceProvider, Ap
       { title: 'Array', action: () => this.navService.toFormsArray() },
       { title: 'Autocomplete', action: () => this.navService.toFormsAutocomplete() },
       { title: 'Checkbox', action: () => this.navService.toFormsCheckbox() },
+      { title: 'Date', action: () => this.navService.toFormsDate() },
       { title: 'Input', action: () => this.navService.toFormsInput() },
     ];
   }
