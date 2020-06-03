@@ -8,6 +8,7 @@ import { formsArrayRoutes } from './modules/forms-array/forms-array.routes';
 import { formsCheckboxRoutes } from './modules/forms-checkbox/forms-checkbox.routes';
 import { formsDashboardRoutes } from './modules/forms-dashboard/forms-dashboard.routes';
 import { formsAutocompleteRoutes } from './modules/forms-autocomplete/forms-autocomplete.routes';
+import { formsDateRoutes } from './modules/forms-date/forms-date.routes';
 import { formsInputRoutes } from './modules/forms-input/forms-input.routes';
 import { homeRoute, homeRoutes } from './modules/home/home.routes';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   ...formsArrayRoutes,
   ...formsAutocompleteRoutes,
   ...formsCheckboxRoutes,
+  ...formsDateRoutes,
   ...formsInputRoutes,
   ...homeRoutes,
   ...getLoginRoutes(),

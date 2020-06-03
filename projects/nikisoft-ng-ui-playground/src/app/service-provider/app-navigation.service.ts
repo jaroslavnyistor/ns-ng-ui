@@ -6,6 +6,7 @@ import { formsArrayRoute } from '../modules/forms-array/forms-array.routes';
 import { formsCheckboxRoute } from '../modules/forms-checkbox/forms-checkbox.routes';
 import { formsDashboardRoute } from '../modules/forms-dashboard/forms-dashboard.routes';
 import { formsAutocompleteRoute } from '../modules/forms-autocomplete/forms-autocomplete.routes';
+import { formsDateRoute } from '../modules/forms-date/forms-date.routes';
 import { formsInputRoute } from '../modules/forms-input/forms-input.routes';
 
 @Injectable({
@@ -30,6 +31,10 @@ export class AppNavigationService extends NsNavigationService {
 
   toFormsCheckbox() {
     return this.navigate(formsCheckboxRoute);
+  }
+
+  toFormsDate() {
+    return this.navigate(formsDateRoute);
   }
 
   toFormsInput() {

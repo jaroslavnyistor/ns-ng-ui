@@ -1,0 +1,11 @@
+<example-page pageTitle="Basic example"
+              pageDescription="Basic usage of date picker component."
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+   <ns-form>
+      <ns-form-control-date-picker [model]="model.date">
+      </ns-form-control-date-picker>
+
+      <button-validate></button-validate>
+   </ns-form>
+</example-page>
