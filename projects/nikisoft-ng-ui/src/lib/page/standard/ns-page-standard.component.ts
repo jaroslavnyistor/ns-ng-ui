@@ -1,17 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { NsComponentBase } from '../../component/ns-component.base';
 import { NsIcon } from '../../icon/ns-icon.enum';
-import { NsPageDefaultModel } from './ns-page-default.model';
-import { NsPageDefaultService } from './ns-page-default.service';
+import { NsPageStandardModel } from './ns-page-standard.model';
+import { NsPageStandardService } from './ns-page-standard.service';
 
 @Component({
-  selector: 'ns-page-default',
-  templateUrl: './ns-page-default.component.html',
-  styleUrls: ['./ns-page-default.component.sass'],
+  selector: 'ns-page-standard',
+  templateUrl: './ns-page-standard.component.html',
+  styleUrls: ['./ns-page-standard.component.sass'],
 })
-export class NsPageDefaultComponent extends NsComponentBase<
-  NsPageDefaultService<any, any, any>,
-  NsPageDefaultModel<any, any>
+export class NsPageStandardComponent extends NsComponentBase<
+  NsPageStandardService<any, any, any>,
+  NsPageStandardModel<any, any>
 > {
   private _scrollPage = false;
   private _scrollPageCss = [];
@@ -50,7 +50,7 @@ export class NsPageDefaultComponent extends NsComponentBase<
     return this._scrollContentCss;
   }
 
-  constructor(service: NsPageDefaultService<any, any, any>) {
+  constructor(service: NsPageStandardService<any, any, any>) {
     super(service);
 
     this.resolveScrollPageCss();

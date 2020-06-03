@@ -1,10 +1,10 @@
 import { NsNavigationService, NsStoragePageService } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentService } from '../../service-provider/ns-service-provider-component.service';
-import { NsPageDefaultModel } from './ns-page-default.model';
+import { NsPageStandardModel } from './ns-page-standard.model';
 
-export abstract class NsPageDefaultService<
-  TModel extends NsPageDefaultModel<TServiceProvider, TAppNavService>,
+export abstract class NsPageStandardService<
+  TModel extends NsPageStandardModel<TServiceProvider, TAppNavService>,
   TServiceProvider extends NsServiceProvider<TAppNavService>,
   TAppNavService extends NsNavigationService
 > extends NsServiceProviderComponentService<TModel, TServiceProvider, TAppNavService> {

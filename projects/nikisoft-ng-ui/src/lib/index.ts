@@ -162,11 +162,11 @@ export * from './page/app/toolbar/nav/items/ns-page-app-toolbar-nav-items.compon
 export * from './page/app/toolbar/nav/ns-page-app-toolbar-nav.component';
 export * from './page/app/toolbar/ns-page-app-toolbar-header-item.directive';
 export * from './page/app/toolbar/ns-page-app-toolbar.component';
-export * from './page/default/ns-page-default.component';
-export * from './page/default/ns-page-default.di-configurator';
-export * from './page/default/ns-page-default.model';
-export * from './page/default/ns-page-default.module';
-export * from './page/default/ns-page-default.service';
+export * from './page/standard/ns-page-standard.component';
+export * from './page/standard/ns-page-standard.di-configurator';
+export * from './page/standard/ns-page-standard.model';
+export * from './page/standard/ns-page-standard.module';
+export * from './page/standard/ns-page-standard.service';
 export * from './page/edit-steps/ns-page-edit-steps.component';
 export * from './page/edit-steps/ns-page-edit-steps.di-configurator';
 export * from './page/edit-steps/ns-page-edit-steps.model';

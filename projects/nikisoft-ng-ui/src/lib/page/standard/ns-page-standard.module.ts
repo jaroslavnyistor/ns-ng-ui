@@ -8,10 +8,10 @@ import { NsFormModule } from '../../form/ns-form.module';
 import { NsIconModule } from '../../icon/ns-icon.module';
 import { NsLoadingModule } from '../../loading/ns-loading.module';
 import { NsPageErrorsModule } from '../errors/ns-page-errors.module';
-import { NsPageDefaultComponent } from './ns-page-default.component';
+import { NsPageStandardComponent } from './ns-page-standard.component';
 
 @NgModule({
-  declarations: [NsPageDefaultComponent],
+  declarations: [NsPageStandardComponent],
   imports: [
     CommonModule,
     NsLoadingModule,
@@ -23,6 +23,6 @@ import { NsPageDefaultComponent } from './ns-page-default.component';
     FlexModule,
     NsIconModule,
   ],
-  exports: [NsPageDefaultComponent],
+  exports: [NsPageStandardComponent],
 })
-export class NsPageDefaultModule {}
+export class NsPageStandardModule {}
