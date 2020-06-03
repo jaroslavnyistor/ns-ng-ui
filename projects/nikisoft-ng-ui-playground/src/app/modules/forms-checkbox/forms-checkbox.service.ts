@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { NsPageDefaultService } from 'nikisoft-ng-ui';
+import { NsPageStandardService } from 'nikisoft-ng-ui';
 import { AppNavigationService } from '../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../service-provider/app-service-provider';
 import { FormsCheckboxModel } from './forms-checkbox.model';
 
 @Injectable()
-export class FormsCheckboxService extends NsPageDefaultService<
+export class FormsCheckboxService extends NsPageStandardService<
   FormsCheckboxModel,
   AppServiceProvider,
   AppNavigationService

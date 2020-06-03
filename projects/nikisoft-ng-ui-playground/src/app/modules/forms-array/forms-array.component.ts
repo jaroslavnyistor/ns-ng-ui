@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageDefaultDiConfigurator } from 'nikisoft-ng-ui';
+import { NsPageStandardDiConfigurator } from 'nikisoft-ng-ui';
 import { FormsArrayModel } from './forms-array.model';
 import { FormsArrayService } from './forms-array.service';
 
@@ -7,6 +7,6 @@ import { FormsArrayService } from './forms-array.service';
   selector: 'forms-array',
   templateUrl: './forms-array.component.html',
   styles: [],
-  providers: [NsPageDefaultDiConfigurator.provideService(FormsArrayService, FormsArrayModel)],
+  providers: [NsPageStandardDiConfigurator.provideService(FormsArrayService, FormsArrayModel)],
 })
 export class FormsArrayComponent {}

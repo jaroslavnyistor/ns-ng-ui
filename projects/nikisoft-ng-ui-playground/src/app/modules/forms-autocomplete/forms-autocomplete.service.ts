@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { NsPageDefaultService } from 'nikisoft-ng-ui';
+import { NsPageStandardService } from 'nikisoft-ng-ui';
 import { AppNavigationService } from '../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../service-provider/app-service-provider';
 import { FormsAutocompleteModel } from './forms-autocomplete.model';
 
 @Injectable()
-export class FormsAutocompleteService extends NsPageDefaultService<
+export class FormsAutocompleteService extends NsPageStandardService<
   FormsAutocompleteModel,
   AppServiceProvider,
   AppNavigationService

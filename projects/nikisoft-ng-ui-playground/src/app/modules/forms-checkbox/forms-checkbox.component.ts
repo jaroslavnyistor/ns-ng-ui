@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsComponentBase, NsPageDefaultDiConfigurator } from 'nikisoft-ng-ui';
+import { NsComponentBase, NsPageStandardDiConfigurator } from 'nikisoft-ng-ui';
 import { FormsCheckboxModel } from './forms-checkbox.model';
 import { FormsCheckboxService } from './forms-checkbox.service';
 
@@ -7,7 +7,7 @@ import { FormsCheckboxService } from './forms-checkbox.service';
   selector: 'forms-checkbox',
   templateUrl: './forms-checkbox.component.html',
   styles: [],
-  providers: [NsPageDefaultDiConfigurator.provideService(FormsCheckboxService, FormsCheckboxModel)],
+  providers: [NsPageStandardDiConfigurator.provideService(FormsCheckboxService, FormsCheckboxModel)],
 })
 export class FormsCheckboxComponent extends NsComponentBase<FormsCheckboxService, FormsCheckboxModel> {
   constructor(service: FormsCheckboxService) {

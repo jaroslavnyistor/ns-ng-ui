@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NsFormModule, NsGridModule, NsPageDefaultModule } from 'nikisoft-ng-ui';
+import { NsFormModule, NsGridModule, NsPageStandardModule } from 'nikisoft-ng-ui';
 import { AppComponentModule } from '../../components/app-component.module';
 
 import { FormsInputRoutingModule } from './forms-input-routing.module';
@@ -10,6 +10,6 @@ import { FormsInputDependsOnComponent } from './depends-on/forms-input-depends-o
 
 @NgModule({
   declarations: [FormsInputComponent, FormsInputBasicComponent, FormsInputDependsOnComponent],
-  imports: [CommonModule, FormsInputRoutingModule, NsPageDefaultModule, AppComponentModule, NsFormModule, NsGridModule],
+  imports: [CommonModule, FormsInputRoutingModule, NsPageStandardModule, AppComponentModule, NsFormModule, NsGridModule],
 })
 export class FormsInputModule {}

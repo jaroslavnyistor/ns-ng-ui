@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageDefaultDiConfigurator } from 'nikisoft-ng-ui';
+import { NsPageStandardDiConfigurator } from 'nikisoft-ng-ui';
 import { FormsInputModel } from './forms-input.model';
 import { FormsInputService } from './forms-input.service';
 
@@ -7,6 +7,6 @@ import { FormsInputService } from './forms-input.service';
   selector: 'forms-input',
   templateUrl: './forms-input.component.html',
   styles: [],
-  providers: [NsPageDefaultDiConfigurator.provideService(FormsInputService, FormsInputModel)],
+  providers: [NsPageStandardDiConfigurator.provideService(FormsInputService, FormsInputModel)],
 })
 export class FormsInputComponent {}
