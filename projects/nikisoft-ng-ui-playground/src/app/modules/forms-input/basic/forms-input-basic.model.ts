@@ -48,17 +48,20 @@ export class FormsInputBasicModel extends NsFormModel<CustomerEntity, AppService
       key: 'lastName',
       label: 'Last name',
       hint: 'First name must have at maximum of 8 characters',
+      isRequired: true,
       maxLength: 8,
     });
 
     this._password = this.addPassword({
       key: 'password',
       label: 'Password',
+      isRequired: true,
     });
 
     this._email = this.addEmail({
       key: 'email',
       label: 'E-mail',
+      isRequired: true,
     });
 
     this._website = this.addUrl({
