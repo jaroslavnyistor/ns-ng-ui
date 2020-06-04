@@ -6,9 +6,12 @@ import { FormsDateBasicEntity } from './forms-date-basic.entity';
 import { FormsDateBasicModel } from './forms-date-basic.model';
 
 @Injectable()
-export class FormsDateBasicService
-  extends NsFormService<FormsDateBasicModel, FormsDateBasicEntity, AppServiceProvider, AppNavigationService> {
-
+export class FormsDateBasicService extends NsFormService<
+  FormsDateBasicModel,
+  FormsDateBasicEntity,
+  AppServiceProvider,
+  AppNavigationService
+> {
   constructor(model: FormsDateBasicModel, serviceProvider: AppServiceProvider) {
     super(model, serviceProvider);
   }

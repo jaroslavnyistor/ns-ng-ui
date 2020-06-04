@@ -4,6 +4,6 @@ export interface FormsDateBasicEntity {
 
 export function newFormsDateBasicEntity(): FormsDateBasicEntity {
   return {
-    date: null
+    date: null,
   };
 }

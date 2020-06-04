@@ -8,7 +8,7 @@ import { newFormsDateBasicEntity } from './forms-date-basic.entity';
 
 @Injectable()
 export class FormsDateBasicModel extends NsFormModel<FormsDateBasicEntity, AppServiceProvider, AppNavigationService> {
-  private _date: NsFormControlDatePickerModel<FormsDateBasicEntity>;
+  private readonly _date: NsFormControlDatePickerModel<FormsDateBasicEntity>;
 
   get date(): NsFormControlDatePickerModel<FormsDateBasicEntity> {
     return this._date;
@@ -19,7 +19,8 @@ export class FormsDateBasicModel extends NsFormModel<FormsDateBasicEntity, AppSe
 
     this._date = this.addDate({
       key: 'date',
-      label: 'Date'
+      label: 'Date',
+      isRequired: true,
     });
   }
 }

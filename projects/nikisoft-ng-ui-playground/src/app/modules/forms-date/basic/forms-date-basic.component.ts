@@ -8,12 +8,9 @@ import { FormsDateBasicService } from './forms-date-basic.service';
   selector: 'forms-date-basic',
   templateUrl: './forms-date-basic.component.html',
   styles: [],
-  providers: [
-    NsFormDiConfigurator.provideService(FormsDateBasicService, FormsDateBasicModel)
-  ]
+  providers: [NsFormDiConfigurator.provideService(FormsDateBasicService, FormsDateBasicModel)],
 })
 export class FormsDateBasicComponent extends NsComponentBase<FormsDateBasicService, FormsDateBasicModel> {
-
   constructor(service: FormsDateBasicService) {
     super(service);
   }
