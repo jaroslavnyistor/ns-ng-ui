@@ -13,10 +13,9 @@ export class CustomersService {
   constructor(private _httpClient: HttpClient) {}
 
   loadOnStartup() {
-    return this._httpClient.get<CustomerEntity[]>(`assets/data/customers.json`)
-      .pipe(
-        tap(value => this._data$ = of(value))
-      )
+    return this._httpClient
+      .get<CustomerEntity[]>(`assets/data/customers.json`)
+      .pipe(tap((value) => (this._data$ = of(value))))
       .toPromise();
   }
 

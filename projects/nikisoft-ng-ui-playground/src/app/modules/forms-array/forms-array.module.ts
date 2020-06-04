@@ -16,7 +16,7 @@ import { FormsArrayInitialValueComponent } from './initial-value/forms-array-ini
     FormsArrayComponent,
     FormsArrayBasicComponent,
     CustomersArrayComponent,
-    FormsArrayInitialValueComponent
+    FormsArrayInitialValueComponent,
   ],
   imports: [
     CommonModule,
@@ -25,8 +25,7 @@ import { FormsArrayInitialValueComponent } from './initial-value/forms-array-ini
     NsFormModule,
     FlexModule,
     AppComponentModule,
-    NsGridModule
-  ]
+    NsGridModule,
+  ],
 })
-export class FormsArrayModule {
-}
+export class FormsArrayModule {}

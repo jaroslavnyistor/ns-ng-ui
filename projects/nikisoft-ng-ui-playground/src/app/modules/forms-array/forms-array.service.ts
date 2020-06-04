@@ -5,7 +5,11 @@ import { AppServiceProvider } from '../../service-provider/app-service-provider'
 import { FormsArrayModel } from './forms-array.model';
 
 @Injectable()
-export class FormsArrayService extends NsPageStandardService<FormsArrayModel, AppServiceProvider, AppNavigationService> {
+export class FormsArrayService extends NsPageStandardService<
+  FormsArrayModel,
+  AppServiceProvider,
+  AppNavigationService
+> {
   constructor(model: FormsArrayModel, serviceProvider: AppServiceProvider) {
     super(model, serviceProvider);
   }
