@@ -13,7 +13,7 @@
                   [icon]="NsIcon.Navigation_Close"
                   [isClickable]="true"
                   [isFocusable]="false"
-                  (mouseup)="model.canClearValue() && model.clearValue()">
+                  (mouseup)="$event.button === 0 && model.canClearValue() && model.clearValue()">
    </ns-icon-small>
 
    <mat-hint *ngIf="model.isHintVisible">{{model.hint}}</mat-hint>
