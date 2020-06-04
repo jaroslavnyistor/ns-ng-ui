@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs';
-import { startWith } from 'rxjs/operators';
 import { NsNavigationService } from 'nikisoft-utils';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, startWith } from 'rxjs/operators';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../service-provider/ns-service-provider-component.model';
 import { NsFormControlCheckboxConfiguration } from './controls/checkbox/ns-form-control-checkbox.configuration';
@@ -31,7 +31,8 @@ export abstract class NsFormModel<
   private readonly _formModels: NsFormControlDefinition[];
   private readonly _validators: NsFormControlValidators;
   private _initialEntity: TEntity;
-  private _statusChanges$: Observable<any>;
+  private _statusChanges$: BehaviorSubject<string>;
+  private _currentStatus: string;
 
   get formGroup(): NsFormGroup {
     return this._formGroup;
@@ -57,7 +58,7 @@ export abstract class NsFormModel<
     return this._statusChanges$;
   }
 
-  constructor(serviceProvider: TServiceProvider, entity: TEntity, formGroup: NsFormGroup = null) {
+  protected constructor(serviceProvider: TServiceProvider, entity: TEntity, formGroup: NsFormGroup = null) {
     super(serviceProvider);
 
     if (formGroup != null) {
@@ -96,14 +97,23 @@ export abstract class NsFormModel<
   }
 
   private setStatusChanges$() {
-    this._statusChanges$ = this.formGroup.statusChanges.pipe(startWith(this.formGroup.status));
+    this._statusChanges$ = new BehaviorSubject<any>(this.formGroup.status);
 
-    this.subscribeTo(this._statusChanges$, {
-      next: (status) => this.handleStatusChanged(status),
+    const obs$ = this.formGroup.statusChanges.pipe(
+      startWith(this.formGroup.status),
+      filter((newStatus) => this._currentStatus !== newStatus),
+    );
+
+    this.subscribeTo(obs$, {
+      next: (newStatus) => this.handleStatusChanged(newStatus),
     });
   }
 
-  protected handleStatusChanged(newStatus: any) {}
+  protected handleStatusChanged(newStatus) {
+    this._currentStatus = newStatus;
+
+    this._statusChanges$.next(this._currentStatus);
+  }
 
   onDestroy(): void {
     super.onDestroy();
@@ -130,7 +140,8 @@ export abstract class NsFormModel<
   }
 
   validate(): boolean {
-    this.formGroup.markAllAsTouched();
+    this._formModels.forEach((formModel) => formModel.validate());
+    this.formGroup.markAsTouched({ onlySelf: false });
     this.formGroup.updateValueAndValidity({ onlySelf: false, emitEvent: true });
     return this.isFormValid;
   }

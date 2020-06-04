@@ -6,7 +6,7 @@ import {
   nsObjectHasValue,
   NsSubscriptionModel,
 } from 'nikisoft-utils';
-import { combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
 import { NsFormControlValidator } from '../validators/ns-form-control.validator';
 import { NsFormControlValidators } from '../validators/ns-form-control.validators';
@@ -34,7 +34,8 @@ export abstract class NsFormControlModel<
   private _validatorsFn: ValidatorFn[];
   private _errorMessage$: Observable<string>;
   private _valueChanges$: Observable<any>;
-  private _statusChanges$: Observable<any>;
+  private _statusChanges$: BehaviorSubject<string>;
+  private _currentStatus: string;
 
   protected get langService(): LocalizationLanguagesService {
     return this._langService;
@@ -240,14 +241,23 @@ export abstract class NsFormControlModel<
   }
 
   private setStatusChanges$() {
-    this._statusChanges$ = this.formControl.statusChanges.pipe(startWith(this.formControl.status));
+    this._statusChanges$ = new BehaviorSubject<any>(this.formControl.status);
 
-    this.subscribeTo(this._statusChanges$, {
-      next: () => this.handleStatusChanged(),
+    const obs$ = this.formControl.statusChanges.pipe(
+      startWith(this.formControl.status),
+      filter((newStatus) => this._currentStatus !== newStatus),
+    );
+
+    this.subscribeTo(obs$, {
+      next: (newStatus) => this.handleStatusChanged(newStatus),
     });
   }
 
-  protected handleStatusChanged() {}
+  protected handleStatusChanged(newStatus) {
+    this._currentStatus = newStatus;
+
+    this._statusChanges$.next(this._currentStatus);
+  }
 
   private setDependsOn$() {
     const dependsOn = this._config.dependsOn;
@@ -294,5 +304,10 @@ export abstract class NsFormControlModel<
     });
 
     this.formControl.markAsTouched();
+  }
+
+  validate() {
+    this.formControl.markAsTouched({ onlySelf: false });
+    this.formControl.updateValueAndValidity({ onlySelf: false, emitEvent: true });
   }
 }

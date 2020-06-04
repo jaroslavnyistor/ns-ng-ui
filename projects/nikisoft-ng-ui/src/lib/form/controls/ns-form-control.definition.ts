@@ -27,4 +27,6 @@ export interface NsFormControlDefinition {
   onDestroy();
 
   onValuePatch(value: any);
+
+  validate();
 }
