@@ -10,6 +10,13 @@ import { FormsInputDependsOnComponent } from './depends-on/forms-input-depends-o
 
 @NgModule({
   declarations: [FormsInputComponent, FormsInputBasicComponent, FormsInputDependsOnComponent],
-  imports: [CommonModule, FormsInputRoutingModule, NsPageStandardModule, AppComponentModule, NsFormModule, NsGridModule],
+  imports: [
+    CommonModule,
+    FormsInputRoutingModule,
+    NsPageStandardModule,
+    AppComponentModule,
+    NsFormModule,
+    NsGridModule,
+  ],
 })
 export class FormsInputModule {}

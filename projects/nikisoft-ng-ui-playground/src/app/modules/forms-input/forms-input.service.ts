@@ -5,7 +5,11 @@ import { AppServiceProvider } from '../../service-provider/app-service-provider'
 import { FormsInputModel } from './forms-input.model';
 
 @Injectable()
-export class FormsInputService extends NsPageStandardService<FormsInputModel, AppServiceProvider, AppNavigationService> {
+export class FormsInputService extends NsPageStandardService<
+  FormsInputModel,
+  AppServiceProvider,
+  AppNavigationService
+> {
   constructor(model: FormsInputModel, serviceProvider: AppServiceProvider) {
     super(model, serviceProvider);
   }
