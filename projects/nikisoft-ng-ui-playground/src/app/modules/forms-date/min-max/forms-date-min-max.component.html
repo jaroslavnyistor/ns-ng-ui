@@ -1,0 +1,23 @@
+<example-page pageTitle="Min and Max date"
+              pageDescription="Demonstrates use of setting min and max value for date"
+              [value]="model.currentEntity"
+              [status$]="model.statusChanges$">
+   <ns-form>
+      <ns-grid-row>
+         <ns-form-control-date-picker *nsGridColumn
+                                      [model]="model.minDate">
+         </ns-form-control-date-picker>
+
+         <ns-form-control-date-picker *nsGridColumn
+                                      [model]="model.maxDate">
+         </ns-form-control-date-picker>
+      </ns-grid-row>
+
+      <ns-form-control-date-picker [model]="model.date">
+      </ns-form-control-date-picker>
+
+      <button-validate>
+      </button-validate>
+
+   </ns-form>
+</example-page>
