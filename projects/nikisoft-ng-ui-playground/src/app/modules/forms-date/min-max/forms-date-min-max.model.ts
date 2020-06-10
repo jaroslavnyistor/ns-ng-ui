@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlDatePickerModel } from 'nikisoft-ng-ui';
-import { NsFormModel } from 'nikisoft-ng-ui';
+import { NsFormControlDatePickerModel, NsFormModel } from 'nikisoft-ng-ui';
+import { NsDate } from 'nikisoft-utils';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
-import { FormsDateMinMaxEntity } from './forms-date-min-max.entity';
-import { newFormsDateMinMaxEntity } from './forms-date-min-max.entity';
+import { FormsDateMinMaxEntity, newFormsDateMinMaxEntity } from './forms-date-min-max.entity';
 
 @Injectable()
 export class FormsDateMinMaxModel extends NsFormModel<FormsDateMinMaxEntity, AppServiceProvider, AppNavigationService> {
@@ -40,6 +39,14 @@ export class FormsDateMinMaxModel extends NsFormModel<FormsDateMinMaxEntity, App
     this._date = this.addDate({
       key: 'date',
       label: 'Date',
+      isRequired: true,
     });
+  }
+
+  onInit() {
+    super.onInit();
+
+    this._date.setMinDate$(this._minDate.valueChanges$)
+      .setMaxDate$(this._maxDate.valueChanges$);
   }
 }

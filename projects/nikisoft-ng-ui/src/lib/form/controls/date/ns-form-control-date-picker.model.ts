@@ -1,5 +1,7 @@
 import { MatDatepicker } from '@angular/material/datepicker';
-import { NsDate, nsNull } from 'nikisoft-utils';
+import { NsDate, nsNull, nsArrayWithoutNull } from 'nikisoft-utils';
+import { combineLatest, Observable, of, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlDatePickerConfiguration } from './ns-form-control-date-picker.configuration';
@@ -10,8 +12,12 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   NsFormControlDatePickerConfiguration
 > {
   private _dateFormControl: NsFormControl;
+  private _currentNsDate: NsDate;
   private _minDate: Date;
+  private _minDate$: Observable<NsDate>;
+  private _minMaxDateSubscription: Subscription;
   private _maxDate: Date;
+  private _maxDate$: Observable<NsDate>;
 
   get dateFormControl(): NsFormControl {
     return this._dateFormControl;
@@ -35,6 +41,17 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
     this.defaultValue = nsNull(config.defaultValue, null);
   }
 
+  onDestroy() {
+    this.unsubscribeMinMaxDate$();
+  }
+
+  private unsubscribeMinMaxDate$() {
+    if (this._minMaxDateSubscription != null) {
+      this._minMaxDateSubscription.unsubscribe();
+      this._minMaxDateSubscription = null;
+    }
+  }
+
   setFormControl(formControl: NsFormControl) {
     super.setFormControl(formControl);
 
@@ -48,6 +65,7 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
     this.subscribeTo(this._dateFormControl.valueChanges, {
       next: (newValue) => {
         let dateStringValue = null;
+
         if (newValue != null) {
           if (newValue.toISOString) {
             dateStringValue = NsDate.from(newValue.toISOString(false)).toString();
@@ -68,10 +86,10 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   protected handleValueChanged(newValue: any) {
     super.handleValueChanged(newValue);
 
-    const dateFormControlValue = this._dateFormControl.value;
-    const dateStringValue = dateFormControlValue == null ? null : NsDate.from(dateFormControlValue).toString();
+    const dateFormControlValue = NsDate.fromAsString(this._dateFormControl.value);
+    this._currentNsDate = NsDate.from(dateFormControlValue);
 
-    if (newValue === dateStringValue) {
+    if (newValue === dateFormControlValue) {
       return;
     }
 
@@ -86,11 +104,54 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
     datePicker.open();
   }
 
-  setMinDate(date: NsDate) {
-    this._minDate = NsDate.toJsDate(date);
+  setMinDate(date: string): this {
+    this.setMinDate$(of(date));
+
+    return this;
   }
 
-  setMaxDate(date: NsDate) {
-    this._maxDate = NsDate.toJsDate(date);
+  setMinDate$(obs$: Observable<string>): this {
+    this._minDate$ = obs$.pipe(map(value => NsDate.from(value)));
+
+    this.createMinMaxDate$();
+
+    return this;
+  }
+
+  setMaxDate(date: string): this {
+    this.setMaxDate$(of(date));
+
+    return this;
+  }
+
+  setMaxDate$(obs$: Observable<string>): this {
+    this._maxDate$ = obs$.pipe(map(value => NsDate.from(value)));
+
+    this.createMinMaxDate$();
+
+    return this;
+  }
+
+  private createMinMaxDate$() {
+    this.unsubscribeMinMaxDate$();
+
+    const obs$ = nsArrayWithoutNull([this._minDate$, this._maxDate$])
+
+    this._minMaxDateSubscription = combineLatest(obs$)
+      .subscribe({
+        next: value => this.handleMinMaxChanged(value)
+      })
+  }
+
+  private handleMinMaxChanged([minNsDate, maxNsDate]: NsDate[]) {
+    this._minDate = NsDate.toJsDate(minNsDate);
+    this._maxDate = NsDate.toJsDate(maxNsDate);
+
+    if (this._currentNsDate != null) {
+      const isBetween = this._currentNsDate.isBetween(minNsDate, maxNsDate);
+
+      const value = isBetween ? this._currentNsDate.toString() : null;
+      this.patchValue(value);
+    }
   }
 }

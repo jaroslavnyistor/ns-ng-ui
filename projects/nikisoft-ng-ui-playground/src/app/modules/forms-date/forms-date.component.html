@@ -1,6 +1,11 @@
 <ns-page-standard pageTitle="Title"
                   [scrollPage]="true"
                   [scrollContent]="true">
-   <forms-date-basic>
-   </forms-date-basic>
+   <ns-grid-row>
+      <forms-date-basic *nsGridColumn>
+      </forms-date-basic>
+
+      <forms-date-min-max *nsGridColumn>
+      </forms-date-min-max>
+   </ns-grid-row>
 </ns-page-standard>
