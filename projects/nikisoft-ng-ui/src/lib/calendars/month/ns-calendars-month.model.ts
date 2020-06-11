@@ -3,7 +3,7 @@ import {
   NsApiResponseError,
   NsDate,
   NsDateTime,
-  nsIsNotNullOrEmpty,
+  NsString,
   NsNavigationService,
 } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -65,7 +65,7 @@ export abstract class NsCalendarsMonthModel<
   set selectedDate(value: string) {
     let day = null;
 
-    if (nsIsNotNullOrEmpty(value)) {
+    if (NsString.isNotNullOrEmpty(value)) {
       day = this._days.find(NsDateTime.from(value));
     }
 

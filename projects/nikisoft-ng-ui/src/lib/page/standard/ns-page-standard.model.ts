@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty, NsNavigationService, NsStoragePageModel } from 'nikisoft-utils';
+import { NsString, NsNavigationService, NsStoragePageModel } from 'nikisoft-utils';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
 import { NsServiceProviderComponentModel } from '../../service-provider/ns-service-provider-component.model';
 
@@ -20,7 +20,7 @@ export abstract class NsPageStandardModel<
 
   set subtitle(value: string) {
     this._subtitle = value;
-    this._hasSubtitle = nsIsNotNullOrEmpty(this._subtitle);
+    this._hasSubtitle = NsString.isNotNullOrEmpty(this._subtitle);
   }
 
   get isBackVisible(): boolean {

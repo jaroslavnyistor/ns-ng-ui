@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlArrayService } from 'nikisoft-ng-ui';
+import { NsFormControlArrayService } from '../../../../../../nikisoft-ng-ui/src/lib/form/controls/array/ns-form-control-array.service';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity, newCustomer } from '../../data/customer.entity';

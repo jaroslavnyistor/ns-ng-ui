@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NsFormModule, NsPageStandardModule } from 'nikisoft-ng-ui';
+import { NsFormModule } from '../../../../../nikisoft-ng-ui/src/lib/form/ns-form.module';
+import { NsPageStandardModule } from '../../../../../nikisoft-ng-ui/src/lib/page/standard/ns-page-standard.module';
 import { AppComponentModule } from '../../components/app-component.module';
 import { FormsCheckboxBasicComponent } from './basic/forms-checkbox-basic.component';
 

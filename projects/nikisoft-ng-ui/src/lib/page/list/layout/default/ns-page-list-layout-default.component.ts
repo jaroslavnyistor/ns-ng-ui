@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 import { NsIcon } from '../../../../icon/ns-icon.enum';
 import { NsPageListModel } from '../../ns-page-list.model';
 import { NsPageListService } from '../../ns-page-list.service';
@@ -24,6 +24,6 @@ export class NsPageListLayoutDefaultComponent {
   NsIcon = NsIcon;
 
   get hasNoItemsMessage(): boolean {
-    return nsIsNotNullOrEmpty(this.noItemsMessage);
+    return NsString.isNotNullOrEmpty(this.noItemsMessage);
   }
 }

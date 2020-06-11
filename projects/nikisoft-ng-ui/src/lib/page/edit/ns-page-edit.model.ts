@@ -1,9 +1,8 @@
 import {
   nsApiErrorMapper,
   NsApiResponseError,
-  nsIsNotNullOrEmpty,
   NsNavigationService,
-  NsStoragePageModel,
+  NsStoragePageModel, NsString,
 } from 'nikisoft-utils';
 import { NsButtonDefaultModel } from '../../button/default/ns-button-default.model';
 import { NsButtonRaisedModel } from '../../button/raised/ns-button-raised.model';
@@ -34,7 +33,7 @@ export abstract class NsPageEditModel<
 
   set subtitle(value: string) {
     this._subtitle = value;
-    this._hasSubtitle = nsIsNotNullOrEmpty(this._subtitle);
+    this._hasSubtitle = NsString.isNotNullOrEmpty(this._subtitle);
   }
 
   get negativeButton(): NsButtonDefaultModel {

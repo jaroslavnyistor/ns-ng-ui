@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { nsFormatNumber } from 'nikisoft-utils';
+import { NsNumber } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-clock',
@@ -23,8 +23,8 @@ export class NsClockComponent {
   private mapTime(): string {
     const now = new Date();
 
-    const hoursString = nsFormatNumber(now.getHours(), 2);
-    const minutesString = nsFormatNumber(now.getMinutes(), 2);
+    const hoursString = NsNumber.formatNumber(now.getHours(), 2);
+    const minutesString = NsNumber.formatNumber(now.getMinutes(), 2);
 
     const value = now.getSeconds();
     const isDelimiterVisible = value % 2 === 0;

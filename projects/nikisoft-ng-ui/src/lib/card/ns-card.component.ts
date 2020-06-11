@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-card',
@@ -35,11 +35,11 @@ export class NsCardComponent {
   }
 
   get hasCardTitle(): boolean {
-    return nsIsNotNullOrEmpty(this.cardTitle);
+    return NsString.isNotNullOrEmpty(this.cardTitle);
   }
 
   get hasCardSubtitle(): boolean {
-    return nsIsNotNullOrEmpty(this.cardSubtitle);
+    return NsString.isNotNullOrEmpty(this.cardSubtitle);
   }
 
   constructor() {

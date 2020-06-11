@@ -1,9 +1,8 @@
 import {
   nsApiErrorMapper,
   NsApiResponseError,
-  nsIsNotNullOrEmpty,
   NsNavigationService,
-  NsStoragePageModel,
+  NsStoragePageModel, NsString,
 } from 'nikisoft-utils';
 import { NsFormStepsModel } from '../../form/steps/ns-form-steps.model';
 import { NsServiceProvider } from '../../service-provider/ns-service-provider';
@@ -31,7 +30,7 @@ export abstract class NsPageEditStepsModel<
 
   set subtitle(value: string) {
     this._subtitle = value;
-    this._hasSubtitle = nsIsNotNullOrEmpty(this._subtitle);
+    this._hasSubtitle = NsString.isNotNullOrEmpty(this._subtitle);
   }
 
   get pageErrorMessages(): any[] {

@@ -7,9 +7,9 @@ import { NsStorageService } from 'nikisoft-utils';
 import { NsApiErrorResolverService } from 'nikisoft-utils';
 import { LocalizationLanguagesService } from 'nikisoft-utils';
 import { NsAuthenticateService } from 'nikisoft-utils';
-import { NsMediaQueryObserver } from 'nikisoft-ng-ui';
-import { NsDialogService } from 'nikisoft-ng-ui';
-import { NsServiceProvider } from 'nikisoft-ng-ui';
+import { NsDialogService } from '../../../../nikisoft-ng-ui/src/lib/dialog/ns-dialog.service';
+import { NsMediaQueryObserver } from '../../../../nikisoft-ng-ui/src/lib/ns-media-query-observer';
+import { NsServiceProvider } from '../../../../nikisoft-ng-ui/src/lib/service-provider/ns-service-provider';
 import { AppNavigationService } from './app-navigation.service';
 
 @Injectable({

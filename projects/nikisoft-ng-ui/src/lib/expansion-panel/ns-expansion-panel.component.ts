@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-expansion-panel',
@@ -22,7 +22,7 @@ export class NsExpansionPanelComponent {
 
   set header(value: string) {
     this._header = value;
-    this._hasHeader = nsIsNotNullOrEmpty(this._header);
+    this._hasHeader = NsString.isNotNullOrEmpty(this._header);
   }
 
   @Input()

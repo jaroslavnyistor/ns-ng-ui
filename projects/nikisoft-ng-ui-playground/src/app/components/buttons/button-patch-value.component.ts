@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NsButtonRaisedModel } from 'nikisoft-ng-ui';
+import { NsButtonRaisedModel } from '../../../../../nikisoft-ng-ui/src/lib/button/raised/ns-button-raised.model';
 
 @Component({
   selector: 'button-patch-value',

@@ -1,4 +1,4 @@
-import { nsNull } from 'nikisoft-utils';
+import { NsObject } from 'nikisoft-utils';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlTimePickerConfiguration } from './ns-form-control-time-picker.configuration';
@@ -15,6 +15,6 @@ export class NsFormControlTimePickerModel<TEntity> extends NsFormControlModel<
   constructor(config: NsFormControlTimePickerConfiguration) {
     super(config);
 
-    this.defaultValue = nsNull(config.defaultValue, null);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, null);
   }
 }

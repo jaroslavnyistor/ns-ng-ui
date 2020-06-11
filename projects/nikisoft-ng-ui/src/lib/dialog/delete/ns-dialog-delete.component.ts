@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { nsIsNotNullOrEmpty, NsSubscriptionBase } from 'nikisoft-utils';
+import { NsString, NsSubscriptionBase } from 'nikisoft-utils';
 import { NsDialogDeleteModel } from './ns-dialog-delete.model';
 
 @Component({
@@ -21,6 +21,6 @@ export class NsDialogDeleteComponent extends NsSubscriptionBase {
   }
 
   get hasMessage(): boolean {
-    return nsIsNotNullOrEmpty(this.model.message);
+    return NsString.isNotNullOrEmpty(this.model.message);
   }
 }

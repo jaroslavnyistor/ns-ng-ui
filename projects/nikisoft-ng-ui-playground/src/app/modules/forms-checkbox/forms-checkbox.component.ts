@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NsComponentBase, NsPageStandardDiConfigurator } from 'nikisoft-ng-ui';
+import { NsComponentBase } from '../../../../../nikisoft-ng-ui/src/lib/component/ns-component.base';
+import { NsPageStandardDiConfigurator } from '../../../../../nikisoft-ng-ui/src/lib/page/standard/ns-page-standard.di-configurator';
 import { FormsCheckboxModel } from './forms-checkbox.model';
 import { FormsCheckboxService } from './forms-checkbox.service';
 

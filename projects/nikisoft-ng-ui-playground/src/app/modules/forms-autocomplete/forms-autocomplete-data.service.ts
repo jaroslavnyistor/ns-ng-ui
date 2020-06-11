@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { NsNavigationService, nsStringJoin } from 'nikisoft-utils';
-import { NsServiceProvider } from 'nikisoft-ng-ui';
-import { NsFormControlAutocompleteService } from 'nikisoft-ng-ui';
+import { NsNavigationService, NsString } from 'nikisoft-utils';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { NsFormControlAutocompleteService } from '../../../../../nikisoft-ng-ui/src/lib/form/controls/autocomplete/ns-form-control-autocomplete.service';
+import { NsServiceProvider } from '../../../../../nikisoft-ng-ui/src/lib/service-provider/ns-service-provider';
 import { CustomerEntity } from '../data/customer.entity';
 import { CustomersService } from '../data/customers.service';
 
@@ -23,7 +23,7 @@ export class FormsAutocompleteDataService extends NsFormControlAutocompleteServi
   private mapCustomers(customers: CustomerEntity[], search: string): Observable<string[]> {
     const result = customers
       .filter((customer) => customer.firstName.indexOf(search) >= 0 || customer.lastName.indexOf(search) >= 0)
-      .map((customer) => nsStringJoin(' ', [customer.lastName, customer.firstName]));
+      .map((customer) => NsString.join(' ', [customer.lastName, customer.firstName]));
 
     return of(result);
   }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlCheckboxModel, NsFormModel } from 'nikisoft-ng-ui';
+import { NsFormControlCheckboxModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.model';
+import { NsFormModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.model';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity, newCustomer } from '../../data/customer.entity';

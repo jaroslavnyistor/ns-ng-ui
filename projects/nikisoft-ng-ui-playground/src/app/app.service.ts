@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsPageAppService } from 'nikisoft-ng-ui';
+import { NsPageAppService } from '../../../nikisoft-ng-ui/src/lib/page/app/ns-page-app.service';
 import { AppModel } from './app.model';
 import { AppNavigationService } from './service-provider/app-navigation.service';
 import { AppServiceProvider } from './service-provider/app-service-provider';

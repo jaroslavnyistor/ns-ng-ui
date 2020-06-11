@@ -2,9 +2,8 @@ import { PageEvent } from '@angular/material/paginator';
 import {
   nsApiErrorMapper,
   NsApiResponseError,
-  nsIsNotNullOrEmpty,
   NsNavigationService,
-  NsStoragePageModel,
+  NsStoragePageModel, NsString,
   OrderDirection,
 } from 'nikisoft-utils';
 import { BehaviorSubject } from 'rxjs';
@@ -79,7 +78,7 @@ export abstract class NsPageListModel<
 
   set subtitle(value: string) {
     this._subtitle = value;
-    this._hasSubtitle = nsIsNotNullOrEmpty(this._subtitle);
+    this._hasSubtitle = NsString.isNotNullOrEmpty(this._subtitle);
   }
 
   get pageIndex(): number {

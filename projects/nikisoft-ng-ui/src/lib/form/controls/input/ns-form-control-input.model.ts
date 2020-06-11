@@ -1,4 +1,4 @@
-import { nsNull, nsStringLength } from 'nikisoft-utils';
+import { NsObject, NsString } from 'nikisoft-utils';
 import { NsFormControlLengthMaxValidator } from '../../validators/provided/ns-form-control-length-max.validator';
 import { NsFormControlLengthMinValidator } from '../../validators/provided/ns-form-control-length-min.validator';
 import { NsFormControl } from '../ns-form-control';
@@ -47,27 +47,27 @@ export class NsFormControlInputModel<TEntity> extends NsFormControlModel<
       this.addValidator(new NsFormControlLengthMaxValidator(this.maxLength));
     }
 
-    this.defaultValue = nsNull(config.defaultValue, null);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, null);
   }
 
   onInit() {
     super.onInit();
 
-    this.updateRemainingCharacters(this.value);
+    this.updateRemainingCharacters();
   }
 
   protected handleValueChanged(newValue: any) {
     super.handleValueChanged(newValue);
 
-    this.updateRemainingCharacters(newValue);
+    this.updateRemainingCharacters();
   }
 
-  private updateRemainingCharacters(value: string) {
+  private updateRemainingCharacters() {
     if (this.maxLength == null) {
       return '';
     }
 
-    const valueLength = nsStringLength(this.value);
+    const valueLength = NsString.getLength(this.value);
     this._remainingCharacters = `${valueLength}/${this.maxLength}`;
   }
 }

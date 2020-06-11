@@ -1,12 +1,9 @@
 import { Provider, Type } from '@angular/core';
 import {
   LocalizationLanguage,
-  LocalizationLanguagesDiConfigurator,
+  LocalizationLanguagesDiConfigurator, NsAuthenticateApiService,
   NsAuthenticateDiConfigurator,
-  NsAuthenticationApiService,
-  NsNavigationService,
-  NsNoAuthenticationApiService,
-  nsObjectIsNullValue,
+  NsNavigationService, NsNoAuthenticateApiService, NsObject,
   NsStorageDiConfigurator,
 } from 'nikisoft-utils';
 import { DI_NS_APP_LOGO, DI_NS_VERSION } from './ns-di.tokens';
@@ -17,14 +14,14 @@ import {
   NsServiceProviderDiConfigurator,
 } from './service-provider/ns-service-provider.di-configurator';
 
-export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenticationApiService> {
+export interface NsDiAuthenticationConfiguration<TAuthService extends NsAuthenticateApiService> {
   service: Type<TAuthService>;
   notFoundPageRequiresAuth: boolean;
   navigateToLoginOnTokenExpiration: boolean;
 }
 
 export interface NsDiConfiguration<
-  TAuthService extends NsAuthenticationApiService,
+  TAuthService extends NsAuthenticateApiService,
   TServiceProvider extends NsServiceProvider<TAppNavService>,
   TAppNavService extends NsNavigationService
 > {
@@ -39,7 +36,7 @@ export interface NsDiConfiguration<
 
 export class NsDiConfigurator {
   static configure<
-    TAuthService extends NsAuthenticationApiService,
+    TAuthService extends NsAuthenticateApiService,
     TServiceProvider extends NsServiceProvider<TAppNavService>,
     TAppNavService extends NsNavigationService
   >(config: NsDiConfiguration<TAuthService, TServiceProvider, TAppNavService>): Provider[] {
@@ -58,12 +55,12 @@ export class NsDiConfigurator {
     return providers;
   }
 
-  private static configureAuthentication<TAuthService extends NsAuthenticationApiService>(
+  private static configureAuthentication<TAuthService extends NsAuthenticateApiService>(
     config: NsDiAuthenticationConfiguration<TAuthService>,
   ): Provider[] {
-    const service = nsObjectIsNullValue(config, 'service', NsNoAuthenticationApiService);
-    const notFoundPageRequiresAuth = nsObjectIsNullValue(config, 'notFoundPageRequiresAuth', false);
-    const navigateToLoginOnTokenExpiration = nsObjectIsNullValue(config, 'navigateToLoginOnTokenExpiration', false);
+    const service = NsObject.propertyNullOrDefault(config, 'service', NsNoAuthenticateApiService);
+    const notFoundPageRequiresAuth = NsObject.propertyNullOrDefault(config, 'notFoundPageRequiresAuth', false);
+    const navigateToLoginOnTokenExpiration = NsObject.propertyNullOrDefault(config, 'navigateToLoginOnTokenExpiration', false);
 
     return [
       NsAuthenticateDiConfigurator.provideAuthService(service),

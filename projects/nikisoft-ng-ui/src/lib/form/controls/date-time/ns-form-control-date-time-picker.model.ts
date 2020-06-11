@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { nsIsNullOrEmpty, nsNull } from 'nikisoft-utils';
+import { NsObject, NsString } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
@@ -39,7 +39,7 @@ export class NsFormControlDateTimePickerModel<TEntity> extends NsFormControlMode
   constructor(config: NsFormControlDateTimePickerConfiguration) {
     super(config);
 
-    this.defaultValue = nsNull(config.defaultValue, null);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, null);
   }
 
   setFormControl(formControl: NsFormControl) {
@@ -64,7 +64,7 @@ export class NsFormControlDateTimePickerModel<TEntity> extends NsFormControlMode
   }
 
   private setCurrentDateTime(value: string) {
-    this._currentDateTime = nsIsNullOrEmpty(value) ? null : moment(value);
+    this._currentDateTime = NsString.isNullOrEmpty(value) ? null : moment(value);
 
     this.notifyTextChanged();
   }

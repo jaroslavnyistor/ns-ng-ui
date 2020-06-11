@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-loading-inline',
@@ -18,7 +18,7 @@ export class NsLoadingInlineComponent {
 
   set text(value: string) {
     this._text = value;
-    this._hasText = nsIsNotNullOrEmpty(this._text);
+    this._hasText = NsString.isNotNullOrEmpty(this._text);
   }
 
   get hasText(): boolean {

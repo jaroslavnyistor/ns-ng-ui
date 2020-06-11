@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { LocalizationLanguagesService, nsNull } from 'nikisoft-utils';
+import { LocalizationLanguagesService, NsObject } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsFormControlValidators } from '../../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../../validators/provided/ns-form-control-required.validator';
@@ -66,7 +66,7 @@ export abstract class NsFormControlMultiSelectModel<
   protected constructor(config: NsFormControlMultiSelectConfiguration<TService, TMultiSelectItem>) {
     super(config);
 
-    this.defaultValue = nsNull(config.defaultValue, []);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, []);
 
     this._data$ = new BehaviorSubject<TMultiSelectItem[]>([]);
     this._textValidators = new NsFormControlValidators();

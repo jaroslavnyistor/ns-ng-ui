@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NsGridModule } from 'nikisoft-ng-ui';
-import { NsFormModule } from 'nikisoft-ng-ui';
-import { NsPageStandardModule } from 'nikisoft-ng-ui';
+import { NsFormModule } from '../../../../../nikisoft-ng-ui/src/lib/form/ns-form.module';
+import { NsGridModule } from '../../../../../nikisoft-ng-ui/src/lib/grid/ns-grid.module';
+import { NsPageStandardModule } from '../../../../../nikisoft-ng-ui/src/lib/page/standard/ns-page-standard.module';
 import { AppComponentModule } from '../../components/app-component.module';
 import { FormsDateBasicComponent } from './basic/forms-date-basic.component';
 import { FormsDateRoutingModule } from './forms-date-routing.module';

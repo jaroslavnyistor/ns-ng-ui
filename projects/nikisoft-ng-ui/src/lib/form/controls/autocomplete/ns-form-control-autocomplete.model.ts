@@ -1,7 +1,7 @@
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { NsObject } from 'nikisoft-utils';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, debounceTime, map, switchMap } from 'rxjs/operators';
-import { nsNull } from 'nikisoft-utils';
 import { NsFormControl } from '../ns-form-control';
 import { NsFormControlModel } from '../ns-form-control.model';
 import { NsFormControlAutocompleteConfiguration } from './ns-form-control-autocomplete.configuration';
@@ -38,7 +38,7 @@ export abstract class NsFormControlAutocompleteModel<
   protected constructor(config: NsFormControlAutocompleteConfiguration<TService>) {
     super(config);
 
-    this.defaultValue = nsNull(config.defaultValue, []);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, []);
 
     this._service = config.service;
 

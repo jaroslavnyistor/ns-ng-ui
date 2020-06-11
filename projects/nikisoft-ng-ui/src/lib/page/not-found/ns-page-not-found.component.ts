@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 import { DI_NS_APP_LOGO } from '../../ns-di.tokens';
 
 @Component({
@@ -29,7 +29,7 @@ export class NsPageNotFoundComponent {
   }
 
   constructor(@Inject(DI_NS_APP_LOGO) private _logo: string) {
-    this._hasLogo = nsIsNotNullOrEmpty(_logo);
+    this._hasLogo = NsString.isNotNullOrEmpty(_logo);
 
     this._flex = this._hasLogo ? 50 : 100;
     this._flexLtSm = this._hasLogo ? 70 : 100;

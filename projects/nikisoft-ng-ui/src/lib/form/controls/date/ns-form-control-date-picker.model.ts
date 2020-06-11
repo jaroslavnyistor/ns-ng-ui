@@ -1,5 +1,5 @@
 import { MatDatepicker } from '@angular/material/datepicker';
-import { NsDate, nsNull, nsArrayWithoutNull } from 'nikisoft-utils';
+import { NsArray, NsDate, NsObject } from 'nikisoft-utils';
 import { combineLatest, Observable, of, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NsFormControl } from '../ns-form-control';
@@ -38,7 +38,7 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   constructor(config: NsFormControlDatePickerConfiguration) {
     super(config);
 
-    this.defaultValue = nsNull(config.defaultValue, null);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, null);
   }
 
   onDestroy() {
@@ -135,7 +135,7 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   private createMinMaxDate$() {
     this.unsubscribeMinMaxDate$();
 
-    const obs$ = nsArrayWithoutNull([this._minDate$, this._maxDate$])
+    const obs$ = NsArray.exceptNull([this._minDate$, this._maxDate$])
 
     this._minMaxDateSubscription = combineLatest(obs$)
       .subscribe({

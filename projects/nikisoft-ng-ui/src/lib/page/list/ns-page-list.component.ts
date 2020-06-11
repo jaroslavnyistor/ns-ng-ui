@@ -1,5 +1,5 @@
 import { Component, ContentChild, ContentChildren, Input, QueryList } from '@angular/core';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 import { NsComponentBase } from '../../component/ns-component.base';
 import { NsIcon } from '../../icon/ns-icon.enum';
 import { NsPageListLayoutCustomDirective } from './layout/custom/ns-page-list-layout-custom.directive';
@@ -31,7 +31,7 @@ export class NsPageListComponent extends NsComponentBase<
   listLayoutItemTemplate: NsPageListLayoutCustomDirective;
 
   get hasPageTitle(): boolean {
-    return nsIsNotNullOrEmpty(this.pageTitle);
+    return NsString.isNotNullOrEmpty(this.pageTitle);
   }
 
   get hasListLayoutItemTemplate(): boolean {

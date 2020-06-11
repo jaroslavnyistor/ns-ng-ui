@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty, NsNavigationService } from 'nikisoft-utils';
+import { NsString, NsNavigationService } from 'nikisoft-utils';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { NsServiceProvider } from '../service-provider/ns-service-provider';
@@ -21,7 +21,7 @@ export abstract class NsDashboardModel<
 
   set header(value: string) {
     this._header = value;
-    this._hasHeader = nsIsNotNullOrEmpty(this._header);
+    this._hasHeader = NsString.isNotNullOrEmpty(this._header);
   }
 
   get hasHeader(): boolean {

@@ -1,4 +1,4 @@
-import { nsApiErrorMapper, nsArrayItemAt, NsNavigationService, NsSubscriptionService } from 'nikisoft-utils';
+import { nsApiErrorMapper, NsArray, NsNavigationService, NsSubscriptionService } from 'nikisoft-utils';
 import { Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlSelectItemEntity } from './ns-form-control-select-item.entity';
@@ -19,7 +19,7 @@ export abstract class NsFormControlSelectService<
   parseError(error: any): string {
     const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(nsApiErrorMapper, error);
 
-    return nsArrayItemAt(errorMessages, 0);
+    return NsArray.itemAt(errorMessages, 0);
   }
 
   abstract getEmptyValue(): TSelectItem;

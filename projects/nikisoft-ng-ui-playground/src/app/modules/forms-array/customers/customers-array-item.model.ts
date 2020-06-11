@@ -1,4 +1,5 @@
-import { NsFormControlArrayItemModel, NsFormControlInputModel } from 'nikisoft-ng-ui';
+import { NsFormControlArrayItemModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/controls/array/ns-form-control-array-item.model';
+import { NsFormControlInputModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/controls/input/ns-form-control-input.model';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity, newCustomer } from '../../data/customer.entity';

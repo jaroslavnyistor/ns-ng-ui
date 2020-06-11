@@ -1,4 +1,4 @@
-import { NsDateTime, nsIsNotNullOrEmpty, nsIsNullOrEmpty, NsMap } from 'nikisoft-utils';
+import { NsDateTime, NsMap, NsString } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsCalendarsMonthDayEntity } from './ns-calendars-month-day.entity';
 import { NsCalendarsMonthDayModel } from './ns-calendars-month-day.model';
@@ -30,7 +30,7 @@ export class NsCalendarsMonthDayCollection {
   }
 
   get isDateSelected(): boolean {
-    return nsIsNotNullOrEmpty(this.selectedDate);
+    return NsString.isNotNullOrEmpty(this.selectedDate);
   }
 
   get selectedDate$(): BehaviorSubject<string> {
@@ -70,7 +70,7 @@ export class NsCalendarsMonthDayCollection {
   }
 
   setDateFromString(newDate: string) {
-    if (nsIsNullOrEmpty(newDate)) {
+    if (NsString.isNullOrEmpty(newDate)) {
       return;
     }
 
@@ -174,7 +174,7 @@ export class NsCalendarsMonthDayCollection {
 
   setData(data: NsCalendarsMonthDayEntity[]) {
     const calendarData = new NsMap<string, NsCalendarsMonthDayEntity>();
-    calendarData.initializeFromArray(data, (item) => item.date);
+    calendarData.fromArray(data, (item) => item.date);
 
     this._weeks$.value.forEach((week) => week.setData(calendarData));
   }

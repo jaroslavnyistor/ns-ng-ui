@@ -1,9 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
 import {
-  LocalizationLanguagesService,
-  nsArrayIsEmpty,
-  nsIsNotNullOrEmpty,
-  nsObjectHasValue,
+  LocalizationLanguagesService, NsArray, NsObject, NsString,
   NsSubscriptionModel,
 } from 'nikisoft-utils';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
@@ -27,6 +24,7 @@ export abstract class NsFormControlModel<
   private _langService: LocalizationLanguagesService;
   private _label: string;
   private _hint: string;
+  private _isHintVisible: boolean;
   private _isDisabled: boolean;
   private _hasValue = false;
   private _dependingValues: any[] = [];
@@ -54,7 +52,7 @@ export abstract class NsFormControlModel<
   }
 
   get isHintVisible(): boolean {
-    return nsIsNotNullOrEmpty(this._hint);
+    return this._isHintVisible;
   }
 
   get hint(): string {
@@ -201,11 +199,13 @@ export abstract class NsFormControlModel<
     }
 
     this._hint = null;
-    if (nsIsNotNullOrEmpty(this._config.hint)) {
+    if (NsString.isNotNullOrEmpty(this._config.hint)) {
       this._hint = this._config.hint;
     } else if (this._config.hintId != null) {
       this._hint = this._langService.translate(this._config.hintId);
     }
+
+    this._isHintVisible = NsString.isNotNullOrEmpty(this._hint);
   }
 
   private setErrorMessage$() {
@@ -213,7 +213,7 @@ export abstract class NsFormControlModel<
       map(() => {
         const errors = this.formControl.errors;
 
-        return errors != null && nsIsNotNullOrEmpty(errors.error) ? errors.error : '';
+        return errors != null && NsString.nullOrEmpty(errors.error, '');
       }),
     );
   }
@@ -237,7 +237,7 @@ export abstract class NsFormControlModel<
   }
 
   protected resolveHasValue(newValue: any): boolean {
-    return nsObjectHasValue(newValue);
+    return NsObject.hasValue(newValue);
   }
 
   private setStatusChanges$() {
@@ -262,7 +262,7 @@ export abstract class NsFormControlModel<
   private setDependsOn$() {
     const dependsOn = this._config.dependsOn;
 
-    if (nsArrayIsEmpty(dependsOn)) {
+    if (NsArray.isEmpty(dependsOn)) {
       return;
     }
 

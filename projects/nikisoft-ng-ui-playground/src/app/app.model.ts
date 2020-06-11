@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NsPageAppToolbarNavItemGroupEntity } from 'nikisoft-ng-ui';
-import { NsPageAppModel } from 'nikisoft-ng-ui';
 import { Observable, of } from 'rxjs';
+import { NsPageAppModel } from '../../../nikisoft-ng-ui/src/lib/page/app/ns-page-app.model';
+import { NsPageAppToolbarNavItemGroupEntity } from '../../../nikisoft-ng-ui/src/lib/page/app/toolbar/nav/items/ns-page-app-toolbar-nav-item-group.entity';
 import { AppNavigationService } from './service-provider/app-navigation.service';
 import { AppServiceProvider } from './service-provider/app-service-provider';
 

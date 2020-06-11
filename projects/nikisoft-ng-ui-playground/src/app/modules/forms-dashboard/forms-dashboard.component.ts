@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsDashboardDiConfigurator } from 'nikisoft-ng-ui';
+import { NsDashboardDiConfigurator } from '../../../../../nikisoft-ng-ui/src/lib/dasboard/ns-dashboard.di-configurator';
 import { FormsDashboardModel } from './forms-dashboard.model';
 import { FormsDashboardService } from './forms-dashboard.service';
 

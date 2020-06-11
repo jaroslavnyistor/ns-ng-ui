@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { nsArrayHasItems, nsArrayItemAt } from 'nikisoft-utils';
+import { NsArray } from 'nikisoft-utils';
 
 @Component({
   selector: 'ns-page-errors',
@@ -55,9 +55,9 @@ export class NsPageErrorsComponent {
 
   set errors(value: string[]) {
     this._errors = value;
-    this._hasErrors = nsArrayHasItems(this._errors);
+    this._hasErrors = NsArray.hasItems(this._errors);
     this._hasOnlyOneError = this._hasErrors && this._errors.length === 1;
-    this._firstError = nsArrayItemAt(this._errors, 0) || '';
+    this._firstError = NsArray.itemAt(this._errors, 0) || '';
   }
 
   get hasErrors(): boolean {

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
 import { AfterViewInit, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
-import { nsIsNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 import { NsIcon } from './ns-icon.enum';
 
 @Component({
@@ -34,7 +34,7 @@ export class NsIconComponent implements OnChanges, AfterViewInit {
   }
 
   get disabledTooltip(): boolean {
-    return nsIsNullOrEmpty(this.tooltip) || this.disabled;
+    return NsString.isNullOrEmpty(this.tooltip) || this.disabled;
   }
 
   get hasContent(): boolean {

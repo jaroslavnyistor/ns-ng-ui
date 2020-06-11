@@ -1,5 +1,5 @@
 import { FormControl } from '@angular/forms';
-import { nsNull, nsStringToNumber } from 'nikisoft-utils';
+import { NsObject, NsString } from 'nikisoft-utils';
 import { NsFormControlValueMaxValidator } from '../../validators/provided/ns-form-control-value-max.validator';
 import { NsFormControlValueMinValidator } from '../../validators/provided/ns-form-control-value-min.validator';
 import { NsFormControl } from '../ns-form-control';
@@ -42,7 +42,7 @@ export class NsFormControlNumberModel<TEntity> extends NsFormControlModel<
       this.addValidator(new NsFormControlValueMaxValidator(this.maxValue));
     }
 
-    this.defaultValue = nsNull(config.defaultValue, null);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, null);
   }
 
   setFormControl(formControl: NsFormControl) {
@@ -57,7 +57,7 @@ export class NsFormControlNumberModel<TEntity> extends NsFormControlModel<
   private processNumberTextFormControlValueChanges() {
     this.subscribeTo(this._numberTextFormControl.valueChanges, {
       next: (newValue) => {
-        const numberValue = nsStringToNumber(newValue);
+        const numberValue = NsString.toNumber(newValue);
 
         if (this.value === numberValue) {
           return;
@@ -71,7 +71,7 @@ export class NsFormControlNumberModel<TEntity> extends NsFormControlModel<
   protected handleValueChanged(newValue: any) {
     super.handleValueChanged(newValue);
 
-    const numberValue = nsStringToNumber(this._numberTextFormControl.value);
+    const numberValue = NsString.toNumber(this._numberTextFormControl.value);
     if (newValue === numberValue) {
       return;
     }

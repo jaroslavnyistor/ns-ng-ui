@@ -1,4 +1,4 @@
-import { NsNavigationService, nsNull } from 'nikisoft-utils';
+import { NsNavigationService, NsObject } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 import { NsFormControlModel } from '../ns-form-control.model';
@@ -66,9 +66,9 @@ export abstract class NsFormControlArrayModel<
 
     this._formModels$ = new BehaviorSubject<TFormArrayItemModel[]>([]);
 
-    this._canDeleteItems = nsNull(config.canDeleteItems, true);
+    this._canDeleteItems = NsObject.nullOrDefaultValue(config.canDeleteItems, true);
 
-    this.defaultValue = nsNull(config.defaultValue, []);
+    this.defaultValue = NsObject.nullOrDefaultValue(config.defaultValue, []);
 
     this._service = config.service;
 

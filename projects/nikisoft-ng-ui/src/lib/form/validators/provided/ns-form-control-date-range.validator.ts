@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/forms';
-import { LocalizedTextIdNikisoft, NsDateTime, nsIsNullOrEmpty } from 'nikisoft-utils';
+import { LocalizedTextIdNikisoft, NsDateTime, NsString } from 'nikisoft-utils';
 import { NsFormControlValidator } from '../ns-form-control.validator';
 
 export class NsFormControlDateRangeValidator extends NsFormControlValidator {
@@ -55,14 +55,14 @@ export class NsFormControlDateRangeValidator extends NsFormControlValidator {
     const finishFormControl = form.get(this._finishProperty);
 
     const finishString: string = finishFormControl.value;
-    if (nsIsNullOrEmpty(finishString) && !this._isFinishMandatory) {
+    if (NsString.isNullOrEmpty(finishString) && !this._isFinishMandatory) {
       return true;
     }
 
     const startFormControl = form.get(this._startProperty);
     const startString: string = startFormControl.value;
 
-    if (nsIsNullOrEmpty(startString) && !this._isStartMandatory) {
+    if (NsString.isNullOrEmpty(startString) && !this._isStartMandatory) {
       return true;
     }
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { nsIsNotNullOrEmpty, nsIsNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 import { NsIcon } from '../../icon/ns-icon.enum';
 
 @Component({
@@ -26,7 +26,7 @@ export class NsSearchInputComponent implements AfterViewInit, OnDestroy {
   @Input() tooltip: string;
 
   get isTooltipDisabled(): boolean {
-    return nsIsNullOrEmpty(this.tooltip);
+    return NsString.isNullOrEmpty(this.tooltip);
   }
 
   @ViewChild('input', { static: true }) input: ElementRef;
@@ -34,7 +34,7 @@ export class NsSearchInputComponent implements AfterViewInit, OnDestroy {
   @Output() searchValueChange = new EventEmitter<string>();
 
   ngAfterViewInit(): void {
-    if (nsIsNotNullOrEmpty(this.searchValue)) {
+    if (NsString.isNotNullOrEmpty(this.searchValue)) {
       window.setTimeout(() => this.input.nativeElement.click(), 0);
     }
   }

@@ -1,4 +1,4 @@
-import { LocalizationLanguagesService, nsArrayItemAt, OrderDirection } from 'nikisoft-utils';
+import { LocalizationLanguagesService, NsArray, OrderDirection } from 'nikisoft-utils';
 import { NsIcon } from '../../../../icon/ns-icon.enum';
 import {
   NsPageListToolbarOrderItem,
@@ -108,7 +108,7 @@ export class NsPageListToolbarOrderModelCollection {
     if (id != null) {
       this._items.forEach((item) => {
         const directions = item.directions.filter((direction) => direction.id === id);
-        const active = nsArrayItemAt(directions, 0);
+        const active = NsArray.itemAt(directions, 0);
 
         if (active != null) {
           this.activate(active);

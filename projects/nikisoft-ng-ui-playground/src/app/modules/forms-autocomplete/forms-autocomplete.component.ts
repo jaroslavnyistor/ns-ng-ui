@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NsPageStandardDiConfigurator } from 'nikisoft-ng-ui';
+import { NsPageStandardDiConfigurator } from '../../../../../nikisoft-ng-ui/src/lib/page/standard/ns-page-standard.di-configurator';
 import { FormsAutocompleteDataService } from './forms-autocomplete-data.service';
 import { FormsAutocompleteModel } from './forms-autocomplete.model';
 import { FormsAutocompleteService } from './forms-autocomplete.service';

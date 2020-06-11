@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlCheckboxModel } from 'nikisoft-ng-ui';
+import { NsFormControlCheckboxModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/controls/checkbox/ns-form-control-checkbox.model';
 import { CustomersArrayModel } from '../customers/customers-array.model';
 import { FormsArrayBasicEntity } from './forms-array-basic.entity';
 

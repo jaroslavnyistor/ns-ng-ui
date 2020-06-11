@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NsFormControlDatePickerModel, NsFormModel } from 'nikisoft-ng-ui';
-import { NsDate } from 'nikisoft-utils';
+import { NsFormControlDatePickerModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/controls/date/ns-form-control-date-picker.model';
+import { NsFormModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.model';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { FormsDateMinMaxEntity, newFormsDateMinMaxEntity } from './forms-date-min-max.entity';

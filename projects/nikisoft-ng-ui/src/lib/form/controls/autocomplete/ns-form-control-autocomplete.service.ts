@@ -1,4 +1,4 @@
-import { nsApiErrorMapper, nsArrayItemAt, NsNavigationService, NsSubscriptionService } from 'nikisoft-utils';
+import { nsApiErrorMapper, NsArray, NsNavigationService, NsSubscriptionService } from 'nikisoft-utils';
 import { Observable } from 'rxjs';
 import { NsServiceProvider } from '../../../service-provider/ns-service-provider';
 
@@ -15,7 +15,7 @@ export abstract class NsFormControlAutocompleteService extends NsSubscriptionSer
   parseError(error: any): string {
     const errorMessages = this._serviceProvider.apiErrorResolverService.resolve(nsApiErrorMapper, error);
 
-    return nsArrayItemAt(errorMessages, 0);
+    return NsArray.itemAt(errorMessages, 0);
   }
 
   handleDependingOnValuesChanged(results: any[]) {}

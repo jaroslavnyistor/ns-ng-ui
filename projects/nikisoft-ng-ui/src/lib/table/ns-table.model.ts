@@ -1,5 +1,5 @@
+import { NsString } from 'nikisoft-utils';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
 import { NsTableColumnModel } from './ns-table.column.model';
 
 export class NsTableModel<TEntity> {
@@ -40,7 +40,7 @@ export class NsTableModel<TEntity> {
 
   set title(value: string) {
     this._title$.next(value);
-    this._hasTitle$.next(nsIsNotNullOrEmpty(value));
+    this._hasTitle$.next(NsString.isNotNullOrEmpty(value));
   }
 
   get useFooter$(): Observable<boolean> {

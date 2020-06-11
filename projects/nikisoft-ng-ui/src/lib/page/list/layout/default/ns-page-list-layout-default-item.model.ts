@@ -1,4 +1,4 @@
-import { nsIsNotNullOrEmpty } from 'nikisoft-utils';
+import { NsString } from 'nikisoft-utils';
 import { NsPageListLayoutItemModel } from '../item/ns-page-list-layout-item.model';
 
 export abstract class NsPageListLayoutDefaultItemModel extends NsPageListLayoutItemModel {
@@ -35,6 +35,6 @@ export abstract class NsPageListLayoutDefaultItemModel extends NsPageListLayoutI
   }
 
   set descriptions(value: string[]) {
-    this._descriptions = value.filter((item) => nsIsNotNullOrEmpty(item));
+    this._descriptions = value.filter((item) => NsString.isNotNullOrEmpty(item));
   }
 }

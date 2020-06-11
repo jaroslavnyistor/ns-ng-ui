@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { NsPageStandardModule } from 'nikisoft-ng-ui';
-import { NsFormModule, NsGridModule } from 'nikisoft-ng-ui';
+import { NsFormModule } from '../../../../../nikisoft-ng-ui/src/lib/form/ns-form.module';
+import { NsGridModule } from '../../../../../nikisoft-ng-ui/src/lib/grid/ns-grid.module';
+import { NsPageStandardModule } from '../../../../../nikisoft-ng-ui/src/lib/page/standard/ns-page-standard.module';
 import { AppComponentModule } from '../../components/app-component.module';
 import { FormsArrayBasicComponent } from './basic/forms-array-basic.component';
 import { CustomersArrayComponent } from './customers/customers-array.component';
