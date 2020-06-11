@@ -29,7 +29,6 @@
     "@angular/router": "~9.1.9",
     "moment": "^2.26.0",
     "ngx-material-timepicker": "^5.5.2",
-    "nikisoft-ng-ui": "file:dist/nikisoft-ng-ui",
     "nikisoft-utils": "file:../nikisoft-utils-workspace/dist/nikisoft-utils",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
