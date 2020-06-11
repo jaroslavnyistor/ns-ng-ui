@@ -3,14 +3,14 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { NsSubscriptionBase } from 'nikisoft-utils';
 import { NsIcon } from '../../../icon/ns-icon.enum';
 import { nsFormControlTimePickerTheme } from '../time/ns-form-control-time-picker.theme';
-import { provideNsDateTimePickersProviders } from './ns-form-control-date-time-picker.formats';
+import { getNsDateTimePickersProviders } from './ns-form-control-date-time-picker.formats';
 import { NsFormControlDateTimePickerModel } from './ns-form-control-date-time-picker.model';
 
 @Component({
   selector: 'ns-form-control-date-time-picker',
   templateUrl: './ns-form-control-date-time-picker.component.html',
   styleUrls: ['./ns-form-control-date-time-picker.component.sass'],
-  providers: provideNsDateTimePickersProviders(),
+  providers: getNsDateTimePickersProviders(),
 })
 export class NsFormControlDateTimePickerComponent extends NsSubscriptionBase {
   private _datePicker: MatDatepicker<any>;

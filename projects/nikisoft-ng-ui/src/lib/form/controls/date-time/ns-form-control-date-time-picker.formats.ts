@@ -5,7 +5,7 @@ import { DateAdapter } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { NsLanguage } from 'nikisoft-utils';
 
-export const NS_DATE_TIME_PICKER_FORMATS = {
+const NS_DATE_TIME_PICKER_FORMATS = {
   parse: {
     dateInput: 'LL',
   },
@@ -17,7 +17,7 @@ export const NS_DATE_TIME_PICKER_FORMATS = {
   },
 };
 
-export function provideNsDateTimePickersProviders(): Provider[] {
+export function getNsDateTimePickersProviders(): Provider[] {
   return [
     { provide: MAT_DATE_LOCALE, useFactory: NsLanguage.resolve },
     // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
