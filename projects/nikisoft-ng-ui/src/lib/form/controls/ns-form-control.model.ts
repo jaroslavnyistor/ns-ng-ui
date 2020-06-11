@@ -1,10 +1,7 @@
 import { ValidatorFn } from '@angular/forms';
-import {
-  LocalizationLanguagesService, NsArray, NsObject, NsString,
-  NsSubscriptionModel,
-} from 'nikisoft-utils';
+import { LocalizationLanguagesService, NsArray, NsObject, NsString, NsSubscriptionModel } from 'nikisoft-utils';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { filter, map, startWith } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { NsFormControlValidator } from '../validators/ns-form-control.validator';
 import { NsFormControlValidators } from '../validators/ns-form-control.validators';
 import { NsFormControlRequiredValidator } from '../validators/provided/ns-form-control-required.validator';
@@ -31,7 +28,7 @@ export abstract class NsFormControlModel<
   private readonly _validators: NsFormControlValidators;
   private _validatorsFn: ValidatorFn[];
   private _errorMessage$: Observable<string>;
-  private _valueChanges$: Observable<any>;
+  private _valueChanges$: BehaviorSubject<any>;
   private _statusChanges$: BehaviorSubject<string>;
   private _currentStatus: string;
 
@@ -175,6 +172,8 @@ export abstract class NsFormControlModel<
 
     this.setValueChanges$();
 
+    this.setStatusChanges$();
+
     this.setDependsOn$();
   }
 
@@ -219,7 +218,9 @@ export abstract class NsFormControlModel<
   }
 
   private setValueChanges$() {
-    this._valueChanges$ = this.formControl.valueChanges.pipe(
+    this._valueChanges$ = new BehaviorSubject<any>(this.value);
+
+    const valueChanges$ = this.formControl.valueChanges.pipe(
       filter((value) => {
         const formGroup = this.formControl.parent;
         const prevValue = formGroup.value[this.key];
@@ -227,12 +228,13 @@ export abstract class NsFormControlModel<
       }),
     );
 
-    this.subscribeTo(this.valueChanges$, {
+    this.subscribeTo(valueChanges$, {
       next: (newValue) => this.handleValueChanged(newValue),
     });
   }
 
   protected handleValueChanged(newValue: any) {
+    this._valueChanges$.next(newValue);
     this._hasValue = this.resolveHasValue(newValue);
   }
 
@@ -243,10 +245,7 @@ export abstract class NsFormControlModel<
   private setStatusChanges$() {
     this._statusChanges$ = new BehaviorSubject<any>(this.formControl.status);
 
-    const obs$ = this.formControl.statusChanges.pipe(
-      startWith(this.formControl.status),
-      filter((newStatus) => this._currentStatus !== newStatus),
-    );
+    const obs$ = this.formControl.statusChanges.pipe(filter((newStatus) => this._currentStatus !== newStatus));
 
     this.subscribeTo(obs$, {
       next: (newStatus) => this.handleStatusChanged(newStatus),
