@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NsFormModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.model';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
-import { FormsAutocompleteBasicCustomerNameModel } from './customer-name/forms-autocomplete-basic.customer-name.model';
+import { FormsAutocompleteBasicCustomerNameModel } from './customer-name/forms-autocomplete-basic-customer-name.model';
 import { FormsAutocompleteBasicEntity, newFormsAutocompleteBasicEntity } from './forms-autocomplete-basic.entity';
 
 @Injectable()
