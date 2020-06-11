@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NsComponentBase } from '../../../../../../nikisoft-ng-ui/src/lib/component/ns-component.base';
 import { NsFormDiConfigurator } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.di-configurator';
-import { FormsArrayCustomersArrayModel } from '../customers/forms-array.customers-array.model';
-import { FormsArrayCustomersArrayService } from '../customers/forms-array.customers-array.service';
+import { FormsArrayCustomersArrayModel } from '../customers/forms-array-customers-array.model';
+import { FormsArrayCustomersArrayService } from '../customers/forms-array-customers-array.service';
 import { FormsArrayInitialValueModel } from './forms-array-initial-value.model';
 import { FormsArrayInitialValueService } from './forms-array-initial-value.service';
 

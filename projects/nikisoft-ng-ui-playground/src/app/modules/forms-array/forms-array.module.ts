@@ -6,7 +6,7 @@ import { NsGridModule } from '../../../../../nikisoft-ng-ui/src/lib/grid/ns-grid
 import { NsPageStandardModule } from '../../../../../nikisoft-ng-ui/src/lib/page/standard/ns-page-standard.module';
 import { AppComponentModule } from '../../components/app-component.module';
 import { FormsArrayBasicComponent } from './basic/forms-array-basic.component';
-import { FormsArrayCustomersArrayComponent } from './customers/forms-array.customers-array.component';
+import { FormsArrayCustomersArrayComponent } from './customers/forms-array-customers-array.component';
 
 import { FormsArrayRoutingModule } from './forms-array-routing.module';
 import { FormsArrayComponent } from './forms-array.component';

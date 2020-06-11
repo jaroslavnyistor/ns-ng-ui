@@ -3,7 +3,7 @@ import { NsFormControlArrayService } from '../../../../../../nikisoft-ng-ui/src/
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity, newCustomer } from '../../data/customer.entity';
-import { FormsArrayCustomersArrayItemModel } from './forms-array.customers-array-item.model';
+import { FormsArrayCustomersArrayItemModel } from './forms-array-customers-array-item.model';
 
 @Injectable()
 export class FormsArrayCustomersArrayService extends NsFormControlArrayService<

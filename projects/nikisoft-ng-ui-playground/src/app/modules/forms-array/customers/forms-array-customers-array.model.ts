@@ -4,8 +4,8 @@ import { AppNavigationService } from '../../../service-provider/app-navigation.s
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity } from '../../data/customer.entity';
 import { FormsArrayBasicEntity } from '../basic/forms-array-basic.entity';
-import { FormsArrayCustomersArrayItemModel } from './forms-array.customers-array-item.model';
-import { FormsArrayCustomersArrayService } from './forms-array.customers-array.service';
+import { FormsArrayCustomersArrayItemModel } from './forms-array-customers-array-item.model';
+import { FormsArrayCustomersArrayService } from './forms-array-customers-array.service';
 
 @Injectable()
 export class FormsArrayCustomersArrayModel extends NsFormControlArrayModel<
