@@ -135,7 +135,8 @@ export class NsFormControlDatePickerModel<TEntity> extends NsFormControlModel<
   private createMinMaxDate$() {
     this.unsubscribeMinMaxDate$();
 
-    const obs$ = NsArray.exceptNull([this._minDate$, this._maxDate$])
+    const defaultValue: Observable<NsDate> = of(null);
+    const obs$ = NsArray.nullOrDefaultValue([this._minDate$, this._maxDate$], defaultValue);
 
     this._minMaxDateSubscription = combineLatest(obs$)
       .subscribe({
