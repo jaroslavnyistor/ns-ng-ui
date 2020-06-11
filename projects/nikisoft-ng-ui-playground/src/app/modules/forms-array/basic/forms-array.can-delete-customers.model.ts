@@ -4,7 +4,7 @@ import { FormsArrayCustomersArrayModel } from '../customers/forms-array.customer
 import { FormsArrayBasicEntity } from './forms-array-basic.entity';
 
 @Injectable()
-export class CanDeleteCustomersModel extends NsFormControlCheckboxModel<FormsArrayBasicEntity> {
+export class FormsArrayCanDeleteCustomersModel extends NsFormControlCheckboxModel<FormsArrayBasicEntity> {
   constructor(private readonly _customers: FormsArrayCustomersArrayModel) {
     super({
       key: 'canDeleteCustomers',

@@ -3,7 +3,7 @@ import { NsComponentBase } from '../../../../../../nikisoft-ng-ui/src/lib/compon
 import { NsFormDiConfigurator } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.di-configurator';
 import { FormsArrayCustomersArrayModel } from '../customers/forms-array.customers-array.model';
 import { FormsArrayCustomersArrayService } from '../customers/forms-array.customers-array.service';
-import { CanDeleteCustomersModel } from './can-delete-customers.model';
+import { FormsArrayCanDeleteCustomersModel } from './forms-array.can-delete-customers.model';
 import { FormsArrayBasicModel } from './forms-array-basic.model';
 import { FormsArrayBasicService } from './forms-array-basic.service';
 
@@ -15,7 +15,7 @@ import { FormsArrayBasicService } from './forms-array-basic.service';
     NsFormDiConfigurator.provideService(FormsArrayBasicService, FormsArrayBasicModel),
     FormsArrayCustomersArrayModel,
     FormsArrayCustomersArrayService,
-    CanDeleteCustomersModel,
+    FormsArrayCanDeleteCustomersModel,
   ],
 })
 export class FormsArrayBasicComponent extends NsComponentBase<FormsArrayBasicService, FormsArrayBasicModel> {
