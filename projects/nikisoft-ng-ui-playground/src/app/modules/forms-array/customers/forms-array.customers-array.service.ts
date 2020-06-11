@@ -3,11 +3,11 @@ import { NsFormControlArrayService } from '../../../../../../nikisoft-ng-ui/src/
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity, newCustomer } from '../../data/customer.entity';
-import { CustomersArrayItemModel } from './customers-array-item.model';
+import { FormsArrayCustomersArrayItemModel } from './forms-array.customers-array-item.model';
 
 @Injectable()
-export class CustomersArrayService extends NsFormControlArrayService<
-  CustomersArrayItemModel,
+export class FormsArrayCustomersArrayService extends NsFormControlArrayService<
+  FormsArrayCustomersArrayItemModel,
   CustomerEntity,
   AppServiceProvider,
   AppNavigationService
@@ -20,7 +20,7 @@ export class CustomersArrayService extends NsFormControlArrayService<
     return newCustomer();
   }
 
-  mapEntityToFormModel(): CustomersArrayItemModel {
-    return new CustomersArrayItemModel(this._serviceProvider);
+  mapEntityToFormModel(): FormsArrayCustomersArrayItemModel {
+    return new FormsArrayCustomersArrayItemModel(this._serviceProvider);
   }
 }

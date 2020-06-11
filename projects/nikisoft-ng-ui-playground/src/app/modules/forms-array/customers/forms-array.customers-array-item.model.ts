@@ -4,7 +4,7 @@ import { AppNavigationService } from '../../../service-provider/app-navigation.s
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity, newCustomer } from '../../data/customer.entity';
 
-export class CustomersArrayItemModel extends NsFormControlArrayItemModel<
+export class FormsArrayCustomersArrayItemModel extends NsFormControlArrayItemModel<
   CustomerEntity,
   AppServiceProvider,
   AppNavigationService

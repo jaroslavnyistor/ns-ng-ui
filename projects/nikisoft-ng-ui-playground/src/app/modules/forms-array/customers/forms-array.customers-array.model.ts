@@ -4,19 +4,19 @@ import { AppNavigationService } from '../../../service-provider/app-navigation.s
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
 import { CustomerEntity } from '../../data/customer.entity';
 import { FormsArrayBasicEntity } from '../basic/forms-array-basic.entity';
-import { CustomersArrayItemModel } from './customers-array-item.model';
-import { CustomersArrayService } from './customers-array.service';
+import { FormsArrayCustomersArrayItemModel } from './forms-array.customers-array-item.model';
+import { FormsArrayCustomersArrayService } from './forms-array.customers-array.service';
 
 @Injectable()
-export class CustomersArrayModel extends NsFormControlArrayModel<
+export class FormsArrayCustomersArrayModel extends NsFormControlArrayModel<
   FormsArrayBasicEntity,
-  CustomersArrayService,
-  CustomersArrayItemModel,
+  FormsArrayCustomersArrayService,
+  FormsArrayCustomersArrayItemModel,
   CustomerEntity,
   AppServiceProvider,
   AppNavigationService
 > {
-  constructor(service: CustomersArrayService) {
+  constructor(service: FormsArrayCustomersArrayService) {
     super({
       key: 'customers',
       label: 'Customers',

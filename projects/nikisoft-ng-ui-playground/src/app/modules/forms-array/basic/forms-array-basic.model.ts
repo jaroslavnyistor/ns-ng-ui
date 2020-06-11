@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { NsFormModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.model';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
-import { CustomersArrayModel } from '../customers/customers-array.model';
+import { FormsArrayCustomersArrayModel } from '../customers/forms-array.customers-array.model';
 import { CanDeleteCustomersModel } from './can-delete-customers.model';
 import { FormsArrayBasicEntity, newFormsArrayBasicEntity } from './forms-array-basic.entity';
 
 @Injectable()
 export class FormsArrayBasicModel extends NsFormModel<FormsArrayBasicEntity, AppServiceProvider, AppNavigationService> {
-  private readonly _customers: CustomersArrayModel;
+  private readonly _customers: FormsArrayCustomersArrayModel;
   private readonly _canDeleteCustomers: CanDeleteCustomersModel;
 
-  get customers(): CustomersArrayModel {
+  get customers(): FormsArrayCustomersArrayModel {
     return this._customers;
   }
 
@@ -21,7 +21,7 @@ export class FormsArrayBasicModel extends NsFormModel<FormsArrayBasicEntity, App
 
   constructor(
     serviceProvider: AppServiceProvider,
-    customers: CustomersArrayModel,
+    customers: FormsArrayCustomersArrayModel,
     canDeleteCustomersModel: CanDeleteCustomersModel,
   ) {
     super(serviceProvider, newFormsArrayBasicEntity());

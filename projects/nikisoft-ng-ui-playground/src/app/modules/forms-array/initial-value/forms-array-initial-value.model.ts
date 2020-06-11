@@ -3,7 +3,7 @@ import { NsFormControlInputModel } from '../../../../../../nikisoft-ng-ui/src/li
 import { NsFormModel } from '../../../../../../nikisoft-ng-ui/src/lib/form/ns-form.model';
 import { AppNavigationService } from '../../../service-provider/app-navigation.service';
 import { AppServiceProvider } from '../../../service-provider/app-service-provider';
-import { CustomersArrayModel } from '../customers/customers-array.model';
+import { FormsArrayCustomersArrayModel } from '../customers/forms-array.customers-array.model';
 import { FormsArrayInitialValueEntity, newFormsArrayInitialValueEntity } from './forms-array-initial-value.entity';
 
 @Injectable()
@@ -13,17 +13,17 @@ export class FormsArrayInitialValueModel extends NsFormModel<
   AppNavigationService
 > {
   private readonly _supervisor: NsFormControlInputModel<FormsArrayInitialValueEntity>;
-  private readonly _customers: CustomersArrayModel;
+  private readonly _customers: FormsArrayCustomersArrayModel;
 
   get supervisor(): NsFormControlInputModel<FormsArrayInitialValueEntity> {
     return this._supervisor;
   }
 
-  get customers(): CustomersArrayModel {
+  get customers(): FormsArrayCustomersArrayModel {
     return this._customers;
   }
 
-  constructor(customers: CustomersArrayModel, serviceProvider: AppServiceProvider) {
+  constructor(customers: FormsArrayCustomersArrayModel, serviceProvider: AppServiceProvider) {
     super(serviceProvider, newFormsArrayInitialValueEntity());
 
     this._supervisor = this.addText({
