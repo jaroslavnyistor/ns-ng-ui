@@ -28,12 +28,12 @@ export class FormsDateMinMaxModel extends NsFormModel<FormsDateMinMaxEntity, App
 
     this._minDate = this.addDate({
       key: 'minDate',
-      label: 'Mininum date allowed',
+      label: 'Minimum date allowed',
     });
 
     this._maxDate = this.addDate({
       key: 'maxDate',
-      label: 'Mininum date allowed',
+      label: 'Maximum date allowed',
     });
 
     this._date = this.addDate({
@@ -45,6 +45,10 @@ export class FormsDateMinMaxModel extends NsFormModel<FormsDateMinMaxEntity, App
 
   onInit() {
     super.onInit();
+
+    this._minDate.setMaxDate$(this._maxDate.valueChanges$);
+
+    this._maxDate.setMinDate$(this._minDate.valueChanges$);
 
     this._date.setMinDate$(this._minDate.valueChanges$)
       .setMaxDate$(this._maxDate.valueChanges$);
